@@ -16,7 +16,7 @@ img {
 
 @font-face {
     font-family: NotoSans;
-    src: url("assets/fonts/NotoSansSC-Regular.otf");
+    src: url("assets/fonts/NotoSansTC-Medium.otf");
 }
 
 body {
@@ -35,9 +35,64 @@ h6 {
     font-family: Anton, serif;
 }
 
+#loading {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    opacity: 1;
+    transition: 0.6s;
 
+    .content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        img {
+            width: 150px;
+
+            transition: 0.6s;
+            animation: loading_img 2s infinite alternate;
+        }
+
+        p {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 15px;
+            animation: loading_p 1s infinite alternate;
+        }
+    }
+
+    &.active {
+        pointer-events: none;
+        opacity: 0;
+    }
+}
+
+@keyframes loading_img {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes loading_p {
+    from {
+        transform: scale(0.9);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
 
 header {
+    max-width: 1200px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -46,8 +101,11 @@ header {
     right: 0;
     top: 30px;
     display: flex;
-    // align-items: center;
-    // justify-content: space-evenly;
+
+    @media screen and (max-width: 825px) {
+        left: 15px;
+        top: 15px;
+    }
 
     nav {
         ul {
@@ -65,9 +123,18 @@ header {
                 margin-left: -45px;
                 text-shadow: 0 0 3px #2d2d2d;
 
+                @media screen and (max-width: 825px) {
+                    font-size: 16px;
+                }
+
                 .icon {
                     width: 45px;
                     height: 45px;
+
+                    @media screen and (max-width: 825px) {
+                        width: 25px;
+                        height: 25px
+                    }
                 }
 
                 .content {
@@ -102,32 +169,26 @@ header {
             }
         }
     }
-
-    .off {
-        cursor: pointer;
-        transition: 0.6s;
-
-        img {
-            width: 45px;
-            height: 45px;
-        }
-
-        &:hover {
-            filter: brightness(50%);
-            transform: scale(1.05);
-        }
-    }
 }
 
 #off {
     position: fixed;
     right: 30px;
     top: 35px;
-    
+
+    @media screen and (max-width: 825px) {
+        right: 15px;
+        top: 20px;
+    }
 
     svg {
         width: 55px;
         height: 55px;
+
+        @media screen and (max-width: 825px) {
+            width: 30px;
+            height: 30px;
+        }
 
         .cls-1 {
             fill: #a73924;
@@ -145,8 +206,9 @@ header {
             fill: #fff;
         }
     }
-    &:hover{
-        svg{
+
+    &:hover {
+        svg {
             .cls-1 {
                 fill: #F6B42C;
             }
@@ -164,6 +226,11 @@ footer {
         position: relative;
         margin-left: auto;
         margin-right: auto;
+
+        @media screen and (max-width: 825px) {
+            transform: scale(0.6);
+            transform-origin: bottom center;
+        }
 
         .background {
             position: relative;
@@ -213,7 +280,8 @@ footer {
                     text-decoration: none;
                     color: #231815;
 
-                    img {
+                    img,
+                    svg {
                         max-width: 80px;
                         height: 80px;
                         margin-bottom: 5px;
@@ -260,11 +328,111 @@ footer {
     }
 }
 
-#helper{
-    width: 120px;
+#helper {
     position: fixed;
     bottom: 50px;
     right: 30px;
+
+    @media screen and (max-width: 1480px) {
+        bottom: 80px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        bottom: 125px;
+    }
+
+    @media screen and (max-width: 825px) {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    svg {
+        width: 120px;
+
+        @media screen and (max-width: 825px) {
+            width: 80px;
+        }
+
+        .cls-1 {
+            fill: #adbece;
+        }
+
+        .cls-11,
+        .cls-13,
+        .cls-2,
+        .cls-4,
+        .cls-8,
+        .cls-9 {
+            fill: none;
+        }
+
+        .cls-13,
+        .cls-2,
+        .cls-4,
+        .cls-8 {
+            stroke: #231815;
+        }
+
+        .cls-13,
+        .cls-2,
+        .cls-4,
+        .cls-8,
+        .cls-9 {
+            stroke-miterlimit: 10;
+        }
+
+        .cls-11,
+        .cls-2,
+        .cls-9 {
+            stroke-width: 1.56px;
+        }
+
+        .cls-3 {
+            fill: #d6574e;
+        }
+
+        .cls-4 {
+            stroke-width: 1.5px;
+        }
+
+        .cls-5 {
+            fill: #1696b8;
+        }
+
+        .cls-6 {
+            fill: #d51a19;
+        }
+
+        .cls-7 {
+            fill: #1e3049;
+        }
+
+        .cls-8 {
+            stroke-width: 1.45px;
+        }
+
+        .cls-11,
+        .cls-9 {
+            stroke: #cee2be;
+        }
+
+        .cls-10 {
+            fill: #f4e028;
+        }
+
+        .cls-11 {
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .cls-12 {
+            fill: #fff;
+        }
+
+        .cls-13 {
+            stroke-width: 1.52px;
+        }
+    }
 }
 
 main {
@@ -275,14 +443,25 @@ main {
     top: 50%;
     transform: translate(-50%, -50%);
 
+    @media screen and (max-height: 890px) {
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    @media screen and (max-width: 1024px) {
+        transform: translate(-50%, -50%) scale(0.6);
+    }
+
+    @media screen and (max-width: 825px) {
+        transform: translate(-50%, -50%) scale(0.35);
+    }
+
+
     img {
         width: 100%;
         padding-left: 15px;
         padding-right: 15px;
     }
 }
-
-
 
 .checkpoint {
     width: 120px;
@@ -369,6 +548,10 @@ main {
     position: relative;
     width: 100%;
     height: 100vh;
+
+    @media screen and (max-width: 825px) {
+        transform: scale(0.55);
+    }
 
     .wrapper {
         position: absolute;

@@ -45,8 +45,4 @@
     }
   };
 </script>
-<style scoped lang="scss">
-  body {
-    position: relative;
-  }
-</style>
+<style scoped lang="scss"></style>
