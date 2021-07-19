@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="home">
+    <VueLoading />
+    <VueHeader />
+    <main>
+      <router-link to="/game_levels">SB</router-link>
+    </main>
+    <VueFooter />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  import VueLoading from "./include/loading";
+  import VueHeader from "./include/header";
+  import VueFooter from "./include/footer";
+  export default {
+    components: {
+      VueLoading,
+      VueHeader,
+      VueFooter
+    },
   }
-}
 </script>
+
+<style scoped>
+  a{
+    background-color: #648575;
+    color: #fff;
+    text-align: center;
+    display: block;
+    line-height: 50px;
+    text-decoration: cadetblue;
+  }
+</style>
