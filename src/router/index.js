@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import login from '../views/login.vue'
 import level from '../views/level.vue'
 import game_levels from '../views/game_levels.vue'
+import game_levels2 from '../views/game_levels2.vue'
 
 Vue.use(VueRouter)
 
@@ -34,13 +35,18 @@ const routes = [
     component: game_levels
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/game_levels2',
+    name: 'game_levels2',
+    component: game_levels2
+  },
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // }
 ]
 
 const router = new VueRouter({

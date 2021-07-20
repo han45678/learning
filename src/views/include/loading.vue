@@ -20,11 +20,11 @@
       this.isLoading
     },
     methods: {
-      isLoading() {
-        setTimeout(() => {
-          this.isLoading = true;
-        }, 3000);
-      }
+      // isLoading() {
+      //   setTimeout(() => {
+      //     this.isLoading = true;
+      //   }, 3000);
+      // }
     }
   };
 </script>
