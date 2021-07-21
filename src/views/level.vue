@@ -19,8 +19,8 @@
         <li :class="{'active': level == 6}" @click="this.level_6">6</li>
         <li :class="{'active': level == 7}" @click="this.level_7">7</li>
       </ul>
-      <router-link to="/login" v-if="identity == 1 && level !==0" class="button student">START !</router-link>
-      <router-link to="/login" v-if="identity == 2" class="button parent">START !</router-link>
+      <router-link to="/" v-if="identity == 1 && level !==0" class="button student">START !</router-link>
+      <router-link to="/level" v-if="identity == 2" class="button parent">START !</router-link>
     </div>
   </div>
 </template>

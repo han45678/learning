@@ -3,7 +3,7 @@
     <VueLoading />
     <VueHeader />
     <main>
-      <router-link to="/game_levels">SB</router-link>
+      <router-link to="/checkpoint">SB</router-link>
     </main>
     <VueFooter />
   </div>
