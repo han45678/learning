@@ -7,7 +7,7 @@
             <img src="../../assets/images/icon/user.svg" alt="icon">
           </div>
           <div class="content">
-            {{name}}
+            {{info.name}}
           </div>
         </li>
         <li>
@@ -15,7 +15,7 @@
             <img src="../../assets/images/icon/time.svg" alt="icon">
           </div>
           <div class="content">
-            {{time}}
+            {{info.time}}
           </div>
         </li>
         <li>
@@ -23,7 +23,7 @@
             <img src="../../assets/images/icon/currency.svg" alt="icon">
           </div>
           <div class="content">
-            {{currency}}
+            {{info.currency}}
           </div>
         </li>
         <li>
@@ -31,7 +31,7 @@
             <img src="../../assets/images/icon/star.svg" alt="icon">
           </div>
           <div class="content">
-            {{star}}%
+            {{info.star}}%
           </div>
         </li>
         <li>
@@ -39,7 +39,7 @@
             <img src="../../assets/images/icon/level.svg" alt="icon">
           </div>
           <div class="content">
-            level{{level}}
+            level{{info.level}}
           </div>
         </li>
       </ul>
@@ -51,12 +51,16 @@
   export default {
     data() {
       return {
-        name: "王小名",
-        time: "10:23",
-        currency: "654,321",
-        star: "100",
-        level: "1"
+        info: "",
       };
+    },
+    mounted() {
+      this.$axios
+        .get('/json/info.json')
+        .then(res => (this.info = res.data))
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   };
 </script>

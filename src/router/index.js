@@ -6,18 +6,19 @@ import level from '../views/level.vue'
 import checkpoint from '../views/checkpoint.vue'
 import checkpoint2 from '../views/checkpoint2.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '*',
-    redirect: '/'
+    redirect: '/',
     //避免進入沒定義的頁面(在網址列上亂打)
   },
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/login',
