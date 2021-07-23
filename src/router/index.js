@@ -4,8 +4,7 @@ import Home from '../views/Home.vue'
 import login from '../views/login.vue'
 import level from '../views/level.vue'
 import checkpoint from '../views/checkpoint.vue'
-import checkpoint2 from '../views/checkpoint2.vue'
-
+import game from '../views/game.vue'
 
 Vue.use(VueRouter)
 
@@ -36,9 +35,9 @@ const routes = [
     component: checkpoint
   },
   {
-    path: '/checkpoint2',
-    name: 'checkpoint2',
-    component: checkpoint2
+    path: '/game',
+    name: 'game',
+    component: game
   },
   {
     path: '/about',

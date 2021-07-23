@@ -1,7 +1,9 @@
 {
+    "order": "1",
     "map": "/images/level.svg",
-    "checkpoint": [
-        {
+    "checkpoint": [{
+            "title": "",
+
             "number": "1",
             "text": "unit",
             "style_1": false,
@@ -15,6 +17,8 @@
             "s3": true
         },
         {
+            "title": "",
+
             "number": "2",
             "text": "unit",
             "style_1": true,
@@ -26,7 +30,9 @@
             "s1": true,
             "s2": true,
             "s3": true
-        },{
+        }, {
+            "title": "",
+
             "number": "3",
             "text": "unit",
             "style_1": false,
@@ -38,7 +44,9 @@
             "s1": true,
             "s2": true,
             "s3": true
-        },{
+        }, {
+            "title": "",
+
             "number": "4",
             "text": "unit",
             "style_1": false,
@@ -50,7 +58,9 @@
             "s1": false,
             "s2": false,
             "s3": false
-        },{
+        }, {
+            "title": "",
+
             "number": "5",
             "text": "unit",
             "style_1": false,
@@ -62,7 +72,9 @@
             "s1": false,
             "s2": false,
             "s3": false
-        },{
+        }, {
+            "title": "",
+
             "number": "6",
             "text": "unit",
             "style_1": false,
@@ -74,7 +86,9 @@
             "s1": false,
             "s2": false,
             "s3": false
-        },{
+        }, {
+            "title": "",
+
             "number": "7",
             "text": "unit",
             "style_1": false,
@@ -92,8 +106,7 @@
     "right_arrow": "checkpoint2",
     "lock": false,
     "unlock": false,
-    "condition": [
-        {
+    "condition": [{
             "text": "Clearance conditions - 1",
             "pass": true
         },
