@@ -11,7 +11,11 @@
 
       <main>
         <div class="content">
-          <router-link to="/game" v-for="item in info.checkpoint" class="checkpoint"
+          <router-link 
+            :to="`game${index}`" 
+            v-for="(item , index) in info.checkpoint" 
+            class="checkpoint" 
+            :key="index"
             :class="{ 'gray': item.gray , 's1': item.s1 , 's2': item.s2, 's3': item.s3 , 'style_1': item.style_1 , 'style_2': item.style_2}"
             :style="{width: item.width + 'px' , left: item.left + '%', top: item.top + '%' }">
             <div class="item">
@@ -58,13 +62,6 @@
             </li>
           </ul>
         </div>
-      </div>
-
-      <!-- 過場動畫 -->
-      <div id="eyecatch" :class="{'active' : eyecatch}">
-        <div id="e1"></div>
-        <div id="e2"></div>
-        <div id="e3"></div>
       </div>
 
       <VueFooter />
