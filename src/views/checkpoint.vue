@@ -44,41 +44,16 @@
       <main v-if="this.game">
         <div id="game">
           <div class="game_options">
-            <h1 :class="stylsClass.css">Unlt1</h1>
-            <button @click="styls0" :class="{'active' : sel === 0}" class="styls0">Story</button>
-            <button @click="styls1" :class="{'active' : sel === 1}" class="styls1">Letters</button>
-            <button @click="styls2" :class="{'active' : sel === 2}" class="styls2">Vocabulary</button>
-            <button @click="styls3" :class="{'active' : sel === 3}" class="styls3">SentencePattern</button>
+            <h1 :class="stylsClass.css">{{unit}}</h1>
+            <button v-for="(item , index) in game_options" :key="index" @click="styls(index)"
+              :class="[`styls${index}`,{'active' : sel === index}]">{{item.name}}</button>
           </div>
           <div class="game_menu">
             <ul>
-              <li @click="optionsStyls0" :class="[stylsClass.css,{'active' : options === 0}]">
+              <li v-for="(item , index) in game_menu_options" @click="optionsStyls(index)" :key="index"
+                :class="[stylsClass.css,{'active' : options === index , 'grayscale' : item.grayscale , 's1' : item.s1 , 's2' : item.s2 , 's3' : item.s3}]">
                 <div class="item">
-                  <img src="/images/game/video.svg" alt="icon">
-                  <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
-                </div>
-              </li>
-              <li @click="optionsStyls1" :class="[stylsClass.css,{'active' : options === 1}]">
-                <div class="item">
-                  <img src="/images/game/movie.svg" alt="icon">
-                  <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
-                </div>
-              </li>
-              <li @click="optionsStyls2" :class="[stylsClass.css,{'active' : options === 2}]">
-                <div class="item">
-                  <img src="/images/game/mic.svg" alt="icon">
-                  <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
-                </div>
-              </li>
-              <li @click="optionsStyls3" :class="[stylsClass.css,{'active' : options === 3}]">
-                <div class="item">
-                  <img src="/images/game/game.svg" alt="icon">
-                  <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
-                </div>
-              </li>
-              <li @click="optionsStyls4" :class="[stylsClass.css,{'active' : options === 4}]">
-                <div class="item">
-                  <img src="/images/game/game.svg" alt="icon">
+                  <img :src="item.img" alt="icon">
                   <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
                 </div>
               </li>
@@ -86,7 +61,26 @@
           </div>
           <div class="game_main">
             <div class="content">
+              <div class="video" v-if="this.options === 0">
+                <video controls>
+                  <source src="/video/1580455.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="movie" v-if="this.options === 1">
+                <video controls>
+                  <source src="/video/sky2408.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="mic" v-if="this.options === 2">
+                <img class="pointer" src="/images/game/pointer.svg" alt="pointer">
+                <img class="surface" src="/images/game/surface.svg" alt="surface">
+              </div>
+              <div class="game" v-if="this.options === 3">
 
+              </div>
+              <div class="game" v-if="this.options === 4">
+
+              </div>
             </div>
           </div>
         </div>
@@ -189,9 +183,9 @@
           }]
         },
         "star_svg": "<g><path class='s star-1' d='M2.37,15.87c.21-.91.44-2,.71-3.07a.8.8,0,0,0-.29-.92C2.05,11.26,1.35,10.6.62,10A1.36,1.36,0,0,1,.07,8.43a1.39,1.39,0,0,1,1.38-1c.93-.06,1.87-.17,2.8-.23a.86.86,0,0,0,.85-.59c.36-.91.77-1.8,1.15-2.71A1.34,1.34,0,0,1,7.57,3a1.36,1.36,0,0,1,1.27,1c.38.93.8,1.84,1.16,2.77a.76.76,0,0,0,.74.54c1,.06,1.95.17,2.93.26a1.38,1.38,0,0,1,1.33,1,1.35,1.35,0,0,1-.5,1.5c-.74.65-1.47,1.31-2.23,1.93a.85.85,0,0,0-.31,1c.24,1,.43,1.92.66,2.87a1.37,1.37,0,0,1-2.13,1.51c-.81-.51-1.65-1-2.45-1.51a.86.86,0,0,0-1.08,0q-1.26.81-2.58,1.53C3.36,17.84,2.32,17.18,2.37,15.87Z' /><path class='s star-2' d='M22.61,18.17c.3-1.29.62-2.82,1-4.32a1.14,1.14,0,0,0-.42-1.31c-1-.87-2-1.79-3.05-2.67a1.94,1.94,0,0,1,1.17-3.55c1.32-.09,2.63-.25,4-.33a1.19,1.19,0,0,0,1.18-.83c.51-1.29,1.1-2.54,1.63-3.81A1.85,1.85,0,0,1,29.92,0a1.9,1.9,0,0,1,1.79,1.33c.53,1.31,1.12,2.59,1.64,3.9a1.05,1.05,0,0,0,1,.76c1.37.09,2.75.23,4.12.36a1.93,1.93,0,0,1,1.16,3.49c-1,.91-2.06,1.84-3.13,2.71a1.2,1.2,0,0,0-.43,1.38c.33,1.34.61,2.69.92,4a1.88,1.88,0,0,1-.69,2.12,1.91,1.91,0,0,1-2.3,0c-1.15-.71-2.33-1.38-3.45-2.13a1.22,1.22,0,0,0-1.52,0c-1.18.76-2.39,1.49-3.63,2.16C24,20.93,22.54,20,22.61,18.17Z' /><path class='s star-3' d='M47.05,15.87c.21-.91.44-2,.71-3.07a.78.78,0,0,0-.29-.92C46.73,11.26,46,10.6,45.3,10a1.36,1.36,0,0,1-.55-1.54,1.39,1.39,0,0,1,1.38-1c.93-.06,1.87-.17,2.8-.23a.86.86,0,0,0,.85-.59c.36-.91.77-1.8,1.15-2.71a1.34,1.34,0,0,1,1.32-1,1.36,1.36,0,0,1,1.27,1c.38.93.8,1.84,1.16,2.77a.76.76,0,0,0,.74.54c1,.06,2,.17,2.93.26a1.38,1.38,0,0,1,1.33,1,1.35,1.35,0,0,1-.5,1.5c-.74.65-1.47,1.31-2.23,1.93a.85.85,0,0,0-.31,1c.24,1,.43,1.92.66,2.87a1.37,1.37,0,0,1-2.13,1.51c-.81-.51-1.65-1-2.45-1.51a.86.86,0,0,0-1.08,0q-1.26.81-2.58,1.53C48,17.84,47,17.18,47.05,15.87Z' /></g>",
-
         "game_star_svg": "<g><path class='s star-1' d='M2.37,15.87c.21-.91.44-2,.71-3.07a.8.8,0,0,0-.29-.92C2.05,11.26,1.35,10.6.62,10A1.36,1.36,0,0,1,.07,8.43a1.39,1.39,0,0,1,1.38-1c.93-.06,1.87-.17,2.8-.23a.86.86,0,0,0,.85-.59c.36-.91.77-1.8,1.15-2.71A1.34,1.34,0,0,1,7.57,3a1.36,1.36,0,0,1,1.27,1c.38.93.8,1.84,1.16,2.77a.76.76,0,0,0,.74.54c1,.06,1.95.17,2.93.26a1.38,1.38,0,0,1,1.33,1,1.35,1.35,0,0,1-.5,1.5c-.74.65-1.47,1.31-2.23,1.93a.85.85,0,0,0-.31,1c.24,1,.43,1.92.66,2.87a1.37,1.37,0,0,1-2.13,1.51c-.81-.51-1.65-1-2.45-1.51a.86.86,0,0,0-1.08,0q-1.26.81-2.58,1.53C3.36,17.84,2.32,17.18,2.37,15.87Z' /><path class='s star-2' d='M22.61,18.17c.3-1.29.62-2.82,1-4.32a1.14,1.14,0,0,0-.42-1.31c-1-.87-2-1.79-3.05-2.67a1.94,1.94,0,0,1,1.17-3.55c1.32-.09,2.63-.25,4-.33a1.19,1.19,0,0,0,1.18-.83c.51-1.29,1.1-2.54,1.63-3.81A1.85,1.85,0,0,1,29.92,0a1.9,1.9,0,0,1,1.79,1.33c.53,1.31,1.12,2.59,1.64,3.9a1.05,1.05,0,0,0,1,.76c1.37.09,2.75.23,4.12.36a1.93,1.93,0,0,1,1.16,3.49c-1,.91-2.06,1.84-3.13,2.71a1.2,1.2,0,0,0-.43,1.38c.33,1.34.61,2.69.92,4a1.88,1.88,0,0,1-.69,2.12,1.91,1.91,0,0,1-2.3,0c-1.15-.71-2.33-1.38-3.45-2.13a1.22,1.22,0,0,0-1.52,0c-1.18.76-2.39,1.49-3.63,2.16C24,20.93,22.54,20,22.61,18.17Z' /><path class='s star-3' d='M47.05,15.87c.21-.91.44-2,.71-3.07a.78.78,0,0,0-.29-.92C46.73,11.26,46,10.6,45.3,10a1.36,1.36,0,0,1-.55-1.54,1.39,1.39,0,0,1,1.38-1c.93-.06,1.87-.17,2.8-.23a.86.86,0,0,0,.85-.59c.36-.91.77-1.8,1.15-2.71a1.34,1.34,0,0,1,1.32-1,1.36,1.36,0,0,1,1.27,1c.38.93.8,1.84,1.16,2.77a.76.76,0,0,0,.74.54c1,.06,2,.17,2.93.26a1.38,1.38,0,0,1,1.33,1,1.35,1.35,0,0,1-.5,1.5c-.74.65-1.47,1.31-2.23,1.93a.85.85,0,0,0-.31,1c.24,1,.43,1.92.66,2.87a1.37,1.37,0,0,1-2.13,1.51c-.81-.51-1.65-1-2.45-1.51a.86.86,0,0,0-1.08,0q-1.26.81-2.58,1.53C48,17.84,47,17.18,47.05,15.87Z' /></g>",
-        selArr: [{
+
+        "selArr": [{
             id: 1,
             name: "styls1"
           },
@@ -208,11 +202,53 @@
             name: "styls4"
           }
         ],
-        sel: 0,
-        options: 0,
-        checkpoint: true,
-        game: false,
-        checkpoint_item: 0
+        "sel": 0,
+        "options": 0,
+        "checkpoint": true,
+        "game": false,
+        "checkpoint_item": 0,
+
+        "unit": 'Unlt1',
+        "game_options": [{
+          "name": "Story"
+        }, {
+          "name": "Letters"
+        }, {
+          "name": "Vocabulary"
+        }, {
+          "name": "SentencePattern"
+        }, ],
+        "game_menu_options": [{
+          "grayscale": false,
+          "s1": true,
+          "s2": false,
+          "s3": false,
+          "img": "/images/game/video.svg"
+        }, {
+          "grayscale": false,
+          "s1": true,
+          "s2": true,
+          "s3": true,
+          "img": "/images/game/movie.svg"
+        }, {
+          "grayscale": false,
+          "s1": true,
+          "s2": false,
+          "s3": false,
+          "img": "/images/game/mic.svg"
+        }, {
+          "grayscale": false,
+          "s1": true,
+          "s2": true,
+          "s3": false,
+          "img": "/images/game/game.svg"
+        }, {
+          "grayscale": true,
+          "s1": false,
+          "s2": false,
+          "s3": false,
+          "img": "/images/game/game.svg"
+        }]
       };
     },
     created() {
@@ -249,8 +285,8 @@
           .get('/json/game' + this.checkpoint_item + '-' + sel + '-' + options + '.json')
           // .then(res => (this.info = res.data))
           .then(function (res) {
-            console.log(res.data);
-            console.log('/json/game' + this.checkpoint_item + '-' + sel + '-' + options + '.json');
+            // console.log(res.data);
+            // console.log('/json/game' + this.checkpoint_item + '-' + sel + '-' + options + '.json');
           })
           .catch(function (error) {
             console.log(error);
@@ -284,42 +320,23 @@
         }
       },
 
-      styls0() {
-        this.sel = 0;
+      styls(index) {
+        this.sel = index;
         this.game_data();
       },
-      styls1() {
-        this.sel = 1;
-        this.game_data();
-      },
-      styls2() {
-        this.sel = 2;
-        this.game_data();
-      },
-      styls3() {
-        this.sel = 3;
-        this.game_data();
-      },
-      optionsStyls0() {
-        this.options = 0;
-        this.game_data();
-      },
-      optionsStyls1() {
-        this.options = 1;
-        this.game_data();
-      },
-      optionsStyls2() {
-        this.options = 2;
-        this.game_data();
-      },
-      optionsStyls3() {
-        this.options = 3;
-        this.game_data();
-      },
-      optionsStyls4() {
-        this.options = 4;
-        this.game_data();
-      },
+      optionsStyls(index) {
+        let g = this.game_menu_options[index].grayscale;
+        if (!g) {
+          this.options = index;
+          this.game_data();
+        } else {
+          this.$swal(
+            '<b>錯誤</b>',
+            '此關卡尚未解鎖',
+            'error'
+          );
+        }
+      }
     },
     computed: {
       stylsClass() {

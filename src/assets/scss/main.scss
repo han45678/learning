@@ -165,6 +165,9 @@ main {
         transform: translate(-50%, -50%) scale(0.35);
     }
 
+    @media screen and (max-height: 320px) {
+        transform: translate(-50%, -50%) scale(0.25);
+    }
 
     img {
         width: 100%;
@@ -313,7 +316,7 @@ main {
 
             .game_options {
                 width: 100%;
-                padding-left: 135px;
+                padding-left: 185px;
                 padding-right: 15px;
                 display: flex;
                 justify-content: space-between;
@@ -344,7 +347,7 @@ main {
                 button {
                     height: 72px;
                     font-size: 32px;
-                    padding: 0 30px;
+                    padding: 0 25px;
                     height: 72px;
                     border: none;
                     color: #fff;
@@ -399,6 +402,7 @@ main {
 
             .game_menu {
                 width: 115px;
+                margin-right: 50px;
 
                 ul {
                     li {
@@ -492,12 +496,49 @@ main {
                                 background-color: #D7574E;
                             }
                         }
+
+                        &.grayscale {
+                            filter: grayscale(100%);
+
+                            &.active {
+                                background-color: transparent !important;
+                            }
+
+                            .item {
+                                background-color: #000 !important;
+                            }
+                        }
+
+                        &.s1 {
+                            svg {
+                                .star-1 {
+                                    fill: #F5E929;
+                                }
+                            }
+                        }
+
+                        &.s2 {
+                            svg {
+                                .star-2 {
+                                    fill: #F5E929;
+                                }
+                            }
+                        }
+
+                        &.s3 {
+                            svg {
+                                .star-3 {
+                                    fill: #F5E929;
+                                }
+                            }
+                        }
                     }
                 }
             }
 
             .game_main {
-                width: calc(100% - 135px);
+                width: calc(100% - 185px);
+                min-height: 570px;
                 border: 5px solid #000;
                 background-color: #7A7A7A;
                 box-sizing: border-box;
@@ -517,6 +558,36 @@ main {
                     box-sizing: border-box;
                     border-radius: 15px;
                     overflow: hidden;
+
+                    .video,
+                    .movie,
+                    .mic {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+
+                        video {
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        .surface {
+                            width: 250px;
+                            position: absolute;
+                            left: calc(50% - 125px);
+                            bottom: 15px;
+                        }
+
+                        .pointer {
+                            width: 15px;
+                            position: absolute;
+                            bottom: 50px;
+                            left: calc(50% - 7.5px);
+                            transform-origin: center bottom;
+                            transform: rotate(0deg);
+                            // -75 -40 0 40 75
+                        }
+                    }
                 }
             }
         }
