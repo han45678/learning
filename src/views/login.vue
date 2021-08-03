@@ -9,7 +9,8 @@
           <input type="text" placeholder="請輸入帳號" v-model="user.username" required>
           <input type="password" placeholder="請輸入密碼" v-model="user.password" required>
           <p>※ Forgot password</p>
-          <button type="submit">LOGIN</button>
+          <button @click="test">LOGIN</button>
+          <!-- <button type="submit">LOGIN</button> -->
         </form>
       </div>
     </div>
@@ -27,6 +28,9 @@
       };
     },
     methods: {
+      test(){
+        this.$router.push('/level')
+      },
       sign_in() { //登入事件
         const api = "";
         //admin＝讀取cookie需要

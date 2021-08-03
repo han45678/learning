@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import login from '../views/login.vue'
 import level from '../views/level.vue'
 import checkpoint from '../views/checkpoint.vue'
+import playground from '../views/playground.vue'
 // import game from '../views/game.vue'
 
 Vue.use(VueRouter)
@@ -34,16 +35,21 @@ const routes = [
     name: 'checkpoint',
     component: checkpoint
   },
+  {
+    path: '/playground',
+    name: 'playground',
+    component: playground
+  },
   // {
   //   path: '/game/:id',
   //   name: 'game',
   //   component: game
   // },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
+  // }
 ]
 
 const router = new VueRouter({

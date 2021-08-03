@@ -67,8 +67,7 @@
             <div class="game_main">
               <div class="content">
                 <!-- 影片 -->
-                <transition type="transition" name="fade" enter-active-class="animated swing fade-enter-active"
-                  leave-active-class="animated bounce fade-leave-active">
+                <transition type="transition" name="fade">
                   <div class="video" v-show="this.options === 0">
                     <video controls>
                       <source src="/video/1580455.mp4" type="video/mp4">
@@ -76,8 +75,7 @@
                   </div>
                 </transition>
                 <!-- 電影 -->
-                <transition type="transition" name="fade" enter-active-class="animated swing fade-enter-active"
-                  leave-active-class="animated bounce fade-leave-active">
+                <transition type="transition" name="fade">
                   <div class="movie" v-if="this.options === 1">
                     <video controls>
                       <source src="/video/sky2408.mp4" type="video/mp4">
@@ -85,8 +83,7 @@
                   </div>
                 </transition>
                 <!-- 錄音 -->
-                <transition type="transition" name="fade" enter-active-class="animated swing fade-enter-active"
-                  leave-active-class="animated bounce fade-leave-active">
+                <transition type="transition" name="fade">
                   <div class="mic" v-if="this.options === 2">
                     <div id="progress_bar">
                       <div class="percentage" :style="{ left: percentage + '%' }">
@@ -105,24 +102,22 @@
                     </div>
 
                     <!-- 狀態2 -->
-                    <div v-if="1" id="surface" >
+                    <div v-if="1" id="surface">
                       <img class="sound" src="/images/game/sound.svg" alt="surface">
                       <img class="return" src="/images/game/return.svg" alt="surface">
-                      <img :style="style" class="pointer" src="/images/game/pointer.svg" alt="pointer">
+                      <img :style="pointer_rotate" class="pointer" src="/images/game/pointer.svg" alt="pointer">
                       <img class="surface" src="/images/game/surface.svg" alt="surface">
                     </div>
                   </div>
                 </transition>
                 <!-- 遊戲 -->
-                <transition type="transition" name="fade" enter-active-class="animated swing fade-enter-active"
-                  leave-active-class="animated bounce fade-leave-active">
+                <transition type="transition" name="fade">
                   <div class="game" v-if="this.options === 3">
 
                   </div>
                 </transition>
                 <!-- 遊戲 -->
-                <transition type="transition" name="fade" enter-active-class="animated swing fade-enter-active"
-                  leave-active-class="animated bounce fade-leave-active">
+                <transition type="transition" name="fade">
                   <div class="game" v-if="this.options === 4">
 
                   </div>
@@ -343,7 +338,8 @@
         let options = this.options;
 
         this.$axios
-          .get('/json/game' + this.checkpoint_item + '-' + sel + '-' + options + '.json')
+          .get('/json/game' + this.checkpoint_item + '-' + sel + '.json')
+          // .get('/json/game' + this.checkpoint_item + '-' + sel + '-' + options + '.json')
           // .then(res => (this.info = res.data))
           .then(function (res) {
             // console.log(res.data);
@@ -389,7 +385,7 @@
         let g = this.game_menu_options[index].grayscale;
         if (!g) {
           this.options = index;
-          this.game_data();
+          // this.game_data();
         } else {
           this.$swal(
             '<b>錯誤</b>',
@@ -428,7 +424,7 @@
           name: className
         };
       },
-      style() {
+      pointer_rotate() {
         return {
           transform: 'rotate(' + this.pointer + 'deg)'
         }

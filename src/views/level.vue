@@ -28,39 +28,11 @@
   export default {
     data() {
       return {
-        identity: 0,
-        level: 0
+        
       };
     },
     methods: {
-      student() {
-        this.identity = 1
-      },
-      parent() {
-        this.identity = 2
-        this.level = 0
-      },
-      level_1() {
-        this.level = 1
-      },
-      level_2() {
-        this.level = 2
-      },
-      level_3() {
-        this.level = 3
-      },
-      level_4() {
-        this.level = 4
-      },
-      level_5() {
-        this.level = 5
-      },
-      level_6() {
-        this.level = 6
-      },
-      level_7() {
-        this.level = 7
-      },
+
     }
   };
 </script>
