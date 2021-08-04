@@ -21,86 +21,184 @@
           <div id="level_selection">
             <div class="row" v-if="0">
               <div class="c45">
-                <button>Story</button>
-                <button>Lotters</button>
-                <button>Vocabulary</button>
-                <button>SentencePattern</button>
+                <button :class="{ active: unit == 1 }" @click="unit = 1">
+                  Story
+                </button>
+                <button :class="{ active: unit == 2 }" @click="unit = 2">
+                  Lotters
+                </button>
+                <button :class="{ active: unit == 3 }" @click="unit = 3">
+                  Vocabulary
+                </button>
+                <button :class="{ active: unit == 4 }" @click="unit = 4">
+                  SentencePattern
+                </button>
               </div>
 
               <div class="c10">
-                <button>L1</button>
-                <button>L2</button>
-                <button>L3</button>
-                <button>L4</button>
+                <button :class="{ active: level == 1 }" @click="level = 1">
+                  L1
+                </button>
+                <button :class="{ active: level == 2 }" @click="level = 2">
+                  L2
+                </button>
+                <button :class="{ active: level == 3 }" @click="level = 3">
+                  L3
+                </button>
+                <button :class="{ active: level == 4 }" @click="level = 4">
+                  L4
+                </button>
               </div>
 
               <div class="c45">
                 <div class="row">
                   <div class="c70">
-                    <button>U1-5</button>
-                    <button>U6-10</button>
-                    <button>U11-15</button>
+                    <button
+                      :class="{ active: unit_quantity == 1 }"
+                      @click="unit_quantity = 1"
+                    >
+                      U1-5
+                    </button>
+                    <button
+                      :class="{ active: unit_quantity == 2 }"
+                      @click="unit_quantity = 2"
+                    >
+                      U6-10
+                    </button>
+                    <button
+                      :class="{ active: unit_quantity == 3 }"
+                      @click="unit_quantity = 3"
+                    >
+                      U11-15
+                    </button>
                   </div>
 
                   <div class="c30">
-                    <button>3</button>
-                    <button>5</button>
-                    <button>10</button>
+                    <button
+                      :class="{ active: quantity == 1 }"
+                      @click="quantity = 1"
+                    >
+                      3
+                    </button>
+                    <button
+                      :class="{ active: quantity == 2 }"
+                      @click="quantity = 2"
+                    >
+                      5
+                    </button>
+                    <button
+                      :class="{ active: quantity == 3 }"
+                      @click="quantity = 3"
+                    >
+                      10
+                    </button>
                   </div>
                 </div>
               </div>
 
-              <button class="send">START</button>
+              <transition
+                type="transition"
+                name="fade"
+                enter-active-class="animated swing fade-enter-active"
+                leave-active-class="animated bounce fade-leave-active"
+              >
+                <button
+                  v-if="
+                    this.unit !== 0 &&
+                    this.level !== 0 &&
+                    this.unit_quantity !== 0 &&
+                    this.quantity !== 0
+                  "
+                  class="send"
+                >
+                  START
+                </button>
+              </transition>
             </div>
             <div id="choose_game" v-if="0">
-              <div class="item">
+              <div
+                class="item"
+                :class="{ active: game == 1 }"
+                @click="game = 1"
+              >
                 <img
                   src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
                   alt="game"
                 />
               </div>
-              <div class="item">
+              <div
+                class="item"
+                :class="{ active: game == 2 }"
+                @click="game = 2"
+              >
                 <img
                   src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
                   alt="game"
                 />
               </div>
-              <div class="item">
+              <div
+                class="item"
+                :class="{ active: game == 3 }"
+                @click="game = 3"
+              >
                 <img
                   src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
                   alt="game"
                 />
               </div>
-              <div class="item">
+              <div
+                class="item"
+                :class="{ active: game == 4 }"
+                @click="game = 4"
+              >
                 <img
                   src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
                   alt="game"
                 />
               </div>
-              <div class="item">
+              <div
+                class="item"
+                :class="{ active: game == 5 }"
+                @click="game = 5"
+              >
                 <img
                   src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
                   alt="game"
                 />
               </div>
-              <div class="item">
+              <div
+                class="item"
+                :class="{ active: game == 6 }"
+                @click="game = 6"
+              >
                 <img
                   src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
                   alt="game"
                 />
               </div>
+              <transition
+                type="transition"
+                name="fade"
+                enter-active-class="animated swing fade-enter-active"
+                leave-active-class="animated bounce fade-leave-active"
+              >
+                <button class="send">START</button>
+              </transition>
             </div>
             <div id="instruction">
               <img class="helper" src="/images/helper.svg" alt="helper" />
               <div class="content">
-                <div class="item">
+                <button class="prev" @click="prev">
+                  <i class="fas fa-angle-left"></i>
+                </button>
+                <div class="item" v-show="this.instruction_page == 1">
                   <h2>Eye protection reminder</h2>
                   <p>
                     Boy, you have been playing for 30 minutes, so let your
                     little eyes rest.
                   </p>
                 </div>
-                <div class="item">
+                <div class="item" v-show="this.instruction_page == 2">
                   <h3>HOW TO PLAY</h3>
                   <ul class="x2">
                     <li>
@@ -113,6 +211,31 @@
                     </li>
                   </ul>
                 </div>
+                <div class="item" v-show="this.instruction_page == 3">
+                  <h3>HOW TO PLAY</h3>
+                  <ul class="x4">
+                    <li>
+                      <span>1</span>
+                      <img src="/images/game/eye.svg" alt="img" />
+                    </li>
+                    <li>
+                      <span>2</span>
+                      <img src="/images/game/clock.svg" alt="img" />
+                    </li>
+                    <li>
+                      <span>3</span>
+                      <img src="/images/game/clock.svg" alt="img" />
+                    </li>
+                    <li>
+                      <span>4</span>
+                      <img src="/images/game/clock.svg" alt="img" />
+                    </li>
+                  </ul>
+                  <button id="go">GO it</button>
+                </div>
+                <button class="next" @click="next">
+                  <i class="fas fa-angle-right"></i>
+                </button>
               </div>
             </div>
           </div>
@@ -137,73 +260,105 @@ export default {
   },
   data() {
     return {
-      unit: 1,
-      level: 1,
+      unit: 0,
+      level: 0,
+      unit_quantity: 0,
+      quantity: 0,
+      game: 0,
+      instruction_page: 1,
     };
   },
   created() {},
   methods: {
+    prev() {
+      let max_next = document.querySelectorAll("#instruction .content .item").length;
+      if (this.instruction_page === 1) {
+        this.instruction_page = max_next;
+      } else {
+        this.instruction_page--;
+      }
+    },
+    next() {
+      let max_next = document.querySelectorAll("#instruction .content .item").length;
+
+      if (this.instruction_page === max_next) {
+        this.instruction_page = 1;
+      } else {
+        this.instruction_page++;
+      }
+    },
   },
-  computed: {},
+  computed: {
+    mag() {
+      return this.$store.state.mag;
+    },
+  },
   mounted() {},
 };
 </script>
 
 <style scoped lang="scss">
-#level_selection .row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 768px;
-  margin-left: auto;
-  margin-right: auto;
-  .c70 {
-    width: calc(70% - 3.75px);
-  }
+h1 {
+  text-align: center;
+  font-size: 72px;
+  margin-bottom: 15px;
+}
+button.send {
+  cursor: pointer;
+  background-color: #d7574e;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  width: 100%;
+  line-height: 45px;
+  color: #fff;
+  font-size: 32px;
+  margin-top: 7.5px;
+}
 
-  .c30 {
-    width: calc(30% - 3.75px);
-  }
+button.send:hover {
+  background-color: #fff;
+  color: #d7574e;
+  border: 3px solid #d7574e;
+}
+#level_selection {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+    .c70 {
+      width: calc(70% - 3.75px);
+    }
 
-  .c45 {
-    width: calc(45% - 3.75px);
-  }
+    .c30 {
+      width: calc(30% - 3.75px);
+    }
 
-  .c10 {
-    width: calc(10% - 3.75px);
-  }
-  h1 {
-    text-align: center;
-    font-size: 72px;
-    margin-bottom: 50px;
-  }
-  button {
-    width: 100%;
-    margin-bottom: 7.5px;
-    background-color: #107b9e;
-    border: none;
-    color: #fff;
-    font-size: 32px;
-    border-radius: 5px;
-    line-height: 75px;
-    cursor: pointer;
-  }
+    .c45 {
+      width: calc(45% - 3.75px);
+    }
 
-  button.active {
-    background-color: #17a6af;
-  }
+    .c10 {
+      width: calc(10% - 3.75px);
+    }
 
-  button.send {
-    margin-top: 50px;
-    background-color: #d7574e;
-    box-sizing: border-box;
-    border: 3px solid transparent;
-  }
+    button {
+      width: 100%;
+      margin-bottom: 7.5px;
+      background-color: #107b9e;
+      border: none;
+      color: #fff;
+      font-size: 32px;
+      border-radius: 5px;
+      line-height: 75px;
+      cursor: pointer;
+    }
 
-  button.send:hover {
-    background-color: #fff;
-    color: #d7574e;
-    border: 3px solid #d7574e;
+    button.active {
+      background-color: #17a6af;
+    }
   }
 }
 
@@ -223,10 +378,9 @@ export default {
     cursor: pointer;
     img {
       position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       margin: auto;
     }
     &::before {
@@ -238,7 +392,24 @@ export default {
       z-index: 1;
     }
     &:hover img {
-      transform: scale(1.05);
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+    &.active {
+      &::after {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f058";
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 81px;
+        color: #82c91e;
+      }
+      img {
+        filter: brightness(0.5);
+      }
     }
   }
 }
@@ -287,14 +458,14 @@ export default {
       h3 {
         text-align: center;
         font-size: 48px;
-        padding-top: 50px;
+        padding-top: 35px;
         padding-bottom: 50px;
       }
       ul.x2 {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        max-width: 600px;
+        max-width: 500px;
         margin-left: auto;
         margin-right: auto;
 
@@ -332,12 +503,107 @@ export default {
             padding: 15px;
           }
 
-          &:hover{
+          &:hover {
+            background-color: #107b9e;
+          }
+        }
+      }
+      ul.x4 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+
+        li {
+          width: calc(25% - 15px);
+          padding-bottom: 23.126%;
+          position: relative;
+          border: 3px solid #107b9e;
+          border-radius: 10px;
+          margin-top: 45px;
+          cursor: pointer;
+
+          span {
+            position: absolute;
+            top: -45px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            background-color: #107b9e;
+            color: #fff;
+            border-radius: 999px;
+          }
+
+          img {
+            width: 100%;
+            max-height: 195px;
+            max-width: 195px;
+            box-sizing: border-box;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px;
+          }
+
+          &:hover {
             background-color: #107b9e;
           }
         }
       }
     }
+  }
+}
+
+.next,
+.prev {
+  text-align: center;
+  cursor: pointer;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  line-height: 44px;
+  border-radius: 99px;
+  border: 3px solid #107b9e;
+  color: #107b9e;
+  background-color: transparent;
+}
+.prev {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.next {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#go {
+  cursor: pointer;
+  width: 120px;
+  line-height: 39px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-size: 24px;
+  background-color: #107b9e;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  border: 3px solid transparent;
+  &:hover {
+    border: 3px solid #107b9e;
+    background-color: #fff;
+    color: #107b9e;
   }
 }
 </style>

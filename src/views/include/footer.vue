@@ -41,7 +41,7 @@
           img: '/images/menu/theater.svg',
           text: 'My theater',
         }, {
-          link: '/',
+          link: '/playground',
           img: '/images/menu/playground.svg',
           text: 'My playground',
         }, {
