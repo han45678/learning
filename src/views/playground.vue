@@ -17,9 +17,9 @@
         leave-active-class="animated bounce fade-leave-active"
       >
         <main>
-          <h1 v-if="0">PLAYGROUND</h1>
+          <h1 v-if="!instruction">PLAYGROUND</h1>
           <div id="level_selection">
-            <div class="row" v-if="0">
+            <div id="choose_unit" class="row" v-if="choose_unit">
               <div class="c45">
                 <button :class="{ active: unit == 1 }" @click="unit = 1">
                   Story
@@ -103,6 +103,7 @@
                 leave-active-class="animated bounce fade-leave-active"
               >
                 <button
+                  @click="unit_finish"
                   v-if="
                     this.unit !== 0 &&
                     this.level !== 0 &&
@@ -115,61 +116,16 @@
                 </button>
               </transition>
             </div>
-            <div id="choose_game" v-if="0">
+            <div id="choose_game" v-if="choose_game">
+              <button @click="return_unit" class="return">
+                <i class="fas fa-angle-left"></i>
+              </button>
               <div
+                v-for="item in game_info"
+                :key="item.id"
                 class="item"
-                :class="{ active: game == 1 }"
-                @click="game = 1"
-              >
-                <img
-                  src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
-                  alt="game"
-                />
-              </div>
-              <div
-                class="item"
-                :class="{ active: game == 2 }"
-                @click="game = 2"
-              >
-                <img
-                  src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
-                  alt="game"
-                />
-              </div>
-              <div
-                class="item"
-                :class="{ active: game == 3 }"
-                @click="game = 3"
-              >
-                <img
-                  src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
-                  alt="game"
-                />
-              </div>
-              <div
-                class="item"
-                :class="{ active: game == 4 }"
-                @click="game = 4"
-              >
-                <img
-                  src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
-                  alt="game"
-                />
-              </div>
-              <div
-                class="item"
-                :class="{ active: game == 5 }"
-                @click="game = 5"
-              >
-                <img
-                  src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
-                  alt="game"
-                />
-              </div>
-              <div
-                class="item"
-                :class="{ active: game == 6 }"
-                @click="game = 6"
+                :class="{ active: game == item.id }"
+                @click="game = item.id"
               >
                 <img
                   src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
@@ -182,13 +138,29 @@
                 enter-active-class="animated swing fade-enter-active"
                 leave-active-class="animated bounce fade-leave-active"
               >
-                <button class="send">START</button>
+                <button class="send" v-if="game" @click="game_finish">
+                  START
+                </button>
               </transition>
             </div>
-            <div id="instruction">
-              <img class="helper" src="/images/helper.svg" alt="helper" />
+            <div id="instruction" v-if="instruction">
+              <img
+                v-if="helper"
+                class="helper"
+                src="/images/helper.svg"
+                alt="helper"
+              />
+              <img
+                v-else
+                class="helper"
+                src="/images/helper_excited.svg"
+                alt="helper"
+              />
+              <button @click="return_game" class="return">
+                <i class="fas fa-angle-left"></i>
+              </button>
               <div class="content">
-                <button class="prev" @click="prev">
+                <button class="prev" @click="prev" v-if="isPrev">
                   <i class="fas fa-angle-left"></i>
                 </button>
                 <div class="item" v-show="this.instruction_page == 1">
@@ -216,15 +188,15 @@
                   <ul class="x4">
                     <li>
                       <span>1</span>
-                      <img src="/images/game/eye.svg" alt="img" />
+                      <img src="/images/game/wal.svg" alt="img" />
                     </li>
                     <li>
                       <span>2</span>
-                      <img src="/images/game/clock.svg" alt="img" />
+                      <img src="/images/game/speak.svg" alt="img" />
                     </li>
                     <li>
                       <span>3</span>
-                      <img src="/images/game/clock.svg" alt="img" />
+                      <img src="/images/game/vocalize.svg" alt="img" />
                     </li>
                     <li>
                       <span>4</span>
@@ -233,7 +205,7 @@
                   </ul>
                   <button id="go">GO it</button>
                 </div>
-                <button class="next" @click="next">
+                <button class="next" @click="next" v-if="isNext">
                   <i class="fas fa-angle-right"></i>
                 </button>
               </div>
@@ -260,38 +232,111 @@ export default {
   },
   data() {
     return {
+      helper: true,
+      choose_unit: true, //選完之後變成false
+
       unit: 0,
       level: 0,
       unit_quantity: 0,
       quantity: 0,
+
+      choose_game: false,
+
       game: 0,
+      game_info: [
+        {
+          id: 1,
+          src: "https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png",
+        },
+        {
+          id: 2,
+          src: "https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png",
+        },
+        {
+          id: 3,
+          src: "https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png",
+        },
+        {
+          id: 4,
+          src: "https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png",
+        },
+        {
+          id: 5,
+          src: "https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png",
+        },
+        {
+          id: 6,
+          src: "https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png",
+        },
+      ],
+
+      instruction: false,
       instruction_page: 1,
+
+      isPrev: true,
+      isNext: true,
     };
   },
-  created() {},
+  created() {
+    // this.mag();
+  },
   methods: {
+    unit_finish() {
+      this.$store.state.helper = true;
+      this.choose_unit = false;
+      this.choose_game = true;
+    },
+    return_unit() {
+      this.$store.state.helper = true;
+      this.choose_unit = true;
+      this.choose_game = false;
+    },
+    return_game() {
+      this.$store.state.helper = true;
+      this.choose_unit = false;
+      this.choose_game = true;
+      this.instruction = false;
+    },
+    game_finish() {
+      this.$store.state.helper = false;
+      this.choose_unit = false;
+      this.choose_game = false;
+      this.instruction = true;
+    },
     prev() {
-      let max_next = document.querySelectorAll("#instruction .content .item").length;
-      if (this.instruction_page === 1) {
-        this.instruction_page = max_next;
+      if (this.instruction_page == 1) {
+        this.helper = true;
+        this.isPrev = false;
       } else {
         this.instruction_page--;
+        this.helper = true;
+        this.isNext = true;
       }
     },
     next() {
-      let max_next = document.querySelectorAll("#instruction .content .item").length;
+      let max_next = document.querySelectorAll(
+        "#instruction .content .item"
+      ).length;
 
-      if (this.instruction_page === max_next) {
-        this.instruction_page = 1;
+      if (this.instruction_page == max_next) {
+        // this.instruction_page = 1;
+        this.helper = false;
+        this.isNext = false;
+        console.log(this.instruction_page, max_next);
       } else {
         this.instruction_page++;
+        this.isPrev = true;
+        console.log(this.instruction_page, max_next);
       }
     },
   },
   computed: {
-    mag() {
-      return this.$store.state.mag;
-    },
+    // mag() {
+    //   return this.$store.state.mag
+    // },
+    // helper() {
+    //   this.$store.state.helper = false
+    // },
   },
   mounted() {},
 };
@@ -303,23 +348,7 @@ h1 {
   font-size: 72px;
   margin-bottom: 15px;
 }
-button.send {
-  cursor: pointer;
-  background-color: #d7574e;
-  box-sizing: border-box;
-  border: 3px solid transparent;
-  width: 100%;
-  line-height: 45px;
-  color: #fff;
-  font-size: 32px;
-  margin-top: 7.5px;
-}
 
-button.send:hover {
-  background-color: #fff;
-  color: #d7574e;
-  border: 3px solid #d7574e;
-}
 #level_selection {
   .row {
     display: flex;
@@ -359,251 +388,326 @@ button.send:hover {
     button.active {
       background-color: #17a6af;
     }
-  }
-}
 
-#choose_game {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  .item {
-    width: calc(33% - 7.5px);
-    height: 0;
-    padding-bottom: 20%;
-    margin-bottom: 15px;
-    background-color: #ccc;
-    position: relative;
-    box-shadow: 0px 0px 5px 3px #b2b2b2;
-    overflow: hidden;
-    cursor: pointer;
-    img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      margin: auto;
+    button.send {
+      cursor: pointer;
+      background-color: #d7574e;
+      box-sizing: border-box;
+      border: 3px solid transparent;
+      width: 100%;
+      line-height: 45px;
+      color: #fff;
+      font-size: 32px;
+      margin-top: 7.5px;
     }
-    &::before {
-      position: absolute;
-      content: "";
-      border: #fff 10px solid;
-      width: calc(100% - 20px);
-      height: calc(100% - 20px);
-      z-index: 1;
+
+    button.send:hover {
+      background-color: #fff;
+      color: #d7574e;
+      border: 3px solid #d7574e;
     }
-    &:hover img {
-      transform: translate(-50%, -50%) scale(1.05);
-    }
-    &.active {
-      &::after {
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        content: "\f058";
+  }
+  #choose_game {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .item {
+      width: calc(33% - 7.5px);
+      height: 0;
+      padding-bottom: 20%;
+      margin-bottom: 15px;
+      background-color: #ccc;
+      position: relative;
+      box-shadow: 0px 0px 5px 3px #b2b2b2;
+      overflow: hidden;
+      cursor: pointer;
+      img {
         position: absolute;
-        z-index: 1;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        font-size: 81px;
-        color: #82c91e;
+        margin: auto;
       }
-      img {
-        filter: brightness(0.5);
+      &::before {
+        position: absolute;
+        content: "";
+        border: #fff 10px solid;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
+        z-index: 1;
       }
-    }
-  }
-}
-
-#instruction {
-  border: 3px solid #231815;
-  background-color: #7a7a7a;
-  border-radius: 15px;
-  max-width: 965px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 564px;
-  position: relative;
-  overflow: hidden;
-  .helper {
-    width: 335px;
-    position: absolute;
-    right: -65px;
-    bottom: -50px;
-    z-index: 1;
-  }
-  .content {
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    border-radius: 5px;
-    left: 10px;
-    top: 10px;
-    background-color: #e2f2ef;
-    border: 1px solid #231815;
-    overflow-y: auto;
-    overflow-x: hidden;
-    .item {
-      height: 100%;
-      h2 {
-        text-align: center;
-        padding-top: 50px;
-        padding-bottom: 50px;
-        font-size: 64px;
+      &:hover img {
+        transform: translate(-50%, -50%) scale(1.05);
       }
-      p {
-        padding-left: 100px;
-        padding-right: 100px;
-        font-size: 32px;
-        line-height: 1.5;
-      }
-      h3 {
-        text-align: center;
-        font-size: 48px;
-        padding-top: 35px;
-        padding-bottom: 50px;
-      }
-      ul.x2 {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-
-        li {
-          width: calc(50% - 15px);
-          padding-bottom: 46.43%;
-          position: relative;
-          border: 3px solid #107b9e;
-          border-radius: 10px;
-          margin-top: 45px;
-          cursor: pointer;
-
-          span {
-            position: absolute;
-            top: -45px;
-            width: 25px;
-            height: 25px;
-            text-align: center;
-            line-height: 25px;
-            background-color: #107b9e;
-            color: #fff;
-            border-radius: 999px;
-          }
-
-          img {
-            width: 100%;
-            max-height: 195px;
-            max-width: 195px;
-            box-sizing: border-box;
-            margin: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 15px;
-          }
-
-          &:hover {
-            background-color: #107b9e;
-          }
+      &.active {
+        &::after {
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          content: "\f058";
+          position: absolute;
+          z-index: 1;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 81px;
+          color: #82c91e;
         }
-      }
-      ul.x4 {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-
-        li {
-          width: calc(25% - 15px);
-          padding-bottom: 23.126%;
-          position: relative;
-          border: 3px solid #107b9e;
-          border-radius: 10px;
-          margin-top: 45px;
-          cursor: pointer;
-
-          span {
-            position: absolute;
-            top: -45px;
-            width: 25px;
-            height: 25px;
-            text-align: center;
-            line-height: 25px;
-            background-color: #107b9e;
-            color: #fff;
-            border-radius: 999px;
-          }
-
-          img {
-            width: 100%;
-            max-height: 195px;
-            max-width: 195px;
-            box-sizing: border-box;
-            margin: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 15px;
-          }
-
-          &:hover {
-            background-color: #107b9e;
-          }
+        img {
+          filter: brightness(0.5);
         }
       }
     }
+    .return {
+      cursor: pointer;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      left: 0;
+      top: 0;
+      border-radius: 99px;
+      border: none;
+      background: #d6574e;
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      &:hover {
+        filter: brightness(0.7);
+      }
+    }
+    button.send {
+      cursor: pointer;
+      background-color: #d7574e;
+      box-sizing: border-box;
+      border: 3px solid transparent;
+      width: 100%;
+      line-height: 45px;
+      color: #fff;
+      font-size: 32px;
+      margin-top: 7.5px;
+    }
+
+    button.send:hover {
+      background-color: #fff;
+      color: #d7574e;
+      border: 3px solid #d7574e;
+    }
   }
-}
 
-.next,
-.prev {
-  text-align: center;
-  cursor: pointer;
-  font-size: 24px;
-  width: 50px;
-  height: 50px;
-  line-height: 44px;
-  border-radius: 99px;
-  border: 3px solid #107b9e;
-  color: #107b9e;
-  background-color: transparent;
-}
-.prev {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  #instruction {
+    border: 3px solid #231815;
+    background-color: #7a7a7a;
+    border-radius: 15px;
+    max-width: 965px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 564px;
+    position: relative;
+    overflow: hidden;
+    .helper {
+      width: 335px;
+      position: absolute;
+      right: -65px;
+      bottom: -50px;
+      z-index: 1;
+    }
+    .content {
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      border-radius: 5px;
+      left: 10px;
+      top: 10px;
+      background-color: #e2f2ef;
+      border: 1px solid #231815;
+      overflow-y: auto;
+      overflow-x: hidden;
+      .item {
+        height: 100%;
+        h2 {
+          text-align: center;
+          padding-top: 50px;
+          padding-bottom: 50px;
+          font-size: 64px;
+        }
+        p {
+          padding-left: 100px;
+          padding-right: 100px;
+          font-size: 32px;
+          line-height: 1.5;
+        }
+        h3 {
+          text-align: center;
+          font-size: 48px;
+          padding-top: 35px;
+          padding-bottom: 50px;
+        }
+        ul.x2 {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          max-width: 500px;
+          margin-left: auto;
+          margin-right: auto;
 
-.next {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
+          li {
+            width: calc(50% - 15px);
+            padding-bottom: 46.43%;
+            position: relative;
+            border: 3px solid #107b9e;
+            border-radius: 10px;
+            margin-top: 45px;
+            cursor: pointer;
 
-#go {
-  cursor: pointer;
-  width: 120px;
-  line-height: 39px;
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  font-size: 24px;
-  background-color: #107b9e;
-  border: none;
-  color: #fff;
-  border-radius: 5px;
-  border: 3px solid transparent;
-  &:hover {
+            span {
+              position: absolute;
+              top: -45px;
+              width: 25px;
+              height: 25px;
+              text-align: center;
+              line-height: 25px;
+              background-color: #107b9e;
+              color: #fff;
+              border-radius: 999px;
+            }
+
+            img {
+              width: 100%;
+              max-height: 195px;
+              max-width: 195px;
+              box-sizing: border-box;
+              margin: auto;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              padding: 15px;
+            }
+
+            &:hover {
+              background-color: #107b9e;
+            }
+          }
+        }
+        ul.x4 {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+
+          li {
+            width: calc(25% - 15px);
+            padding-bottom: 23.126%;
+            position: relative;
+            border: 3px solid #107b9e;
+            border-radius: 10px;
+            margin-top: 45px;
+            cursor: pointer;
+
+            span {
+              position: absolute;
+              top: -45px;
+              width: 25px;
+              height: 25px;
+              text-align: center;
+              line-height: 25px;
+              background-color: #107b9e;
+              color: #fff;
+              border-radius: 999px;
+            }
+
+            img {
+              width: 100%;
+              max-height: 195px;
+              max-width: 195px;
+              box-sizing: border-box;
+              margin: auto;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              padding: 15px;
+            }
+
+            &:hover {
+              background-color: #107b9e;
+            }
+          }
+        }
+      }
+    }
+    .return {
+      cursor: pointer;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      left: 30px;
+      bottom: 30px;
+      border-radius: 99px;
+      border: none;
+      background: #d6574e;
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      z-index: 1;
+      &:hover {
+        filter: brightness(0.7);
+      }
+    }
+  }
+
+  .next,
+  .prev {
+    text-align: center;
+    cursor: pointer;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    line-height: 44px;
+    border-radius: 99px;
     border: 3px solid #107b9e;
-    background-color: #fff;
     color: #107b9e;
+    background-color: transparent;
+    &:hover {
+      color: #fff;
+      background-color: #107b9e;
+    }
+  }
+  .prev {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .next {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #go {
+    cursor: pointer;
+    width: 120px;
+    line-height: 39px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 24px;
+    background-color: #107b9e;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    border: 3px solid transparent;
+    &:hover {
+      border: 3px solid #107b9e;
+      background-color: #fff;
+      color: #107b9e;
+    }
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="loading" :class="{ 'active': loading }">
+  <div id="loading" :class="{ 'active': $store.state.isLoading }">
     <div class="content">
       <img src="../../assets/images/helper.svg" alt="">
       <p>
@@ -13,11 +13,11 @@
   export default {
     data() {
       return {
-        loading: true,
+        // loading: '',
       };
     },
     created() {
-      this.isLoading
+      
     },
     methods: {
       // isLoading() {
@@ -25,7 +25,7 @@
       //     this.isLoading = true;
       //   }, 3000);
       // }
-    }
+    },
   };
 </script>
 
