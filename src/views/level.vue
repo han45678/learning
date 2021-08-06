@@ -47,7 +47,13 @@ export default {
       level: 0,
     };
   },
+  async created() {
+    this.loading();
+  },
   methods: {
+    loading() {
+      this.$store.state.isLoading = true;
+    },
     student() {
       this.identity = 1;
     },

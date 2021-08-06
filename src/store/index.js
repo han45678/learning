@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     mag:"  hi",
-    isLoading:true,
+    isLoading:false,
     helper:true,
   },
   mutations: {

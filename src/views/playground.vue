@@ -277,8 +277,8 @@ export default {
       isNext: true,
     };
   },
-  created() {
-    // this.mag();
+  async created() {
+    this.loading();
   },
   methods: {
     unit_finish() {
@@ -329,15 +329,11 @@ export default {
         console.log(this.instruction_page, max_next);
       }
     },
+    loading() {
+      this.$store.state.isLoading = true;
+    },
   },
-  computed: {
-    // mag() {
-    //   return this.$store.state.mag
-    // },
-    // helper() {
-    //   this.$store.state.helper = false
-    // },
-  },
+  computed: {},
   mounted() {},
 };
 </script>

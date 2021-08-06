@@ -444,8 +444,9 @@ export default {
       pointer: -75,
     };
   },
-  created() {
-    this.info_data();
+  async created() {
+    await this.info_data();
+    await this.loading();
   },
   methods: {
     off_game() {
@@ -522,6 +523,9 @@ export default {
       } else {
         this.$swal("<b>錯誤</b>", "此關卡尚未解鎖", "error");
       }
+    },
+    loading() {
+      this.$store.state.isLoading = true;
     },
   },
   computed: {
