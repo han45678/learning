@@ -568,4 +568,373 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#game {
+  // fill
+  width: 100%;
+  height: 900px;
+  max-height: 720px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .game_options {
+    width: 100%;
+    padding-left: 185px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    // margin-bottom: 15px;
+    height: 72px;
+
+    h1 {
+      font-size: 72px;
+      height: 72px;
+
+      &.styls0 {
+        color: #107b9e;
+      }
+
+      &.styls1 {
+        color: #17a6af;
+      }
+
+      &.styls2 {
+        color: #eb9e71;
+      }
+
+      &.styls3 {
+        color: #d7574e;
+      }
+    }
+
+    button {
+      height: 72px;
+      font-size: 32px;
+      padding: 0 25px;
+      height: 72px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      box-sizing: border-box;
+      border-radius: 10px;
+
+      &.styls0 {
+        background-color: #107b9e;
+
+        &.active {
+          background-color: #fff;
+          color: #107b9e;
+          border: 5px solid #107b9e;
+        }
+      }
+
+      &.styls1 {
+        background-color: #17a6af;
+
+        &.active {
+          background-color: #fff;
+          color: #17a6af;
+          border: 5px solid #17a6af;
+        }
+      }
+
+      &.styls2 {
+        background-color: #eb9e71;
+
+        &.active {
+          background-color: #fff;
+          color: #eb9e71;
+          border: 5px solid #eb9e71;
+        }
+      }
+
+      &.styls3 {
+        background-color: #d7574e;
+
+        &.active {
+          background-color: #fff;
+          color: #d7574e;
+          border: 5px solid #d7574e;
+        }
+      }
+    }
+  }
+
+  .game_menu {
+    width: 115px;
+    margin-right: 50px;
+
+    ul {
+      li {
+        width: 100%;
+        height: 115px;
+        border-radius: 999px;
+        position: relative;
+        transition: 0.6s;
+        cursor: pointer;
+        overflow: hidden;
+        background-color: transparent;
+
+        .item {
+          width: 85%;
+          height: 85%;
+          background-color: #107b9e;
+          border-radius: 999px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          border: 3px solid #fff;
+        }
+
+        img {
+          max-width: 35px;
+          max-height: 25px;
+          margin: auto;
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 50px;
+        }
+
+        svg {
+          max-width: 60px;
+          margin: auto;
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 20px;
+
+          .s {
+            fill: #fff;
+          }
+        }
+
+        &.styls0 {
+          &.active {
+            background-color: #107b9e;
+          }
+
+          .item {
+            background-color: #107b9e;
+          }
+        }
+
+        &.styls1 {
+          &.active {
+            background-color: #17a6af;
+          }
+
+          .item {
+            background-color: #17a6af;
+          }
+        }
+
+        &.styls2 {
+          &.active {
+            background-color: #eb9e71;
+          }
+
+          .item {
+            background-color: #eb9e71;
+          }
+        }
+
+        &.styls3 {
+          &.active {
+            background-color: #d7574e;
+          }
+
+          .item {
+            background-color: #d7574e;
+          }
+        }
+
+        &.grayscale {
+          filter: grayscale(100%);
+
+          &.active {
+            background-color: transparent !important;
+          }
+
+          .item {
+            background-color: #000 !important;
+          }
+        }
+
+        &.s1 {
+          svg {
+            .star-1 {
+              fill: #f5e929;
+            }
+          }
+        }
+
+        &.s2 {
+          svg {
+            .star-2 {
+              fill: #f5e929;
+            }
+          }
+        }
+
+        &.s3 {
+          svg {
+            .star-3 {
+              fill: #f5e929;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .game_main {
+    width: calc(100% - 185px);
+    min-height: 570px;
+    border: 5px solid #000;
+    background-color: #7a7a7a;
+    box-sizing: border-box;
+    border-radius: 25px;
+    position: relative;
+    margin-left: 15px;
+    margin-bottom: 50px;
+
+    .content {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+      border: 5px solid #000;
+      background-color: #7a7a7a;
+      box-sizing: border-box;
+      border-radius: 15px;
+      overflow: hidden;
+
+      #progress_bar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 60px;
+        margin: auto;
+        width: 320px;
+
+        .percentage {
+          position: absolute;
+          top: -45px;
+          left: 0%;
+          background-color: #eb9e71;
+          padding: 5px;
+          border-radius: 10px;
+          line-height: 20px;
+          transform: translateX(-50%);
+          font-family: Anton, serif;
+
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 7.5px;
+            height: 20px;
+            background-color: #eb9e71;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+
+        .baseline {
+          width: 100%;
+          height: 20px;
+          background-color: #dcdcdc;
+          margin: auto;
+          border-radius: 5px;
+          overflow: hidden;
+          position: relative;
+
+          .line {
+            background-color: #eb9e71;
+            height: 100%;
+            width: 0%;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+        }
+      }
+
+      .video,
+      .movie,
+      .mic {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+
+        video {
+          width: 100%;
+          height: 100%;
+        }
+
+        .return,
+        .sound,
+        .say {
+          width: 70px;
+          padding-left: 0;
+          padding-right: 0;
+          position: absolute;
+          bottom: 15px;
+          cursor: pointer;
+          // display: none;
+        }
+
+        .say {
+          left: 15px;
+        }
+
+        .sound {
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+
+        .return {
+          right: 15px;
+        }
+
+        #surface {
+          .surface {
+            width: 250px;
+            position: absolute;
+            left: calc(50% - 125px);
+            margin-left: 0;
+            margin-right: 0;
+            bottom: 15px;
+            padding-left: 0;
+            padding-right: 0;
+          }
+
+          .pointer {
+            width: 15px;
+            position: absolute;
+            bottom: 50px;
+            padding-left: 0;
+            padding-right: 0;
+            left: calc(50% - 7.5px);
+            transform-origin: center bottom;
+            transform: rotate(0deg);
+            // -75 -40 0 40 75
+          }
+          .sound {
+            left: 15px;
+            right: unset;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

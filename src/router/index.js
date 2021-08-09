@@ -5,7 +5,7 @@ import login from '../views/login.vue'
 import level from '../views/level.vue'
 import checkpoint from '../views/checkpoint.vue'
 import playground from '../views/playground.vue'
-// import game from '../views/game.vue'
+import records from '../views/records.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +39,11 @@ const routes = [
     path: '/playground',
     name: 'playground',
     component: playground
+  },
+  {
+    path: '/records',
+    name: 'records',
+    component: records
   },
   // {
   //   path: '/game/:id',

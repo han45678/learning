@@ -33,7 +33,7 @@
           img: '/images/menu/books.svg',
           text: 'My Books',
         }, {
-          link: '/',
+          link: '/records',
           img: '/images/menu/records.svg',
           text: 'My records',
         }, {
