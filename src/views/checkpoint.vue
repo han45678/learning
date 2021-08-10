@@ -469,16 +469,16 @@ export default {
     },
     game_data() {
       let sel = this.sel;
-      let options = this.options;
+      // let options = this.options;
 
       this.$axios
         .get("/json/game" + this.checkpoint_item + "-" + sel + ".json")
         // .get('/json/game' + this.checkpoint_item + '-' + sel + '-' + options + '.json')
         // .then(res => (this.info = res.data))
-        .then(function (res) {
+        // .then(function (res) {
           // console.log(res.data);
           // console.log('/json/game' + this.checkpoint_item + '-' + sel + '-' + options + '.json');
-        })
+        // })
         .catch(function (error) {
           console.log(error);
         });

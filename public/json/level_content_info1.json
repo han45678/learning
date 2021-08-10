@@ -1,0 +1,35 @@
+[
+    {
+        "unit": "Test 3-1",
+        "completed": "100",
+        "s1": true,
+        "s2": true,
+        "s3": true,
+        "l1": true,
+        "l2": true,
+        "l3": true,
+        "certificate":1
+    },
+    {
+        "unit": "Reader 3-2",
+        "completed": "98",
+        "s1": true,
+        "s2": true,
+        "s3": false,
+        "l1": true,
+        "l2": true,
+        "l3": false,
+        "certificate":2
+    },
+    {
+        "unit": "PB3 U05",
+        "completed": "59",
+        "s1": false,
+        "s2": false,
+        "s3": false,
+        "l1": false,
+        "l2": false,
+        "l3": false,
+        "certificate":3
+    }
+]

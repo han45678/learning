@@ -21,9 +21,12 @@
             <div class="game_options">
               <div class="h_options" v-if="this.options === 0">
                 <h1>My Level</h1>
-                <div class="hoc">
+                <div class="hoc" v-if="this.level_text">
                   <ul class="hoct">
-                    <li class="active">
+                    <li
+                      :class="{ active: this.level_content_info_state === 1 }"
+                      @click="level_content_info_state = 1"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 25.49 29.83"
@@ -36,7 +39,10 @@
                         </g>
                       </svg>
                     </li>
-                    <li>
+                    <li
+                      :class="{ active: this.level_content_info_state === 2 }"
+                      @click="level_content_info_state = 2"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 30.17 30.17"
@@ -49,7 +55,10 @@
                         </g>
                       </svg>
                     </li>
-                    <li>
+                    <li
+                      :class="{ active: this.level_content_info_state === 3 }"
+                      @click="level_content_info_state = 3"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 33.78 32.13"
@@ -103,6 +112,7 @@
                   </ul>
                 </div>
               </div>
+              <!--
               <div v-else-if="this.options === 1">
                 <h1></h1>
               </div>
@@ -121,6 +131,7 @@
               <div v-else-if="this.options === 6">
                 <h1></h1>
               </div>
+              -->
             </div>
             <div class="game_menu">
               <ul>
@@ -147,137 +158,173 @@
             </div>
             <div class="game_main">
               <div class="content">
-                <transition type="transition" name="fade">
-                  <div v-show="this.options === 0">
-                    <table>
-                      <thead>
-                        <tr>
-                          <td>Level</td>
-                          <td>Time</td>
-                          <td>Rank</td>
-                          <td>Feedback</td>
-                          <td>Certificate</td>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="(item, index) in my_level" :key="index">
-                          <td>Level-{{ item.order }}</td>
-                          <td>{{ item.time }}</td>
-                          <td>
-                            <svg
-                              class="rank s1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 41.83 40.4"
-                              v-html="star"
-                              :class="{ active: item.s1 }"
-                            ></svg>
-                            <svg
-                              class="rank s2"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 41.83 40.4"
-                              v-html="star"
-                              :class="{ active: item.s2 }"
-                            ></svg>
-                            <svg
-                              class="rank s3"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 41.83 40.4"
-                              v-html="star"
-                              :class="{ active: item.s3 }"
-                            ></svg>
-                          </td>
-                          <td>
-                            <img
-                              class="feedback"
-                              src="/images/records/f.svg"
-                              alt="f"
-                            />
-                          </td>
-                          <td>
-                            <img
-                              class="certificate"
-                              src="/images/records/c.svg"
-                              alt="c"
-                            />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table v-if="0">
-                      <thead>
-                        <tr>
-                          <td>Unit</td>
-                          <td>Completed</td>
-                          <td>Response</td>
-                          <td>Results</td>
-                          <td>Certificate</td>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="(item, index) in my_level" :key="index">
-                          <td>Level-{{ item.order }}</td>
-                          <td>{{ item.time }}</td>
-                          <td>
-                            <svg
-                              class="rank s1"
-                              v-html="lightn"
-                              :class="{ active: item.s1 }"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 30.23 41.78"
-                            ></svg>
-                            <svg
-                              class="rank s2"
-                              v-html="lightn"
-                              :class="{ active: item.s2 }"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 30.23 41.78"
-                            ></svg>
-                            <svg
-                              class="rank s3"
-                              v-html="lightn"
-                              :class="{ active: item.s3 }"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 30.23 41.78"
-                            ></svg>
-                          </td>
-                          <td>
-                            <svg
-                              class="rank s1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 41.83 40.4"
-                              v-html="star"
-                              :class="{ active: item.s1 }"
-                            ></svg>
-                            <svg
-                              class="rank s2"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 41.83 40.4"
-                              v-html="star"
-                              :class="{ active: item.s2 }"
-                            ></svg>
-                            <svg
-                              class="rank s3"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 41.83 40.4"
-                              v-html="star"
-                              :class="{ active: item.s3 }"
-                            ></svg>
-                          </td>
-                          <td>
-                            <img
-                              class="certificate"
-                              src="/images/records/c.svg"
-                              alt="c"
-                            />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div v-show="this.options === 0">
+                  <table v-if="!this.level_text">
+                    <thead>
+                      <tr>
+                        <td>Level</td>
+                        <td>Time</td>
+                        <td>Rank</td>
+                        <td>Feedback</td>
+                        <td>Certificate</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(item, index) in my_level"
+                        :key="index"
+                        @click="level_content(index)"
+                      >
+                        <td>Level-{{ item.order }}</td>
+                        <td>{{ item.time }}</td>
+                        <td>
+                          <svg
+                            class="rank s1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 41.83 40.4"
+                            v-html="star"
+                            :class="{ active: item.s1 }"
+                          />
+                          <svg
+                            class="rank s2"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 41.83 40.4"
+                            v-html="star"
+                            :class="{ active: item.s2 }"
+                          />
+                          <svg
+                            class="rank s3"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 41.83 40.4"
+                            v-html="star"
+                            :class="{ active: item.s3 }"
+                          />
+                        </td>
+                        <td>
+                          <img
+                            class="feedback"
+                            src="/images/records/f.svg"
+                            alt="f"
+                          />
+                        </td>
+                        <td>
+                          <img
+                            class="certificate"
+                            src="/images/records/c.svg"
+                            alt="c"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table
+                    v-if="
+                      this.level_text && this.level_content_info_state === 1
+                    "
+                  >
+                    <thead>
+                      <tr>
+                        <td>Unit</td>
+                        <td>Completed</td>
+                        <td>Response</td>
+                        <td>Results</td>
+                        <td>Certificate</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(item, index) in level_content_info"
+                        :key="index"
+                      >
+                        <td>{{ item.unit }}</td>
+                        <td :class="{ rt: item.completed < 60 }">
+                          {{ item.completed }}%
+                        </td>
+                        <td>
+                          <svg
+                            class="rank s1"
+                            v-html="lightn"
+                            :class="{ active: item.l1 }"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 30.23 41.78"
+                          />
+                          <svg
+                            class="rank s2"
+                            v-html="lightn"
+                            :class="{ active: item.l2 }"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 30.23 41.78"
+                          />
+                          <svg
+                            class="rank s3"
+                            v-html="lightn"
+                            :class="{ active: item.l3 }"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 30.23 41.78"
+                          />
+                        </td>
+                        <td>
+                          <svg
+                            class="rank s1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 41.83 40.4"
+                            v-html="star"
+                            :class="{ active: item.s1 }"
+                          />
+                          <svg
+                            class="rank s2"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 41.83 40.4"
+                            v-html="star"
+                            :class="{ active: item.s2 }"
+                          />
+                          <svg
+                            class="rank s3"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 41.83 40.4"
+                            v-html="star"
+                            :class="{ active: item.s3 }"
+                          />
+                        </td>
+                        <td>
+                          <button class="active" v-if="item.certificate === 1">
+                            Report
+                          </button>
+                          <button v-else-if="item.certificate === 2">
+                            Challenge
+                          </button>
+                          <button v-else>Mistakes</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div
+                    v-else-if="
+                      this.level_text && this.level_content_info_state === 2
+                    "
+                  >
+                    大圖表
                   </div>
-                </transition>
-                <transition type="transition" name="fade">
-                  <div v-show="this.options === 1">2</div>
-                </transition>
+                  <div
+                    v-else-if="
+                      this.level_text && this.level_content_info_state === 3
+                    "
+                  >
+                    小圖表
+                  </div>
+                  <button
+                    v-if="
+                      this.level_text && this.level_content_info_state === 1
+                    "
+                    id="back"
+                    @click="back"
+                  >
+                    back
+                  </button>
+                </div>
+
+                <div v-show="this.options === 1">2</div>
+                <!--
                 <transition type="transition" name="fade">
                   <div v-show="this.options === 2">3</div>
                 </transition>
@@ -287,6 +334,7 @@
                 <transition type="transition" name="fade">
                   <div v-show="this.options === 4">5</div>
                 </transition>
+                -->
               </div>
             </div>
           </div>
@@ -302,6 +350,8 @@
 import VueLoading from "./include/loading";
 import VueHeader from "./include/header";
 import VueFooter from "./include/footer";
+import Vue from "vue";
+
 export default {
   components: {
     VueLoading,
@@ -310,6 +360,7 @@ export default {
   },
   data() {
     return {
+      level_text: false,
       star: "<g><path class='s' d='M21.42,2s-1.91-.72-3,2.84-4.69,8-4.69,8L3.27,14.42,1.69,16.53,3.93,19l6,6.2L8.55,32l-.33,5.15,1.92,2.05L18,35l3.89-1.58,3.83,2.51,5.61,3a12.4,12.4,0,0,0,2.31-.79c.07-.2-2.7-9.71-2.7-9.71L32,25.77l2.91-3.56,3.83-3.7,1-3-4.16-2.37-5.88-.07L27.1,13l-.86-3.5L24.52,4.39Z'/><path fill='#107b9e' d='M6.59,35.84c.58-2.54,1.22-5.55,2-8.52a2.23,2.23,0,0,0-.83-2.57c-2-1.72-4-3.54-6-5.28C.38,18.31-.38,17,.19,15.18A3.82,3.82,0,0,1,4,12.47c2.61-.17,5.2-.5,7.8-.65a2.34,2.34,0,0,0,2.34-1.65c1-2.53,2.16-5,3.2-7.51A3.69,3.69,0,0,1,21,0a3.74,3.74,0,0,1,3.52,2.63c1.05,2.57,2.22,5.1,3.24,7.69a2.07,2.07,0,0,0,2,1.5c2.72.17,5.43.46,8.14.71a3.82,3.82,0,0,1,3.68,2.69,3.77,3.77,0,0,1-1.39,4.19c-2,1.79-4.06,3.63-6.17,5.35a2.36,2.36,0,0,0-.86,2.73c.65,2.64,1.19,5.31,1.81,8a3.73,3.73,0,0,1-1.35,4.19,3.77,3.77,0,0,1-4.55,0c-2.26-1.4-4.59-2.72-6.81-4.19a2.36,2.36,0,0,0-3,.05C17,37,14.61,38.43,12.17,39.76,9.34,41.29,6.45,39.46,6.59,35.84Zm2.77.46c.11,1.28.75,1.45,1.75.86,2.39-1.41,4.82-2.78,7.16-4.28A4.44,4.44,0,0,1,23.6,33c2.13,1.4,4.33,2.7,6.55,4a3.1,3.1,0,0,0,1.69.38c.94-.44,0-3.37-.17-4q-.6-2.79-1.26-5.55a4.38,4.38,0,0,1,1.52-4.82c1.32-1.09,2.61-2.21,3.89-3.35a21.86,21.86,0,0,0,2.33-2.18c.34-.4.9-.9.58-1.42-.6-1-2.87-.81-3.82-.9-1.88-.19-3.76-.35-5.64-.5a4.2,4.2,0,0,1-3.95-2.87c-1-2.48-2-4.93-3.12-7.36a3.55,3.55,0,0,0-.83-1.09c-.68-.58-1.37.39-1.66,1-1.06,2.32-2.11,4.65-3,7a4.72,4.72,0,0,1-4.62,3.28c-1.67.1-3.34.28-5,.44A14.36,14.36,0,0,0,4,15.46c-2.69.87.8,3,1.79,3.9,1.23,1.11,2.47,2.2,3.75,3.24A4.72,4.72,0,0,1,11.28,28C10.54,30.73,10,33.52,9.36,36.3Z'/></g>",
       lightn:
         "<g><polygon class='cls-1' style='fill: none; stroke: #107b9e; stroke-linecap: round; stroke-linejoin: round; stroke-width: 7px;' points='9.34 3.5 25 3.5 14.52 14.12 26.73 14.12 6.68 38.27 13.99 22.08 3.5 22.08 9.34 3.5' /><polygon class='s' points='9.34 3.5 25 3.5 14.52 14.12 26.73 14.12 6.68 38.27 13.99 22.08 3.5 22.08 9.34 3.5' /></g>",
@@ -354,61 +405,15 @@ export default {
         },
       ],
 
-      my_level: [
-        {
-          order: 1,
-          time: "30:15:25",
-          s1: true,
-          s2: true,
-          s3: true,
-        },
-        {
-          order: 2,
-          time: "30:15:25",
-          s1: true,
-          s2: true,
-          s3: false,
-        },
-        {
-          order: 3,
-          time: "30:15:25",
-          s1: true,
-          s2: false,
-          s3: false,
-        },
-        {
-          order: 4,
-          time: "30:15:25",
-          s1: false,
-          s2: false,
-          s3: false,
-        },
-        {
-          order: 5,
-          time: "30:15:25",
-          s1: false,
-          s2: false,
-          s3: false,
-        },
-        {
-          order: 6,
-          time: "30:15:25",
-          s1: false,
-          s2: false,
-          s3: false,
-        },
-        {
-          order: 7,
-          time: "30:15:25",
-          s1: false,
-          s2: false,
-          s3: false,
-        },
-      ],
+      my_level: [],
+
+      level_content_info: [],
+
+      level_content_info_state: 1,
     };
   },
   async created() {
-    // await this.info_data();
+    await this.level();
     await this.loading();
   },
   methods: {
@@ -423,43 +428,48 @@ export default {
         this.options = index;
       }
     },
+    level() {
+      this.$axios
+        .get("/json/my_level.json")
+        .then((res) => (this.my_level = res.data))
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    back() {
+      this.level_text = false;
+      this.level_content_info = [];
+      this.level_content_info_state = 1;
+    },
+    level_content(index) {
+      let o = this.my_level[index].order;
+
+      this.$axios
+        .get("/json/level_content_info" + o + ".json")
+        .then((res) => {
+          this.level_content_info = res.data;
+          this.level_text = true;
+        })
+        .catch(function (error) {
+          console.log(error);
+          Vue.swal("<b>錯誤</b>", "目前無資料", "error");
+        });
+    },
+    addData() {
+      this.dataset.push(this.dataentry);
+      this.labels.push(this.datalabel);
+      this.datalabel = "";
+      this.dataentry = "";
+    },
   },
   computed: {
-    // stylsClass() {
-    //   let className = "";
-    //   let css = "";
-    //   switch (this.sel) {
-    //     case 0:
-    //       className = "styls0";
-    //       css = "styls0";
-    //       break;
-    //     case 1:
-    //       className = "styls1";
-    //       css = "styls1";
-    //       break;
-    //     case 2:
-    //       className = "styls2";
-    //       css = "styls2";
-    //       break;
-    //     case 3:
-    //       className = "styls3";
-    //       css = "styls3";
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    //   return {
-    //     css: css,
-    //     name: className,
-    //   };
-    // },
+
   },
 };
 </script>
 
 <style scoped lang="scss">
 #records {
-  // fill
   width: 100%;
   height: 900px;
   max-height: 720px;
@@ -656,7 +666,7 @@ export default {
       overflow: hidden;
 
       table {
-        margin-top: 15px;
+        margin-top: 0px;
         border-spacing: 0px 5px;
         border-collapse: unset;
         width: 100%;
@@ -724,6 +734,22 @@ export default {
                 border-top-right-radius: 5px;
                 border-bottom-right-radius: 5px;
               }
+              &.rt {
+                color: #d7574e;
+              }
+              button {
+                background-color: #d7574e;
+                border: none;
+                color: #fff;
+                font-size: 18px;
+                line-height: 30px;
+                padding-left: 15px;
+                padding-right: 15px;
+                border-radius: 5px;
+                &.active {
+                  background-color: #107b9e;
+                }
+              }
             }
             &:hover {
               td {
@@ -732,6 +758,23 @@ export default {
               }
             }
           }
+        }
+      }
+
+      #back {
+        display: block;
+        margin: 15px auto 0 auto;
+        background-color: #17a6af;
+        border: 3px solid #17a6af;
+        width: 120px;
+        line-height: 40px;
+        font-size: 24px;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          background-color: #fff;
+          color: #17a6af;
         }
       }
     }

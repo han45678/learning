@@ -1,0 +1,45 @@
+[
+    {
+        "order": 1,
+        "time": "30:15:25",
+        "s1": true,
+        "s2": true,
+        "s3": true
+    }, {
+        "order": 2,
+        "time": "30:15:25",
+        "s1": true,
+        "s2": true,
+        "s3": false
+    }, {
+        "order": 3,
+        "time": "30:15:25",
+        "s1": true,
+        "s2": false,
+        "s3": false
+    }, {
+        "order": 4,
+        "time": "30:15:25",
+        "s1": false,
+        "s2": false,
+        "s3": false
+    }, {
+        "order": 5,
+        "time": "30:15:25",
+        "s1": false,
+        "s2": false,
+        "s3": false
+    }, {
+        "order": 6,
+        "time": "30:15:25",
+        "s1": false,
+        "s2": false,
+        "s3": false
+    }, {
+        "order": 7,
+        "time": "30:15:25",
+        "s1": false,
+        "s2": false,
+        "s3": false
+    }
+]
