@@ -19,9 +19,15 @@
         <main>
           <div id="records">
             <div class="game_options">
-              <div class="h_options" v-if="this.options === 0">
+              <div
+                class="h_options"
+                v-if="this.options === 0"
+              >
                 <h1>My Level</h1>
-                <div class="hoc" v-if="this.level_text">
+                <div
+                  class="hoc"
+                  v-if="this.level_text"
+                >
                   <ul class="hoct">
                     <li
                       :class="{ active: this.level_content_info_state === 1 }"
@@ -105,7 +111,9 @@
                   </ul>
                   <ul class="hocb">
                     <li>SB</li>
-                    <li class="active">PB</li>
+                    <li class="active">
+                      PB
+                    </li>
                     <li>Reader1</li>
                     <li>Reader2</li>
                     <li>Reader3</li>
@@ -151,14 +159,17 @@
                   ]"
                 >
                   <div class="item">
-                    <img :src="item.img" alt="icon" />
+                    <img
+                      :src="item.img"
+                      alt="icon"
+                    >
                   </div>
                 </li>
               </ul>
             </div>
             <div class="game_main">
               <div class="content">
-                <div v-show="this.options === 0">
+                <div v-if="this.options === 0">
                   <table v-if="!this.level_text">
                     <thead>
                       <tr>
@@ -205,14 +216,14 @@
                             class="feedback"
                             src="/images/records/f.svg"
                             alt="f"
-                          />
+                          >
                         </td>
                         <td>
                           <img
                             class="certificate"
                             src="/images/records/c.svg"
                             alt="c"
-                          />
+                          >
                         </td>
                       </tr>
                     </tbody>
@@ -287,13 +298,18 @@
                           />
                         </td>
                         <td>
-                          <button class="active" v-if="item.certificate === 1">
+                          <button
+                            class="active"
+                            v-if="item.certificate === 1"
+                          >
                             Report
                           </button>
                           <button v-else-if="item.certificate === 2">
                             Challenge
                           </button>
-                          <button v-else>Mistakes</button>
+                          <button v-else>
+                            Mistakes
+                          </button>
                         </td>
                       </tr>
                     </tbody>
@@ -322,19 +338,117 @@
                     back
                   </button>
                 </div>
+                <div v-else-if="this.options === 1">
+                  <div id="task">
+                    <div id="time_checklist">
+                      <div class="task_head">
+                        <div class="item" />
+                        <div class="item">
+                          Sign Up
+                        </div>
+                        <div class="item">
+                          Time
+                        </div>
+                        <div class="item">
+                          Activities
+                        </div>
+                      </div>
 
-                <div v-show="this.options === 1">2</div>
-                <!--
-                <transition type="transition" name="fade">
-                  <div v-show="this.options === 2">3</div>
-                </transition>
-                <transition type="transition" name="fade">
-                  <div v-show="this.options === 3">4</div>
-                </transition>
-                <transition type="transition" name="fade">
-                  <div v-show="this.options === 4">5</div>
-                </transition>
-                -->
+                      <div class="task_body">
+                        <div
+                          class="row"
+                          v-for="(item , index) in task"
+                          :key="index"
+                        >
+                          <div class="item">
+                            {{ item.week }}
+                          </div>
+                          <div class="item">
+                            <img
+                              v-if="item.sign"
+                              src="/images/records/bulb.svg"
+                              alt="img"
+                            >
+                          </div>
+                          <div class="item">
+                            {{ item.time }}
+                          </div>
+                          <div class="item">
+                            {{ item.activities }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="weekly">
+                      <div class="weekly_head">
+                        <div class="item">
+                          Weekly Tasks
+                        </div>
+                        <div class="item">
+                          Rewards
+                        </div>
+                      </div>
+                      <div class="weekly_body">
+                        <div
+                          class="row"
+                          v-for="(item , index) in weekly"
+                          :key="index"
+                        >
+                          <div class="item">
+                            <div class="medal">
+                              <img
+                                v-if="item.medal === 1"
+                                src="/images/records/gold.svg"
+                                alt="img"
+                              >
+                              <img
+                                v-else-if="item.medal === 2"
+                                src="/images/records/silver.svg"
+                                alt="img"
+                              >
+                              <img
+                                v-else-if="item.medal === 3"
+                                src="/images/records/bronze.svg"
+                                alt="img"
+                              >
+                            </div>
+                          </div>
+                          <div class="item">
+                            <h3>{{ item.name }}</h3>
+                            <p>{{ item.content1 }}</p>
+                            <p>{{ item.content2 }}</p>
+                            <div class="schedule">
+                              <div class="photo">
+                                <div
+                                  class="strip"
+                                  :style="'width:' + item.schedule + '%'"
+                                />
+                              </div>
+                              <div class="text">
+                                {{ item.schedule }}%
+                              </div>
+                            </div>
+                          </div>
+                          <div class="item">
+                            <div class="award">
+                              <img
+                                v-if="item.currency_value === 1"
+                                src="/images/records/gold_s.svg"
+                                alt="img"
+                              >
+                              <img 
+                                v-if="item.currency_value === 2"
+                                src="/images/records/silver_s.svg"
+                                alt="img"
+                              >
+                              <span>{{ item.currency }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -370,7 +484,7 @@ export default {
       //↓用來開啟遊戲畫面
       game: false,
       //↓用來變更遊戲內容
-      options: 0,
+      options: 1,
       //↓用來變更遊戲單元(上方選單)
       sel: 0,
       //↓用來宣告index
@@ -410,11 +524,17 @@ export default {
       level_content_info: [],
 
       level_content_info_state: 1,
+
+      task: [],
+
+      weekly :[]
     };
   },
   async created() {
     await this.level();
     await this.loading();
+    await this.my_task();
+    await this.my_weekly();
   },
   methods: {
     loading() {
@@ -461,10 +581,24 @@ export default {
       this.datalabel = "";
       this.dataentry = "";
     },
+    my_task() {
+      this.$axios
+        .get("/json/task.json")
+        .then((res) => (this.task = res.data))
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    my_weekly(){
+      this.$axios
+        .get("/json/weekly.json")
+        .then((res) => (this.weekly = res.data))
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   },
-  computed: {
-
-  },
+  computed: {},
 };
 </script>
 
@@ -664,6 +798,7 @@ export default {
       height: calc(100% - 10px);
       box-sizing: border-box;
       overflow: hidden;
+      overflow-y: auto;
 
       table {
         margin-top: 0px;
@@ -775,6 +910,153 @@ export default {
         &:hover {
           background-color: #fff;
           color: #17a6af;
+        }
+      }
+
+      #task {
+        display: flex;
+        justify-content: space-between;
+        #time_checklist,
+        #weekly {
+          width: calc(50% - 7.5px);
+          .task_head,
+          .weekly_head {
+            width: 100%;
+            display: flex;
+            background-color: #107b9e;
+            color: #fff;
+            line-height: 45px;
+            justify-content: space-between;
+            border-radius: 15px;
+            .item {
+              width: 25%;
+              text-align: center;
+            }
+          }
+          .weekly_head {
+            background-color: #d7574e;
+            .item {
+              width: 50%;
+              &:nth-child(1) {
+                text-align: left;
+                padding-left: 30px;
+              }
+              &:nth-child(2) {
+                text-align: right;
+                padding-right: 30px;
+              }
+            }
+          }
+          .task_body,
+          .weekly_body {
+            color: #107b9e;
+            background-color: transparent;
+            margin-top: 2.5px;
+            .row {
+              display: flex;
+              justify-content: space-between;
+              border-radius: 15px;
+              overflow: hidden;
+              .item {
+                width: calc(25% - 2.5px);
+                background-color: #d8ebf5;
+                margin: 2.5px;
+                line-height: 45px;
+                text-align: center;
+
+                img {
+                  padding: 0;
+                  width: 30px;
+                  position: relative;
+                  top: 7px;
+                }
+              }
+            }
+          }
+          .weekly_body {
+            .row {
+              background-color: #f0cd96;
+              border-radius: 99px;
+              padding: 10px;
+              box-sizing: border-box;
+              margin-top: 5px;
+              margin-bottom: 5px;
+              .item {
+                background-color: transparent;
+                // width: 50%;
+                color: #a33f39;
+                line-height: 65px;
+                width: 80px;
+                margin: 0;
+                &:nth-child(2) {
+                  width: calc(100% - 160px);
+                  text-align: left;
+                  padding-left: 15px;
+                  padding-right: 15px;
+                  box-sizing: border-box;
+                  h3 {
+                    line-height: 1.5;
+                    font-size: 18px;
+                  }
+                  p {
+                    font-size: 12px;
+                    line-height: 1.2;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                  }
+                  .schedule {
+                    display: flex;
+                    margin-top: 5px;
+                    .photo {
+                      width: calc(100% - 50px);
+                      line-height: 15px;
+                      height: 15px;
+                      background-color: #fff9b1;
+                      border-radius: 99px;
+                      overflow: hidden;
+                      position: relative;
+                      .strip {
+                        background-color: #643410;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        height: 100%;
+                      }
+                    }
+                    .text {
+                      font-size: 14.5px;
+                      width: 50px;
+                      text-align: right;
+                      line-height: 1;
+                      font-family: Anton, serif;
+                    }
+                  }
+                }
+                .medal {
+                  background-color: #fffabe;
+                  border-radius: 99px;
+                  position: relative;
+                  img {
+                    width: 50px;
+                    max-height: 50px;
+                    top: 12.5px;
+                  }
+                }
+                .award {
+                  line-height: 1;
+                  img {
+                    width: 50px;
+                  }
+                  span {
+                    display: block;
+                    margin-top: 10px;
+                    font-family: Anton, serif;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

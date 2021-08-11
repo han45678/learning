@@ -1,0 +1,42 @@
+[
+    {
+        "week": "MON",
+        "sign": true,
+        "time": "180",
+        "activities": "3"
+    },
+    {
+        "week": "TUE",
+        "sign": false,
+        "time": "0",
+        "activities": "0"
+    },
+    {
+        "week": "WED",
+        "sign": false,
+        "time": "0",
+        "activities": "0"
+    },
+    {
+        "week": "THU",
+        "sign": false,
+        "time": "0",
+        "activities": "0"
+    }, {
+        "week": "FRI",
+        "sign": false,
+        "time": "0",
+        "activities": "0"
+    }, {
+        "week": "SAT",
+        "sign": false,
+        "time": "0",
+        "activities": "0"
+    }, {
+        "week": "SUN",
+        "sign": false,
+        "time": "0",
+        "activities": "0"
+    }
+]
+

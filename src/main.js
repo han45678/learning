@@ -10,6 +10,10 @@ import store from './store'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 
+var VueD3 = require('vue-d3')
+
+Vue.use(VueD3)
+
 Vue.use(Vuex)
 
 Vue.use(VueSweetalert2);

@@ -915,9 +915,46 @@ main {
         .s {
             fill: #fff;
         }
-        &.active{
+
+        &.active {
             .s {
                 fill: #F4E829;
+            }
+        }
+    }
+}
+
+#game {
+    .game_menu {
+        ul {
+            li {
+                svg {
+                    fill: #fff;
+                }
+
+                &.s1 {
+                    svg {
+                        .star-1 {
+                            fill: #f5e929;
+                        }
+                    }
+                }
+
+                &.s2 {
+                    svg {
+                        .star-2 {
+                            fill: #f5e929;
+                        }
+                    }
+                }
+
+                &.s3 {
+                    svg {
+                        .star-3 {
+                            fill: #f5e929;
+                        }
+                    }
+                }
             }
         }
     }

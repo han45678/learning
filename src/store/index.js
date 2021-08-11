@@ -8,8 +8,13 @@ export default new Vuex.Store({
     mag:"  hi",
     isLoading:false,
     helper:true,
+    username:"",
+    password:"",
+    identity:'',
+    level:''
   },
   mutations: {
+
   },
   actions: {
   },

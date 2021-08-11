@@ -27,15 +27,20 @@
         <li :class="{ active: level == 6 }" @click="this.level_6">6</li>
         <li :class="{ active: level == 7 }" @click="this.level_7">7</li>
       </ul>
-      <router-link
-        to="/"
+
+      <!-- 學生登入 -->
+      <button
         v-if="identity == 1 && level !== 0"
         class="button student"
-        >START !</router-link
+        @click="start"
       >
-      <router-link to="/level" v-if="identity == 2" class="button parent"
-        >START !</router-link
-      >
+        START !
+      </button>
+
+      <!-- 家長登入 -->
+      <button v-if="identity == 2" class="button parent" @click="start">
+        START !
+      </button>
     </div>
   </div>
 </template>
@@ -53,6 +58,20 @@ export default {
   methods: {
     loading() {
       this.$store.state.isLoading = true;
+    },
+    start() {
+      if (this.identity === 1) {
+        this.$store.state.identity = this.identity;
+        this.$store.state.level = this.level;
+        this.$swal(
+          "進入Level" + this.$store.state.level,
+        "開始學習囉!",
+          "success"
+        );
+        this.$router.push("/");
+      }else{
+        this.$swal("<b>抱歉</b>!", "家長模式尚未完成", "error");
+      }
     },
     student() {
       this.identity = 1;
@@ -83,5 +102,6 @@ export default {
       this.level = 7;
     },
   },
+  computed: {},
 };
 </script>

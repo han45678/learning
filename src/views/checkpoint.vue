@@ -15,7 +15,7 @@
         v-if="this.checkpoint && this.order !== 1"
         id="left_arrow"
         @click="this.left_arrow"
-      ></button>
+      />
 
       <!-- 關卡地圖 -->
       <transition
@@ -60,18 +60,30 @@
               }"
             >
               <div class="item">
-                <span v-if="item.title" class="title">{{ item.title }}</span>
-                <span v-if="item.number" class="number">{{ item.number }}</span>
-                <span v-if="item.text" class="text">{{ item.text }}</span>
+                <span
+                  v-if="item.title"
+                  class="title"
+                >{{ item.title }}</span>
+                <span
+                  v-if="item.number"
+                  class="number"
+                >{{ item.number }}</span>
+                <span
+                  v-if="item.text"
+                  class="text"
+                >{{ item.text }}</span>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 :viewBox="checkpoint_svg_viewBox"
                 v-html="checkpoint_svg"
-              ></svg>
+              />
             </div>
           </div>
-          <img :src="info.map" :alt="info.map" />
+          <img
+            :src="info.map"
+            :alt="info.map"
+          >
         </main>
       </transition>
 
@@ -85,7 +97,9 @@
         <main v-if="this.game">
           <div id="game">
             <div class="game_options">
-              <h1 :class="stylsClass.css">{{ unit }}</h1>
+              <h1 :class="stylsClass.css">
+                {{ unit }}
+              </h1>
               <button
                 v-for="(item, index) in game_options"
                 :key="index"
@@ -113,12 +127,15 @@
                   ]"
                 >
                   <div class="item">
-                    <img :src="item.img" alt="icon" />
+                    <img
+                      :src="item.img"
+                      alt="icon"
+                    >
                     <svg
                       v-html="game_star_svg"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 59.74 20.48"
-                    ></svg>
+                    />
                   </div>
                 </li>
               </ul>
@@ -126,24 +143,48 @@
             <div class="game_main">
               <div class="content">
                 <!-- 影片 -->
-                <transition type="transition" name="fade">
-                  <div class="video" v-show="this.options === 0">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="video"
+                    v-show="this.options === 0"
+                  >
                     <video controls>
-                      <source src="/video/1580455.mp4" type="video/mp4" />
+                      <source
+                        src="/video/1580455.mp4"
+                        type="video/mp4"
+                      >
                     </video>
                   </div>
                 </transition>
                 <!-- 電影 -->
-                <transition type="transition" name="fade">
-                  <div class="movie" v-if="this.options === 1">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="movie"
+                    v-if="this.options === 1"
+                  >
                     <video controls>
-                      <source src="/video/sky2408.mp4" type="video/mp4" />
+                      <source
+                        src="/video/sky2408.mp4"
+                        type="video/mp4"
+                      >
                     </video>
                   </div>
                 </transition>
                 <!-- 錄音 -->
-                <transition type="transition" name="fade">
-                  <div class="mic" v-if="this.options === 2">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="mic"
+                    v-if="this.options === 2"
+                  >
                     <div id="progress_bar">
                       <div
                         class="percentage"
@@ -155,7 +196,7 @@
                         <div
                           class="line"
                           :style="{ width: percentage + '%' }"
-                        ></div>
+                        />
                       </div>
                     </div>
 
@@ -165,52 +206,67 @@
                         class="return"
                         src="/images/game/return.svg"
                         alt="surface"
-                      />
+                      >
                       <img
                         class="sound"
                         src="/images/game/sound.svg"
                         alt="surface"
-                      />
+                      >
                       <img
                         class="say"
                         src="/images/game/say.svg"
                         alt="surface"
-                      />
+                      >
                     </div>
 
                     <!-- 狀態2 -->
-                    <div v-if="1" id="surface">
+                    <div
+                      v-if="1"
+                      id="surface"
+                    >
                       <img
                         class="sound"
                         src="/images/game/sound.svg"
                         alt="surface"
-                      />
+                      >
                       <img
                         class="return"
                         src="/images/game/return.svg"
                         alt="surface"
-                      />
+                      >
                       <img
                         :style="pointer_rotate"
                         class="pointer"
                         src="/images/game/pointer.svg"
                         alt="pointer"
-                      />
+                      >
                       <img
                         class="surface"
                         src="/images/game/surface.svg"
                         alt="surface"
-                      />
+                      >
                     </div>
                   </div>
                 </transition>
                 <!-- 遊戲 -->
-                <transition type="transition" name="fade">
-                  <div class="game" v-if="this.options === 3"></div>
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="game"
+                    v-if="this.options === 3"
+                  />
                 </transition>
                 <!-- 遊戲 -->
-                <transition type="transition" name="fade">
-                  <div class="game" v-if="this.options === 4"></div>
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="game"
+                    v-if="this.options === 4"
+                  />
                 </transition>
               </div>
             </div>
@@ -223,11 +279,18 @@
         v-if="this.checkpoint && this.order !== this.max_order"
         id="right_arrow"
         @click="this.right_arrow"
-      ></button>
+      />
 
       <!-- 返回 -->
-      <div v-if="game" id="return" @click="off_game">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
+      <div
+        v-if="game"
+        id="return"
+        @click="off_game"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 73.41 73.41"
+        >
           <g>
             <path
               class="cls-1"
@@ -242,8 +305,14 @@
       </div>
 
       <!-- 關閉 -->
-      <router-link id="off" to="/level">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
+      <router-link
+        id="off"
+        to="/level"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 73.41 73.41"
+        >
           <g>
             <path
               class="cls-1"
@@ -274,14 +343,34 @@
       </router-link>
 
       <!-- 遊戲鎖定 -->
-      <div v-if="info.lock" id="lock" :class="{ unlock: info.unlock }">
-        <img class="background" src="/images/cloud.png" alt="cloud" />
+      <div
+        v-if="info.lock"
+        id="lock"
+        :class="{ unlock: info.unlock }"
+      >
+        <img
+          class="background"
+          src="/images/cloud.png"
+          alt="cloud"
+        >
         <div class="content">
           <div id="lock_main">
-            <img class="ear" src="/images/lock/lock_ear.webp" alt="lock" />
-            <img class="left" src="/images/lock/lock_l.webp" alt="lock" />
-            <img class="right" src="/images/lock/lock_r.webp" alt="lock" />
-            <div class="key"></div>
+            <img
+              class="ear"
+              src="/images/lock/lock_ear.webp"
+              alt="lock"
+            >
+            <img
+              class="left"
+              src="/images/lock/lock_l.webp"
+              alt="lock"
+            >
+            <img
+              class="right"
+              src="/images/lock/lock_r.webp"
+              alt="lock"
+            >
+            <div class="key" />
           </div>
           <ul class="condition">
             <li
@@ -707,10 +796,7 @@ export default {
           left: 0;
           right: 0;
           bottom: 20px;
-
-          .s {
-            fill: #fff;
-          }
+          fill: #fff;
         }
 
         &.styls0 {
