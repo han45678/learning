@@ -45,17 +45,30 @@ const routes = [
     name: 'records',
     component: records
   },
-  // {
-  //   path: '/game/:id',
-  //   name: 'game',
-  //   component: game
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
+
+// var login = 1;
+// localStorage.setItem('user',login);
+
+// localStorage.getItem('user');
+
+
+// router.beforeEach((to, from, next) => {
+//   const isLogin = localStorage.getItem('user');
+//   if (isLogin) {
+//     next();
+//     if(to.path == '/login') {
+//       alert('已登入')
+//       next('/');
+//     }
+//   } else {
+//     if( to.path !== '/login' && to.path !== '/')
+//       next('/login')
+//     else
+//       next()
+//   }
+// })
+
 
 
 const router = new VueRouter({

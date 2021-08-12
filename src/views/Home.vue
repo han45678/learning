@@ -19,6 +19,12 @@
       VueHeader,
       VueFooter
     },
+    async created() {
+      this.loading()
+  },
+    loading() {
+      this.$store.state.isLoading = true;
+    },
   }
 </script>
 

@@ -341,7 +341,7 @@
                 <div v-else-if="this.options === 1">
                   <div id="task">
                     <div id="time_checklist">
-                      <div class="task_head">
+                      <div class="task_head freeze">
                         <div class="item" />
                         <div class="item">
                           Sign Up
@@ -380,7 +380,83 @@
                       </div>
                     </div>
                     <div id="weekly">
-                      <div class="weekly_head">
+                      <div class="weekly_head freeze">
+                        <div class="item">
+                          Weekly Tasks
+                        </div>
+                        <div class="item">
+                          Rewards
+                        </div>
+                      </div>
+                      <div class="weekly_body">
+                        <div
+                          class="row"
+                          v-for="(item , index) in weekly"
+                          :key="index"
+                        >
+                          <div class="item">
+                            <div class="medal">
+                              <img
+                                v-if="item.medal === 1"
+                                src="/images/records/gold.svg"
+                                alt="img"
+                              >
+                              <img
+                                v-else-if="item.medal === 2"
+                                src="/images/records/silver.svg"
+                                alt="img"
+                              >
+                              <img
+                                v-else-if="item.medal === 3"
+                                src="/images/records/bronze.svg"
+                                alt="img"
+                              >
+                            </div>
+                          </div>
+                          <div class="item">
+                            <h3>{{ item.name }}</h3>
+                            <p>{{ item.content1 }}</p>
+                            <p>{{ item.content2 }}</p>
+                            <div class="schedule">
+                              <div class="photo">
+                                <div
+                                  class="strip"
+                                  :style="'width:' + item.schedule + '%'"
+                                />
+                              </div>
+                              <div class="text">
+                                {{ item.schedule }}%
+                              </div>
+                            </div>
+                          </div>
+                          <div class="item">
+                            <div class="award">
+                              <img
+                                v-if="item.currency_value === 1"
+                                src="/images/records/gold_s.svg"
+                                alt="img"
+                              >
+                              <img 
+                                v-if="item.currency_value === 2"
+                                src="/images/records/silver_s.svg"
+                                alt="img"
+                              >
+                              <span>{{ item.currency }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div v-else-if="this.options === 4">
+                  <div id="task">
+                    <div
+                      id="weekly"
+                      style="width: 100%;"
+                    >
+                      <div class="weekly_head freeze">
                         <div class="item">
                           Weekly Tasks
                         </div>
@@ -495,27 +571,27 @@ export default {
         {
           img: "/images/records/menu0.svg",
           styls0: true,
-          open: 1,
+          open: true,
         },
         {
           img: "/images/records/menu1.svg",
           styls1: true,
-          open: 1,
+          open: true,
         },
         {
           img: "/images/records/menu2.svg",
           styls2: true,
-          open: 0,
+          open: false,
         },
         {
           img: "/images/records/menu3.svg",
           styls3: true,
-          open: 0,
+          open: false,
         },
         {
           img: "/images/records/menu4.svg",
           styls4: true,
-          open: 0,
+          open: true,
         },
       ],
 

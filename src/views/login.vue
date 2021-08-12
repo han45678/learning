@@ -38,13 +38,15 @@ export default {
         if (this.user.password === "123") {
           this.$store.state.username = this.user.username;
           this.$store.state.password = this.user.password;
-          this.$swal("歡迎光臨", "學員 "+this.$store.state.username +" 登入系統", "success");
+          this.$swal("歡迎光臨", "<b>學員</b> "+this.$store.state.username +" 登入系統", "success");
+          var login = 1;
+          localStorage.setItem('user',login);
           this.$router.push("/level");
         } else {
-          this.$swal("<b>錯誤</b>!", "請重新輸入", "error");
+          this.$swal("錯誤!", "請重新輸入", "error");
         }
       } else {
-        this.$swal("<b>錯誤</b>!", "請重新輸入", "error");
+        this.$swal("錯誤!", "請重新輸入", "error");
       }
     },
     // test() {

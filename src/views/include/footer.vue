@@ -2,20 +2,33 @@
   <footer>
     <div id="menu">
       <ul>
-        <li v-for="(item , index) in menu" :key="index">
+        <li
+          v-for="(item , index) in menu"
+          :key="index"
+        >
           <router-link :to="item.link">
-            <img :src="item.img" alt="icon">
-            <span>{{item.text}}</span>
+            <img
+              :src="item.img"
+              alt="icon"
+            >
+            <span>{{ item.text }}</span>
           </router-link>
         </li>
       </ul>
       <div class="background">
-        <div class="left"></div>
-        <div class="right"></div>
+        <div class="left" />
+        <div class="right" />
       </div>
     </div>
-    <div id="helper" v-if="this.$store.state.helper">
-      <svg v-html="helper_svg" :xmlns="w3_svg" :viewBox="helper_svg_viewBox"></svg>
+    <div
+      id="helper"
+      v-if="this.$store.state.helper"
+    >
+      <svg
+        v-html="helper_svg"
+        :xmlns="w3_svg"
+        :viewBox="helper_svg_viewBox"
+      />
     </div>
   </footer>
 </template>
