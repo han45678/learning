@@ -19,15 +19,9 @@
         <main>
           <div id="records">
             <div class="game_options">
-              <div
-                class="h_options"
-                v-if="this.options === 0"
-              >
+              <div class="h_options" v-if="this.options === 0">
                 <h1>My Level</h1>
-                <div
-                  class="hoc"
-                  v-if="this.level_text"
-                >
+                <div class="hoc" v-if="this.level_text">
                   <ul class="hoct">
                     <li
                       :class="{ active: this.level_content_info_state === 1 }"
@@ -111,9 +105,7 @@
                   </ul>
                   <ul class="hocb">
                     <li>SB</li>
-                    <li class="active">
-                      PB
-                    </li>
+                    <li class="active">PB</li>
                     <li>Reader1</li>
                     <li>Reader2</li>
                     <li>Reader3</li>
@@ -159,10 +151,7 @@
                   ]"
                 >
                   <div class="item">
-                    <img
-                      :src="item.img"
-                      alt="icon"
-                    >
+                    <img :src="item.img" alt="icon" />
                   </div>
                 </li>
               </ul>
@@ -216,14 +205,14 @@
                             class="feedback"
                             src="/images/records/f.svg"
                             alt="f"
-                          >
+                          />
                         </td>
                         <td>
                           <img
                             class="certificate"
                             src="/images/records/c.svg"
                             alt="c"
-                          >
+                          />
                         </td>
                       </tr>
                     </tbody>
@@ -298,18 +287,13 @@
                           />
                         </td>
                         <td>
-                          <button
-                            class="active"
-                            v-if="item.certificate === 1"
-                          >
+                          <button class="active" v-if="item.certificate === 1">
                             Report
                           </button>
                           <button v-else-if="item.certificate === 2">
                             Challenge
                           </button>
-                          <button v-else>
-                            Mistakes
-                          </button>
+                          <button v-else>Mistakes</button>
                         </td>
                       </tr>
                     </tbody>
@@ -343,21 +327,15 @@
                     <div id="time_checklist">
                       <div class="task_head freeze">
                         <div class="item" />
-                        <div class="item">
-                          Sign Up
-                        </div>
-                        <div class="item">
-                          Time
-                        </div>
-                        <div class="item">
-                          Activities
-                        </div>
+                        <div class="item">Sign Up</div>
+                        <div class="item">Time</div>
+                        <div class="item">Activities</div>
                       </div>
 
                       <div class="task_body">
                         <div
                           class="row"
-                          v-for="(item , index) in task"
+                          v-for="(item, index) in task"
                           :key="index"
                         >
                           <div class="item">
@@ -368,7 +346,7 @@
                               v-if="item.sign"
                               src="/images/records/bulb.svg"
                               alt="img"
-                            >
+                            />
                           </div>
                           <div class="item">
                             {{ item.time }}
@@ -381,17 +359,13 @@
                     </div>
                     <div id="weekly">
                       <div class="weekly_head freeze">
-                        <div class="item">
-                          Weekly Tasks
-                        </div>
-                        <div class="item">
-                          Rewards
-                        </div>
+                        <div class="item">Weekly Tasks</div>
+                        <div class="item">Rewards</div>
                       </div>
                       <div class="weekly_body">
                         <div
                           class="row"
-                          v-for="(item , index) in weekly"
+                          v-for="(item, index) in weekly"
                           :key="index"
                         >
                           <div class="item">
@@ -400,17 +374,17 @@
                                 v-if="item.medal === 1"
                                 src="/images/records/gold.svg"
                                 alt="img"
-                              >
+                              />
                               <img
                                 v-else-if="item.medal === 2"
                                 src="/images/records/silver.svg"
                                 alt="img"
-                              >
+                              />
                               <img
                                 v-else-if="item.medal === 3"
                                 src="/images/records/bronze.svg"
                                 alt="img"
-                              >
+                              />
                             </div>
                           </div>
                           <div class="item">
@@ -424,9 +398,7 @@
                                   :style="'width:' + item.schedule + '%'"
                                 />
                               </div>
-                              <div class="text">
-                                {{ item.schedule }}%
-                              </div>
+                              <div class="text">{{ item.schedule }}%</div>
                             </div>
                           </div>
                           <div class="item">
@@ -435,12 +407,12 @@
                                 v-if="item.currency_value === 1"
                                 src="/images/records/gold_s.svg"
                                 alt="img"
-                              >
-                              <img 
+                              />
+                              <img
                                 v-if="item.currency_value === 2"
                                 src="/images/records/silver_s.svg"
                                 alt="img"
-                              >
+                              />
                               <span>{{ item.currency }}</span>
                             </div>
                           </div>
@@ -452,22 +424,15 @@
 
                 <div v-else-if="this.options === 4">
                   <div id="task">
-                    <div
-                      id="weekly"
-                      style="width: 100%;"
-                    >
+                    <div id="weekly" style="width: 100%">
                       <div class="weekly_head freeze">
-                        <div class="item">
-                          Weekly Tasks
-                        </div>
-                        <div class="item">
-                          Rewards
-                        </div>
+                        <div class="item">Weekly Tasks</div>
+                        <div class="item">Rewards</div>
                       </div>
                       <div class="weekly_body">
                         <div
                           class="row"
-                          v-for="(item , index) in weekly"
+                          v-for="(item, index) in weekly"
                           :key="index"
                         >
                           <div class="item">
@@ -476,17 +441,17 @@
                                 v-if="item.medal === 1"
                                 src="/images/records/gold.svg"
                                 alt="img"
-                              >
+                              />
                               <img
                                 v-else-if="item.medal === 2"
                                 src="/images/records/silver.svg"
                                 alt="img"
-                              >
+                              />
                               <img
                                 v-else-if="item.medal === 3"
                                 src="/images/records/bronze.svg"
                                 alt="img"
-                              >
+                              />
                             </div>
                           </div>
                           <div class="item">
@@ -500,9 +465,7 @@
                                   :style="'width:' + item.schedule + '%'"
                                 />
                               </div>
-                              <div class="text">
-                                {{ item.schedule }}%
-                              </div>
+                              <div class="text">{{ item.schedule }}%</div>
                             </div>
                           </div>
                           <div class="item">
@@ -511,12 +474,12 @@
                                 v-if="item.currency_value === 1"
                                 src="/images/records/gold_s.svg"
                                 alt="img"
-                              >
-                              <img 
+                              />
+                              <img
                                 v-if="item.currency_value === 2"
                                 src="/images/records/silver_s.svg"
                                 alt="img"
-                              >
+                              />
                               <span>{{ item.currency }}</span>
                             </div>
                           </div>
@@ -560,7 +523,7 @@ export default {
       //↓用來開啟遊戲畫面
       game: false,
       //↓用來變更遊戲內容
-      options: 1,
+      options: 0,
       //↓用來變更遊戲單元(上方選單)
       sel: 0,
       //↓用來宣告index
@@ -603,7 +566,7 @@ export default {
 
       task: [],
 
-      weekly :[]
+      weekly: [],
     };
   },
   async created() {
@@ -665,14 +628,14 @@ export default {
           console.log(error);
         });
     },
-    my_weekly(){
+    my_weekly() {
       this.$axios
         .get("/json/weekly.json")
         .then((res) => (this.weekly = res.data))
         .catch(function (error) {
           console.log(error);
         });
-    }
+    },
   },
   computed: {},
 };
@@ -886,7 +849,7 @@ export default {
           tr {
             border-radius: 5px;
             width: 100%;
-            font-size: 20px;
+            font-size: 26px;
             line-height: 45px;
             color: #fff;
 
@@ -906,6 +869,7 @@ export default {
         tbody {
           tr {
             cursor: pointer;
+            font-size: 26px;
             &:nth-child(odd) {
               td {
                 background-color: #d8ebf5;
@@ -1001,12 +965,16 @@ export default {
             display: flex;
             background-color: #107b9e;
             color: #fff;
-            line-height: 45px;
+            line-height: 60px;
+            font-size: 26px;
             justify-content: space-between;
             border-radius: 15px;
             .item {
-              width: 25%;
+              width: calc((100% - 80px) / 3 - 2.5px);
               text-align: center;
+              &:nth-child(1){
+                  width: 80px;
+                }
             }
           }
           .weekly_head {
@@ -1014,10 +982,12 @@ export default {
             .item {
               width: 50%;
               &:nth-child(1) {
+                width: 50%;
                 text-align: left;
                 padding-left: 30px;
               }
               &:nth-child(2) {
+                width: 50%;
                 text-align: right;
                 padding-right: 30px;
               }
@@ -1034,11 +1004,15 @@ export default {
               border-radius: 15px;
               overflow: hidden;
               .item {
-                width: calc(25% - 2.5px);
+                width: calc((100% - 80px) / 3 - 2.5px);
                 background-color: #d8ebf5;
                 margin: 2.5px;
                 line-height: 45px;
+                font-size: 26px;
                 text-align: center;
+                &:nth-child(1){
+                  width: 80px;
+                }
 
                 img {
                   padding: 0;
@@ -1061,8 +1035,8 @@ export default {
                 background-color: transparent;
                 // width: 50%;
                 color: #a33f39;
-                line-height: 65px;
-                width: 80px;
+                line-height: 88px;
+                width: 88px;
                 margin: 0;
                 &:nth-child(2) {
                   width: calc(100% - 160px);
@@ -1071,11 +1045,11 @@ export default {
                   padding-right: 15px;
                   box-sizing: border-box;
                   h3 {
-                    line-height: 1.5;
-                    font-size: 18px;
+                    line-height: 1.4;
+                    font-size: 26px;
                   }
                   p {
-                    font-size: 12px;
+                    font-size: 14px;
                     line-height: 1.2;
                     overflow: hidden;
                     white-space: nowrap;
