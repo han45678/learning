@@ -6,8 +6,10 @@ import level from '../views/level.vue'
 import checkpoint from '../views/checkpoint.vue'
 import playground from '../views/playground.vue'
 import records from '../views/records.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
+
 
 const routes = [
   {
@@ -46,12 +48,33 @@ const routes = [
     component: records
   },
 ]
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
 
 // var login = 1;
 // localStorage.setItem('user',login);
 
 // localStorage.getItem('user');
 
+router.beforeEach((to, form, next) => {
+  const info = JSON.parse(localStorage.getItem('info'));
+  console.log(to, info, store);
+  next();
+
+  // if (info && to.name !== 'login') {
+    // } else {
+      //   next({
+        //     name: 'login'
+        //   });
+        // }
+    if (to.name !== 'Login' && !info) next({ name: 'login' })
+    else {
+      store.commit('INIT', info);
+      next()
+    }
+})
 
 // router.beforeEach((to, from, next) => {
 //   const isLogin = localStorage.getItem('user');
@@ -71,9 +94,6 @@ const routes = [
 
 
 
-const router = new VueRouter({
-  mode: 'history',
-  routes
-})
+
 
 export default router

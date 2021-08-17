@@ -20,11 +20,14 @@
       VueFooter
     },
     async created() {
+      console.log(this);
       this.loading()
-  },
-    loading() {
-      this.$store.state.isLoading = true;
     },
+    methods: {
+      loading() {
+        this.$store.state.isLoading = true;
+      },
+    }
   }
 </script>
 

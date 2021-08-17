@@ -2,16 +2,25 @@
   <div id="login">
     <div class="wrapper">
       <h1>Danny Kids <span>Online</span></h1>
-      <div class="form" @submit.prevent="sign_in">
+      <div
+        class="form"
+        @submit.prevent="sign_in"
+      >
         <form action="">
-          <input type="text" placeholder="請輸入帳號" v-model="user.username" />
+          <input
+            type="text"
+            placeholder="請輸入帳號"
+            v-model="user.username"
+          >
           <input
             type="password"
             placeholder="請輸入密碼"
             v-model="user.password"
-          />
+          >
           <p>※ Forgot password</p>
-          <button @click="sign_in">LOGIN</button>
+          <button @click="sign_in">
+            LOGIN
+          </button>
           <!-- <button type="submit">LOGIN</button> -->
         </form>
       </div>
@@ -31,22 +40,32 @@ export default {
   },
   async created() {
     // this.loading();
+    // this.$store.commit('SET_IS_LOADING', true);
+    // console.log(this.$store);
   },
   methods: {
     sign_in() {
-      if (this.user.username === "han") {
-        if (this.user.password === "123") {
-          this.$store.state.username = this.user.username;
-          this.$store.state.password = this.user.password;
-          this.$swal("歡迎光臨", "<b>學員</b> "+this.$store.state.username +" 登入系統", "success");
-          var login = 1;
-          localStorage.setItem('user',login);
-          this.$router.push("/level");
-        } else {
-          this.$swal("錯誤!", "請重新輸入", "error");
-        }
+      if (this.user.username === "han" && this.user.password === "123") {
+        this.$swal("歡迎光臨", "<b>學員</b> "+this.user.username +" 登入系統", "success");
+        // var login = 1;
+        console.log();
+        this.$store.commit('SET_IS_LOADING', true);
+        this.$store.commit('SET_USER_INFO', {
+          username: this.user.username,
+          password: this.user.password,
+        });
+        
+        localStorage.setItem('info', JSON.stringify({
+          isLoading: false,
+          helper: true,  
+          username: this.user.username,
+          password: this.user.password,
+          identity: '',
+          level: 1,
+        }));
+        this.$router.push("/level");
       } else {
-        this.$swal("錯誤!", "請重新輸入", "error");
+          this.$swal("錯誤!", "請重新輸入", "error");
       }
     },
     // test() {

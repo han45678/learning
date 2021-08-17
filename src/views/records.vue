@@ -5,6 +5,8 @@
     enter-active-class="animated swing fade-enter-active"
     leave-active-class="animated bounce fade-leave-active"
   >
+    <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+
     <div id="game_levels">
       <VueLoading />
 
@@ -41,7 +43,7 @@
                     </li>
                     <li
                       :class="{ active: this.level_content_info_state === 2 }"
-                      @click="level_content_info_state = 2"
+                      @click="b_chart"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +59,7 @@
                     </li>
                     <li
                       :class="{ active: this.level_content_info_state === 3 }"
-                      @click="level_content_info_state = 3"
+                      @click="s_chart"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -104,11 +106,11 @@
                     </li>
                   </ul>
                   <ul class="hocb">
-                    <li>SB</li>
+                    <li @click="no">SB</li>
                     <li class="active">PB</li>
-                    <li>Reader1</li>
-                    <li>Reader2</li>
-                    <li>Reader3</li>
+                    <li @click="no">Reader1</li>
+                    <li @click="no">Reader2</li>
+                    <li @click="no">Reader3</li>
                   </ul>
                 </div>
               </div>
@@ -158,7 +160,7 @@
             </div>
             <div class="game_main">
               <div class="content">
-                <div v-if="this.options === 0">
+                <div v-show="this.options === 0">
                   <table v-if="!this.level_text">
                     <thead>
                       <tr>
@@ -299,18 +301,55 @@
                     </tbody>
                   </table>
                   <div
-                    v-else-if="
+                    id="big_chart"
+                    v-show="
                       this.level_text && this.level_content_info_state === 2
                     "
                   >
-                    大圖表
+                    <!-- 大圖表 -->
+                    <div class="big_chart_content">
+                      <canvas id="bc" />
+                    </div>
                   </div>
                   <div
-                    v-else-if="
+                    id="small_chart"
+                    v-show="
                       this.level_text && this.level_content_info_state === 3
                     "
                   >
-                    小圖表
+                    <!-- 小圖表 -->
+                    <div class="small_chart_content">
+                      <div class="item">
+                        <div class="item_content">
+                          <canvas id="bc_s1" />
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="item_content">
+                          <canvas id="bc_s2" />
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="item_content">
+                          <canvas id="bc_s3" />
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="item_content">
+                          <canvas id="bc_s4" />
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="item_content">
+                          <canvas id="bc_s5" />
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="item_content">
+                          <canvas id="bc_s6" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <button
                     v-if="
@@ -322,7 +361,7 @@
                     back
                   </button>
                 </div>
-                <div v-else-if="this.options === 1">
+                <div v-show="this.options === 1">
                   <div id="task">
                     <div id="time_checklist">
                       <div class="task_head freeze">
@@ -421,8 +460,7 @@
                     </div>
                   </div>
                 </div>
-
-                <div v-else-if="this.options === 4">
+                <div v-show="this.options === 4">
                   <div id="task">
                     <div id="weekly" style="width: 100%">
                       <div class="weekly_head freeze">
@@ -504,6 +542,7 @@ import VueLoading from "./include/loading";
 import VueHeader from "./include/header";
 import VueFooter from "./include/footer";
 import Vue from "vue";
+import Chart from "chart.js/auto";
 
 export default {
   components: {
@@ -569,6 +608,58 @@ export default {
       weekly: [],
     };
   },
+  /* 
+  mounted() {
+    const data = {
+      labels: [
+        "Eating",
+        "Drinking",
+        "Sleeping",
+        "Designing",
+        "Coding",
+        "Cycling",
+        "Running",
+      ],
+      datasets: [
+        {
+          label: "My First Dataset",
+          data: [65, 59, 90, 81, 56, 55, 40],
+          fill: true,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)",
+          pointBackgroundColor: "rgb(255, 99, 132)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(255, 99, 132)",
+        },
+        {
+          label: "My Second Dataset",
+          data: [28, 48, 40, 19, 96, 27, 100],
+          fill: true,
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          borderColor: "rgb(54, 162, 235)",
+          pointBackgroundColor: "rgb(54, 162, 235)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(54, 162, 235)",
+        },
+      ],
+    };
+    const config = {
+      type: "radar",
+      data: data,
+      options: {
+        elements: {
+          line: {
+            borderWidth: 3,
+          },
+        },
+      },
+    };
+    const chart = new Chart("myChart", config);
+    console.log(chart);
+  },
+  */
   async created() {
     await this.level();
     await this.loading();
@@ -576,6 +667,277 @@ export default {
     await this.my_weekly();
   },
   methods: {
+    b_chart() {
+      this.level_content_info_state = 2;
+      const data = {
+        labels: [
+          "Eating",
+          "Drinking",
+          "Sleeping",
+          "Designing",
+          "Coding",
+          "Cycling",
+          "Running",
+        ],
+        datasets: [
+          {
+            label: "all",
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+        ],
+      };
+      const config = {
+        type: "radar",
+        data: data,
+        options: {
+          elements: {
+            line: {
+              borderWidth: 3,
+            },
+          },
+        },
+      };
+      const chart = new Chart("bc", config);
+      console.log(chart);
+    },
+    s_chart() {
+      this.level_content_info_state = 3;
+
+      const data_s1 = {
+        labels: [
+          "Eating",
+          "Drinking",
+          "Sleeping",
+          "Designing",
+          "Coding",
+          "Cycling",
+          "Running",
+        ],
+        datasets: [
+          {
+            label: "All",
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+        ],
+      };
+      const config_s1 = {
+        type: "radar",
+        data: data_s1,
+        options: {
+          elements: {
+            line: {
+              borderWidth: 3,
+            },
+          },
+        },
+      };
+      const chart_s1 = new Chart("bc_s1", config_s1);
+      console.log(chart_s1);
+
+      const data_s2 = {
+        labels: [
+          "Eating",
+          "Drinking",
+          "Sleeping",
+          "Designing",
+          "Coding",
+          "Cycling",
+          "Running",
+        ],
+        datasets: [
+          {
+            label: "All",
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+        ],
+      };
+      const config_s2 = {
+        type: "radar",
+        data: data_s2,
+        options: {
+          elements: {
+            line: {
+              borderWidth: 3,
+            },
+          },
+        },
+      };
+      const chart_s2 = new Chart("bc_s2", config_s2);
+      console.log(chart_s2);
+
+      const data_s3 = {
+        labels: [
+          "Eating",
+          "Drinking",
+          "Sleeping",
+          "Designing",
+          "Coding",
+          "Cycling",
+          "Running",
+        ],
+        datasets: [
+          {
+            label: "All",
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+        ],
+      };
+      const config_s3 = {
+        type: "radar",
+        data: data_s3,
+        options: {
+          elements: {
+            line: {
+              borderWidth: 3,
+            },
+          },
+        },
+      };
+      const chart_s3 = new Chart("bc_s3", config_s3);
+      console.log(chart_s3);
+
+      const data_s4 = {
+        labels: [
+          "Eating",
+          "Drinking",
+          "Sleeping",
+          "Designing",
+          "Coding",
+          "Cycling",
+          "Running",
+        ],
+        datasets: [
+          {
+            label: "All",
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+        ],
+      };
+      const config_s4 = {
+        type: "radar",
+        data: data_s4,
+        options: {
+          elements: {
+            line: {
+              borderWidth: 3,
+            },
+          },
+        },
+      };
+      const chart_s4 = new Chart("bc_s4", config_s4);
+      console.log(chart_s4);
+
+      const data_s5 = {
+        labels: [
+          "Eating",
+          "Drinking",
+          "Sleeping",
+          "Designing",
+          "Coding",
+          "Cycling",
+          "Running",
+        ],
+        datasets: [
+          {
+            label: "All",
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+        ],
+      };
+      const config_s5 = {
+        type: "radar",
+        data: data_s5,
+        options: {
+          elements: {
+            line: {
+              borderWidth: 3,
+            },
+          },
+        },
+      };
+      const chart_s5 = new Chart("bc_s5", config_s5);
+      console.log(chart_s5);
+
+      const data_s6 = {
+        labels: [
+          "Eating",
+          "Drinking",
+          "Sleeping",
+          "Designing",
+          "Coding",
+          "Cycling",
+          "Running",
+        ],
+        datasets: [
+          {
+            label: "All",
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)",
+          },
+        ],
+      };
+      const config_s6 = {
+        type: "radar",
+        data: data_s6,
+        options: {
+          elements: {
+            line: {
+              borderWidth: 3,
+            },
+          },
+        },
+      };
+      const chart_s6 = new Chart("bc_s6", config_s6);
+      console.log(chart_s6);
+    },
     loading() {
       this.$store.state.isLoading = true;
     },
@@ -602,7 +964,6 @@ export default {
     },
     level_content(index) {
       let o = this.my_level[index].order;
-
       this.$axios
         .get("/json/level_content_info" + o + ".json")
         .then((res) => {
@@ -636,6 +997,9 @@ export default {
           console.log(error);
         });
     },
+    no(){
+      Vue.swal("<b>錯誤</b>", "目前尚未開放", "error");
+    }
   },
   computed: {},
 };
@@ -886,19 +1250,19 @@ export default {
                 width: 30px;
                 height: 30px;
                 position: relative;
-                top: 8px;
+                top: 3px;
                 margin-left: 2.5px;
                 margin-right: 2.5px;
               }
               .feedback {
                 width: 30px;
                 position: relative;
-                top: 8px;
+                top: 3px;
               }
               .certificate {
                 height: 25px;
                 position: relative;
-                top: 8px;
+                top: 3px;
                 width: unset;
               }
               &:first-child {
@@ -921,6 +1285,8 @@ export default {
                 padding-left: 15px;
                 padding-right: 15px;
                 border-radius: 5px;
+                position: relative;
+                top: -5px;
                 &.active {
                   background-color: #107b9e;
                 }
@@ -972,9 +1338,9 @@ export default {
             .item {
               width: calc((100% - 80px) / 3 - 2.5px);
               text-align: center;
-              &:nth-child(1){
-                  width: 80px;
-                }
+              &:nth-child(1) {
+                width: 80px;
+              }
             }
           }
           .weekly_head {
@@ -1010,7 +1376,7 @@ export default {
                 line-height: 45px;
                 font-size: 26px;
                 text-align: center;
-                &:nth-child(1){
+                &:nth-child(1) {
                   width: 80px;
                 }
 
@@ -1105,6 +1471,45 @@ export default {
                   }
                 }
               }
+            }
+          }
+        }
+      }
+      #big_chart,
+      #small_chart {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        box-sizing: border-box;
+        border: 5px solid #107b9e;
+        border-radius: 15px;
+        .big_chart_content,
+        .small_chart_content {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 574px;
+          height: 574px;
+        }
+        .small_chart_content {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          width: 100%;
+          .item {
+            height:250px;
+            width: 250px;
+            position: relative;
+            .item_content {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 100%;
+              height: 100%;
+              padding-top: 20px;
             }
           }
         }
