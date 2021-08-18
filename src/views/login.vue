@@ -19,7 +19,7 @@
           >
           <p>※ Forgot password</p>
           <button @click="sign_in">
-            LOGIN
+            LOGIN  
           </button>
           <!-- <button type="submit">LOGIN</button> -->
         </form>
@@ -60,7 +60,7 @@ export default {
           helper: true,  
           username: this.user.username,
           password: this.user.password,
-          identity: '',
+          identity: 1,
           level: 1,
         }));
         this.$router.push("/level");

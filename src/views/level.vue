@@ -61,15 +61,23 @@ export default {
     },
     start() {
       if (this.identity === 1) {
-        this.$store.state.identity = this.identity;
-        this.$store.state.level = this.level;
+        // this.$store.state.identity = this.identity;
+        // this.$store.state.level = this.level;
         this.$swal(
-          "進入Level" + this.$store.state.level,
-        "開始學習囉!",
+          "進入Level" + this.level,
+          "開始學習囉!",
           "success"
         );
+        this.$store.commit('SET_USER_INFO', {
+          identity: this.identity,
+          level: this.level,
+        });
+        localStorage.setItem('info', JSON.stringify({
+          identity: this.identity,
+          level: this.level,
+        }));
         this.$router.push("/");
-      }else{
+      } else {
         this.$swal("<b>抱歉</b>!", "家長模式尚未完成", "error");
       }
     },

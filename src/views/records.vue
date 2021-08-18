@@ -5,8 +5,6 @@
     enter-active-class="animated swing fade-enter-active"
     leave-active-class="animated bounce fade-leave-active"
   >
-    <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-
     <div id="game_levels">
       <VueLoading />
 
@@ -114,26 +112,6 @@
                   </ul>
                 </div>
               </div>
-              <!--
-              <div v-else-if="this.options === 1">
-                <h1></h1>
-              </div>
-              <div v-else-if="this.options === 2">
-                <h1></h1>
-              </div>
-              <div v-else-if="this.options === 3">
-                <h1></h1>
-              </div>
-              <div v-else-if="this.options === 4">
-                <h1></h1>
-              </div>
-              <div v-else-if="this.options === 5">
-                <h1></h1>
-              </div>
-              <div v-else-if="this.options === 6">
-                <h1></h1>
-              </div>
-              -->
             </div>
             <div class="game_menu">
               <ul>
@@ -302,6 +280,10 @@
                   </table>
                   <div
                     id="big_chart"
+                    :class="{
+                      active:
+                        this.level_text && this.level_content_info_state === 2,
+                    }"
                     v-show="
                       this.level_text && this.level_content_info_state === 2
                     "
@@ -606,60 +588,21 @@ export default {
       task: [],
 
       weekly: [],
+
+      chart_info: [],
     };
   },
-  /* 
   mounted() {
-    const data = {
-      labels: [
-        "Eating",
-        "Drinking",
-        "Sleeping",
-        "Designing",
-        "Coding",
-        "Cycling",
-        "Running",
-      ],
-      datasets: [
-        {
-          label: "My First Dataset",
-          data: [65, 59, 90, 81, 56, 55, 40],
-          fill: true,
-          backgroundColor: "rgba(255, 99, 132, 0.2)",
-          borderColor: "rgb(255, 99, 132)",
-          pointBackgroundColor: "rgb(255, 99, 132)",
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgb(255, 99, 132)",
-        },
-        {
-          label: "My Second Dataset",
-          data: [28, 48, 40, 19, 96, 27, 100],
-          fill: true,
-          backgroundColor: "rgba(54, 162, 235, 0.2)",
-          borderColor: "rgb(54, 162, 235)",
-          pointBackgroundColor: "rgb(54, 162, 235)",
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgb(54, 162, 235)",
-        },
-      ],
-    };
-    const config = {
-      type: "radar",
-      data: data,
-      options: {
-        elements: {
-          line: {
-            borderWidth: 3,
-          },
-        },
-      },
-    };
-    const chart = new Chart("myChart", config);
-    console.log(chart);
+    this.$axios
+      .get("/json/chart01.json")
+      .then((res) => {
+        this.chart_info = res.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+        Vue.swal("<b>錯誤</b>", "目前無資料", "error");
+      });
   },
-  */
   async created() {
     await this.level();
     await this.loading();
@@ -669,27 +612,20 @@ export default {
   methods: {
     b_chart() {
       this.level_content_info_state = 2;
+
       const data = {
-        labels: [
-          "Eating",
-          "Drinking",
-          "Sleeping",
-          "Designing",
-          "Coding",
-          "Cycling",
-          "Running",
-        ],
+        labels: this.chart_info.bc.labels,
         datasets: [
           {
             label: "all",
-            data: [65, 59, 90, 81, 56, 55, 40],
+            data: this.chart_info.bc.data,
             fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgb(255, 99, 132)",
-            pointBackgroundColor: "rgb(255, 99, 132)",
+            backgroundColor: "rgba(26, 237, 146, 0.6)",
+            borderColor: "rgb(26, 237, 146)",
+            pointBackgroundColor: "rgb(60, 171, 123)",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(255, 99, 132)",
+            pointHoverBorderColor: "rgb(60, 171, 123)",
           },
         ],
       };
@@ -711,19 +647,11 @@ export default {
       this.level_content_info_state = 3;
 
       const data_s1 = {
-        labels: [
-          "Eating",
-          "Drinking",
-          "Sleeping",
-          "Designing",
-          "Coding",
-          "Cycling",
-          "Running",
-        ],
+        labels: this.chart_info.cc1.labels,
         datasets: [
           {
             label: "All",
-            data: [65, 59, 90, 81, 56, 55, 40],
+            data: this.chart_info.cc1.data,
             fill: true,
             backgroundColor: "rgba(255, 99, 132, 0.2)",
             borderColor: "rgb(255, 99, 132)",
@@ -749,26 +677,18 @@ export default {
       console.log(chart_s1);
 
       const data_s2 = {
-        labels: [
-          "Eating",
-          "Drinking",
-          "Sleeping",
-          "Designing",
-          "Coding",
-          "Cycling",
-          "Running",
-        ],
+        labels: this.chart_info.cc2.labels,
         datasets: [
           {
             label: "All",
-            data: [65, 59, 90, 81, 56, 55, 40],
+            data: this.chart_info.cc2.data,
             fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgb(255, 99, 132)",
-            pointBackgroundColor: "rgb(255, 99, 132)",
+            backgroundColor: "rgba(207, 61, 21, 0.6)",
+            borderColor: "rgb(207, 61, 21)",
+            pointBackgroundColor: "rgb(207, 61, 21)",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(255, 99, 132)",
+            pointHoverBorderColor: "rgb(207, 61, 21)",
           },
         ],
       };
@@ -787,26 +707,18 @@ export default {
       console.log(chart_s2);
 
       const data_s3 = {
-        labels: [
-          "Eating",
-          "Drinking",
-          "Sleeping",
-          "Designing",
-          "Coding",
-          "Cycling",
-          "Running",
-        ],
+        labels: this.chart_info.cc3.labels,
         datasets: [
           {
             label: "All",
-            data: [65, 59, 90, 81, 56, 55, 40],
+            data: this.chart_info.cc3.data,
             fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgb(255, 99, 132)",
-            pointBackgroundColor: "rgb(255, 99, 132)",
+            backgroundColor: "rgba(237, 218, 12, 0.2)",
+            borderColor: "rgb(237, 218, 12)",
+            pointBackgroundColor: "rgb(237, 218, 12)",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(255, 99, 132)",
+            pointHoverBorderColor: "rgb(237, 218, 12)",
           },
         ],
       };
@@ -825,26 +737,18 @@ export default {
       console.log(chart_s3);
 
       const data_s4 = {
-        labels: [
-          "Eating",
-          "Drinking",
-          "Sleeping",
-          "Designing",
-          "Coding",
-          "Cycling",
-          "Running",
-        ],
+        labels: this.chart_info.cc4.labels,
         datasets: [
           {
             label: "All",
-            data: [65, 59, 90, 81, 56, 55, 40],
+            data: this.chart_info.cc4.data,
             fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgb(255, 99, 132)",
-            pointBackgroundColor: "rgb(255, 99, 132)",
+            backgroundColor: "rgba(0, 38, 255, 0.2)",
+            borderColor: "rgb(0, 38, 255)",
+            pointBackgroundColor: "rgb(0, 38, 255)",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(255, 99, 132)",
+            pointHoverBorderColor: "rgb(0, 38, 255)",
           },
         ],
       };
@@ -863,26 +767,18 @@ export default {
       console.log(chart_s4);
 
       const data_s5 = {
-        labels: [
-          "Eating",
-          "Drinking",
-          "Sleeping",
-          "Designing",
-          "Coding",
-          "Cycling",
-          "Running",
-        ],
+        labels: this.chart_info.cc5.labels,
         datasets: [
           {
             label: "All",
-            data: [65, 59, 90, 81, 56, 55, 40],
+            data: this.chart_info.cc5.data,
             fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            backgroundColor: "rgba(255, 0, 255, 0.2)",
             borderColor: "rgb(255, 99, 132)",
-            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 0, 255)",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(255, 99, 132)",
+            pointHoverBorderColor: "rgb(255, 0, 255)",
           },
         ],
       };
@@ -901,26 +797,18 @@ export default {
       console.log(chart_s5);
 
       const data_s6 = {
-        labels: [
-          "Eating",
-          "Drinking",
-          "Sleeping",
-          "Designing",
-          "Coding",
-          "Cycling",
-          "Running",
-        ],
+        labels: this.chart_info.cc6.labels,
         datasets: [
           {
             label: "All",
-            data: [65, 59, 90, 81, 56, 55, 40],
+            data: this.chart_info.cc6.data,
             fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgb(255, 99, 132)",
-            pointBackgroundColor: "rgb(255, 99, 132)",
+            backgroundColor: "rgba(0, 156, 5, 0.2)",
+            borderColor: "rgb(0, 156, 5)",
+            pointBackgroundColor: "rgb(0, 156, 5)",
             pointBorderColor: "#fff",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(255, 99, 132)",
+            pointHoverBorderColor: "rgb(0, 156, 5)",
           },
         ],
       };
@@ -997,9 +885,9 @@ export default {
           console.log(error);
         });
     },
-    no(){
+    no() {
       Vue.swal("<b>錯誤</b>", "目前尚未開放", "error");
-    }
+    },
   },
   computed: {},
 };
@@ -1201,7 +1089,6 @@ export default {
       height: calc(100% - 10px);
       box-sizing: border-box;
       overflow: hidden;
-      overflow-y: auto;
 
       table {
         margin-top: 0px;
@@ -1325,6 +1212,8 @@ export default {
         #time_checklist,
         #weekly {
           width: calc(50% - 7.5px);
+          overflow-y: auto;
+          max-height: 574px;
           .task_head,
           .weekly_head {
             width: 100%;
@@ -1377,7 +1266,7 @@ export default {
                 font-size: 26px;
                 text-align: center;
                 &:nth-child(1) {
-                  width: 80px;
+                  width: 89.659px;
                 }
 
                 img {
@@ -1499,7 +1388,7 @@ export default {
           justify-content: space-evenly;
           width: 100%;
           .item {
-            height:250px;
+            height: 250px;
             width: 250px;
             position: relative;
             .item_content {

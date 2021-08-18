@@ -1,0 +1,86 @@
+{
+    "bc": {
+        "labels": [
+            "item1",
+            "item2",
+            "item3",
+            "item4",
+            "item5",
+            "item6",
+            "item7"
+        ],
+        "data": [65, 59, 90, 81, 56, 55, 40]
+    },
+    "cc1": {
+        "labels": [
+            "item1",
+            "item2",
+            "item3",
+            "item4",
+            "item5",
+            "item6",
+            "item7"
+        ],
+        "data": [65, 59, 90, 81, 56, 55, 40]
+    },
+    "cc2": {
+        "labels": [
+            "item1",
+            "item2",
+            "item3",
+            "item4",
+            "item5",
+            "item6",
+            "item7"
+        ],
+        "data": [65, 59, 90, 81, 56, 55, 40]
+    },
+    "cc3": {
+        "labels": [
+            "item1",
+            "item2",
+            "item3",
+            "item4",
+            "item5",
+            "item6",
+            "item7"
+        ],
+        "data": [65, 59, 90, 81, 56, 55, 40]
+    },
+    "cc4": {
+        "labels": [
+            "item1",
+            "item2",
+            "item3",
+            "item4",
+            "item5",
+            "item6",
+            "item7"
+        ],
+        "data": [65, 59, 90, 81, 56, 55, 40]
+    },
+    "cc5": {
+        "labels": [
+            "item1",
+            "item2",
+            "item3",
+            "item4",
+            "item5",
+            "item6",
+            "item7"
+        ],
+        "data": [65, 59, 90, 81, 56, 55, 40]
+    },
+    "cc6": {
+        "labels": [
+            "item1",
+            "item2",
+            "item3",
+            "item4",
+            "item5",
+            "item6",
+            "item7"
+        ],
+        "data": [65, 59, 90, 81, 56, 55, 40]
+    }
+}

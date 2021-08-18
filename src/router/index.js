@@ -60,7 +60,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, form, next) => {
   const info = JSON.parse(localStorage.getItem('info'));
-  console.log(to, info, store);
+  // console.log(to, info, store);
   next();
 
   // if (info && to.name !== 'login') {
