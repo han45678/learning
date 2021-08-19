@@ -23,7 +23,7 @@ export default new Vuex.Store({
     },
     INIT(state, data) {
       state.isLoading = data.isLoading;
-      state.helper = data.helper;
+      // state.helper = data.helper;
       state.username = data.username;
       state.password = data.password;
       state.identity = data.identity;

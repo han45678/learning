@@ -27,7 +27,7 @@ export default {
     // this.$store.state.home = false;
   },
   async created() {
-    console.log(this);
+    // console.log(this);
     this.loading();
   },
   methods: {

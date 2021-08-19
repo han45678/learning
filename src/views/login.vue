@@ -39,6 +39,7 @@ export default {
     };
   },
   async created() {
+    await this.log_in()
     // this.loading();
     // this.$store.commit('SET_IS_LOADING', true);
     // console.log(this.$store);
@@ -57,7 +58,7 @@ export default {
         
         localStorage.setItem('info', JSON.stringify({
           isLoading: false,
-          helper: true,  
+          // helper: true,  
           username: this.user.username,
           password: this.user.password,
           identity: 1,
@@ -66,6 +67,12 @@ export default {
         this.$router.push("/level");
       } else {
           this.$swal("錯誤!", "請重新輸入", "error");
+      }
+    },
+    log_in(){
+      if(this.$store.state.username && this.$store.state.password){
+        this.$swal("<b>已登入</b>!", "即將返回首頁", "warning");
+        this.$router.push("/");
       }
     },
     // test() {

@@ -344,7 +344,6 @@ h1 {
   font-size: 72px;
   margin-bottom: 15px;
 }
-
 #level_selection {
   .row {
     display: flex;

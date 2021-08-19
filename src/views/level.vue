@@ -63,19 +63,28 @@ export default {
       if (this.identity === 1) {
         // this.$store.state.identity = this.identity;
         // this.$store.state.level = this.level;
+        this.$store.commit('SET_IS_LOADING', true);
+        this.$store.commit('SET_USER_INFO', {
+          username: this.$store.state.username,
+          password: this.$store.state.password,
+          identity: this.identity,
+          level: this.level,
+        });
+        
+        localStorage.setItem('info', JSON.stringify({
+          isLoading: false,
+          // helper: true,  
+          username: this.$store.state.username,
+          password: this.$store.state.password,
+          identity: this.identity,
+          level: this.level,
+        }));
+        console.log(this.$store.state.username,this.$store.state.password,this.identity,this.level)
         this.$swal(
           "進入Level" + this.level,
           "開始學習囉!",
           "success"
         );
-        this.$store.commit('SET_USER_INFO', {
-          identity: this.identity,
-          level: this.level,
-        });
-        localStorage.setItem('info', JSON.stringify({
-          identity: this.identity,
-          level: this.level,
-        }));
         this.$router.push("/");
       } else {
         this.$swal("<b>抱歉</b>!", "家長模式尚未完成", "error");
