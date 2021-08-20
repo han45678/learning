@@ -79,7 +79,7 @@ export default {
           identity: this.identity,
           level: this.level,
         }));
-        console.log(this.$store.state.username,this.$store.state.password,this.identity,this.level)
+        // console.log(this.$store.state.username,this.$store.state.password,this.identity,this.level)
         this.$swal(
           "進入Level" + this.level,
           "開始學習囉!",
