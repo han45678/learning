@@ -112,6 +112,9 @@
                   </ul>
                 </div>
               </div>
+              <div v-if="this.options === 2">
+                <h1 style="color: #b66444">ToDay {{ to_day }}</h1>
+              </div>
             </div>
             <div class="game_menu">
               <ul>
@@ -442,6 +445,109 @@
                     </div>
                   </div>
                 </div>
+                <div v-show="this.options === 2">
+                  <div id="timetable">
+                    <table v-if="0">
+                      <thead>
+                        <tr>
+                          <td>Lesson</td>
+                          <td>Date</td>
+                          <td>Overdue</td>
+                          <td>Go</td>
+                        </tr>
+                      </thead>
+                      <tbody v-if="0">
+                        <tr>
+                          <td>SB3 / Unit1 / Story</td>
+                          <td>6/1</td>
+                          <td>
+                            <img src="/images/records/overdue.svg" alt="img" />
+                          </td>
+                          <td>
+                            <img src="/images/records/go.svg" alt="img" />
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tbody>
+                        <tr>
+                          <td
+                            colspan="4"
+                            style="
+                              padding-left: 0;
+                              text-align: center;
+                              height: 150px;
+                              line-height: 150px;
+                            "
+                          >
+                            No Results
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <table v-if="0">
+                      <thead>
+                        <tr>
+                          <td>Lesson</td>
+                          <td>Date</td>
+                          <td>Overdue</td>
+                          <td>Go</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td
+                            colspan="4"
+                            style="
+                              padding-left: 0;
+                              text-align: center;
+                              height: 150px;
+                              line-height: 150px;
+                            "
+                          >
+                            <img
+                              style="
+                                width: 80px;
+                                max-height: unset;
+                                padding-top: 65px;
+                              "
+                              src="/images/records/add.svg"
+                              alt="img"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div class="add_schedule">
+                      <h3>My Schedule Helper</h3>
+                      <h4>How many days per week?</h4>
+                      <div class="choice">
+                        <button class="active">MON</button>
+                        <button>THU</button>
+                        <button>WED</button>
+                        <button>THU</button>
+                        <button>FRI</button>
+                        <button>SAT</button>
+                        <button>SUN</button>
+                      </div>
+                      <h4>How many classes per day?</h4>
+                      <div class="choice">
+                        <button class="active">1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button>6</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div v-show="this.options === 3">
+                  <div id="calendar">
+                    1
+                  </div>
+                </div>
                 <div v-show="this.options === 4">
                   <div id="task">
                     <div id="weekly" style="width: 100%">
@@ -565,12 +671,12 @@ export default {
         {
           img: "/images/records/menu2.svg",
           styls2: true,
-          open: false,
+          open: true,
         },
         {
           img: "/images/records/menu3.svg",
           styls3: true,
-          open: false,
+          open: true,
         },
         {
           img: "/images/records/menu4.svg",
@@ -590,6 +696,8 @@ export default {
       weekly: [],
 
       chart_info: [],
+
+      to_day: "",
     };
   },
   mounted() {
@@ -608,6 +716,7 @@ export default {
     await this.loading();
     await this.my_task();
     await this.my_weekly();
+    await this.is_to_day();
   },
   methods: {
     b_chart() {
@@ -887,6 +996,18 @@ export default {
     },
     no() {
       Vue.swal("<b>錯誤</b>", "目前尚未開放", "error");
+    },
+    is_to_day() {
+      let fullDate = new Date();
+      let yyyy = fullDate.getFullYear();
+      let MM =
+        fullDate.getMonth() + 1 >= 10
+          ? fullDate.getMonth() + 1
+          : "0" + (fullDate.getMonth() + 1);
+      let dd =
+        fullDate.getDate() < 10 ? "0" + fullDate.getDate() : fullDate.getDate();
+      let today = yyyy + "/" + MM + "/" + dd;
+      this.to_day = today;
     },
   },
   computed: {},
@@ -1399,6 +1520,92 @@ export default {
               width: 100%;
               height: 100%;
               padding-top: 20px;
+            }
+          }
+        }
+      }
+
+      #timetable {
+        table {
+          thead {
+            tr {
+              td {
+                background-color: #b66444;
+                &:nth-child(1) {
+                  text-align: left;
+                  width: 65%;
+                  padding-left: 30px;
+                }
+              }
+            }
+          }
+          tbody {
+            tr {
+              color: #b66444;
+              &:nth-child(odd) {
+                td {
+                  background-color: #f0cd96;
+                }
+              }
+              &:nth-child(even) {
+                td {
+                  background-color: #eb9e71;
+                }
+              }
+              &:hover {
+                td {
+                  background-color: #b66444 !important;
+                  color: #fff !important;
+                }
+              }
+              td {
+                img {
+                  width: 35px;
+                  max-height: 35px;
+                  position: relative;
+                  top: 5px;
+                }
+                &:nth-child(1) {
+                  text-align: left;
+                  width: 65%;
+                  padding-left: 30px;
+                }
+              }
+            }
+          }
+        }
+        .add_schedule {
+          min-height: 574px;
+          background-color: #f0cd96;
+          border-radius: 15px;
+          padding: 30px;
+          h3 {
+            font-size: 64px;
+            color: #b66444;
+          }
+          h4 {
+            margin-top: 50px;
+            font-size: 48px;
+            color: #b66444;
+          }
+          .choice {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-bottom: 30px;
+            button {
+              background-color: #b66444;
+              border: 3px solid transparent;
+              color: #fff;
+              line-height: 45px;
+              width: 13%;
+              font-size: 20px;
+              border-radius: 10px;
+              cursor: pointer;
+              &.active {
+                background-color: #7a2917;
+              }
             }
           }
         }

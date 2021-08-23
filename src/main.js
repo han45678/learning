@@ -9,9 +9,8 @@ import Vuex from 'vuex'
 import store from './store'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
-// import Scrollbar from 'smooth-scrollbar';
+import VCalendar from 'v-calendar';
 
-// Scrollbar.init(document.querySelector('#my-scrollbar'));
 
 Vue.use(Vuex)
 
@@ -23,6 +22,9 @@ Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false
 
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',
+});
 
 new Vue({
   router,

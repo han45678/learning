@@ -15,6 +15,7 @@
     "echarts": "^5.1.2",
     "scss-loader": "0.0.1",
     "smooth-scrollbar": "^8.6.3",
+    "v-calendar": "^2.3.2",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.4",
     "vue-echarts": "^6.0.0",
