@@ -41,7 +41,7 @@ export default {
           text: "My records",
         },
         {
-          link: "",
+          link: "/theater",
           img: "/images/menu/theater.svg",
           text: "My theater",
         },

@@ -6,7 +6,9 @@ import level from '../views/level.vue'
 import checkpoint from '../views/checkpoint.vue'
 import playground from '../views/playground.vue'
 import records from '../views/records.vue'
+import theater from '../views/theater.vue'
 import store from '../store'
+
 
 Vue.use(VueRouter)
 
@@ -46,6 +48,11 @@ const routes = [
     path: '/records',
     name: 'records',
     component: records
+  },
+  {
+    path: '/theater',
+    name: 'theater',
+    component: theater
   },
 ]
 const router = new VueRouter({

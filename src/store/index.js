@@ -11,7 +11,8 @@ export default new Vuex.Store({
     username:"",
     password:"",
     identity:'',
-    level:''
+    level:'',
+    records_menu:''
   },
   mutations: {
     SET_IS_LOADING(state, status) {
