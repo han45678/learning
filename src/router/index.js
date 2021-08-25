@@ -7,6 +7,7 @@ import checkpoint from '../views/checkpoint.vue'
 import playground from '../views/playground.vue'
 import records from '../views/records.vue'
 import theater from '../views/theater.vue'
+import settings from '../views/settings.vue'
 import store from '../store'
 
 
@@ -53,6 +54,11 @@ const routes = [
     path: '/theater',
     name: 'theater',
     component: theater
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    component: settings
   },
 ]
 const router = new VueRouter({

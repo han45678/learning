@@ -51,7 +51,7 @@ export default {
           text: "My playground",
         },
         {
-          link: "",
+          link: "settings",
           img: "/images/menu/settings.svg",
           text: "My settings",
         },
