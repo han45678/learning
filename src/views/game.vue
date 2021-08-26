@@ -11,7 +11,7 @@
       <main>
         <div id="game">
           <div class="game_options">
-            <h1 :class="stylsClass.css">Unlt1</h1>
+            <h1 :class="stylsClass.css">Unit1</h1>
             <button @click="styls1" :class="{'active' : sel === 1}" class="styls1">Story</button>
             <button @click="styls2" :class="{'active' : sel === 2}" class="styls2">Letters</button>
             <button @click="styls3" :class="{'active' : sel === 3}" class="styls3">Vocabulary</button>

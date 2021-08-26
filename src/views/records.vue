@@ -485,7 +485,7 @@
                 </div>
                 <div v-show="this.options === 2">
                   <div id="timetable">
-                    <table v-if="0">
+                    <table v-if="1">
                       <thead>
                         <tr>
                           <td>Lesson</td>
@@ -494,7 +494,7 @@
                           <td>Go</td>
                         </tr>
                       </thead>
-                      <tbody v-if="0">
+                      <tbody>
                         <tr>
                           <td>SB3 / Unit1 / Story</td>
                           <td>6/1</td>
@@ -512,7 +512,7 @@
                           </td>
                         </tr>
                       </tbody>
-                      <tbody>
+                      <tbody v-if="0">
                         <tr>
                           <td
                             colspan="4"
@@ -563,7 +563,7 @@
                       </tbody>
                     </table>
 
-                    <div class="add_schedule">
+                    <div class="add_schedule" v-if="0">
                       <h3>My Schedule Helper</h3>
                       <h4>How many days per week?</h4>
                       <div class="choice">

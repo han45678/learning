@@ -8,6 +8,7 @@ import playground from '../views/playground.vue'
 import records from '../views/records.vue'
 import theater from '../views/theater.vue'
 import settings from '../views/settings.vue'
+// import test from '../views/game_page/test.vue'
 import store from '../store'
 
 
@@ -60,6 +61,11 @@ const routes = [
     name: 'settings',
     component: settings
   },
+  // {
+  //   path: '/game_page/test',
+  //   name: 'test',
+  //   component: test
+  // },
 ]
 const router = new VueRouter({
   mode: 'history',

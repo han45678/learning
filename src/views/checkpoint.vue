@@ -293,7 +293,9 @@
                   <div
                     class="game"
                     v-if="this.options === 3"
-                  />
+                  >
+                    <gameTest />
+                  </div>
                 </transition>
                 <!-- 遊戲 -->
                 <transition
@@ -430,12 +432,13 @@
 import VueLoading from "./include/loading";
 import VueHeader from "./include/header";
 import VueFooter from "./include/footer";
-
+// import gameTest from "./game_page/test";
 export default {
   components: {
     VueLoading,
     VueHeader,
     VueFooter,
+    // gameTest
   },
   data() {
     return {
@@ -510,7 +513,7 @@ export default {
       //↓用來宣告index
       checkpoint_item: 0,
 
-      unit: "Unlt1",
+      unit: "Unit1",
       game_options: [
         {
           name: "Story",
