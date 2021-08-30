@@ -19,342 +19,520 @@
         <main>
           <!-- <div v-if="0"></div> -->
           <!-- 小劇場選單 -->
-          <div v-if="this.theater_menu === 0">
+          <div v-if="theater_menu === 0">
             <div id="story">
               <h2>DK STORY CORNER</h2>
               <div class="story_content">
-                <div class="item" @click="theater_menu = 1">
-                  <img src="/images/theater/stories.svg" alt="img" />
-                  <div class="text">SB Stories</div>
-                  <div class="background" style="background-color: #18a3b4" />
+                <div
+                  class="item"
+                  @click="theater_menu = 1"
+                >
+                  <img
+                    src="/images/theater/stories.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    SB Stories
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #18a3b4"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 2">
-                  <img src="/images/theater/videos.svg" alt="img" />
-                  <div class="text">Reader Videos</div>
-                  <div class="background" style="background-color: #f4c88e" />
+                <div
+                  class="item"
+                  @click="theater_menu = 2"
+                >
+                  <img
+                    src="/images/theater/videos.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    Reader Videos
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #f4c88e"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 3">
-                  <img src="/images/theater/songs.svg" alt="img" />
-                  <div class="text">DK Songs</div>
-                  <div class="background" style="background-color: #ee9f6c" />
+                <div
+                  class="item"
+                  @click="theater_menu = 3"
+                >
+                  <img
+                    src="/images/theater/songs.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    DK Songs
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #ee9f6c"
+                  />
                 </div>
               </div>
             </div>
             <div id="portfolio">
               <h2>MY PORTFOLIO</h2>
               <div class="portfolio_content">
-                <div class="item" @click="theater_menu = 4">
-                  <img src="/images/theater/doodle.svg" alt="img" />
-                  <div class="text">Draw & Doodle</div>
-                  <div class="background" style="background-color: #df544b" />
+                <div
+                  class="item"
+                  @click="theater_menu = 4"
+                >
+                  <img
+                    src="/images/theater/doodle.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    Draw & Doodle
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #df544b"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 5">
-                  <img src="/images/theater/story.svg" alt="img" />
+                <div
+                  class="item"
+                  @click="theater_menu = 5"
+                >
+                  <img
+                    src="/images/theater/story.svg"
+                    alt="img"
+                  >
                   <div class="text">
                     My Story
                     <span>Level 1-3 only</span>
                   </div>
-                  <div class="background" style="background-color: #b15177" />
+                  <div
+                    class="background"
+                    style="background-color: #b15177"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 6">
-                  <img src="/images/theater/story+.svg" alt="img" />
+                <div
+                  class="item"
+                  @click="theater_menu = 6"
+                >
+                  <img
+                    src="/images/theater/story+.svg"
+                    alt="img"
+                  >
                   <div class="text">
                     My Story +
                     <span>Level 4-7 only</span>
                   </div>
-                  <div class="background" style="background-color: #af87ba" />
+                  <div
+                    class="background"
+                    style="background-color: #af87ba"
+                  />
                 </div>
               </div>
             </div>
           </div>
 
           <!-- 選單內容 -->
-          <div v-if="this.theater_menu === 1">
+          <div v-if="theater_menu === 1">
             <div id="stories">
               <div id="stories_main">
                 <video controls>
-                  <source src="/video/sky2408.mp4" type="video/mp4" />
+                  <source
+                    src="/video/sky2408.mp4"
+                    type="video/mp4"
+                  >
                 </video>
               </div>
               <div id="stories_side">
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div v-if="this.theater_menu === 2">
+          <div v-if="theater_menu === 2">
             <div id="videos">
               <div id="stories_main">
                 <video controls>
-                  <source src="/video/sky2408.mp4" type="video/mp4" />
+                  <source
+                    src="/video/sky2408.mp4"
+                    type="video/mp4"
+                  >
                 </video>
               </div>
               <div id="stories_side">
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div v-if="this.theater_menu === 3">
+          <div v-if="theater_menu === 3">
             <div id="songs">
               <div id="stories_main">
                 <video controls>
-                  <source src="/video/sky2408.mp4" type="video/mp4" />
+                  <source
+                    src="/video/sky2408.mp4"
+                    type="video/mp4"
+                  >
                 </video>
               </div>
               <div id="stories_side">
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
                 <div class="item">
-                  <div class="title">Three little pigs</div>
+                  <div class="title">
+                    Three little pigs
+                  </div>
                   <div class="bottom">
                     <div class="video">
                       <video
                         poster="https://img.ltn.com.tw/Upload/playing/page/2020/01/03/200103-22003-01-tCqMM.jpg"
                       />
                     </div>
-                    <div class="text">Author :<br />McJordon</div>
+                    <div class="text">
+                      Author :<br>McJordon
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- v-if="this.theater_menu === 4" -->
-          <div v-if="this.theater_menu === 4">
+          <!-- v-if="theater_menu === 4" -->
+          <div v-if="theater_menu === 4">
             <div id="coloring_schedule">
-              <button id="prev">Prev</button>
+              <button
+                id="prev"
+                @click="cs_sigh_prev"
+              >
+                Prev
+              </button>
               <ul>
-                <li class="active">1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
+                <li :class="{'active':this.cs_sigh === 1}">
+                  1
+                </li>
+                <li :class="{'active':this.cs_sigh === 2}">
+                  2
+                </li>
+                <li :class="{'active':this.cs_sigh === 3}">
+                  3
+                </li>
+                <li :class="{'active':this.cs_sigh === 4}">
+                  4
+                </li>
               </ul>
-              <button id="next">Next</button>
+              <button
+                id="next"
+                @click="cs_sigh_next"
+              >
+                Next
+              </button>
             </div>
-            <div id="coloring_menu" v-if="1">
+            <div
+              id="coloring_menu"
+              v-if="cs_sigh === 1"
+            >
               <div class="item active">
                 <div class="photo">
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
               </div>
               <div class="item">
                 <div class="photo">
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
               </div>
               <div class="item">
                 <div class="photo">
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
               </div>
             </div>
             <!-- 選單下層內容 -->
-            <div v-if="0">
+            <div v-if="cs_sigh === 2">
               <div id="coloring_content">
                 <div class="coloring_pen">
                   <ul>
                     <li>
-                      <img src="/images/theater/pen1.svg" alt="pen" />
+                      <img
+                        src="/images/theater/pen1.svg"
+                        alt="pen"
+                      >
                     </li>
                     <li>
-                      <img src="/images/theater/pen2.svg" alt="pen" />
+                      <img
+                        src="/images/theater/pen2.svg"
+                        alt="pen"
+                      >
                     </li>
                     <li>
-                      <img src="/images/theater/pen3.svg" alt="pen" />
+                      <img
+                        src="/images/theater/pen3.svg"
+                        alt="pen"
+                      >
                     </li>
                   </ul>
                 </div>
@@ -362,7 +540,7 @@
                   <img
                     src="https://d.ecimg.tw/items/DECU1LA900AGYB4/i010003_1579152548.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
               </div>
             </div>
@@ -371,8 +549,15 @@
       </transition>
 
       <!-- 返回 -->
-      <div v-if="this.theater_menu > 0" id="return" @click="prev">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
+      <div
+        v-if="theater_menu > 0"
+        id="return"
+        @click="prev"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 73.41 73.41"
+        >
           <g>
             <path
               class="cls-1"
@@ -406,6 +591,8 @@ export default {
     return {
       theater_menu: 0,
       coloring_schedule:1,
+      cs_sigh:2,
+      max_cs_sigh:4,
     };
   },
   async created() {
@@ -418,6 +605,20 @@ export default {
     prev() {
       this.theater_menu = 0;
     },
+    cs_sigh_prev(){
+      if(this.cs_sigh === 1){
+        this.cs_sigh = 1
+      }else{
+        this.cs_sigh --
+      }
+    },
+    cs_sigh_next(){
+      if(this.cs_sigh === this.max_cs_sigh){
+        this.cs_sigh = this.max_cs_sigh
+      }else{
+        this.cs_sigh ++
+      }
+    }
   },
   computed: {},
   mounted() {},

@@ -163,14 +163,14 @@
                 <button class="prev" @click="prev" v-if="isPrev">
                   <i class="fas fa-angle-left"></i>
                 </button>
-                <div class="item" v-show="this.instruction_page == 1">
+                <div class="item" v-show="instruction_page == 1">
                   <h2>Eye protection reminder</h2>
                   <p>
                     Boy, you have been playing for 30 minutes, so let your
                     little eyes rest.
                   </p>
                 </div>
-                <div class="item" v-show="this.instruction_page == 2">
+                <div class="item" v-show="instruction_page == 2">
                   <h3>HOW TO PLAY</h3>
                   <ul class="x2">
                     <li>
@@ -183,7 +183,7 @@
                     </li>
                   </ul>
                 </div>
-                <div class="item" v-show="this.instruction_page == 3">
+                <div class="item" v-show="instruction_page == 3">
                   <h3>HOW TO PLAY</h3>
                   <ul class="x4">
                     <li>

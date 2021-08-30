@@ -21,12 +21,12 @@
             <div class="game_options">
               <div
                 class="h_options"
-                v-if="this.options === 0"
+                v-if="options === 0"
               >
                 <h1>My Level</h1>
                 <div
                   class="hoc"
-                  v-if="this.level_text"
+                  v-if="level_text"
                 >
                   <ul class="hoct">
                     <li
@@ -128,7 +128,7 @@
                   </ul>
                 </div>
               </div>
-              <div v-if="this.options === 2">
+              <div v-if="options === 2">
                 <h1 style="color: #b66444">
                   ToDay {{ to_day }}
                 </h1>
@@ -162,7 +162,7 @@
             </div>
             <div class="game_main">
               <div class="content">
-                <div v-show="this.options === 0">
+                <div v-show="options === 0">
                   <table v-if="!this.level_text">
                     <thead>
                       <tr>
@@ -372,7 +372,7 @@
                     back
                   </button>
                 </div>
-                <div v-show="this.options === 1">
+                <div v-show="options === 1">
                   <div id="task">
                     <div id="time_checklist">
                       <div class="task_head freeze">
@@ -483,9 +483,9 @@
                     </div>
                   </div>
                 </div>
-                <div v-show="this.options === 2">
+                <div v-show="options === 2">
                   <div id="timetable">
-                    <table v-if="0">
+                    <table v-if="!this.add_schedule">
                       <thead>
                         <tr>
                           <td>Lesson</td>
@@ -494,7 +494,8 @@
                           <td>Go</td>
                         </tr>
                       </thead>
-                      <tbody v-if="0">
+                      <!-- 目前的課表 -->
+                      <tbody v-if="curriculum && !current_class.length === 0">
                         <tr>
                           <td>SB3 / Unit1 / Story</td>
                           <td>6/1</td>
@@ -512,7 +513,11 @@
                           </td>
                         </tr>
                       </tbody>
-                      <tbody>
+
+                      <!-- 如果已經排課過了今天又沒課 -->
+                      <tbody
+                        v-else-if="curriculum && current_class.length === 0"
+                      >
                         <tr>
                           <td
                             colspan="4"
@@ -527,18 +532,9 @@
                           </td>
                         </tr>
                       </tbody>
-                    </table>
 
-                    <table v-if="0">
-                      <thead>
-                        <tr>
-                          <td>Lesson</td>
-                          <td>Date</td>
-                          <td>Overdue</td>
-                          <td>Go</td>
-                        </tr>
-                      </thead>
-                      <tbody>
+                      <!-- 如果一開始就沒選課過 -->
+                      <tbody v-else-if="!curriculum && !add_schedule">
                         <tr>
                           <td
                             colspan="4"
@@ -550,6 +546,7 @@
                             "
                           >
                             <img
+                              @click="add_schedule = true"
                               style="
                                 width: 80px;
                                 max-height: unset;
@@ -563,15 +560,18 @@
                       </tbody>
                     </table>
 
-                    <div class="add_schedule">
+                    <div
+                      class="add_schedule"
+                      v-if="add_schedule"
+                    >
                       <h3>My Schedule Helper</h3>
                       <h4>How many days per week?</h4>
                       <div class="choice">
                         <button
-                          v-for="(item,index) in timetable.week"
+                          v-for="(item, index) in timetable.week"
                           :key="index"
                           @click="tw(index)"
-                          :class="{'active':timetable_week === item.item}"
+                          :class="{ active: timetable_week === item.item }"
                         >
                           {{ item.item }}
                         </button>
@@ -579,23 +579,57 @@
                       <h4>How many classes per day?</h4>
                       <div class="choice">
                         <button
-                          v-for="(item,index) in timetable.classes"
+                          v-for="(item, index) in timetable.classes"
                           :key="index"
                           @click="tc(index)"
-                          :class="{'active':timetable_classes === item.item}"
+                          :class="{ active: timetable_classes === item.item }"
                         >
                           {{ item.item }}
                         </button>
                       </div>
+                      <button>Let's do it!</button>
                     </div>
                   </div>
                 </div>
-                <div v-show="this.options === 3">
+                <div v-show="options === 3">
                   <div id="calendar">
-                    1
+                    <!-- 行事曆 <v-calendar
+                      class="custom-calendar max-w-full"
+                      :masks="masks"
+                      :attributes="attributes"
+                      disable-page-swipe
+                      is-expanded
+                    >
+                      <template v-slot:day-content="{ day, attributes }">
+                        <div class="flex flex-col h-full z-10 overflow-hidden">
+                          <span class="day-label text-sm text-gray-900">{{
+                            day.day
+                          }}</span>
+                          <div
+                            class="flex-grow overflow-y-auto overflow-x-auto"
+                          >
+                            <p
+                              v-for="attr in attributes"
+                              :key="attr.key"
+                              class="
+                                text-xs
+                                leading-tight
+                                rounded-sm
+                                p-1
+                                mt-0
+                                mb-1
+                              "
+                              :class="attr.customData.class"
+                            >
+                              {{ attr.customData.title }}
+                            </p>
+                          </div>
+                        </div>
+                      </template>
+                    </v-calendar> -->
                   </div>
                 </div>
-                <div v-show="this.options === 4">
+                <div v-show="options === 4">
                   <div id="task">
                     <div
                       id="weekly"
@@ -695,7 +729,87 @@ export default {
     VueFooter,
   },
   data() {
+    // const month = new Date().getMonth();
+    // const year = new Date().getFullYear();
     return {
+      /* 
+      weekdays: "WWW",
+      attributes: [
+        {
+          key: 1,
+          customData: {
+            title: "Lunch with mom.",
+            class: "bg-red-600 text-white",
+          },
+          dates: new Date(year, month, 1),
+        },
+        {
+          key: 2,
+          customData: {
+            title: "Take Noah to basketball practice",
+            class: "bg-blue-500 text-white",
+          },
+          dates: new Date(year, month, 2),
+        },
+        {
+          key: 3,
+          customData: {
+            title: "Noah's basketball game.",
+            class: "bg-blue-500 text-white",
+          },
+          dates: new Date(year, month, 5),
+        },
+        {
+          key: 4,
+          customData: {
+            title: "Take car to the shop",
+            class: "bg-indigo-500 text-white",
+          },
+          dates: new Date(year, month, 5),
+        },
+        {
+          key: 4,
+          customData: {
+            title: "Meeting with new client.",
+            class: "bg-teal-500 text-white",
+          },
+          dates: new Date(year, month, 7),
+        },
+        {
+          key: 5,
+          customData: {
+            title: "Mia's gymnastics practice.",
+            class: "bg-pink-500 text-white",
+          },
+          dates: new Date(year, month, 11),
+        },
+        {
+          key: 6,
+          customData: {
+            title: "Cookout with friends.",
+            class: "bg-orange-500 text-white",
+          },
+          dates: { months: 5, ordinalWeekdays: { 2: 1 } },
+        },
+        {
+          key: 7,
+          customData: {
+            title: "Mia's gymnastics recital.",
+            class: "bg-pink-500 text-white",
+          },
+          dates: new Date(year, month, 22),
+        },
+        {
+          key: 8,
+          customData: {
+            title: "Visit great grandma.",
+            class: "bg-red-600 text-white",
+          },
+          dates: new Date(year, month, 25),
+        },
+      ],
+      */
+      
       level_text: false,
       star: "<g><path class='s' d='M21.42,2s-1.91-.72-3,2.84-4.69,8-4.69,8L3.27,14.42,1.69,16.53,3.93,19l6,6.2L8.55,32l-.33,5.15,1.92,2.05L18,35l3.89-1.58,3.83,2.51,5.61,3a12.4,12.4,0,0,0,2.31-.79c.07-.2-2.7-9.71-2.7-9.71L32,25.77l2.91-3.56,3.83-3.7,1-3-4.16-2.37-5.88-.07L27.1,13l-.86-3.5L24.52,4.39Z'/><path fill='#107b9e' d='M6.59,35.84c.58-2.54,1.22-5.55,2-8.52a2.23,2.23,0,0,0-.83-2.57c-2-1.72-4-3.54-6-5.28C.38,18.31-.38,17,.19,15.18A3.82,3.82,0,0,1,4,12.47c2.61-.17,5.2-.5,7.8-.65a2.34,2.34,0,0,0,2.34-1.65c1-2.53,2.16-5,3.2-7.51A3.69,3.69,0,0,1,21,0a3.74,3.74,0,0,1,3.52,2.63c1.05,2.57,2.22,5.1,3.24,7.69a2.07,2.07,0,0,0,2,1.5c2.72.17,5.43.46,8.14.71a3.82,3.82,0,0,1,3.68,2.69,3.77,3.77,0,0,1-1.39,4.19c-2,1.79-4.06,3.63-6.17,5.35a2.36,2.36,0,0,0-.86,2.73c.65,2.64,1.19,5.31,1.81,8a3.73,3.73,0,0,1-1.35,4.19,3.77,3.77,0,0,1-4.55,0c-2.26-1.4-4.59-2.72-6.81-4.19a2.36,2.36,0,0,0-3,.05C17,37,14.61,38.43,12.17,39.76,9.34,41.29,6.45,39.46,6.59,35.84Zm2.77.46c.11,1.28.75,1.45,1.75.86,2.39-1.41,4.82-2.78,7.16-4.28A4.44,4.44,0,0,1,23.6,33c2.13,1.4,4.33,2.7,6.55,4a3.1,3.1,0,0,0,1.69.38c.94-.44,0-3.37-.17-4q-.6-2.79-1.26-5.55a4.38,4.38,0,0,1,1.52-4.82c1.32-1.09,2.61-2.21,3.89-3.35a21.86,21.86,0,0,0,2.33-2.18c.34-.4.9-.9.58-1.42-.6-1-2.87-.81-3.82-.9-1.88-.19-3.76-.35-5.64-.5a4.2,4.2,0,0,1-3.95-2.87c-1-2.48-2-4.93-3.12-7.36a3.55,3.55,0,0,0-.83-1.09c-.68-.58-1.37.39-1.66,1-1.06,2.32-2.11,4.65-3,7a4.72,4.72,0,0,1-4.62,3.28c-1.67.1-3.34.28-5,.44A14.36,14.36,0,0,0,4,15.46c-2.69.87.8,3,1.79,3.9,1.23,1.11,2.47,2.2,3.75,3.24A4.72,4.72,0,0,1,11.28,28C10.54,30.73,10,33.52,9.36,36.3Z'/></g>",
       lightn:
@@ -756,7 +870,7 @@ export default {
       to_day: "",
 
       timetable: {
-        classes:[
+        classes: [
           {
             item: "1",
           },
@@ -774,7 +888,7 @@ export default {
           },
           {
             item: "6",
-          }
+          },
         ],
         week: [
           {
@@ -797,11 +911,16 @@ export default {
           },
           {
             item: "SUN",
-          }
+          },
         ],
       },
-      timetable_week:'MON',
-      timetable_classes:'1',
+      timetable_week: "MON",
+      timetable_classes: "1",
+
+      // 課表
+      curriculum: true,
+      add_schedule: false,
+      current_class: [],
     };
   },
   mounted() {
@@ -1113,12 +1232,12 @@ export default {
       let today = yyyy + "/" + MM + "/" + dd;
       this.to_day = today;
     },
-    tw(index){
+    tw(index) {
       this.timetable_week = this.timetable.week[index].item;
     },
-    tc(index){
+    tc(index) {
       this.timetable_classes = this.timetable.classes[index].item;
-    }
+    },
   },
   computed: {},
 };
@@ -1694,8 +1813,8 @@ export default {
             color: #b66444;
           }
           h4 {
-            margin-top: 50px;
-            font-size: 48px;
+            margin-top: 15px;
+            font-size: 32px;
             color: #b66444;
           }
           .choice {
@@ -1705,17 +1824,23 @@ export default {
             margin-top: 30px;
             padding-bottom: 30px;
             button {
-              background-color: #b66444;
-              border: 3px solid transparent;
-              color: #fff;
-              line-height: 45px;
               width: 13%;
-              font-size: 20px;
-              border-radius: 10px;
-              cursor: pointer;
-              &.active {
-                background-color: #7a2917;
-              }
+              margin-top: 0;
+            }
+          }
+          button {
+            margin-top: 15px;
+            background-color: #b66444;
+            border: 3px solid transparent;
+            color: #fff;
+            line-height: 45px;
+            width: 100%;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            &.active,
+            &:hover {
+              background-color: #7a2917;
             }
           }
         }
@@ -1723,4 +1848,59 @@ export default {
     }
   }
 }
+
+/* 
+::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar-track {
+  display: none;
+}
+.custom-calendar.vc-container {
+  --day-border: 1px solid #b8c2cc;
+  --day-border-highlight: 1px solid #b8c2cc;
+  --day-width: 90px;
+  --day-height: 90px;
+  --weekday-bg: #f8fafc;
+  --weekday-border: 1px solid #eaeaea;
+  border-radius: 0;
+  width: 100%;
+  & .vc-header {
+    background-color: #f1f5f8;
+    padding: 10px 0;
+  }
+  & .vc-weeks {
+    padding: 0;
+  }
+  & .vc-weekday {
+    background-color: var(--weekday-bg);
+    border-bottom: var(--weekday-border);
+    border-top: var(--weekday-border);
+    padding: 5px 0;
+  }
+  & .vc-day {
+    padding: 0 5px 3px 5px;
+    text-align: left;
+    height: var(--day-height);
+    min-width: var(--day-width);
+    background-color: white;
+    &.weekday-1,
+    &.weekday-7 {
+      background-color: #eff8ff;
+    }
+    &:not(.on-bottom) {
+      border-bottom: var(--day-border);
+      &.weekday-1 {
+        border-bottom: var(--day-border-highlight);
+      }
+    }
+    &:not(.on-right) {
+      border-right: var(--day-border);
+    }
+  }
+  & .vc-day-dots {
+    margin-bottom: 5px;
+  }
+}
+*/
 </style>

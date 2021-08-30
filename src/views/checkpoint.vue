@@ -12,7 +12,7 @@
 
       <!-- 向左箭頭 -->
       <button
-        v-if="this.checkpoint && this.order !== 1"
+        v-if="checkpoint && this.order !== 1"
         id="left_arrow"
         @click="this.left_arrow"
       />
@@ -24,7 +24,7 @@
         enter-active-class="animated swing fade-enter-active"
         leave-active-class="animated bounce fade-leave-active"
       >
-        <main v-if="this.checkpoint">
+        <main v-if="checkpoint">
           <div class="content">
             <!-- <router-link 
             :to="`game/${index}`" 
@@ -94,7 +94,7 @@
         enter-active-class="animated swing fade-enter-active"
         leave-active-class="animated bounce fade-leave-active"
       >
-        <main v-if="this.game">
+        <main v-if="game">
           <div id="game">
             <div class="game_options">
               <h1 :class="stylsClass.css">
@@ -149,7 +149,7 @@
                 >
                   <div
                     class="video"
-                    v-show="this.options === 0"
+                    v-show="options === 0"
                   >
                     <video controls>
                       <source
@@ -166,7 +166,7 @@
                 >
                   <div
                     class="movie"
-                    v-if="this.options === 1"
+                    v-if="options === 1"
                   >
                     <video controls>
                       <source
@@ -183,7 +183,7 @@
                 >
                   <div
                     class="mic"
-                    v-if="this.options === 2"
+                    v-if="options === 2"
                   >
                     <img
                       src="/images/recording.svg"
@@ -216,7 +216,7 @@
                     </div>
 
                     <!-- 狀態0 -->
-                    <div v-if="this.recording_state === 0">
+                    <div v-if="recording_state === 0">
                       <button
                         @click="recording_stara"
                         class="return"
@@ -235,7 +235,7 @@
                     </div>
 
                     <!-- 狀態1 -->
-                    <div v-if="this.recording_state === 1">
+                    <div v-if="recording_state === 1">
                       <img
                         @click="recording_return"
                         class="return"
@@ -257,7 +257,7 @@
 
                     <!-- 狀態2 -->
                     <div
-                      v-if="this.recording_state === 2"
+                      v-if="recording_state === 2"
                       id="surface"
                     >
                       <img
@@ -292,8 +292,10 @@
                 >
                   <div
                     class="game"
-                    v-if="this.options === 3"
-                  />
+                    v-if="options === 3"
+                  >
+                    行事曆
+                  </div>
                 </transition>
                 <!-- 遊戲 -->
                 <transition
@@ -302,7 +304,7 @@
                 >
                   <div
                     class="game"
-                    v-if="this.options === 4"
+                    v-if="options === 4"
                   />
                 </transition>
               </div>
@@ -313,7 +315,7 @@
 
       <!-- 向右箭頭 -->
       <button
-        v-if="this.checkpoint && this.order !== this.max_order"
+        v-if="checkpoint && this.order !== this.max_order"
         id="right_arrow"
         @click="this.right_arrow"
       />
@@ -430,12 +432,13 @@
 import VueLoading from "./include/loading";
 import VueHeader from "./include/header";
 import VueFooter from "./include/footer";
-
+// import gameTest from "./game_page/test";
 export default {
   components: {
     VueLoading,
     VueHeader,
     VueFooter,
+    // gameTest
   },
   data() {
     return {
@@ -510,7 +513,7 @@ export default {
       //↓用來宣告index
       checkpoint_item: 0,
 
-      unit: "Unlt1",
+      unit: "Unit1",
       game_options: [
         {
           name: "Story",

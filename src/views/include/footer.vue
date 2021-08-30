@@ -14,7 +14,7 @@
         <div class="right" />
       </div>
     </div>
-    <div id="helper" v-if="this.$store.state.helper">
+    <div id="helper" v-if="$store.state.helper">
       <svg v-html="helper_svg" :xmlns="w3_svg" :viewBox="helper_svg_viewBox" />
     </div>
   </footer>
