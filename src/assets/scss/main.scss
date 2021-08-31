@@ -960,8 +960,24 @@ main {
     }
 }
 
-.freeze{
+.freeze {
     position: sticky;
     top: 0;
     z-index: 1;
+}
+
+.vc-day[data-v-4420d078] {
+    min-height: 70px !important;
+}
+
+.vc-weekday[data-v-74ad501d] {
+    line-height: 50px !important;
+}
+
+#records[data-v-7a27dc18]{
+    padding: 10px 18px 10px 18px;
+}
+
+.vc-title[data-v-74ad501d]{
+    line-height: 60;
 }

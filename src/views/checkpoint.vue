@@ -294,7 +294,11 @@
                     class="game"
                     v-if="options === 3"
                   >
-                    行事曆
+                    <iframe
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="/iframe/game1/筆順配對.html"
+                      frameborder="0"
+                    />
                   </div>
                 </transition>
                 <!-- 遊戲 -->
@@ -433,7 +437,7 @@ import VueLoading from "./include/loading";
 import VueHeader from "./include/header";
 import VueFooter from "./include/footer";
 // import gameTest from "./game_page/test";
-export default {
+export default {                                                                                                                                                                              
   components: {
     VueLoading,
     VueHeader,
@@ -832,8 +836,8 @@ export default {
         }
 
         img {
-          max-width: 35px;
-          max-height: 25px;
+          max-width: 45px;
+          max-height: 35px;
           margin: auto;
           display: block;
           position: absolute;
@@ -950,7 +954,7 @@ export default {
       width: calc(100% - 10px);
       height: calc(100% - 10px);
       border: 5px solid #000;
-      background-color: #7a7a7a;
+      background-color: #fff;
       box-sizing: border-box;
       border-radius: 15px;
       overflow: hidden;

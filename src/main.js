@@ -9,8 +9,15 @@ import Vuex from 'vuex'
 import store from './store'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
+
 import VCalendar from 'v-calendar';
 
+// Use v-calendar & v-date-picker components
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
+});
+
+// Register components in your 'main.js'
 
 Vue.use(Vuex)
 
@@ -21,10 +28,6 @@ Vue.prototype.$axios = axios;
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false
-
-Vue.use(VCalendar, {
-  componentPrefix: 'vc',
-});
 
 new Vue({
   router,

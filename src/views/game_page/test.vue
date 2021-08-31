@@ -1,31 +1,21 @@
 <template>
   <div id="game_test">
-    <div>
-      <button @click="init">
-        click
-      </button>
-    </div>
-    <audio
-      src="silence.mp3"
-      autoplay="autoplay"
-      loop="false"
-    />
     <div
       id="animation_container"
       style="
-        background-color: rgba(255, 255, 255, 1);
-        width: 1650px;
-        height: 1080px;
+        background-color: rgba(255, 227, 63, 1);
+        width: 1916px;
+        height: 1108px;
       "
     >
       <canvas
         id="canvas"
-        width="1650"
-        height="1080"
+        width="1916"
+        height="1108"
         style="
           position: absolute;
           display: none;
-          background-color: rgba(255, 255, 255, 1);
+          background-color: rgba(255, 227, 63, 1);
         "
       />
       <div
@@ -33,8 +23,8 @@
         style="
           pointer-events: none;
           overflow: hidden;
-          width: 1650px;
-          height: 1080px;
+          width: 1916px;
+          height: 1108px;
           position: absolute;
           left: 0px;
           top: 0px;
@@ -49,8 +39,8 @@
         top: 0;
         left: 0;
         display: inline-block;
-        height: 1080px;
-        width: 1650px;
+        height: 1108px;
+        width: 1916px;
         text-align: center;
       "
     >
@@ -58,8 +48,9 @@
         style="display: inline-block; height: 100%; vertical-align: middle"
       />
       <img
-        src="images/_preloader.gif?1623646073409"
-        style="vertical-align: middle; max-height: 100%"
+        src="images/_preloader.gif?1629781476426"
+        style="vertical-align:
+      middle; max-height: 100%"
       >
     </div>
   </div>
@@ -67,7 +58,7 @@
 <script src="/js/createjs.min.js"></script>
 <script src='/js/HLE.bundle.js'></script>
 <script src="/js/P008P009_ExWord.js"></script>
- <script>
+<script>
 let pageUseWebGL = true;
 
 let canvas, anim_container, dom_overlay_container;
@@ -276,11 +267,11 @@ function playSound(id, loop) {
   alert("有影格音檔:" + id + " 存在，請清除");
 }
 
-new Vue({
-  el: "#app",
-  mounted() {
-    this.init();
+export default {
+  data() {
+    return {};
   },
+  async created() {},
   methods: {
     init,
     handleFileLoad,
@@ -288,7 +279,11 @@ new Vue({
     playSound,
     gp,
   },
-});
+  computed: {},
+  mounted() {
+    this.init();
+  },
+};
 </script>
 
 <style scoped>
