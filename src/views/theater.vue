@@ -543,6 +543,36 @@
                   >
                 </div>
               </div>
+              <div id="coloring_content" v-if="0">
+                <div class="coloring_pen">
+                  <ul>
+                    <li>
+                      <img
+                        src="/images/theater/pen1.svg"
+                        alt="pen"
+                      >
+                    </li>
+                    <li>
+                      <img
+                        src="/images/theater/pen2.svg"
+                        alt="pen"
+                      >
+                    </li>
+                    <li>
+                      <img
+                        src="/images/theater/pen3.svg"
+                        alt="pen"
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="coloring_main">
+                  <img
+                    src="https://d.ecimg.tw/items/DECU1LA900AGYB4/i010003_1579152548.jpg"
+                    alt="img"
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </main>

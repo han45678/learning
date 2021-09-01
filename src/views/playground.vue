@@ -17,35 +17,65 @@
         leave-active-class="animated bounce fade-leave-active"
       >
         <main>
-          <h1 v-if="!instruction">PLAYGROUND</h1>
+          <h1 v-if="!play_game && !instruction">
+            PLAYGROUND
+          </h1>
           <div id="level_selection">
-            <div id="choose_unit" class="row" v-if="choose_unit">
+            <div
+              id="choose_unit"
+              class="row"
+              v-if="choose_unit"
+            >
               <div class="c45">
-                <button :class="{ active: unit == 1 }" @click="unit = 1">
+                <button
+                  :class="{ active: unit == 1 }"
+                  @click="unit = 1"
+                >
                   Story
                 </button>
-                <button :class="{ active: unit == 2 }" @click="unit = 2">
+                <button
+                  :class="{ active: unit == 2 }"
+                  @click="unit = 2"
+                >
                   Lotters
                 </button>
-                <button :class="{ active: unit == 3 }" @click="unit = 3">
+                <button
+                  :class="{ active: unit == 3 }"
+                  @click="unit = 3"
+                >
                   Vocabulary
                 </button>
-                <button :class="{ active: unit == 4 }" @click="unit = 4">
+                <button
+                  :class="{ active: unit == 4 }"
+                  @click="unit = 4"
+                >
                   SentencePattern
                 </button>
               </div>
 
               <div class="c10">
-                <button :class="{ active: level == 1 }" @click="level = 1">
+                <button
+                  :class="{ active: level == 1 }"
+                  @click="level = 1"
+                >
                   L1
                 </button>
-                <button :class="{ active: level == 2 }" @click="level = 2">
+                <button
+                  :class="{ active: level == 2 }"
+                  @click="level = 2"
+                >
                   L2
                 </button>
-                <button :class="{ active: level == 3 }" @click="level = 3">
+                <button
+                  :class="{ active: level == 3 }"
+                  @click="level = 3"
+                >
                   L3
                 </button>
-                <button :class="{ active: level == 4 }" @click="level = 4">
+                <button
+                  :class="{ active: level == 4 }"
+                  @click="level = 4"
+                >
                   L4
                 </button>
               </div>
@@ -106,9 +136,9 @@
                   @click="unit_finish"
                   v-if="
                     this.unit !== 0 &&
-                    this.level !== 0 &&
-                    this.unit_quantity !== 0 &&
-                    this.quantity !== 0
+                      this.level !== 0 &&
+                      this.unit_quantity !== 0 &&
+                      this.quantity !== 0
                   "
                   class="send"
                 >
@@ -116,9 +146,15 @@
                 </button>
               </transition>
             </div>
-            <div id="choose_game" v-if="choose_game">
-              <button @click="return_unit" class="return">
-                <i class="fas fa-angle-left"></i>
+            <div
+              id="choose_game"
+              v-if="choose_game"
+            >
+              <button
+                @click="return_unit"
+                class="return"
+              >
+                <i class="fas fa-angle-left" />
               </button>
               <div
                 v-for="item in game_info"
@@ -130,7 +166,7 @@
                 <img
                   src="https://img.ltn.com.tw/Upload/3c/page/2020/04/15/200415-40113-1.png"
                   alt="game"
-                />
+                >
               </div>
               <transition
                 type="transition"
@@ -138,76 +174,138 @@
                 enter-active-class="animated swing fade-enter-active"
                 leave-active-class="animated bounce fade-leave-active"
               >
-                <button class="send" v-if="game" @click="game_finish">
+                <button
+                  class="send"
+                  v-if="game"
+                  @click="game_finish"
+                >
                   START
                 </button>
               </transition>
             </div>
-            <div id="instruction" v-if="instruction">
+            <div
+              id="instruction"
+              v-if="instruction"
+            >
               <img
                 v-if="helper"
                 class="helper"
                 src="/images/helper.svg"
                 alt="helper"
-              />
+              >
               <img
                 v-else
                 class="helper"
                 src="/images/helper_excited.svg"
                 alt="helper"
-              />
-              <button @click="return_game" class="return">
-                <i class="fas fa-angle-left"></i>
+              >
+              <button
+                @click="return_game"
+                class="return"
+              >
+                <i class="fas fa-angle-left" />
               </button>
               <div class="content">
-                <button class="prev" @click="prev" v-if="isPrev">
-                  <i class="fas fa-angle-left"></i>
+                <button
+                  class="prev"
+                  @click="prev"
+                  v-if="isPrev"
+                >
+                  <i class="fas fa-angle-left" />
                 </button>
-                <div class="item" v-show="instruction_page == 1">
+                <div
+                  class="item"
+                  v-show="instruction_page == 1"
+                >
                   <h2>Eye protection reminder</h2>
                   <p>
                     Boy, you have been playing for 30 minutes, so let your
                     little eyes rest.
                   </p>
                 </div>
-                <div class="item" v-show="instruction_page == 2">
+                <div
+                  class="item"
+                  v-show="instruction_page == 2"
+                >
                   <h3>HOW TO PLAY</h3>
                   <ul class="x2">
                     <li>
                       <span>1</span>
-                      <img src="/images/game/eye.svg" alt="img" />
+                      <img
+                        src="/images/game/eye.svg"
+                        alt="img"
+                      >
                     </li>
                     <li>
                       <span>2</span>
-                      <img src="/images/game/clock.svg" alt="img" />
+                      <img
+                        src="/images/game/clock.svg"
+                        alt="img"
+                      >
                     </li>
                   </ul>
                 </div>
-                <div class="item" v-show="instruction_page == 3">
+                <div
+                  class="item"
+                  v-show="instruction_page == 3"
+                >
                   <h3>HOW TO PLAY</h3>
                   <ul class="x4">
                     <li>
                       <span>1</span>
-                      <img src="/images/game/wal.svg" alt="img" />
+                      <img
+                        src="/images/game/wal.svg"
+                        alt="img"
+                      >
                     </li>
                     <li>
                       <span>2</span>
-                      <img src="/images/game/speak.svg" alt="img" />
+                      <img
+                        src="/images/game/speak.svg"
+                        alt="img"
+                      >
                     </li>
                     <li>
                       <span>3</span>
-                      <img src="/images/game/vocalize.svg" alt="img" />
+                      <img
+                        src="/images/game/vocalize.svg"
+                        alt="img"
+                      >
                     </li>
                     <li>
                       <span>4</span>
-                      <img src="/images/game/clock.svg" alt="img" />
+                      <img
+                        src="/images/game/clock.svg"
+                        alt="img"
+                      >
                     </li>
                   </ul>
-                  <button id="go">GO it</button>
+                  <button
+                    id="go"
+                    @click="go_play"
+                  >
+                    GO it
+                  </button>
                 </div>
-                <button class="next" @click="next" v-if="isNext">
-                  <i class="fas fa-angle-right"></i>
+                <button
+                  class="next"
+                  @click="next"
+                  v-if="isNext"
+                >
+                  <i class="fas fa-angle-right" />
                 </button>
+              </div>
+            </div>
+            <div
+              id="play_game"
+              v-if="play_game"
+            >
+              <div class="content">
+                <iframe
+                  style="width: 100%; height: 100%; position: absolute"
+                  src="/iframe/game1/筆順配對.html"
+                  frameborder="0"
+                />
               </div>
             </div>
           </div>
@@ -273,6 +371,8 @@ export default {
       instruction: false,
       instruction_page: 1,
 
+      play_game: false,
+
       isPrev: true,
       isNext: true,
     };
@@ -318,7 +418,7 @@ export default {
         "#instruction .content .item"
       ).length;
 
-      if (this.instruction_page == max_next) {
+      if (this.instruction_page === max_next) {
         // this.instruction_page = 1;
         this.helper = false;
         this.isNext = false;
@@ -328,6 +428,10 @@ export default {
         this.isPrev = true;
         console.log(this.instruction_page, max_next);
       }
+    },
+    go_play() {
+      this.instruction = false;
+      this.play_game = true;
     },
     loading() {
       this.$store.state.isLoading = true;
@@ -650,6 +754,29 @@ h1 {
       &:hover {
         filter: brightness(0.7);
       }
+    }
+  }
+
+  #play_game {
+    border: 3px solid #231815;
+    background-color: #7a7a7a;
+    border-radius: 15px;
+    max-width: 965px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 564px;
+    position: relative;
+    overflow: hidden;
+    .content {
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      border-radius: 5px;
+      left: 10px;
+      top: 10px;
+      background-color: #e2f2ef;
+      border: 1px solid #231815;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
   }
 
