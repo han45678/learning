@@ -1541,6 +1541,24 @@ export default {
               }
             }
           }
+          &::-webkit-scrollbar-track-piece {
+            //滚动条凹槽的颜色，还可以设置边框属性
+            background-color: #f8f8f8;
+          }
+          &::-webkit-scrollbar {
+            //滚动条的宽度
+            width: 6px;
+            height: 6px;
+          }
+          &::-webkit-scrollbar-thumb {
+            //滚动条的设置
+            background-color: rgb(95, 95, 95);
+            background-clip: padding-box;
+            min-height: 28px;
+          }
+          &::-webkit-scrollbar-thumb:hover {
+            background-color: rgb(95, 95, 95);
+          }
         }
       }
       #big_chart,
@@ -1676,6 +1694,5 @@ export default {
       }
     }
   }
-  
 }
 </style>

@@ -12,7 +12,11 @@ export default new Vuex.Store({
     password:"",
     identity:'',
     level:'',
-    records_menu:''
+    records_menu:'',
+    // theater:{
+    //   theater_menu:'',
+    //   play_video:''
+    // }
   },
   mutations: {
     SET_IS_LOADING(state, status) {

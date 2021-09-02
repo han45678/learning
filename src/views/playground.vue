@@ -373,7 +373,7 @@ export default {
 
       play_game: false,
 
-      isPrev: true,
+      isPrev: false,
       isNext: true,
     };
   },
@@ -404,9 +404,10 @@ export default {
       this.instruction = true;
     },
     prev() {
-      if (this.instruction_page == 1) {
+      if (this.instruction_page == 2) {
         this.helper = true;
         this.isPrev = false;
+        this.instruction_page--;
       } else {
         this.instruction_page--;
         this.helper = true;
@@ -418,15 +419,13 @@ export default {
         "#instruction .content .item"
       ).length;
 
-      if (this.instruction_page === max_next) {
-        // this.instruction_page = 1;
+      if (this.instruction_page >= max_next - 1) {
         this.helper = false;
         this.isNext = false;
-        console.log(this.instruction_page, max_next);
+        this.instruction_page++;
       } else {
         this.instruction_page++;
         this.isPrev = true;
-        console.log(this.instruction_page, max_next);
       }
     },
     go_play() {
