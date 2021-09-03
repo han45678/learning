@@ -10,7 +10,6 @@
 
       <VueHeader />
 
-      
       <transition
         type="transition"
         name="fade"
@@ -18,7 +17,7 @@
         leave-active-class="animated bounce fade-leave-active"
       >
         <main>
-          我的設定
+          <img src="/images/settings.jpg" alt="img" />
         </main>
       </transition>
 
@@ -39,9 +38,7 @@ export default {
     VueFooter,
   },
   data() {
-    return {
-
-    };
+    return {};
   },
   async created() {
     await this.loading();
@@ -57,5 +54,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+img {
+  max-width: 768px;
+  padding: 0;
+  margin: auto;
+  display: block;
+}
 </style>

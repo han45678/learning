@@ -40,7 +40,6 @@
         </li>
       </ul>
     </nav>
-    <button id="go_home" v-if="this.$store.state.home" @click="go_home"><i class="fas fa-home" /></button>
   </header>
 </template>
 
@@ -58,11 +57,6 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
-  },
-  methods:{
-    go_home(){
-      this.$router.push("/");
-    }
   }
 };
 </script>
