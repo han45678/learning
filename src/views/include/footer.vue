@@ -15,6 +15,7 @@
       </div>
     </div>
     <div id="helper" v-if="$store.state.helper">
+      <div id="dialogue">小幫手尚未開放喔~</div>
       <svg v-html="helper_svg" :xmlns="w3_svg" :viewBox="helper_svg_viewBox" />
     </div>
   </footer>
@@ -72,11 +73,38 @@ export default {
     not_open(index) {
       if (this.menu[index].link === "") {
         this.$swal("抱歉!", "此功能尚未開放", "error");
-      }else{
-        let r = this.menu[index].link
+      } else {
+        let r = this.menu[index].link;
         this.$router.push(r);
       }
     },
   },
 };
 </script>
+<style scoped lang="scss">
+#dialogue {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 150px;
+  left: -90%;
+  top: -80%;
+  text-align: center;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    transform: rotate(45deg);
+    bottom: -7.5px;
+    right: 15px;
+  }
+}
+</style>
+
+    
