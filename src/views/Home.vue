@@ -4,7 +4,7 @@
     <VueHeader />
     <main>
       <router-link to="/checkpoint">SB</router-link>
-      <button @click="no">PB</button>
+      <router-link to="/checkpoint">PB</router-link>
       <button @click="no">Reader 1-1</button>
       <button @click="no">Reader 1-2</button>
       <button @click="no">Reader 1-3</button>
