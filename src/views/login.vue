@@ -2,25 +2,25 @@
   <div id="login">
     <div class="wrapper">
       <h1>Danny Kids <span>Online</span></h1>
-      <div
-        class="form"
-        @submit.prevent="sign_in"
-      >
+      <div class="form" @submit.prevent="sign_in">
         <form action="">
-          <input
-            type="text"
-            placeholder="請輸入帳號"
-            v-model="user.username"
-          >
+          <input type="text" placeholder="請輸入帳號" v-model="user.username" />
           <input
             type="password"
             placeholder="請輸入密碼"
             v-model="user.password"
-          >
-          <p>※ Forgot password</p>
-          <button @click="sign_in">
-            LOGIN  
-          </button>
+          />
+          <div class="row">
+            <p>
+              <input type="checkbox" value="0" name="Remember" />Remember me
+            </p>
+            <p>※ Forgot password</p>
+          </div>
+
+          <button @click="sign_in">LOGIN</button>
+          <p id="sign">
+            Not a member? <a href="">Sign up</a>
+          </p>
           <!-- <button type="submit">LOGIN</button> -->
         </form>
       </div>
@@ -39,7 +39,7 @@ export default {
     };
   },
   async created() {
-    await this.log_in()
+    await this.log_in();
     // this.loading();
     // this.$store.commit('SET_IS_LOADING', true);
     // console.log(this.$store);
@@ -47,30 +47,37 @@ export default {
   methods: {
     sign_in() {
       if (this.user.username === "han" && this.user.password === "123") {
-        this.$swal("歡迎光臨", "<b>學員</b> "+this.user.username +" 登入系統", "success");
+        this.$swal(
+          "歡迎光臨",
+          "<b>學員</b> " + this.user.username + " 登入系統",
+          "success"
+        );
         // var login = 1;
         console.log();
-        this.$store.commit('SET_IS_LOADING', true);
-        this.$store.commit('SET_USER_INFO', {
+        this.$store.commit("SET_IS_LOADING", true);
+        this.$store.commit("SET_USER_INFO", {
           username: this.user.username,
           password: this.user.password,
         });
-        
-        localStorage.setItem('info', JSON.stringify({
-          isLoading: false,
-          // helper: true,  
-          username: this.user.username,
-          password: this.user.password,
-          identity: 1,
-          level: 1,
-        }));
+
+        localStorage.setItem(
+          "info",
+          JSON.stringify({
+            isLoading: false,
+            // helper: true,
+            username: this.user.username,
+            password: this.user.password,
+            identity: 1,
+            level: 1,
+          })
+        );
         this.$router.push("/level");
       } else {
-          this.$swal("錯誤!", "請重新輸入", "error");
+        this.$swal("錯誤!", "請重新輸入", "error");
       }
     },
-    log_in(){
-      if(this.$store.state.username && this.$store.state.password){
+    log_in() {
+      if (this.$store.state.username && this.$store.state.password) {
         this.$swal("<b>已登入</b>!", "即將返回首頁", "warning");
         this.$router.push("/");
       }

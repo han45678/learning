@@ -72,7 +72,7 @@
       </router-link>
 
       <!-- 關閉 -->
-      <router-link id="off" to="/level">
+      <!-- <router-link id="off" to="/level">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
           <g>
             <path class="cls-1" d="M36.7,71.41h0A34.71,34.71,0,1,1,71.41,36.7,34.81,34.81,0,0,1,36.7,71.41" />
@@ -83,7 +83,7 @@
               transform="translate(-14.19 36.81) rotate(-45)" />
           </g>
         </svg>
-      </router-link>
+      </router-link> -->
 
       <VueFooter />
 

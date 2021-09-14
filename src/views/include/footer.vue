@@ -34,37 +34,37 @@ export default {
         {
           link: "/",
           img: "/images/menu/books.svg",
-          text: "My Books",
+          text: "Books",
         },
         {
           link: "/records",
           img: "/images/menu/records.svg",
-          text: "My records",
+          text: "records",
         },
         {
           link: "/theater",
           img: "/images/menu/theater.svg",
-          text: "My theater",
+          text: "theater",
         },
         {
           link: "/playground",
           img: "/images/menu/playground.svg",
-          text: "My playground",
+          text: "playground",
         },
         {
           link: "settings",
           img: "/images/menu/settings.svg",
-          text: "My settings",
+          text: "settings",
         },
         {
           link: "",
           img: "/images/menu/point.svg",
-          text: "My point",
+          text: "point",
         },
         {
           link: "",
           img: "/images/menu/danny.svg",
-          text: "My danny",
+          text: "danny",
         },
       ],
     };
@@ -104,6 +104,9 @@ export default {
     bottom: -7.5px;
     right: 15px;
   }
+}
+footer #menu ul{
+  margin-bottom: 0;
 }
 </style>
 

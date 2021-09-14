@@ -12,11 +12,9 @@
         </li>
         <li>
           <div class="icon">
-            <img src="../../assets/images/icon/time.svg" alt="icon" />
+            <img src="../../assets/images/icon/star.svg" alt="icon" />
           </div>
-          <div class="content">
-            {{ info.time }}
-          </div>
+          <div class="content">{{ info.star }}</div>
         </li>
         <li>
           <div class="icon">
@@ -28,15 +26,17 @@
         </li>
         <li>
           <div class="icon">
-            <img src="../../assets/images/icon/star.svg" alt="icon" />
+            <img src="../../assets/images/icon/time.svg" alt="icon" />
           </div>
-          <div class="content">{{ info.star }}%</div>
+          <div class="content">
+            {{ info.time }}
+          </div>
         </li>
         <li>
           <div class="icon">
             <img src="../../assets/images/icon/level.svg" alt="icon" />
           </div>
-          <div class="content">level{{ info.level }}</div>
+          <div class="content">Level {{ info.level }}</div>
         </li>
       </ul>
     </nav>

@@ -126,10 +126,6 @@ export default {
     // document.querySelector('#footer').classList.add('hide-footer')
     // document.querySelector('body').classList.add('fix-body')
   },
-  destroyed() {
-    // document.querySelector('#footer').classList.remove('hide-footer')
-    // document.querySelector('body').classList.remove('fix-body')
-  },
   computed: {
     controls() {
       return [
@@ -190,8 +186,8 @@ export default {
       this.imgUrl = this.imgUrl.filter((item) => item !== src);
     },
     initDraw() {
-      var cw = (canvas.width = 568);
-      var ch = (canvas.height = 568);
+      var cw = (canvas.width = 512);
+      var ch = (canvas.height = 512);
       const preData = this.context.getImageData(
         0,
         0,

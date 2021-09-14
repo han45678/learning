@@ -3,11 +3,71 @@
     <VueLoading />
     <VueHeader />
     <main>
-      <router-link to="/checkpoint">SB</router-link>
-      <router-link to="/checkpoint">PB</router-link>
-      <button @click="no">Reader 1-1</button>
+      <router-link to="/checkpoint">
+        <img
+          class="card"
+          src="/images/menu/sb_1.png"
+          alt="img"
+        >
+        <img
+          class="ribbon"
+          src="/images/menu/sb_2.png"
+          alt="img"
+        >
+      </router-link>
+
+      <router-link to="/checkpoint">
+        <img
+          class="card"
+          src="/images/menu/pb_1.png"
+          alt="img"
+        >
+        <img
+          class="ribbon"
+          src="/images/menu/pb_2.png"
+          alt="img"
+        >
+      </router-link>
+      <router-link to="javascript: void(0)">
+        <img
+          class="card"
+          src="/images/menu/r111.png"
+          alt="img"
+        >
+        <img
+          class="ribbon"
+          src="/images/menu/r112.png"
+          alt="img"
+        >
+      </router-link>
+      <router-link to="javascript: void(0)">
+        <img
+          class="card"
+          src="/images/menu/r121.png"
+          alt="img"
+        >
+        <img
+          class="ribbon"
+          src="/images/menu/r122.png"
+          alt="img"
+        >
+      </router-link>
+      <router-link to="javascript: void(0)">
+        <img
+          class="card"
+          src="/images/menu/r131.png"
+          alt="img"
+        >
+        <img
+          class="ribbon"
+          src="/images/menu/r132.png"
+          alt="img"
+        >
+      </router-link>
+      <!-- <router-link to="/checkpoint">PB</router-link> -->
+      <!-- <button @click="no">Reader 1-1</button>
       <button @click="no">Reader 1-2</button>
-      <button @click="no">Reader 1-3</button>
+      <button @click="no">Reader 1-3</button> -->
     </main>
     <VueFooter />
   </div>
@@ -45,25 +105,29 @@ export default {
 main {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  max-width: 600px;
-  a,
-  button {
-    border: none;
-    width: 30%;
-    height: 183px;
-    margin: 1.555555%;
-    background-color: #648575;
-    color: #fff;
-    text-align: center;
-    display: block;
-    line-height: 183px;
-    font-size: 32px;
-    text-decoration: cadetblue;
-    cursor: pointer;
-    &:nth-child(1),
-    &:nth-child(2) {
-      width: 30.5%;
+  justify-content: space-between;
+  max-width: 980px;
+  a {
+    width: 180px;
+    height: 390px;
+    position: relative;
+    transition: 0.6s;
+    .card {
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+      top: -75px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .ribbon {
+      position: absolute;
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &:hover {
+      top: -30px;
     }
   }
 }

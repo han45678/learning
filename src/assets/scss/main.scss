@@ -29,8 +29,8 @@ button {
 body {
     font-family: NotoSans, Roboto, serif;
     background-image: url("assets/images/background.webp");
-    background-size: inherit;
-    background-repeat: no-repeat;
+    background-size: cover;
+    // background-repeat: no-repeat;
 }
 
 h1,
@@ -97,7 +97,7 @@ h6 {
 #return {
     cursor: pointer;
     position: fixed;
-    right: 95px;
+    right: 30px;
     top: 35px;
     z-index: 998;
 
@@ -867,10 +867,25 @@ main {
                 }
             }
 
-            p {
-                padding-top: 7.5px;
-                margin-bottom: 15px;
+            .row {
+                display: flex;
+                align-items: center;
+
+                p {
+                    padding-top: 7.5px;
+                    margin-bottom: 15px;
+                    width: 50%;
+
+                    input {
+                        width: 15px;
+                        height: 15px;
+                        display: inline-block;
+                        position: relative;
+                        top: 1px;
+                    }
+                }
             }
+
 
             button {
                 width: 100%;
@@ -892,6 +907,15 @@ main {
 
                 &:hover {
                     background-color: #F2A273;
+                }
+            }
+
+            #sign {
+                text-align: center;
+                margin-top: 15px;
+
+                a {
+                    color: #2c5ddb;
                 }
             }
         }
@@ -992,5 +1016,13 @@ main {
         width: 100%;
         padding-right: 15px;
         box-sizing: border-box;
+    }
+}
+
+.game_menu{
+    svg {
+        .star-2 {
+            transform: translateY(5px);
+        }
     }
 }

@@ -142,6 +142,12 @@
             </div>
             <div class="game_main">
               <div class="content">
+                <img
+                  v-if="sel === '' || options === ''"
+                  src="/images/game/background.png"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                  alt="background"
+                >
                 <!-- 影片 -->
                 <transition
                   type="transition"
@@ -237,14 +243,14 @@
                     <!-- 狀態1 -->
                     <div v-if="recording_state === 1">
                       <img
-                        @click="recording_return"
-                        class="return"
-                        src="/images/game/return.svg"
+                        class="sound"
+                        src="/images/game/sound.svg"
                         alt="surface"
                       >
                       <img
-                        class="sound"
-                        src="/images/game/sound.svg"
+                        @click="recording_return"
+                        class="return"
+                        src="/images/game/return.svg"
                         alt="surface"
                       >
                       <img
@@ -290,15 +296,33 @@
                   type="transition"
                   name="fade"
                 >
+                  <div v-if="sel === 0 && options === 3">
+                    <iframe
+                      style="
+                        width: 100%;
+                        height: 100%;
+                        transform: scale(1.03);
+                        position: absolute;
+                      "
+                      src="/iframe/d1/看圖配對.html"
+                      frameborder="0"
+                    />
+                  </div>
                   <div
                     class="game"
-                    v-if="options === 3"
+                    v-if="sel === 1 && options === 3"
                   >
                     <iframe
                       style="width: 100%; height: 100%; position: absolute"
                       src="/iframe/game1/筆順配對.html"
                       frameborder="0"
                     />
+                  </div>
+                  <div v-if="sel === 2 && options === 3">
+                    <d6 />
+                  </div>
+                  <div v-if="sel === 3 && options === 3">
+                    <img src="/images/game/d5.jpg" alt="d5.jpg">
                   </div>
                 </transition>
                 <!-- 遊戲 -->
@@ -348,14 +372,8 @@
       </div>
 
       <!-- 關閉 -->
-      <router-link
-        id="off"
-        to="/"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 73.41 73.41"
-        >
+      <!-- <router-link id="off" to="/">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
           <g>
             <path
               class="cls-1"
@@ -383,7 +401,7 @@
             />
           </g>
         </svg>
-      </router-link>
+      </router-link> -->
 
       <!-- 遊戲鎖定 -->
       <div
@@ -436,13 +454,13 @@
 import VueLoading from "./include/loading";
 import VueHeader from "./include/header";
 import VueFooter from "./include/footer";
-// import gameTest from "./game_page/test";
-export default {                                                                                                                                                                              
+import d6 from "./game_page/d6";
+export default {
   components: {
     VueLoading,
     VueHeader,
     VueFooter,
-    // gameTest
+    d6,
   },
   data() {
     return {
@@ -492,7 +510,7 @@ export default {
       //↓用來開啟遊戲畫面
       game: false,
       //↓用來變更遊戲內容
-      options: 0,
+      options: "",
       //↓遊戲單元顏色變換(上方選單)
       selArr: [
         {
@@ -513,7 +531,7 @@ export default {
         },
       ],
       //↓用來變更遊戲單元(上方選單)
-      sel: 0,
+      sel: "",
       //↓用來宣告index
       checkpoint_item: 0,
 
@@ -715,6 +733,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+* {
+  padding: 0;
+  margin: 0;
+}
 #game {
   // fill
   width: 100%;
@@ -836,14 +858,14 @@ export default {
         }
 
         img {
-          max-width: 45px;
-          max-height: 35px;
+          max-width: 50px;
+          max-height: 50px;
           margin: auto;
           display: block;
           position: absolute;
           left: 0;
           right: 0;
-          bottom: 50px;
+          bottom: 35px;
         }
 
         svg {
@@ -853,8 +875,9 @@ export default {
           position: absolute;
           left: 0;
           right: 0;
-          bottom: 20px;
+          bottom: 10px;
           fill: #fff;
+          overflow: visible;
         }
 
         &.styls0 {
@@ -906,6 +929,12 @@ export default {
 
           .item {
             background-color: #000 !important;
+            img{
+                  bottom: 30px;
+            }
+            svg {
+              display: none;
+            }
           }
         }
 
@@ -1037,11 +1066,11 @@ export default {
           // display: none;
         }
 
-        .say {
+        .sound {
           left: 15px;
         }
 
-        .sound {
+        .say {
           left: 0;
           right: 0;
           margin: auto;

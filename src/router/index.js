@@ -9,6 +9,7 @@ import records from '../views/records.vue'
 import theater from '../views/theater.vue'
 import settings from '../views/settings.vue'
 import test2 from '../views/test2.vue'
+import d6 from '../views/game_page/d6.vue'
 import store from '../store'
 
 
@@ -65,6 +66,11 @@ const routes = [
     path: '/test2',
     name: 'test2',
     component:test2
+  },
+  {
+    path: '/d6',
+    name: 'd6',
+    component:d6
   },
 ]
 const router = new VueRouter({
