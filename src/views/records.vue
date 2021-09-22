@@ -20,7 +20,7 @@
           <div id="records">
             <div class="game_options">
               <div class="h_options" v-if="options === 0">
-                <h1>My Level</h1>
+                <h1 style="color: #107b9e">My Level</h1>
                 <div class="hoc" v-if="level_text">
                   <ul class="hoct">
                     <li
@@ -112,8 +112,18 @@
                   </ul>
                 </div>
               </div>
+              <div v-if="options === 1">
+                <h1 style="color: #17a6af">My Tasks</h1>
+              </div>
               <div v-if="options === 2">
-                <h1 style="color: #b66444">ToDay {{ to_day }}</h1>
+                <h1 style="color: #a87ba7">My Achievement</h1>
+                <!-- <h1 style="color: #b66444">ToDay {{ to_day }}</h1> -->
+              </div>
+              <div v-if="options === 3">
+                <h1 style="color: #d7574e">My Calendar</h1>
+              </div>
+              <div v-if="options === 4">
+                <h1 style="color: #b66444">My Lessons</h1>
               </div>
             </div>
             <div class="game_menu">
@@ -347,7 +357,7 @@
                   </button>
                 </div>
                 <div v-show="options === 1">
-                  <div id="task">
+                  <div id="task" class="tasks">
                     <div id="time_checklist">
                       <div class="task_head freeze">
                         <div class="item" />
@@ -445,7 +455,7 @@
                     </div>
                   </div>
                 </div>
-                <div v-show="options === 2">
+                <div v-show="options === 4">
                   <div id="timetable">
                     <table v-if="!this.add_schedule">
                       <thead>
@@ -457,7 +467,8 @@
                         </tr>
                       </thead>
                       <!-- 目前的課表 -->
-                      <tbody v-if="curriculum && !current_class.length === 0">
+                      <tbody v-if="curriculum">
+                        <!-- curriculum && !current_class.length === 0 -->
                         <tr>
                           <td>SB3 / Unit1 / Story</td>
                           <td>6/1</td>
@@ -540,15 +551,28 @@
                           {{ item.item }}
                         </button>
                       </div>
-                      <button>Let's do it!</button>
+                      <button
+                        @click="
+                          curriculum = true;
+                          add_schedule = false;
+                        "
+                      >
+                        Let's do it!
+                      </button>
+                      <!--@click="curriculum = true" add_schedule = false-->
                     </div>
                   </div>
                 </div>
                 <div v-show="options === 3">
-                  <vc-calendar is-expanded />
+                  <!-- <vc-calendar is-expanded /> -->
+                  <img
+                    style="padding: 0; max-width: 925px"
+                    src="/images/calendar.png"
+                    alt="calendar"
+                  />
                 </div>
-                <div v-show="options === 4">
-                  <div id="task">
+                <div v-show="options === 2">
+                  <div id="task" class="calendar">
                     <div id="weekly" style="width: 100%">
                       <div class="weekly_head freeze">
                         <div class="item">Weekly Tasks</div>
@@ -668,8 +692,8 @@ export default {
           open: true,
         },
         {
-          img: "/images/records/menu2.svg",
-          styls2: true,
+          img: "/images/records/menu4.svg",
+          styls4: true,
           open: true,
         },
         {
@@ -678,8 +702,8 @@ export default {
           open: true,
         },
         {
-          img: "/images/records/menu4.svg",
-          styls4: true,
+          img: "/images/records/menu2.svg",
+          styls2: true,
           open: true,
         },
       ],
@@ -747,7 +771,7 @@ export default {
       timetable_classes: "1",
 
       // 課表
-      curriculum: true,
+      curriculum: false,
       add_schedule: false,
       current_class: [],
     };
@@ -1188,8 +1212,8 @@ export default {
         }
 
         img {
-          max-width: 40px;
-          max-height: 40px;
+          max-width: 55px;
+          max-height: 55px;
           margin: auto;
           display: block;
           position: absolute;
@@ -1558,6 +1582,57 @@ export default {
           }
           &::-webkit-scrollbar-thumb:hover {
             background-color: rgb(95, 95, 95);
+          }
+        }
+        &.tasks {
+          #time_checklist,
+          #weekly {
+            .task_head,
+            .weekly_head {
+              background-color: rgb(23, 166, 175);
+            }
+            .task_body,
+            .weekly_body {
+              // background-color: #d7fdff;
+              .row {
+                background-color: #d7fdff;
+              }
+            }
+          }
+        }
+        &.calendar {
+          #time_checklist,
+          #weekly {
+            width: calc(50% - 7.5px);
+            overflow-y: auto;
+            max-height: 574px;
+            .task_head,
+            .weekly_head {
+              background-color: #7d308e;
+            }
+            .task_body,
+            .weekly_body {
+              // background-color: #d7fdff;
+              .row {
+                background-color: #d2c3e0;
+                .item {
+                  color: #7e318f;
+                  .medal {
+                    background-color: #e8e6f3;
+                  }
+                  &.item:nth-child(2){
+                    .schedule{
+                      .photo{
+                        background-color: #e8e6f3;
+                        .strip{
+                          background-color: #7d308e;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

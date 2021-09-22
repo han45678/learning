@@ -2,9 +2,16 @@
   <footer>
     <div id="menu">
       <ul>
-        <li v-for="(item, index) in menu" :key="index" @click="not_open(index)">
+        <li
+          v-for="(item, index) in menu"
+          :key="index"
+          @click="not_open(index)"
+        >
           <router-link :to="item.link">
-            <img :src="item.img" alt="icon" />
+            <img
+              :src="item.img"
+              alt="icon"
+            >
             <span>{{ item.text }}</span>
           </router-link>
         </li>
@@ -14,9 +21,141 @@
         <div class="right" />
       </div>
     </div>
-    <div id="helper" v-if="$store.state.helper">
-      <div id="dialogue">小幫手尚未開放喔~</div>
-      <svg v-html="helper_svg" :xmlns="w3_svg" :viewBox="helper_svg_viewBox" />
+
+    <div
+      id="instruction"
+      v-if="instruction"
+    >
+      <img
+        v-if="helper"
+        class="helper"
+        src="/images/helper.svg"
+        alt="helper"
+      >
+      <img
+        v-else
+        class="helper"
+        src="/images/helper_excited.svg"
+        alt="helper"
+      >
+      <button
+        @click="return_game"
+        class="return"
+      >
+        <i class="fas fa-times" />
+      </button>
+      <div class="content">
+        <button
+          class="prev"
+          @click="prev"
+          v-if="isPrev"
+        >
+          <i class="fas fa-angle-left" />
+        </button>
+        <div
+          class="item"
+          v-show="instruction_page == 1"
+        >
+          <h2>Eye protection reminder</h2>
+          <p>
+            Boy, you have been playing for 30 minutes, so let your little eyes
+            rest.
+          </p>
+        </div>
+        <div
+          class="item"
+          v-show="instruction_page == 2"
+        >
+          <h3>HOW TO PLAY</h3>
+          <ul class="x2">
+            <li>
+              <span>1</span>
+              <img
+                src="/images/game/eye.svg"
+                alt="img"
+              >
+            </li>
+            <li>
+              <span>2</span>
+              <img
+                src="/images/game/clock.svg"
+                alt="img"
+              >
+            </li>
+          </ul>
+        </div>
+        <div
+          class="item"
+          v-show="instruction_page == 3"
+        >
+          <h3>HOW TO PLAY</h3>
+          <ul class="x4">
+            <li>
+              <span>1</span>
+              <img
+                src="/images/game/wal.svg"
+                alt="img"
+              >
+            </li>
+            <li>
+              <span>2</span>
+              <img
+                src="/images/game/speak.svg"
+                alt="img"
+              >
+            </li>
+            <li>
+              <span>3</span>
+              <img
+                src="/images/game/vocalize.svg"
+                alt="img"
+              >
+            </li>
+            <li>
+              <span>4</span>
+              <img
+                src="/images/game/clock.svg"
+                alt="img"
+              >
+            </li>
+          </ul>
+          <button
+            id="go"
+            @click="go_play"
+          >
+            GO it
+          </button>
+        </div>
+        <button
+          class="next"
+          @click="next"
+          v-if="isNext"
+        >
+          <i class="fas fa-angle-right" />
+        </button>
+      </div>
+    </div>
+    <div
+      v-if="instruction"
+      style="
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.6);
+      "
+    />
+    <div
+      @click="instruction = true"
+      id="helper"
+      v-if="$store.state.helper"
+    >
+      <svg
+        v-html="helper_svg"
+        :xmlns="w3_svg"
+        :viewBox="helper_svg_viewBox"
+      />
     </div>
   </footer>
 </template>
@@ -26,6 +165,7 @@
 export default {
   data() {
     return {
+      instruction: false,
       w3_svg: "http://www.w3.org/2000/svg",
       helper_svg_viewBox: "0 0 160.95 98.9",
       helper_svg:
@@ -39,34 +179,41 @@ export default {
         {
           link: "/records",
           img: "/images/menu/records.svg",
-          text: "records",
+          text: "Records",
         },
         {
           link: "/theater",
           img: "/images/menu/theater.svg",
-          text: "theater",
+          text: "Theater",
         },
         {
           link: "/playground",
           img: "/images/menu/playground.svg",
-          text: "playground",
+          text: "Games",
         },
         {
           link: "settings",
           img: "/images/menu/settings.svg",
-          text: "settings",
+          text: "Settings",
         },
         {
           link: "",
           img: "/images/menu/point.svg",
-          text: "point",
+          text: "Point",
         },
         {
           link: "",
           img: "/images/menu/danny.svg",
-          text: "danny",
+          text: "Danny",
         },
       ],
+      helper: true,
+      instruction_page: 1,
+
+      play_game: false,
+
+      isPrev: false,
+      isNext: true,
     };
   },
   methods: {
@@ -78,34 +225,271 @@ export default {
         this.$router.push(r);
       }
     },
+    prev() {
+      if (this.instruction_page == 2) {
+        this.helper = true;
+        this.isPrev = false;
+        this.instruction_page--;
+      } else {
+        this.instruction_page--;
+        this.helper = true;
+        this.isNext = true;
+      }
+    },
+    next() {
+      let max_next = document.querySelectorAll(
+        "#instruction .content .item"
+      ).length;
+
+      if (this.instruction_page >= max_next - 1) {
+        this.helper = false;
+        this.isNext = false;
+        this.instruction_page++;
+      } else {
+        this.instruction_page++;
+        this.isPrev = true;
+      }
+    },
+    return_game() {
+      this.$store.state.helper = true;
+      this.choose_unit = false;
+      this.choose_game = true;
+      this.instruction = false;
+    },
+    go_play() {
+      this.instruction = false;
+      this.play_game = true;
+    },
   },
 };
 </script>
 <style scoped lang="scss">
-#dialogue {
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 15px;
-  width: 150px;
-  left: -90%;
-  top: -80%;
-  text-align: center;
-  &::before {
-    content: "";
-    display: inline-block;
-    width: 15px;
-    height: 15px;
+#instruction {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #231815;
+  background-color: #7a7a7a;
+  border-radius: 15px;
+  max-width: 965px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 564px;
+  overflow: hidden;
+  z-index: 1;
+  .helper {
+    width: 335px;
     position: absolute;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fff;
-    transform: rotate(45deg);
-    bottom: -7.5px;
-    right: 15px;
+    right: -65px;
+    bottom: -50px;
+    z-index: 1;
+  }
+  .content {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border-radius: 5px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: #e2f2ef;
+    border: 1px solid #231815;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    .item {
+      height: 100%;
+      h2 {
+        text-align: center;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        font-size: 64px;
+      }
+      p {
+        padding-left: 100px;
+        padding-right: 100px;
+        font-size: 32px;
+        line-height: 1.5;
+      }
+      h3 {
+        text-align: center;
+        font-size: 48px;
+        padding-top: 35px;
+        padding-bottom: 50px;
+      }
+      ul.x2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+
+        li {
+          width: calc(50% - 15px);
+          padding-bottom: 46.43%;
+          position: relative;
+          border: 3px solid #107b9e;
+          border-radius: 10px;
+          margin-top: 45px;
+          cursor: pointer;
+
+          span {
+            position: absolute;
+            top: -45px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            background-color: #107b9e;
+            color: #fff;
+            border-radius: 999px;
+          }
+
+          img {
+            width: 100%;
+            max-height: 195px;
+            max-width: 195px;
+            box-sizing: border-box;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px;
+          }
+
+          &:hover {
+            background-color: #107b9e;
+          }
+        }
+      }
+      ul.x4 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+
+        li {
+          width: calc(25% - 15px);
+          padding-bottom: 23.126%;
+          position: relative;
+          border: 3px solid #107b9e;
+          border-radius: 10px;
+          margin-top: 45px;
+          cursor: pointer;
+
+          span {
+            position: absolute;
+            top: -45px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            background-color: #107b9e;
+            color: #fff;
+            border-radius: 999px;
+          }
+
+          img {
+            width: 100%;
+            max-height: 195px;
+            max-width: 195px;
+            box-sizing: border-box;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px;
+          }
+
+          &:hover {
+            background-color: #107b9e;
+          }
+        }
+      }
+    }
+  }
+  .return {
+    cursor: pointer;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    right: 30px;
+    top: 30px;
+    border-radius: 99px;
+    border: none;
+    background: #d6574e;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    z-index: 1;
+    &:hover {
+      filter: brightness(0.7);
+    }
   }
 }
-footer #menu ul{
+#instruction .next:hover,
+#instruction .prev:hover {
+  color: #fff;
+  background-color: #107b9e;
+}
+
+#instruction .prev {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#instruction .next {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#instruction .next,
+#instruction .prev {
+  text-align: center;
+  cursor: pointer;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  line-height: 44px;
+  border-radius: 99px;
+  border: 3px solid #107b9e;
+  color: #107b9e;
+  background-color: transparent;
+}
+
+#go {
+  cursor: pointer;
+  width: 120px;
+  line-height: 39px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-size: 24px;
+  background-color: #107b9e;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  border: 3px solid transparent;
+}
+
+#go:hover {
+  border: 3px solid #107b9e;
+  background-color: #fff;
+  color: #107b9e;
+}
+
+footer #menu ul {
   margin-bottom: 0;
 }
 </style>

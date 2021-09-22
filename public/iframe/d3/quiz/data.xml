@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><NXiDEA>
+  <Resource>
+    <File id="PNG20210907160638"><![CDATA[box.png]]></File>
+    <File id="PNG202109071605261"><![CDATA[B_工作區域 1.png]]></File>
+    <File id="PNG20210907160526"><![CDATA[A_工作區域 1.png]]></File>
+    <File id="PNG202109071605251"><![CDATA[小A_工作區域 1.png]]></File>
+    <File id="PNG202109071605262"><![CDATA[C_工作區域 1.png]]></File>
+    <File id="PNG202109071605254"><![CDATA[小D_工作區域 1.png]]></File>
+    <File id="PNG20210907160525"><![CDATA[D_工作區域 1.png]]></File>
+    <File id="PNG202109071605253"><![CDATA[小C_工作區域 1.png]]></File>
+    <File id="PNG202109071605252"><![CDATA[小B_工作區域 1.png]]></File>
+  </Resource>
+  <ResourceMap>
+    <Map id="PNG20210907160638">PNG</Map>
+    <Map id="PNG202109071605261">PNG</Map>
+    <Map id="PNG20210907160526">PNG</Map>
+    <Map id="PNG202109071605251">PNG</Map>
+    <Map id="PNG202109071605262">PNG</Map>
+    <Map id="PNG202109071605254">PNG</Map>
+    <Map id="PNG20210907160525">PNG</Map>
+    <Map id="PNG202109071605253">PNG</Map>
+    <Map id="PNG202109071605252">PNG</Map>
+    <Map id="GMTITLEA01">AUTO</Map>
+    <Map id="GMTITLED0">AUTO</Map>
+    <Map id="GMTITLED01">AUTO</Map>
+    <Map id="GMTITLEA0">AUTO</Map>
+    <Map id="GMTITLEA00">AUTO</Map>
+    <Map id="GMCLASSHITGAMEAUTOTYPEB01">AUTO</Map>
+    <Map id="GMTITLEC00">AUTO</Map>
+    <Map id="GMTOOLBARA01">AUTO</Map>
+    <Map id="GMTITLEE01">AUTO</Map>
+    <Map id="GMCLASSHITGAMEAUTOTYPEB03">AUTO</Map>
+    <Map id="GMTITLEE0">AUTO</Map>
+    <Map id="GMCLASSHITGAMEAUTOTYPEB04">AUTO</Map>
+    <Map id="KEYBOARDCLASS">KEYBOARD</Map>
+    <Map id="GMTITLEE00">AUTO</Map>
+    <Map id="GMTITLEC01">AUTO</Map>
+    <Map id="NXFLEXTEXTFILED">FLEXTEXT</Map>
+    <Map id="GMTITLED00">AUTO</Map>
+    <Map id="BTNSOUNDCLASS">AUTO</Map>
+    <Map id="GMCLASSHITGAMEAUTOTYPEB02">AUTO</Map>
+    <Map id="GMTITLEB00">AUTO</Map>
+    <Map id="GMTITLEB01">AUTO</Map>
+    <Map id="GMTITLEB0">AUTO</Map>
+    <Map id="GMTITLEC0">AUTO</Map>
+    <Map id="FLIPAUTO">AUTO</Map>
+  </ResourceMap>
+  <Prop>
+    <PageSize>1</PageSize>
+    <SoundCount>2</SoundCount>
+    <PageIntroSoundStatus>2</PageIntroSoundStatus>
+    <PageMenuTitle/>
+    <ProjectClass>GMTitleA</ProjectClass>
+    <ProjectTotalTimes>0</ProjectTotalTimes>
+    <ProjectTotalScores>0</ProjectTotalScores>
+  </Prop>
+  <PageData index="0">
+    <inPoint time="0" score="0"/>
+    <type>Type5</type>
+    <bgColor>0xFFFFFF</bgColor>
+    <bgWidth>1024</bgWidth>
+    <bgHeight>768</bgHeight>
+    <bgWidth2>1024</bgWidth2>
+    <bgHeight2>768</bgHeight2>
+    <bgWidth3>1024</bgWidth3>
+    <bgHeight3>768</bgHeight3>
+    <mulitSoundBtnVisible>true</mulitSoundBtnVisible>
+    <mulitCheckBtnVisible>true</mulitCheckBtnVisible>
+    <borderMaskShow>false</borderMaskShow>
+    <mulitUserBreakLine x="1022" y="384" scaleX="1" scaleY="1" x2="1022" y2="384" scaleX2="1" scaleY2="1" x3="1022" y3="384" scaleX3="1" scaleY3="1">MulitiBreakLineA01</mulitUserBreakLine>
+    <winMC x="510" y="384" scaleX="1" scaleY="1" x2="510" y2="384" scaleX2="1" scaleY2="1" x3="510" y3="384" scaleX3="1" scaleY3="1">GMClassRightMC0</winMC>
+    <faultMC x="510" y="384" scaleX="1" scaleY="1" x2="510" y2="384" scaleX2="1" scaleY2="1" x3="510" y3="384" scaleX3="1" scaleY3="1">GMClassWrongMC0</faultMC>
+    <sound x="32" y="112" scaleX="1" scaleY="1" x2="32" y2="112" scaleX2="1" scaleY2="1" x3="32" y3="112" scaleX3="1" scaleY3="1"/>
+    <layout>U20210907160651,U20210907160649,U20210907160650,U20210907160642,U20210907160704,U20210907160700,U20210907160703,U20210907160705</layout>
+    <activeMC>U20210907160649,U20210907160642,U20210907160650,U20210907160651</activeMC>
+    <activeMCP>U20210907160700,U20210907160703,U20210907160704,U20210907160705</activeMCP>
+    <activeRightSets>U20210907160642</activeRightSets>
+    <activeRightSets>U20210907160649</activeRightSets>
+    <activeRightSets>U20210907160650</activeRightSets>
+    <activeRightSets>U20210907160651</activeRightSets>
+    <baseMC/>
+    <unit id="PNG20210907160525" x="185.45" y="190.15" originX="-187" originY="-476" scaleX="0.4556024968624115" scaleY="0.4556024968624115" sound="" x2="185.45" y2="190.15" scaleX2="0.4556024968624115" scaleY2="0.4556024968624115" x3="185.45" y3="190.15" scaleX3="0.4556024968624115" scaleY3="0.4556024968624115" text="" fontName="Consolas" fontAlign="center" fontSize="12" fontMaxSize="12" fontColor="0" assetFontSize="12" letterSpacing="0" textWidth="374" textHeight="476" textWidth2="374" textHeight2="476" textWidth3="374" textHeight3="476" chinaCode="false" group="0">U20210907160651</unit>
+    <unit id="PNG202109071605261" x="412.75" y="190.15" originX="-187" originY="-476" scaleX="0.4556024968624115" scaleY="0.4556024968624115" sound="" x2="412.75" y2="190.15" scaleX2="0.4556024968624115" scaleY2="0.4556024968624115" x3="412.75" y3="190.15" scaleX3="0.4556024968624115" scaleY3="0.4556024968624115" text="" fontName="Consolas" fontAlign="center" fontSize="12" fontMaxSize="12" fontColor="0" assetFontSize="12" letterSpacing="0" textWidth="374" textHeight="476" textWidth2="374" textHeight2="476" textWidth3="374" textHeight3="476" chinaCode="false" group="0">U20210907160649</unit>
+    <unit id="PNG202109071605262" x="640.05" y="190.15" originX="-187" originY="-476" scaleX="0.4556024968624115" scaleY="0.4556024968624115" sound="" x2="640.05" y2="190.15" scaleX2="0.4556024968624115" scaleY2="0.4556024968624115" x3="640.05" y3="190.15" scaleX3="0.4556024968624115" scaleY3="0.4556024968624115" text="" fontName="Consolas" fontAlign="center" fontSize="12" fontMaxSize="12" fontColor="0" assetFontSize="12" letterSpacing="0" textWidth="374" textHeight="476" textWidth2="374" textHeight2="476" textWidth3="374" textHeight3="476" chinaCode="false" group="0">U20210907160650</unit>
+    <unit id="PNG20210907160526" x="867.45" y="190.15" originX="-187" originY="-476" scaleX="0.4556024968624115" scaleY="0.4556024968624115" sound="" x2="867.45" y2="190.15" scaleX2="0.4556024968624115" scaleY2="0.4556024968624115" x3="867.45" y3="190.15" scaleX3="0.4556024968624115" scaleY3="0.4556024968624115" text="" fontName="Consolas" fontAlign="center" fontSize="12" fontMaxSize="12" fontColor="0" assetFontSize="12" letterSpacing="0" textWidth="374" textHeight="476" textWidth2="374" textHeight2="476" textWidth3="374" textHeight3="476" chinaCode="false" group="0">U20210907160642</unit>
+    <unit id="PNG202109071605253" passType="ONE" x="168.1" y="637.5" originX="-187" originY="0" scaleX="0.4556024968624115" scaleY="0.4556024968624115" sound="" x2="168.1" y2="637.5" scaleX2="0.4556024968624115" scaleY2="0.4556024968624115" x3="168.1" y3="637.5" scaleX3="0.4556024968624115" scaleY3="0.4556024968624115" text="" fontName="Consolas" fontAlign="center" fontSize="12" fontMaxSize="12" fontColor="0" assetFontSize="12" letterSpacing="0" textWidth="374" textHeight="450" textWidth2="374" textHeight2="450" textWidth3="374" textHeight3="450" chinaCode="false" group="0">U20210907160704</unit>
+    <unit id="PNG202109071605251" passType="ONE" x="407.1" y="637.5" originX="-187" originY="0" scaleX="0.4556024968624115" scaleY="0.4556024968624115" sound="" x2="407.1" y2="637.5" scaleX2="0.4556024968624115" scaleY2="0.4556024968624115" x3="407.1" y3="637.5" scaleX3="0.4556024968624115" scaleY3="0.4556024968624115" text="" fontName="Consolas" fontAlign="center" fontSize="12" fontMaxSize="12" fontColor="0" assetFontSize="12" letterSpacing="0" textWidth="374" textHeight="450" textWidth2="374" textHeight2="450" textWidth3="374" textHeight3="450" chinaCode="false" group="0">U20210907160700</unit>
+    <unit id="PNG202109071605252" passType="ONE" x="646.1" y="637.5" originX="-187" originY="0" scaleX="0.4556024968624115" scaleY="0.4556024968624115" sound="" x2="646.1" y2="637.5" scaleX2="0.4556024968624115" scaleY2="0.4556024968624115" x3="646.1" y3="637.5" scaleX3="0.4556024968624115" scaleY3="0.4556024968624115" text="" fontName="Consolas" fontAlign="center" fontSize="12" fontMaxSize="12" fontColor="0" assetFontSize="12" letterSpacing="0" textWidth="374" textHeight="450" textWidth2="374" textHeight2="450" textWidth3="374" textHeight3="450" chinaCode="false" group="0">U20210907160703</unit>
+    <unit id="PNG202109071605254" passType="ONE" x="885.1" y="637.5" originX="-187" originY="0" scaleX="0.4556024968624115" scaleY="0.4556024968624115" sound="" x2="885.1" y2="637.5" scaleX2="0.4556024968624115" scaleY2="0.4556024968624115" x3="885.1" y3="637.5" scaleX3="0.4556024968624115" scaleY3="0.4556024968624115" text="" fontName="Consolas" fontAlign="center" fontSize="12" fontMaxSize="12" fontColor="0" assetFontSize="12" letterSpacing="0" textWidth="374" textHeight="450" textWidth2="374" textHeight2="450" textWidth3="374" textHeight3="450" chinaCode="false" group="0">U20210907160705</unit>
+  </PageData>
+</NXiDEA>

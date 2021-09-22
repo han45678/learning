@@ -46,6 +46,9 @@ h6 {
 @import './page/header';
 @import './page/footer';
 
+*,a,button,table{
+    text-transform:capitalize
+}
 
 #off {
     cursor: pointer;

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><NXiDEA>
+  <Pages>
+    <Page SubClass="" HasData="true" AutoSoundCount="2" TitleClass="ClassA" PeopleSize="1" PageStageWidth="1024" PageStageHeight="768" CustomWidth="1024" CustomWidth2="1024" CustomWidth3="1024" CustomHeight="768" CustomHeight2="768" CustomHeight3="768" OpenStage1="1" OpenStage2="0" OpenStage3="0" IsApp="false" IntroSoundStatus="2" Index="0" ID="P20210907160255" MenuTitle="">
+      <ActionMC>
+        <Unit main="U20210907160302"/>
+      </ActionMC>
+      <vActiveMCP>
+        <Unit main="U20210907160302"/>
+      </vActiveMCP>
+      <vEmbedData>
+        <Unit main="BASE" source="GMTITLEA0">U20210907160302</Unit>
+      </vEmbedData>
+      <vContentItemList/>
+      <vContentItem>
+        <Unit Name="U20210907160302">
+          <vFrame name="U20210907160302" type="AUTO" index="0" orgWidth="1024.05" orgHeight="768" x="0" y="0" lock="no" scaleX="1" scaleY="1" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="0" contentY="0" source="GMTITLEA0" objType="0" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+      </vContentItem>
+    </Page>
+    <Page SubClass="GameSubType5" HasData="true" AutoSoundCount="2" TitleClass="" PeopleSize="0" PageStageWidth="1024" PageStageHeight="768" CustomWidth="1024" CustomWidth2="1024" CustomWidth3="1024" CustomHeight="768" CustomHeight2="768" CustomHeight3="768" OpenStage1="1" OpenStage2="0" OpenStage3="0" IsApp="false" IntroSoundStatus="2" Index="1" ID="P20210907160307" MenuTitle="">
+      <ActionMC>
+        <Unit main="U202109071611002">U20210907161035</Unit>
+        <Unit main="U202109071611001">U20210907161046</Unit>
+        <Unit main="U202109071603071"/>
+        <Unit main="U20210907161100">U20210907161043</Unit>
+        <Unit main="U20210907160642"/>
+        <Unit main="U20210907160649"/>
+        <Unit main="U20210907161035">U202109071611002</Unit>
+        <Unit main="U20210907160650"/>
+        <Unit main="U20210907161046">U202109071611001</Unit>
+        <Unit main="U20210907160651"/>
+        <Unit main="U20210907160700"/>
+        <Unit main="U20210907161027">U202109071611003</Unit>
+        <Unit main="U202109071611003">U20210907161027</Unit>
+        <Unit main="U20210907160703"/>
+        <Unit main="U20210907161043">U20210907161100</Unit>
+        <Unit main="U20210907160704"/>
+        <Unit main="U20210907160705"/>
+      </ActionMC>
+      <vActiveMCP>
+        <Unit main="U202109071611002"/>
+        <Unit main="U202109071611001"/>
+        <Unit main="U202109071603071"/>
+        <Unit main="U20210907161100"/>
+        <Unit main="U20210907160642"/>
+        <Unit main="U20210907160649"/>
+        <Unit main="U20210907161035"/>
+        <Unit main="U20210907160650"/>
+        <Unit main="U20210907161046"/>
+        <Unit main="U20210907160651"/>
+        <Unit main="U20210907160700"/>
+        <Unit main="U20210907161027"/>
+        <Unit main="U202109071611003"/>
+        <Unit main="U20210907160703"/>
+        <Unit main="U20210907161043"/>
+        <Unit main="U20210907160704"/>
+        <Unit main="U20210907160705"/>
+      </vActiveMCP>
+      <vEmbedData>
+        <Unit main="SOUNDBTN" source="BTNSOUNDCLASS">U202109071603071</Unit>
+      </vEmbedData>
+      <vContentItemList>
+        <Unit depth="1">U20210907160642</Unit>
+        <Unit depth="2">U20210907160649</Unit>
+        <Unit depth="3">U20210907160650</Unit>
+        <Unit depth="4">U20210907160651</Unit>
+        <Unit depth="5">U20210907160700</Unit>
+        <Unit depth="6">U20210907160703</Unit>
+        <Unit depth="7">U20210907160704</Unit>
+        <Unit depth="8">U20210907160705</Unit>
+        <Unit depth="9">U20210907161027</Unit>
+        <Unit depth="10">U20210907161035</Unit>
+        <Unit depth="11">U20210907161043</Unit>
+        <Unit depth="12">U20210907161046</Unit>
+        <Unit depth="13">U20210907161100</Unit>
+        <Unit depth="14">U202109071611001</Unit>
+        <Unit depth="15">U202109071611002</Unit>
+        <Unit depth="16">U202109071611003</Unit>
+      </vContentItemList>
+      <vContentItem>
+        <Unit Name="U202109071603071">
+          <vFrame name="U202109071603071" type="AUTO" index="0" orgWidth="64" orgHeight="64" x="76" y="113" lock="no" scaleX="1" scaleY="1" x2="32" y2="112" x3="32" y3="112" scaleX2="1" scaleY2="1" scaleX3="1" scaleY3="1" contentX="-32" contentY="-32" source="BTNSOUNDCLASS" objType="0" mp3="MP320210911104330">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907160642">
+          <vFrame name="U20210907160642" type="PNG" index="0" orgWidth="374" orgHeight="418" x="867.45" y="190.15" lock="no" scaleX="0.4556024968624115" scaleY="0.4556024968624115" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-187" contentY="-209" source="PNG20210907160526" objType="0" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907160649">
+          <vFrame name="U20210907160649" type="PNG" index="0" orgWidth="374" orgHeight="418" x="412.75" y="190.15" lock="no" scaleX="0.4556024968624115" scaleY="0.4556024968624115" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-187" contentY="-209" source="PNG202109071605261" objType="0" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907160650">
+          <vFrame name="U20210907160650" type="PNG" index="0" orgWidth="374" orgHeight="418" x="640.05" y="190.15" lock="no" scaleX="0.4556024968624115" scaleY="0.4556024968624115" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-187" contentY="-209" source="PNG202109071605262" objType="0" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907160651">
+          <vFrame name="U20210907160651" type="PNG" index="0" orgWidth="374" orgHeight="418" x="185.45" y="190.15" lock="no" scaleX="0.4556024968624115" scaleY="0.4556024968624115" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-187" contentY="-209" source="PNG20210907160525" objType="0" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907160700">
+          <vFrame name="U20210907160700" type="PNG" index="0" orgWidth="374" orgHeight="418" x="407.1" y="637.5" lock="no" scaleX="0.4556024968624115" scaleY="0.4556024968624115" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-187" contentY="-209" source="PNG202109071605251" objType="0" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907160703">
+          <vFrame name="U20210907160703" type="PNG" index="0" orgWidth="374" orgHeight="418" x="646.1" y="637.5" lock="no" scaleX="0.4556024968624115" scaleY="0.4556024968624115" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-187" contentY="-209" source="PNG202109071605252" objType="0" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907160704">
+          <vFrame name="U20210907160704" type="PNG" index="0" orgWidth="374" orgHeight="418" x="168.1" y="637.5" lock="no" scaleX="0.4556024968624115" scaleY="0.4556024968624115" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-187" contentY="-209" source="PNG202109071605253" objType="0" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907160705">
+          <vFrame name="U20210907160705" type="PNG" index="0" orgWidth="374" orgHeight="418" x="885.1" y="637.5" lock="no" scaleX="0.4556024968624115" scaleY="0.4556024968624115" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-187" contentY="-209" source="PNG202109071605254" objType="0" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="undefined" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907161027">
+          <vFrame name="U20210907161027" type="PNG" index="0" orgWidth="100" orgHeight="100" x="151.55" y="306.15" lock="no" scaleX="0.37561947107315063" scaleY="0.37561947107315063" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-50" contentY="-50" source="PNG20210907160638" objType="1" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="null" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907161035">
+          <vFrame name="U20210907161035" type="PNG" index="0" orgWidth="100" orgHeight="100" x="397.55" y="306.15" lock="no" scaleX="0.37561947107315063" scaleY="0.37561947107315063" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-50" contentY="-50" source="PNG20210907160638" objType="1" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="null" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907161043">
+          <vFrame name="U20210907161043" type="PNG" index="0" orgWidth="100" orgHeight="100" x="643.55" y="306.15" lock="no" scaleX="0.37561947107315063" scaleY="0.37561947107315063" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-50" contentY="-50" source="PNG20210907160638" objType="1" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="null" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907161046">
+          <vFrame name="U20210907161046" type="PNG" index="0" orgWidth="100" orgHeight="100" x="861.55" y="306.15" lock="no" scaleX="0.37561947107315063" scaleY="0.37561947107315063" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-50" contentY="-50" source="PNG20210907160638" objType="1" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="null" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U20210907161100">
+          <vFrame name="U20210907161100" type="PNG" index="0" orgWidth="100" orgHeight="100" x="168.55" y="532.15" lock="no" scaleX="0.37561947107315063" scaleY="0.37561947107315063" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-50" contentY="-50" source="PNG20210907160638" objType="2" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="ONE" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U202109071611001">
+          <vFrame name="U202109071611001" type="PNG" index="0" orgWidth="100" orgHeight="100" x="414.55" y="532.15" lock="no" scaleX="0.37561947107315063" scaleY="0.37561947107315063" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-50" contentY="-50" source="PNG20210907160638" objType="2" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="ONE" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U202109071611002">
+          <vFrame name="U202109071611002" type="PNG" index="0" orgWidth="100" orgHeight="100" x="660.55" y="532.15" lock="no" scaleX="0.37561947107315063" scaleY="0.37561947107315063" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-50" contentY="-50" source="PNG20210907160638" objType="2" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="ONE" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+        <Unit Name="U202109071611003">
+          <vFrame name="U202109071611003" type="PNG" index="0" orgWidth="100" orgHeight="100" x="878.55" y="532.15" lock="no" scaleX="0.37561947107315063" scaleY="0.37561947107315063" x2="NaN" y2="NaN" x3="NaN" y3="NaN" scaleX2="NaN" scaleY2="NaN" scaleX3="NaN" scaleY3="NaN" contentX="-50" contentY="-50" source="PNG20210907160638" objType="2" mp3="null">
+            <autoObjType group="0" size="undefined" matchCondition="ONE" optText="" chinaCode="false"/>
+          </vFrame>
+        </Unit>
+      </vContentItem>
+    </Page>
+  </Pages>
+  <Lib>
+    <Resource name="PNG202109071605254" type="PNG" tagName="小D_工作區域 1.png" viewDataW="374" viewDataH="418"><![CDATA[小D_工作區域 1.png]]></Resource>
+    <Resource name="PNG202109071605262" type="PNG" tagName="C_工作區域 1.png" viewDataW="374" viewDataH="418"><![CDATA[C_工作區域 1.png]]></Resource>
+    <Resource name="MP320210911104330" type="MP3" tagName="AnnaTom.mp3" viewDataW="50" viewDataH="54"><![CDATA[AnnaTom.mp3]]></Resource>
+    <Resource name="PNG202109071605251" type="PNG" tagName="小A_工作區域 1.png" viewDataW="374" viewDataH="418"><![CDATA[小A_工作區域 1.png]]></Resource>
+    <Resource name="PNG20210907160525" type="PNG" tagName="D_工作區域 1.png" viewDataW="374" viewDataH="418"><![CDATA[D_工作區域 1.png]]></Resource>
+    <Resource name="PNG202109071605253" type="PNG" tagName="小C_工作區域 1.png" viewDataW="374" viewDataH="418"><![CDATA[小C_工作區域 1.png]]></Resource>
+    <Resource name="PNG202109071605252" type="PNG" tagName="小B_工作區域 1.png" viewDataW="374" viewDataH="418"><![CDATA[小B_工作區域 1.png]]></Resource>
+    <Resource name="PNG20210907160638" type="PNG" tagName="box.png" viewDataW="100" viewDataH="100"><![CDATA[box.png]]></Resource>
+    <Resource name="PNG202109071605261" type="PNG" tagName="B_工作區域 1.png" viewDataW="374" viewDataH="418"><![CDATA[B_工作區域 1.png]]></Resource>
+    <Resource name="PNG20210907160526" type="PNG" tagName="A_工作區域 1.png" viewDataW="374" viewDataH="418"><![CDATA[A_工作區域 1.png]]></Resource>
+  </Lib>
+</NXiDEA>
