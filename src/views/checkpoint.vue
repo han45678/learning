@@ -60,9 +60,18 @@
               }"
             >
               <div class="item">
-                <span v-if="item.title" class="title">{{ item.title }}</span>
-                <span v-if="item.number" class="number">{{ item.number }}</span>
-                <span v-if="item.text" class="text">{{ item.text }}</span>
+                <span
+                  v-if="item.title"
+                  class="title"
+                >{{ item.title }}</span>
+                <span
+                  v-if="item.number"
+                  class="number"
+                >{{ item.number }}</span>
+                <span
+                  v-if="item.text"
+                  class="text"
+                >{{ item.text }}</span>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +80,10 @@
               />
             </div>
           </div>
-          <img :src="info.map" :alt="info.map" />
+          <img
+            :src="info.map"
+            :alt="info.map"
+          >
         </main>
       </transition>
 
@@ -115,7 +127,10 @@
                   ]"
                 >
                   <div class="item">
-                    <img :src="item.img" alt="icon" />
+                    <img
+                      :src="item.img"
+                      alt="icon"
+                    >
                     <svg
                       v-html="game_star_svg"
                       xmlns="http://www.w3.org/2000/svg"
@@ -129,29 +144,53 @@
               <div class="content">
                 <img
                   v-if="sel === '' || options === ''"
-                  src="/images/game/background.png"
+                  src="images/game/background.png"
                   style="width: 100%; height: 100%; object-fit: cover"
                   alt="background"
-                />
+                >
                 <!-- 影片 -->
-                <transition type="transition" name="fade">
-                  <div class="video" v-show="options === 0">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="video"
+                    v-show="options === 0"
+                  >
                     <video controls>
-                      <source src="/video/1580455.mp4" type="video/mp4" />
+                      <source
+                        src="video/Ant.mp4"
+                        type="video/mp4"
+                      >
                     </video>
                   </div>
                 </transition>
                 <!-- 電影 -->
-                <transition type="transition" name="fade">
-                  <div class="movie" v-if="options === 1">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="movie"
+                    v-if="options === 1"
+                  >
                     <video controls>
-                      <source src="/video/sky2408.mp4" type="video/mp4" />
+                      <source
+                        src="video/Apple.mp4"
+                        type="video/mp4"
+                      >
                     </video>
                   </div>
                 </transition>
                 <!-- 錄音 -->
-                <transition type="transition" name="fade">
-                  <div class="mic" v-if="options === 2">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="mic"
+                    v-if="options === 2"
+                  >
                     <iframe
                       style="
                         width: 100%;
@@ -160,13 +199,16 @@
                         transform: scale(0.99) scaleX(1.04);
                         top: -1%;
                       "
-                      src="https://sks.nxidea.link/king/speak/"
+                      src="https://sks.nxidea.link/king/kenny/index.html"
                       frameborder="0"
                     />
                   </div>
                 </transition>
                 <!-- 遊戲 -->
-                <transition type="transition" name="fade">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
                   <div v-if="sel === 0 && options === 3">
                     <iframe
                       style="
@@ -175,28 +217,44 @@
                         transform: scale(1.03);
                         position: absolute;
                       "
-                      src="/iframe/d1/看圖配對.html"
+                      src="iframe/d1/看圖配對.html"
                       frameborder="0"
                     />
                   </div>
-                  <div class="game" v-if="sel === 1 && options === 4">
+                  <div
+                    class="game"
+                    v-if="sel === 1 && options === 3"
+                  >
                     <iframe
                       style="width: 100%; height: 100%; position: absolute"
-                      src="/iframe/d3/連連看.html"
+                      src="iframe/d2/index.html"
                       frameborder="0"
                     />
                   </div>
-                  <div class="game" v-if="sel === 1 && options === 5">
+                  <div
+                    class="game"
+                    v-if="sel === 1 && options === 4"
+                  >
                     <iframe
                       style="width: 100%; height: 100%; position: absolute"
-                      src="/iframe/game1/筆順配對.html"
+                      src="iframe/U1_Letters_D3/U1_Letters_D3.html"
+                      frameborder="0"
+                    />
+                  </div>
+                  <div
+                    class="game"
+                    v-if="sel === 1 && options === 5"
+                  >
+                    <iframe
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/game1/筆順配對.html"
                       frameborder="0"
                     />
                   </div>
                   <div v-if="sel === 2 && options === 3">
                     <iframe
                       style="width: 100%; height: 100%; position: absolute"
-                      src="/iframe/d5/選擇題.html"
+                      src="iframe/U1_SP_D5-1/U1_SP_D5-1.html"
                       frameborder="0"
                     />
                   </div>
@@ -206,7 +264,7 @@
                   <div v-if="sel === 3 && options === 3">
                     <iframe
                       style="width: 100%; height: 100%; position: absolute"
-                      src="/iframe/d5/選擇題.html"
+                      src="iframe/U1_Vocabulary_D5/U1_Vocabulary_D5.html"
                       frameborder="0"
                     />
                   </div>
@@ -225,8 +283,15 @@
       />
 
       <!-- 返回 -->
-      <div v-if="game" id="return" @click="off_game">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
+      <div
+        v-if="game"
+        id="return"
+        @click="off_game"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 73.41 73.41"
+        >
           <g>
             <path
               class="cls-1"
@@ -241,7 +306,7 @@
       </div>
 
       <!-- 關閉 -->
-      <!-- <router-link id="off" to="/">
+      <!-- <router-link id="off" to="">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
           <g>
             <path
@@ -273,13 +338,33 @@
       </router-link> -->
 
       <!-- 遊戲鎖定 -->
-      <div v-if="info.lock" id="lock" :class="{ unlock: info.unlock }">
-        <img class="background" src="/images/cloud.png" alt="cloud" />
+      <div
+        v-if="info.lock"
+        id="lock"
+        :class="{ unlock: info.unlock }"
+      >
+        <img
+          class="background"
+          src="images/cloud.png"
+          alt="cloud"
+        >
         <div class="content">
           <div id="lock_main">
-            <img class="ear" src="/images/lock/lock_ear.webp" alt="lock" />
-            <img class="left" src="/images/lock/lock_l.webp" alt="lock" />
-            <img class="right" src="/images/lock/lock_r.webp" alt="lock" />
+            <img
+              class="ear"
+              src="images/lock/lock_ear.webp"
+              alt="lock"
+            >
+            <img
+              class="left"
+              src="images/lock/lock_l.webp"
+              alt="lock"
+            >
+            <img
+              class="right"
+              src="images/lock/lock_r.webp"
+              alt="lock"
+            >
             <div class="key" />
           </div>
           <ul class="condition">
@@ -406,35 +491,35 @@ export default {
           s1: true,
           s2: false,
           s3: false,
-          img: "/images/game/video.svg",
+          img: "images/game/video.svg",
         },
         {
           grayscale: false,
           s1: true,
           s2: true,
           s3: true,
-          img: "/images/game/movie.svg",
+          img: "images/game/movie.svg",
         },
         {
           grayscale: false,
           s1: true,
           s2: false,
           s3: false,
-          img: "/images/game/mic.svg",
+          img: "images/game/mic.svg",
         },
         {
           grayscale: false,
           s1: true,
           s2: true,
           s3: false,
-          img: "/images/game/game.svg",
+          img: "images/game/game.svg",
         },
         {
           grayscale: true,
           s1: false,
           s2: false,
           s3: false,
-          img: "/images/game/game.svg",
+          img: "images/game/game.svg",
         },
       ],
 
@@ -485,8 +570,8 @@ export default {
       let sel = this.sel;
 
       this.$axios
-        // .get("/json/game" + this.checkpoint_item + "-" + sel + ".json")
-        .get("/json/game0-" + sel + ".json")
+        // .get("json/game" + this.checkpoint_item + "-" + sel + ".json")
+        .get("json/game0-" + sel + ".json")
         .then((res) => (this.game_menu_options = res.data))
         .catch(function (error) {
           console.log(error);
@@ -495,7 +580,7 @@ export default {
     info_data() {
       let o = this.order;
       this.$axios
-        .get("/json/checkpoint_" + o + ".json")
+        .get("json/checkpoint_" + o + ".json")
         .then((res) => (this.info = res.data))
         .catch(function (error) {
           console.log(error);
@@ -679,7 +764,8 @@ export default {
     width: 132px;
     margin-right: 38px;
     max-height: 585px;
-    overflow-y: auto;
+    overflow-y: visible;
+    margin-top: -50px;
 
     ul {
       li {

@@ -1,7 +1,7 @@
 <template>
   <div id="loading" :class="{ 'active': $store.state.isLoading }">
     <div class="content">
-      <img src="../../assets/images/helper.svg" alt="">
+      <img src="images/helper.svg" alt="">
       <p>
         loading
       </p>

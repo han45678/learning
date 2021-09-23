@@ -4,10 +4,13 @@ import Home from '../views/Home.vue'
 import login from '../views/login.vue'
 import level from '../views/level.vue'
 import checkpoint from '../views/checkpoint.vue'
+import checkpoint_pb from '../views/checkpoint_pb.vue'
 import playground from '../views/playground.vue'
 import records from '../views/records.vue'
 import theater from '../views/theater.vue'
 import settings from '../views/settings.vue'
+import point from '../views/point.vue'
+import danny from '../views/danny.vue'
 import test2 from '../views/test2.vue'
 import d6 from '../views/game_page/d6.vue'
 import store from '../store'
@@ -43,6 +46,11 @@ const routes = [
     component: checkpoint
   },
   {
+    path: '/checkpoint_pb',
+    name: 'checkpoint_pb',
+    component: checkpoint_pb
+  },
+  {
     path: '/playground',
     name: 'playground',
     component: playground
@@ -61,6 +69,16 @@ const routes = [
     path: '/settings',
     name: 'settings',
     component: settings
+  },
+  {
+    path: '/point',
+    name: 'point',
+    component: point
+  },
+  {
+    path: '/danny',
+    name: 'danny',
+    component: danny
   },
   {
     path: '/test2',

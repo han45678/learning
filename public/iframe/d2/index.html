@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>音樂碰碰樂</title>
+    <style>
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .wrapper {
+            width: 965px;
+            height: 554px;
+            transform-origin: left top;
+            /* transform: scaleY(0.693); */
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        #a,
+        #b,
+        #c,
+        #d {
+            color: black;
+            font-size: 64px;
+            font-weight: bold;
+            font-family: Helvetica, sans-serif;
+            display: inline-block;
+            z-index: 1;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            box-sizing: border-box;
+            position: absolute;
+        }
+
+        #audio_a,
+        #audio_b,
+        #audio_c,
+        #audio_d {
+            position: absolute;
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            font-size: 48px;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .hide {
+            transition: 0.6s;
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="a">Aa</div>
+        <div id="b">Bb</div>
+        <div id="c">Cc</div>
+        <div id="d">Dd</div>
+
+        <div id="audio_a">
+            <i class="fas fa-volume-up"></i>
+            <audio>
+                <source src="./A.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div id="audio_b">
+            <i class="fas fa-volume-up"></i>
+            <audio>
+                <source src="./B.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div id="audio_c">
+            <i class="fas fa-volume-up"></i>
+            <audio>
+                <source src="./C.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div id="audio_d">
+            <i class="fas fa-volume-up"></i>
+            <audio>
+                <source src="./D.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/3966fde58e.js" crossorigin="anonymous"></script>
+    <script>
+        ! function (t) {
+            var e = function () {};
+            e.prototype.checkIsTouch = function () {
+                return "ontouchstart" in t || navigator.maxTouchPoints
+            }, e.prototype.hackRequestAnimationFrame = function (arguments) {
+                if (t.requestAnimationFrame = t.requestAnimationFrame || t.mozRequestAnimationFrame || t
+                    .webkitRequestAnimationFrame || t.msRequestAnimationFrame, !t.requestAnimationFrame) {
+                    var e = 0;
+                    t.requestAnimationFrame = function (t) {
+                        var i = (new Date).getTime(),
+                            n = Math.max(16 - i - e, 0),
+                            s = setTimeout(t, n);
+                        return e = i + n, s
+                    }
+                }
+            }, e.prototype.hackTransform = function () {
+                var t = document.documentElement;
+                this.transformProperty = "string" == typeof t.style.transform ? "transform" : "WebkitTransform"
+            }, e.prototype.hackEventListener = function () {
+                document.addEventListener && (this.eventListener = !0)
+            }, e.prototype.hackStyle = function (e) {
+                return t.getComputedStyle ? t.getComputedStyle(e) : e.currentStyle
+            };
+            var i = function (t, e) {
+                    this.options = e || {}, this.options.elemString = t, this.init()
+                },
+                n = i.prototype = new e;
+            n.init = function () {
+                this.setTargetDom(), this.hackEventListener(), this.eventListener || (this.options
+                        .backToPosition = !0), this.checkIsTouch() ? this.elem.addEventListener("touchstart",
+                    this) : this.eventListener ? this.elem.addEventListener("mousedown", this) : (this.bindAttach(),
+                        this.elem.attachEvent("onmousedown", this.b_mousedown)), this.options.cursorCancel || (this
+                        .elem.style.cursor = "move")
+            }, n.setTargetDom = function () {
+                this.elem = this.getDom(this.options.elemString), this.parentMove = this.getDom(this.options
+                    .parentMove), this.targetDom = this.parentMove || this.elem
+            }, n.getDom = function (t) {
+                return "string" == typeof t ? document.querySelector(t) : t
+            }, n.bindAttach = function () {
+                for (var e = this, i = ["mousedown", "mousemove", "mouseup"], n = 0, s = i.length; n < s; n++) this[
+                    "b_" + i[n]] = function (n) {
+                    return function () {
+                        e.event = t.event, e[i[n]]()
+                    }
+                }(n)
+            }, n.dragDown = function (t) {
+                this.enable = !0, this.hackTransform(), this.addClassName(), this.setIndex(), this.style = this
+                    .hackStyle(this.targetDom), this.targetPosition = this.getPosition(this.style), this
+                    .startPoint = this.getCoordinate(), this.movePoint = {
+                        x: 0,
+                        y: 0
+                    }, this.setPositionProperty(), this.bindCallBackEvent(), this.render()
+            }, n.addClassName = function () {
+                this.options.addClassName && (this.elem.className += " " + this.options.addClassName)
+            }, n.setIndex = function () {}, n.getPosition = function (t) {
+                var e = {};
+                return e.x = "auto" == t.left ? 0 : parseInt(t.left, 10), e.y = "auto" == t.top ? 0 : parseInt(t
+                    .top, 10), this.options.backToPosition ? e : e = this.addTransform(e)
+            }, n.addTransform = function (t) {
+                var e = this.style[this.transformProperty];
+                if (!e || "-1" == e.indexOf("matrix")) return t;
+                var i = "-1" == e.indexOf("matrix3d") ? 4 : 12,
+                    n = e.split(",");
+                return this.translateX = parseInt(n[i], 10), this.translateY = parseInt(n[i + 1], 10), t.x += this
+                    .translateX, t.y += this.translateY, t
+            }, n.getCoordinate = function () {
+                return this.eventListener ? {
+                    x: this.event.pageX || this.event.touches && this.event.touches[0].pageX || 0,
+                    y: this.event.pageY || this.event.touches && this.event.touches[0].pageY || 0
+                } : {
+                    x: this.event.clientX + document.documentElement.scrollLeft,
+                    y: this.event.clientY + document.documentElement.scrollTop
+                }
+            }, n.setPositionProperty = function () {
+                ({
+                    fix: !0,
+                    absolute: !0,
+                    relative: !0
+                })[this.style.position] || (this.targetDom.style.position = "relative"), this.targetDom.style
+                    .cssText += ";left:" + this.targetPosition.x + "px;top:" + this.targetPosition.y + "px;"
+            }, n.bindCallBackEvent = function () {
+                var t = this.event.type,
+                    e = {
+                        mousedown: ["mousemove", "mouseup"],
+                        touchstart: ["touchmove", "touchend"]
+                    },
+                    i = e[t];
+                this.handles = i, this.bindEvent(!0)
+            }, n.bindEvent = function (e) {
+                var i = this,
+                    n = this.handles;
+                if (this.eventListener) {
+                    var s = e ? "addEventListener" : "removeEventListener";
+                    n.forEach(function (e) {
+                        t[s](e, i)
+                    })
+                } else {
+                    var s = e ? "attachEvent" : "detachEvent";
+                    document[s]("onmousemove", this.b_mousemove), document[s]("onmouseup", this.b_mouseup)
+                }
+            }, n.render = function () {
+                var t = this;
+                this.hackRequestAnimationFrame(), this._render = function () {
+                    t.enable && (t.setTransform(), requestAnimationFrame(t._render))
+                }, requestAnimationFrame(this._render)
+            }, n.setTransform = function () {
+                if (this.options.backToPosition) {
+                    var t = "left:" + (this.movePoint.x + this.targetPosition.x) + "px;top:" + (this.movePoint.y +
+                        this.targetPosition.y) + "px;";
+                    this.targetDom.style.cssText += ";" + t
+                } else this.targetDom.style[this.transformProperty] = "translate3d(" + this.movePoint.x + "px," +
+                    this.movePoint.y + "px,0)"
+            }, n.dragMove = function () {
+                var t = this.getCoordinate(),
+                    e = {
+                        x: t.x - this.startPoint.x,
+                        y: t.y - this.startPoint.y
+                    };
+                e = this.setGrid(e), this.movePoint.x = "y" == this.options.axis ? 0 : e.x, this.movePoint.y =
+                    "x" == this.options.axis ? 0 : e.y
+            }, n.setGrid = function (t) {
+                if (!this.options.grid) return t;
+                var e = this.options.grid,
+                    i = {};
+                return i.x = e.x ? Math.round(t.x / e.x) * e.x : t.x, i.y = e.y ? Math.round(t.y / e.y) * e.y : t.y,
+                    i
+            }, n.dragUp = function () {
+                this.enable = !1, this.removeClassName(), this.bindEvent(!1), this.resetIndex(), this.options
+                    .backToPosition || this.resetPosition()
+            }, n.removeClassName = function () {
+                if (this.options.addClassName) {
+                    var t = new RegExp("(?:^|\\s)" + this.options.addClassName + "(?:\\s|$)", "g");
+                    this.elem.className = this.elem.className.replace(t, "")
+                }
+            }, n.resetIndex = function () {}, n.resetPosition = function () {
+                this.endPoint = {
+                        x: this.movePoint.x + this.targetPosition.x,
+                        y: this.movePoint.y + this.targetPosition.y
+                    }, this.targetDom.style.cssText += ";left:" + this.endPoint.x + "px;top:" + this.endPoint.y +
+                    "px;transform:translate3d(0,0,0)"
+            }, n.touchstart = function (t) {
+                this.dragDown(t)
+            }, n.mousedown = function () {
+                this.dragDown()
+            }, n.mousemove = function () {
+                this.dragMove()
+            }, n.touchmove = function () {
+                this.dragMove()
+            }, n.mouseup = function () {
+                this.dragUp()
+            }, n.touchend = function () {
+                this.dragUp()
+            }, n.handleEvent = function (t) {
+                this.event = t;
+                var e = this.event.type;
+                e && this[e]()
+            }, t.Draggable = i
+        }(window);
+    </script>
+    <script>
+        new Draggable("#a");
+        new Draggable("#b");
+        new Draggable("#c");
+        new Draggable("#d");
+
+        document.querySelector("#a").addEventListener("touchend", a);
+        document.querySelector("#a").addEventListener("mouseout", a);
+
+        function a() {
+            let aal = document.querySelector("#audio_a").offsetLeft;
+            let aat = document.querySelector("#audio_a").offsetTop;
+            let al = document.querySelector("#a").offsetLeft;
+            let at = document.querySelector("#a").offsetTop;
+
+            let ax =
+                document.querySelector("#a").offsetLeft -
+                document.querySelector("#audio_a").offsetLeft;
+            let ay =
+                document.querySelector("#a").offsetTop -
+                document.querySelector("#audio_a").offsetTop;
+
+            if (ax <= 150 && ax >= -150 && ay <= 150 && ay >= -150) {
+                document.querySelector("#a").setAttribute("class", "hide");
+                document.querySelector("#audio_a").setAttribute("class", "hide");
+                document.querySelector("#audio_a audio").play();
+            }
+        }
+        document.querySelector("#audio_a").addEventListener("click", audio_a);
+
+        function audio_a() {
+            document.querySelector("#audio_a audio").play();
+        }
+
+        document.querySelector("#b").addEventListener("touchend", b);
+        document.querySelector("#b").addEventListener("mouseout", b);
+
+        function b() {
+            let aal = document.querySelector("#audio_b").offsetLeft;
+            let aat = document.querySelector("#audio_b").offsetTop;
+            let al = document.querySelector("#b").offsetLeft;
+            let at = document.querySelector("#b").offsetTop;
+
+            let ax =
+                document.querySelector("#b").offsetLeft -
+                document.querySelector("#audio_b").offsetLeft;
+            let ay =
+                document.querySelector("#b").offsetTop -
+                document.querySelector("#audio_b").offsetTop;
+
+            if (ax <= 150 && ax >= -150 && ay <= 150 && ay >= -150) {
+                document.querySelector("#b").setAttribute("class", "hide");
+                document.querySelector("#audio_b").setAttribute("class", "hide");
+                document.querySelector("#audio_b audio").play();
+            }
+        }
+        document.querySelector("#audio_b").addEventListener("click", audio_b);
+
+        function audio_b() {
+            document.querySelector("#audio_b audio").play();
+        }
+
+        document.querySelector("#c").addEventListener("touchend", c);
+        document.querySelector("#c").addEventListener("mouseout", c);
+
+        function c() {
+            let aal = document.querySelector("#audio_c").offsetLeft;
+            let aat = document.querySelector("#audio_c").offsetTop;
+            let al = document.querySelector("#c").offsetLeft;
+            let at = document.querySelector("#c").offsetTop;
+            let ax =
+                document.querySelector("#c").offsetLeft -
+                document.querySelector("#audio_c").offsetLeft;
+            let ay =
+                document.querySelector("#c").offsetTop -
+                document.querySelector("#audio_c").offsetTop;
+
+            if (ax <= 150 && ax >= -150 && ay <= 150 && ay >= -150) {
+                document.querySelector("#c").setAttribute("class", "hide");
+                document.querySelector("#audio_c").setAttribute("class", "hide");
+                document.querySelector("#audio_c audio").play();
+            }
+        }
+        document.querySelector("#audio_c").addEventListener("click", audio_c);
+
+        function audio_c() {
+            document.querySelector("#audio_c audio").play();
+        }
+
+        document.querySelector("#d").addEventListener("touchend", d);
+        document.querySelector("#d").addEventListener("mouseout", d);
+
+        function d() {
+            let aal = document.querySelector("#audio_d").offsetLeft;
+            let aat = document.querySelector("#audio_d").offsetTop;
+            let al = document.querySelector("#d").offsetLeft;
+            let at = document.querySelector("#d").offsetTop;
+            let ax =
+                document.querySelector("#d").offsetLeft -
+                document.querySelector("#audio_d").offsetLeft;
+            let ay =
+                document.querySelector("#d").offsetTop -
+                document.querySelector("#audio_d").offsetTop;
+
+            if (ax <= 150 && ax >= -150 && ay <= 150 && ay >= -150) {
+                document.querySelector("#d").setAttribute("class", "hide");
+                document.querySelector("#audio_d").setAttribute("class", "hide");
+                document.querySelector("#audio_d audio").play();
+            }
+        }
+        document.querySelector("#audio_d").addEventListener("click", audio_d);
+
+        function audio_d() {
+            document.querySelector("#audio_d audio").play();
+        }
+
+        //亂數生位置
+        document.querySelector("#a").style.left = Math.random() * (200 - 0) + 0 + "px";
+        document.querySelector("#a").style.top = Math.random() * (200 - 0) + 0 + "px";
+        document.querySelector("#audio_a").style.left =
+            Math.random() * (650 - 500) + 500 + "px";
+        document.querySelector("#audio_a").style.top =
+            Math.random() * (150 - 0) + 0 + "px";
+
+        document.querySelector("#b").style.left =
+            Math.random() * (300 - 200) + 200 + "px";
+        document.querySelector("#b").style.top =
+            Math.random() * (300 - 200) + 200 + "px";
+        document.querySelector("#audio_b").style.left =
+            Math.random() * (100 - 00) + 0 + "px";
+        document.querySelector("#audio_b").style.top =
+            Math.random() * (700 - 600) + 600 + "px";
+
+        document.querySelector("#c").style.left =
+            Math.random() * (500 - 400) + 400 + "px";
+        document.querySelector("#c").style.top =
+            Math.random() * (500 - 400) + 400 + "px";
+        document.querySelector("#audio_c").style.left =
+            Math.random() * (400 - 250) + 250 + "px";
+        document.querySelector("#audio_c").style.top =
+            Math.random() * (700 - 550) + 550 + "px";
+
+        document.querySelector("#d").style.left =
+            Math.random() * (700 - 600) + 600 + "px";
+        document.querySelector("#d").style.top =
+            Math.random() * (700 - 600) + 600 + "px";
+        document.querySelector("#audio_d").style.left =
+            Math.random() * (350 - 300) + 300 + "px";
+        document.querySelector("#audio_d").style.top =
+            Math.random() * (100 - 50) + 50 + "px";
+    </script>
+</body>
+
+</html>

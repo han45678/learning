@@ -28,7 +28,7 @@ button {
 
 body {
     font-family: NotoSans, Roboto, serif;
-    background-image: url("assets/images/background.webp");
+    background-image: url("/images/background.jpg");
     background-size: cover;
     // background-repeat: no-repeat;
 }
@@ -47,9 +47,12 @@ h6 {
 @import './page/footer';
 
 *,a,button,table{
-    text-transform:capitalize
+    text-transform:capitalize;
+    user-select: none;
 }
-
+input{
+    text-transform: unset;
+}
 #off {
     cursor: pointer;
     position: fixed;

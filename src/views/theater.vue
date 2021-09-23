@@ -23,46 +23,120 @@
             <div id="story">
               <h2>DK STORY CORNER</h2>
               <div class="story_content">
-                <div class="item" @click="theater_menu = 1">
-                  <img src="/images/theater/stories.svg" alt="img" />
-                  <div class="text">SB Stories</div>
-                  <div class="background" style="background-color: #18a3b4" />
+                <div
+                  class="item"
+                  @click="theater_menu = 1"
+                >
+                  <img
+                    src="images/theater/stories.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    SB Stories
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #18a3b4"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 2">
-                  <img src="/images/theater/videos.svg" alt="img" />
-                  <div class="text">Reader Videos</div>
-                  <div class="background" style="background-color: #f4c88e" />
+                <div
+                  class="item"
+                  @click="theater_menu = 2"
+                >
+                  <img
+                    src="images/theater/videos.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    Reader Videos
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #f4c88e"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 3">
-                  <img src="/images/theater/songs.svg" alt="img" />
-                  <div class="text">DK Songs</div>
-                  <div class="background" style="background-color: #ee9f6c" />
+                <div
+                  class="item"
+                  @click="theater_menu = 3"
+                >
+                  <img
+                    src="images/theater/songs.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    DK Songs
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #ee9f6c"
+                  />
                 </div>
               </div>
             </div>
             <div id="portfolio">
               <h2>MY PORTFOLIO</h2>
               <div class="portfolio_content">
-                <div class="item" @click="theater_menu = 4; max_cs_sigh = 3; cs_sigh = 1;">
-                  <img src="/images/theater/doodle.svg" alt="img" />
-                  <div class="text">Draw & Doodle</div>
-                  <div class="background" style="background-color: #df544b" />
+                <div
+                  class="item"
+                  @click="
+                    theater_menu = 4;
+                    max_cs_sigh = 3;
+                    cs_sigh = 1;
+                  "
+                >
+                  <img
+                    src="images/theater/doodle.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    Draw & Doodle
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #df544b"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 5">
-                  <img src="/images/theater/story.svg" alt="img" />
+                <div
+                  class="item"
+                  @click="
+                    theater_menu = 5;
+                    max_cs_sigh = 4;
+                    cs_sigh = 1;
+                  "
+                >
+                  <img
+                    src="images/theater/story.svg"
+                    alt="img"
+                  >
                   <div class="text">
                     My Story
                     <span>Level 1-3 only</span>
                   </div>
-                  <div class="background" style="background-color: #b15177" />
+                  <div
+                    class="background"
+                    style="background-color: #b15177"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 6; max_cs_sigh = 4; cs_sigh = 1;">
-                  <img src="/images/theater/story+.svg" alt="img" />
+                <div
+                  class="item"
+                  @click="
+                    theater_menu = 6;
+                    max_cs_sigh = 4;
+                    cs_sigh = 1;
+                  "
+                >
+                  <img
+                    src="images/theater/story+.svg"
+                    alt="img"
+                  >
                   <div class="text">
                     My Story +
                     <span>Level 4-7 only</span>
                   </div>
-                  <div class="background" style="background-color: #af87ba" />
+                  <div
+                    class="background"
+                    style="background-color: #af87ba"
+                  />
                 </div>
               </div>
             </div>
@@ -71,7 +145,10 @@
           <!-- 選單內容 -->
           <div v-if="theater_menu === 1">
             <div id="stories">
-              <div id="stories_main" v-html="videoSource" />
+              <div
+                id="stories_main"
+                v-html="videoSource"
+              />
               <div id="stories_side">
                 <div
                   class="item"
@@ -87,7 +164,7 @@
                       <video :poster="item.photo" />
                     </div>
                     <div class="text">
-                      Author : <br />{{ item.content_text }}
+                      Author : <br>{{ item.content_text }}
                     </div>
                   </div>
                 </div>
@@ -96,7 +173,10 @@
           </div>
           <div v-if="theater_menu === 2">
             <div id="videos">
-              <div id="stories_main" v-html="videoSource" />
+              <div
+                id="stories_main"
+                v-html="videoSource"
+              />
               <div id="stories_side">
                 <div
                   class="item"
@@ -112,7 +192,7 @@
                       <video :poster="item.photo" />
                     </div>
                     <div class="text">
-                      Author : <br />{{ item.content_text }}
+                      Author : <br>{{ item.content_text }}
                     </div>
                   </div>
                 </div>
@@ -121,7 +201,10 @@
           </div>
           <div v-if="theater_menu === 3">
             <div id="songs">
-              <div id="stories_main" v-html="videoSource" />
+              <div
+                id="stories_main"
+                v-html="videoSource"
+              />
               <div id="stories_side">
                 <div
                   class="item"
@@ -137,7 +220,7 @@
                       <video :poster="item.photo" />
                     </div>
                     <div class="text">
-                      Author : <br />{{ item.content_text }}
+                      Author : <br>{{ item.content_text }}
                     </div>
                   </div>
                 </div>
@@ -147,16 +230,35 @@
           <!-- v-if="theater_menu === 4" this.video[0].video -->
           <div v-if="theater_menu === 4">
             <div id="coloring_schedule">
-              <button id="prev" @click="cs_sigh_prev">Prev</button>
+              <button
+                id="prev"
+                @click="cs_sigh_prev"
+              >
+                Prev
+              </button>
               <ul>
-                <li :class="{ active: this.cs_sigh === 1 }">1</li>
-                <li :class="{ active: this.cs_sigh === 2 }">2</li>
-                <li :class="{ active: this.cs_sigh === 3 }">3</li>
+                <li :class="{ active: this.cs_sigh === 1 }">
+                  1
+                </li>
+                <li :class="{ active: this.cs_sigh === 2 }">
+                  2
+                </li>
+                <li :class="{ active: this.cs_sigh === 3 }">
+                  3
+                </li>
                 <!-- <li :class="{ active: this.cs_sigh === 4 }">4</li> -->
               </ul>
-              <button id="next" @click="cs_sigh_next">Next</button>
+              <button
+                id="next"
+                @click="cs_sigh_next"
+              >
+                Next
+              </button>
             </div>
-            <div id="coloring_menu" v-if="cs_sigh === 1">
+            <div
+              id="coloring_menu"
+              v-if="cs_sigh === 1"
+            >
               <div
                 class="item"
                 :class="{ active: coloring_item === 1 }"
@@ -166,9 +268,11 @@
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
               </div>
               <div
                 class="item"
@@ -179,9 +283,11 @@
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
               </div>
               <div
                 class="item"
@@ -192,9 +298,11 @@
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
               </div>
             </div>
             <!-- 選單下層內容 -->
@@ -203,13 +311,22 @@
                 <div class="coloring_pen">
                   <ul>
                     <li>
-                      <img src="/images/theater/pen1.svg" alt="pen" />
+                      <img
+                        src="images/theater/pen1.svg"
+                        alt="pen"
+                      >
                     </li>
                     <li>
-                      <img src="/images/theater/pen2.svg" alt="pen" />
+                      <img
+                        src="images/theater/pen2.svg"
+                        alt="pen"
+                      >
                     </li>
                     <li>
-                      <img src="/images/theater/pen3.svg" alt="pen" />
+                      <img
+                        src="images/theater/pen3.svg"
+                        alt="pen"
+                      >
                     </li>
                   </ul>
                 </div>
@@ -217,23 +334,35 @@
                   <img
                     src="https://d.ecimg.tw/items/DECU1LA900AGYB4/i010003_1579152548.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
               </div>
               <div />
             </div>
             <div v-if="cs_sigh === 3">
-              <div id="coloring_content" style="position: relative">
+              <div
+                id="coloring_content"
+                style="position: relative"
+              >
                 <div class="coloring_pen">
                   <ul>
                     <li>
-                      <img src="/images/theater/pen1.svg" alt="pen" />
+                      <img
+                        src="images/theater/pen1.svg"
+                        alt="pen"
+                      >
                     </li>
                     <li>
-                      <img src="/images/theater/pen2.svg" alt="pen" />
+                      <img
+                        src="images/theater/pen2.svg"
+                        alt="pen"
+                      >
                     </li>
                     <li>
-                      <img src="/images/theater/pen3.svg" alt="pen" />
+                      <img
+                        src="images/theater/pen3.svg"
+                        alt="pen"
+                      >
                     </li>
                   </ul>
                 </div>
@@ -241,7 +370,7 @@
                   <img
                     src="https://d.ecimg.tw/items/DECU1LA900AGYB4/i010003_1579152548.jpg"
                     alt="img"
-                  />
+                  >
                   <button
                     style="
                       position: absolute;
@@ -282,99 +411,44 @@
             </div>
           </div>
           <div v-if="theater_menu === 5">
-            <div id="coloring_schedule" v-if="0">
-              <button id="prev" @click="cs_sigh_prev">Prev</button>
+            <div
+              id="coloring_schedule"
+              :class="{ story: theater_menu === 5 }"
+            >
+              <button
+                id="prev"
+                @click="cs_sigh_prev"
+              >
+                Prev
+              </button>
               <ul>
-                <li :class="{ active: this.cs_sigh === 1 }">1</li>
-                <li :class="{ active: this.cs_sigh === 2 }">2</li>
-                <li :class="{ active: this.cs_sigh === 3 }">3</li>
-                <li :class="{ active: this.cs_sigh === 4 }">4</li>
+                <li :class="{ active: this.cs_sigh === 1 }">
+                  1
+                </li>
+                <li :class="{ active: this.cs_sigh === 2 }">
+                  2
+                </li>
+                <li :class="{ active: this.cs_sigh === 3 }">
+                  3
+                </li>
+                <li :class="{ active: this.cs_sigh === 4 }">
+                  4
+                </li>
               </ul>
-              <button id="next" @click="cs_sigh_next">Next</button>
-            </div>
-            <!-- 選單下層內容 -->
-            <div>
-              <div id="coloring_content" class="story">
-                <div class="coloring_pen">
-                  <ul>
-                    <li>
-                      <span>1</span>
-                    </li>
-                    <li>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <span>3</span>
-                    </li>
-                    <li class="play">
-                      <span />
-                    </li>
-                  </ul>
-                </div>
-                <div class="coloring_main">
-                  <img
-                    src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                    alt="img"
-                  />
-                </div>
-                <div class="coloring_bottom">
-                  <button class="volume">
-                    <i class="fas fa-volume-up" />
-                  </button>
-                  <div class="text_content">
-                    <div class="item">
-                      <button>
-                        <i class="fas fa-play" />
-                      </button>
-                      <div class="text">
-                        <p>
-                          And it might seem Like you were asleep.but you weren't
-                        </p>
-                        <p>你可能覺得睡著了,但不是這樣的</p>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <button>
-                        <i class="fas fa-play" />
-                      </button>
-                      <div class="text">
-                        <p>
-                          And it might seem Like you were asleep.but you weren't
-                        </p>
-                        <p>你可能覺得睡著了,但不是這樣的</p>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <button>
-                        <i class="fas fa-play" />
-                      </button>
-                      <div class="text">
-                        <p>
-                          And it might seem Like you were asleep.but you weren't
-                        </p>
-                        <p>你可能覺得睡著了,但不是這樣的</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div v-if="theater_menu === 6">
-            <div id="coloring_schedule">
-              <button id="prev" @click="cs_sigh_prev">Prev</button>
-              <ul>
-                <li :class="{ active: this.cs_sigh === 1 }">1</li>
-                <li :class="{ active: this.cs_sigh === 2 }">2</li>
-                <li :class="{ active: this.cs_sigh === 3 }">3</li>
-                <li :class="{ active: this.cs_sigh === 4 }">4</li>
-              </ul>
-              <button id="next" @click="cs_sigh_next">Next</button>
+              <button
+                id="next"
+                @click="cs_sigh_next"
+              >
+                Next
+              </button>
             </div>
             <div
               id="coloring_menu"
               v-if="cs_sigh === 1"
-              :class="{ story2: theater_menu === 6 }"
+              :class="{
+                story2: theater_menu === 5,
+                story: theater_menu === 5,
+              }"
             >
               <div
                 class="item"
@@ -385,9 +459,11 @@
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
               </div>
               <div
                 class="item"
@@ -398,9 +474,11 @@
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
               </div>
               <div
                 class="item"
@@ -411,325 +489,188 @@
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
+                  >
                 </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
               </div>
             </div>
             <!-- 選單下層內容 -->
             <div v-if="cs_sigh === 2">
-              <div id="coloring_content" class="story2">
-                <div class="coloring_pen">
-                  <div id="bookmark">
-                    <div id="bookmark1">
-                      <i class="fas fa-male" />
-                    </div>
-                    <div id="bookmark2" class="active">
-                      <i class="far fa-image" />
-                    </div>
-                  </div>
-                  <div id="bookmark_content">
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="coloring_main">
-                  <img
-                    src="https://d.ecimg.tw/items/DECU1LA900AGYB4/i010003_1579152548.jpg"
-                    alt="img"
-                  />
-                </div>
-              </div>
-              <div />
+              <img
+                src="images/story1.png"
+                alt="story_p"
+                style="
+                  max-height: 555px;
+                  width: auto;
+                  margin: auto;
+                  display: block;
+                "
+              >
             </div>
             <div v-if="cs_sigh === 3">
-              <div
-                id="coloring_content"
-                class="story2"
-                style="position: relative"
+              <img
+                src="images/story2.png"
+                alt="story_p"
+                style="
+                  max-height: 555px;
+                  width: auto;
+                  margin: auto;
+                  display: block;
+                "
               >
-                <div class="coloring_pen">
-                  <div id="bookmark">
-                    <div id="bookmark1">
-                      <i class="fas fa-male" />
-                    </div>
-                    <div id="bookmark2" class="active">
-                      <i class="far fa-image" />
-                    </div>
-                  </div>
-                  <div id="bookmark_content">
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                    <div class="item">
-                      <img
-                        src="https://image.shutterstock.com/image-vector/moses-gods-tablets-bible-concept-600w-1647242275.jpg"
-                        alt="img"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="coloring_main">
-                  <img
-                    src="https://d.ecimg.tw/items/DECU1LA900AGYB4/i010003_1579152548.jpg"
-                    alt="img"
-                  />
-                </div>
-                <div class="coloring_bottom">
-                  <button class="volume">
-                    <i class="fas fa-volume-up" />
-                  </button>
-                  <div class="text_content">
-                    <div class="item">
-                      <button>
-                        <i class="fas fa-play" />
-                      </button>
-                      <div class="text">
-                        <p>
-                          And it might seem Like you were asleep.but you weren't
-                        </p>
-                        <p>你可能覺得睡著了,但不是這樣的</p>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <button>
-                        <i class="fas fa-play" />
-                      </button>
-                      <div class="text">
-                        <p>
-                          And it might seem Like you were asleep.but you weren't
-                        </p>
-                        <p>你可能覺得睡著了,但不是這樣的</p>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <button>
-                        <i class="fas fa-play" />
-                      </button>
-                      <div class="text">
-                        <p>
-                          And it might seem Like you were asleep.but you weren't
-                        </p>
-                        <p>你可能覺得睡著了,但不是這樣的</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div />
             </div>
             <div v-if="cs_sigh === 4">
-              <div id="coloring_content" class="story2">
-                <div
-                  class="coloring_main"
-                  style="margin-left: auto; margin-right: auto"
-                >
+              <img
+                src="images/story3.png"
+                alt="story_p"
+                style="
+                  max-height: 555px;
+                  width: auto;
+                  margin: auto;
+                  display: block;
+                "
+              >
+            </div>
+          </div>
+          <div v-if="theater_menu === 6">
+            <div
+              id="coloring_schedule"
+              :class="{ story_p: theater_menu === 6 }"
+            >
+              <button
+                id="prev"
+                @click="cs_sigh_prev"
+              >
+                Prev
+              </button>
+              <ul>
+                <li :class="{ active: this.cs_sigh === 1 }">
+                  1
+                </li>
+                <li :class="{ active: this.cs_sigh === 2 }">
+                  2
+                </li>
+                <li :class="{ active: this.cs_sigh === 3 }">
+                  3
+                </li>
+                <li :class="{ active: this.cs_sigh === 4 }">
+                  4
+                </li>
+              </ul>
+              <button
+                id="next"
+                @click="cs_sigh_next"
+              >
+                Next
+              </button>
+            </div>
+            <div
+              id="coloring_menu"
+              v-if="cs_sigh === 1"
+              :class="{
+                story2: theater_menu === 6,
+                story_p: theater_menu === 6,
+              }"
+            >
+              <div
+                class="item"
+                :class="{ active: coloring_item === 1 }"
+                @click="coloring_item = 1"
+              >
+                <div class="photo">
                   <img
-                    src="https://d.ecimg.tw/items/DECU1LA900AGYB4/i010003_1579152548.jpg"
+                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  />
-                  <button
-                    style="
-                      position: absolute;
-                      width: 120px;
-                      height: 80px;
-                      border-radius: 999px;
-                      border: 5px solid #fff;
-                      background-color: #d7574e;
-                      color: #fff;
-                      font-size: 20px;
-                      box-shadow: 0px 0px 3px #7d7d7d;
-                      left: calc(50% - 120px - 15px);
-                      bottom: 15px;
-                    "
                   >
-                    share
-                  </button>
-                  <button
-                    style="
-                      position: absolute;
-                      width: 120px;
-                      height: 80px;
-                      border-radius: 999px;
-                      border: 5px solid #fff;
-                      background-color: #d7574e;
-                      color: #fff;
-                      font-size: 20px;
-                      box-shadow: 0px 0px 3px #7d7d7d;
-                      right: calc(50% - 120px - 15px);
-                      bottom: 15px;
-                    "
-                  >
-                    download
-                  </button>
+                </div>
+                <div class="text">
+                  The Three Little Pigs
                 </div>
               </div>
-              <div />
+              <div
+                class="item"
+                :class="{ active: coloring_item === 2 }"
+                @click="coloring_item = 2"
+              >
+                <div class="photo">
+                  <img
+                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
+                    alt="img"
+                  >
+                </div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
+              </div>
+              <div
+                class="item"
+                :class="{ active: coloring_item === 3 }"
+                @click="coloring_item = 3"
+              >
+                <div class="photo">
+                  <img
+                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
+                    alt="img"
+                  >
+                </div>
+                <div class="text">
+                  The Three Little Pigs
+                </div>
+              </div>
+            </div>
+            <!-- 選單下層內容 -->
+            <div v-if="cs_sigh === 2">
+              <img
+                src="images/story_p1.png"
+                alt="story_p"
+                style="
+                  max-height: 555px;
+                  width: auto;
+                  margin: auto;
+                  display: block;
+                "
+              >
+            </div>
+            <div v-if="cs_sigh === 3">
+              <img
+                src="images/story_p2.png"
+                alt="story_p"
+                style="
+                  max-height: 555px;
+                  width: auto;
+                  margin: auto;
+                  display: block;
+                "
+              >
+            </div>
+            <div v-if="cs_sigh === 4">
+              <img
+                src="images/story_p3.png"
+                alt="story_p"
+                style="
+                  max-height: 555px;
+                  width: auto;
+                  margin: auto;
+                  display: block;
+                "
+              >
             </div>
           </div>
         </main>
       </transition>
 
       <!-- 返回 -->
-      <div v-if="theater_menu > 0" id="return" @click="prev">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
+      <div
+        v-if="theater_menu > 0"
+        id="return"
+        @click="prev"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 73.41 73.41"
+        >
           <g>
             <path
               class="cls-1"
@@ -802,7 +743,7 @@ export default {
     },
     video_data() {
       this.$axios
-        .get("/json/theater_video.json")
+        .get("json/theater_video.json")
         .then((res) => (this.myVideo = res.data))
         .then((res) => (this.play_video = res[0].video))
         //<source :src="play_video" type="video/mp4" />
@@ -1075,6 +1016,42 @@ export default {
       }
     }
   }
+  &.story_p {
+    margin-bottom: 50px;
+    #prev,
+    #next {
+      background-color: #af87ba;
+      color: #fff;
+    }
+    ul {
+      background-color: #cdc7e1;
+      li {
+        color: #fff;
+        background-color: #af87ba;
+        &.active {
+          background-color: #17a6af;
+        }
+      }
+    }
+  }
+  &.story {
+    margin-bottom: 50px;
+    #prev,
+    #next {
+      background-color: #B15177;
+      color: #fff;
+    }
+    ul {
+      background-color: #DECBDC;
+      li {
+        color: #fff;
+        background-color: #B15177;
+        &.active {
+          background-color: #17a6af;
+        }
+      }
+    }
+  }
 }
 
 #coloring_menu {
@@ -1129,6 +1106,16 @@ export default {
         font-size: 81px;
         color: #82c91e;
       }
+    }
+  }
+  &.story_p {
+    .item {
+      background-color: #af87ba;
+    }
+  }
+  &.story{
+    .item {
+      background-color: #B15177;
     }
   }
 }

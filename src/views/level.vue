@@ -85,7 +85,7 @@ export default {
           "開始學習囉!",
           "success"
         );
-        this.$router.push("/");
+        this.$router.push("");
       } else {
         this.$swal("<b>抱歉</b>!", "家長模式尚未完成", "error");
       }

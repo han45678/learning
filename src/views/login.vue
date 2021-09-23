@@ -53,7 +53,6 @@ export default {
           "success"
         );
         // var login = 1;
-        console.log();
         this.$store.commit("SET_IS_LOADING", true);
         this.$store.commit("SET_USER_INFO", {
           username: this.user.username,
@@ -71,7 +70,7 @@ export default {
             level: 1,
           })
         );
-        this.$router.push("/level");
+        this.$router.push("level");
       } else {
         this.$swal("錯誤!", "請重新輸入", "error");
       }
@@ -79,11 +78,11 @@ export default {
     log_in() {
       if (this.$store.state.username && this.$store.state.password) {
         this.$swal("<b>已登入</b>!", "即將返回首頁", "warning");
-        this.$router.push("/");
+        this.$router.push("");
       }
     },
     // test() {
-    //   // this.$router.push("/level");
+    //   // this.$router.push("level");
     // },
     // sign_in() {
     //   //登入事件
@@ -97,7 +96,7 @@ export default {
     //       //console.log(response.data);
     //       if (response.data.success) {
     //         //如果data裡的success是true就執行這個行為
-    //         this.$router.push("/home");
+    //         this.$router.push("home");
     //       } else {
     //         alert("輸入帳號密碼錯誤");
     //         this.$swal("<b>錯誤</b>!", "請重新輸入", "error");

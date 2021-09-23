@@ -21,31 +21,31 @@
             <ul>
               <li @click="optionsStyls1" :class="[stylsClass.css,{'active' : options === 1}]">
                 <div class="item">
-                  <img src="/images/game/video.svg" alt="icon">
+                  <img src="images/game/video.svg" alt="icon">
                   <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
                 </div>
               </li>
               <li @click="optionsStyls2" :class="[stylsClass.css,{'active' : options === 2}]">
                 <div class="item">
-                  <img src="/images/game/movie.svg" alt="icon">
+                  <img src="images/game/movie.svg" alt="icon">
                   <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
                 </div>
               </li>
               <li @click="optionsStyls3" :class="[stylsClass.css,{'active' : options === 3}]">
                 <div class="item">
-                  <img src="/images/game/mic.svg" alt="icon">
+                  <img src="images/game/mic.svg" alt="icon">
                   <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
                 </div>
               </li>
               <li @click="optionsStyls4" :class="[stylsClass.css,{'active' : options === 4}]">
                 <div class="item">
-                  <img src="/images/game/game.svg" alt="icon">
+                  <img src="images/game/game.svg" alt="icon">
                   <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
                 </div>
               </li>
               <li @click="optionsStyls5" :class="[stylsClass.css,{'active' : options === 5}]">
                 <div class="item">
-                  <img src="/images/game/game.svg" alt="icon">
+                  <img src="images/game/game.svg" alt="icon">
                   <svg v-html="game_star_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.74 20.48"></svg>
                 </div>
               </li>
@@ -60,7 +60,7 @@
       </main>
 
       <!-- 返回 -->
-      <router-link id="return" to="/checkpoint">
+      <router-link id="return" to="checkpoint">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
           <g>
             <path class="cls-1"
@@ -72,7 +72,7 @@
       </router-link>
 
       <!-- 關閉 -->
-      <!-- <router-link id="off" to="/level">
+      <!-- <router-link id="off" to="level">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
           <g>
             <path class="cls-1" d="M36.7,71.41h0A34.71,34.71,0,1,1,71.41,36.7,34.81,34.81,0,0,1,36.7,71.41" />

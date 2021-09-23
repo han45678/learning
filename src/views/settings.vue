@@ -17,7 +17,7 @@
         leave-active-class="animated bounce fade-leave-active"
       >
         <main>
-          <img src="/images/settings.jpg" alt="img" />
+          <img src="images/settings.jpg" alt="img" />
         </main>
       </transition>
 

@@ -190,13 +190,13 @@
               <img
                 v-if="helper"
                 class="helper"
-                src="/images/helper.svg"
+                src="images/helper.svg"
                 alt="helper"
               >
               <img
                 v-else
                 class="helper"
-                src="/images/helper_excited.svg"
+                src="images/helper_excited.svg"
                 alt="helper"
               >
               <button
@@ -232,14 +232,14 @@
                     <li>
                       <span>1</span>
                       <img
-                        src="/images/game/eye.svg"
+                        src="images/game/eye.svg"
                         alt="img"
                       >
                     </li>
                     <li>
                       <span>2</span>
                       <img
-                        src="/images/game/clock.svg"
+                        src="images/game/clock.svg"
                         alt="img"
                       >
                     </li>
@@ -254,28 +254,28 @@
                     <li>
                       <span>1</span>
                       <img
-                        src="/images/game/wal.svg"
+                        src="images/game/wal.svg"
                         alt="img"
                       >
                     </li>
                     <li>
                       <span>2</span>
                       <img
-                        src="/images/game/speak.svg"
+                        src="images/game/speak.svg"
                         alt="img"
                       >
                     </li>
                     <li>
                       <span>3</span>
                       <img
-                        src="/images/game/vocalize.svg"
+                        src="images/game/vocalize.svg"
                         alt="img"
                       >
                     </li>
                     <li>
                       <span>4</span>
                       <img
-                        src="/images/game/clock.svg"
+                        src="images/game/clock.svg"
                         alt="img"
                       >
                     </li>
@@ -303,7 +303,7 @@
               <div class="content">
                 <iframe
                   style="width: 100%; height: 100%; position: absolute"
-                  src="/iframe/game1/筆順配對.html"
+                  src="iframe/game1/筆順配對.html"
                   frameborder="0"
                 />
               </div>

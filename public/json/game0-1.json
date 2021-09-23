@@ -21,7 +21,7 @@
         "img": "/images/game/mic.svg"
     },
     {
-        "grayscale": true,
+        "grayscale": false,
         "s1": false,
         "s2": false,
         "s3": false,

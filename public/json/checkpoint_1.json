@@ -1,9 +1,9 @@
 {
     "order": "1",
     "map": "/images/level.svg",
-    "checkpoint": [{
+    "checkpoint": [
+        {
             "title": "",
-
             "number": "1",
             "text": "unit",
             "style_1": false,
@@ -18,12 +18,11 @@
         },
         {
             "title": "",
-
             "number": "2",
             "text": "unit",
             "style_1": true,
             "style_2": false,
-            "gray": false,
+            "gray": true,
             "width": 120,
             "left": 7.5,
             "top": 66,
@@ -32,12 +31,11 @@
             "s3": true
         }, {
             "title": "",
-
             "number": "3",
             "text": "unit",
             "style_1": false,
             "style_2": true,
-            "gray": false,
+            "gray": true,
             "width": 120,
             "left": 28,
             "top": 66,

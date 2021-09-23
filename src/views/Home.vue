@@ -3,68 +3,68 @@
     <VueLoading />
     <VueHeader />
     <main>
-      <router-link to="/checkpoint">
+      <router-link to="checkpoint">
         <img
           class="card"
-          src="/images/menu/sb_1.png"
+          src="images/menu/sb_1.png"
           alt="img"
         >
         <img
           class="ribbon"
-          src="/images/menu/sb_2.png"
+          src="images/menu/sb_2.png"
           alt="img"
         >
       </router-link>
 
-      <router-link to="/checkpoint">
+      <router-link to="checkpoint_pb">
         <img
           class="card"
-          src="/images/menu/pb_1.png"
+          src="images/menu/pb_1.png"
           alt="img"
         >
         <img
           class="ribbon"
-          src="/images/menu/pb_2.png"
+          src="images/menu/pb_2.png"
           alt="img"
         >
       </router-link>
       <router-link to="javascript: void(0)">
         <img
           class="card"
-          src="/images/menu/r111.png"
+          src="images/menu/r111.png"
           alt="img"
         >
         <img
           class="ribbon"
-          src="/images/menu/r112.png"
+          src="images/menu/r112.png"
           alt="img"
         >
       </router-link>
       <router-link to="javascript: void(0)">
         <img
           class="card"
-          src="/images/menu/r121.png"
+          src="images/menu/r121.png"
           alt="img"
         >
         <img
           class="ribbon"
-          src="/images/menu/r122.png"
+          src="images/menu/r122.png"
           alt="img"
         >
       </router-link>
       <router-link to="javascript: void(0)">
         <img
           class="card"
-          src="/images/menu/r131.png"
+          src="images/menu/r131.png"
           alt="img"
         >
         <img
           class="ribbon"
-          src="/images/menu/r132.png"
+          src="images/menu/r132.png"
           alt="img"
         >
       </router-link>
-      <!-- <router-link to="/checkpoint">PB</router-link> -->
+      <!-- <router-link to="checkpoint">PB</router-link> -->
       <!-- <button @click="no">Reader 1-1</button>
       <button @click="no">Reader 1-2</button>
       <button @click="no">Reader 1-3</button> -->

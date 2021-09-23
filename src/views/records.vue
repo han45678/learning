@@ -104,11 +104,11 @@
                     </li>
                   </ul>
                   <ul class="hocb">
-                    <li @click="no">SB</li>
-                    <li class="active">PB</li>
-                    <li @click="no">Reader1</li>
-                    <li @click="no">Reader2</li>
-                    <li @click="no">Reader3</li>
+                    <li @click="unit = 1" :class="{ active: unit === 1 }">SB</li>
+                    <li @click="unit = 2" :class="{ active: unit === 2 }">PB</li>
+                    <li @click="unit = 3" :class="{ active: unit === 3 }">Reader1</li>
+                    <li @click="unit = 4" :class="{ active: unit === 4 }">Reader2</li>
+                    <li @click="unit = 5" :class="{ active: unit === 5 }">Reader3</li>
                   </ul>
                 </div>
               </div>
@@ -196,14 +196,14 @@
                         <td>
                           <img
                             class="feedback"
-                            src="/images/records/f.svg"
+                            src="images/records/f.svg"
                             alt="f"
                           />
                         </td>
                         <td>
                           <img
                             class="certificate"
-                            src="/images/records/c.svg"
+                            src="images/records/c.svg"
                             alt="c"
                           />
                         </td>
@@ -378,7 +378,7 @@
                           <div class="item">
                             <img
                               v-if="item.sign"
-                              src="/images/records/bulb.svg"
+                              src="images/records/bulb.svg"
                               alt="img"
                             />
                           </div>
@@ -406,17 +406,17 @@
                             <div class="medal">
                               <img
                                 v-if="item.medal === 1"
-                                src="/images/records/gold.svg"
+                                src="images/records/gold.svg"
                                 alt="img"
                               />
                               <img
                                 v-else-if="item.medal === 2"
-                                src="/images/records/silver.svg"
+                                src="images/records/silver.svg"
                                 alt="img"
                               />
                               <img
                                 v-else-if="item.medal === 3"
-                                src="/images/records/bronze.svg"
+                                src="images/records/bronze.svg"
                                 alt="img"
                               />
                             </div>
@@ -439,12 +439,12 @@
                             <div class="award">
                               <img
                                 v-if="item.currency_value === 1"
-                                src="/images/records/gold_s.svg"
+                                src="images/records/gold_s.svg"
                                 alt="img"
                               />
                               <img
                                 v-if="item.currency_value === 2"
-                                src="/images/records/silver_s.svg"
+                                src="images/records/silver_s.svg"
                                 alt="img"
                               />
                               <span>{{ item.currency }}</span>
@@ -473,10 +473,10 @@
                           <td>SB3 / Unit1 / Story</td>
                           <td>6/1</td>
                           <td>
-                            <img src="/images/records/overdue.svg" alt="img" />
+                            <img src="images/records/overdue.svg" alt="img" />
                           </td>
                           <td>
-                            <img src="/images/records/go.svg" alt="img" />
+                            <img src="images/records/go.svg" alt="img" />
                           </td>
                         </tr>
                       </tbody>
@@ -519,7 +519,7 @@
                                 max-height: unset;
                                 padding-top: 65px;
                               "
-                              src="/images/records/add.svg"
+                              src="images/records/add.svg"
                               alt="img"
                             />
                           </td>
@@ -567,7 +567,7 @@
                   <!-- <vc-calendar is-expanded /> -->
                   <img
                     style="padding: 0; max-width: 925px"
-                    src="/images/calendar.png"
+                    src="images/calendar.png"
                     alt="calendar"
                   />
                 </div>
@@ -588,17 +588,17 @@
                             <div class="medal">
                               <img
                                 v-if="item.medal === 1"
-                                src="/images/records/gold.svg"
+                                src="images/records/gold.svg"
                                 alt="img"
                               />
                               <img
                                 v-else-if="item.medal === 2"
-                                src="/images/records/silver.svg"
+                                src="images/records/silver.svg"
                                 alt="img"
                               />
                               <img
                                 v-else-if="item.medal === 3"
-                                src="/images/records/bronze.svg"
+                                src="images/records/bronze.svg"
                                 alt="img"
                               />
                             </div>
@@ -621,12 +621,12 @@
                             <div class="award">
                               <img
                                 v-if="item.currency_value === 1"
-                                src="/images/records/gold_s.svg"
+                                src="images/records/gold_s.svg"
                                 alt="img"
                               />
                               <img
                                 v-if="item.currency_value === 2"
-                                src="/images/records/silver_s.svg"
+                                src="images/records/silver_s.svg"
                                 alt="img"
                               />
                               <span>{{ item.currency }}</span>
@@ -682,27 +682,27 @@ export default {
       //↓左邊選單
       game_menu_options: [
         {
-          img: "/images/records/menu0.svg",
+          img: "images/records/menu0.svg",
           styls0: true,
           open: true,
         },
         {
-          img: "/images/records/menu1.svg",
+          img: "images/records/menu1.svg",
           styls1: true,
           open: true,
         },
         {
-          img: "/images/records/menu4.svg",
+          img: "images/records/menu4.svg",
           styls4: true,
           open: true,
         },
         {
-          img: "/images/records/menu3.svg",
+          img: "images/records/menu3.svg",
           styls3: true,
           open: true,
         },
         {
-          img: "/images/records/menu2.svg",
+          img: "images/records/menu2.svg",
           styls2: true,
           open: true,
         },
@@ -774,11 +774,14 @@ export default {
       curriculum: false,
       add_schedule: false,
       current_class: [],
+
+      //單元
+      unit: 1,
     };
   },
   mounted() {
     this.$axios
-      .get("/json/chart01.json")
+      .get("json/chart01.json")
       .then((res) => {
         this.chart_info = res.data;
       })
@@ -1024,7 +1027,7 @@ export default {
     },
     level() {
       this.$axios
-        .get("/json/my_level.json")
+        .get("json/my_level.json")
         .then((res) => (this.my_level = res.data))
         .catch(function (error) {
           console.log(error);
@@ -1038,7 +1041,7 @@ export default {
     level_content(index) {
       let o = this.my_level[index].order;
       this.$axios
-        .get("/json/level_content_info" + o + ".json")
+        .get("json/level_content_info" + o + ".json")
         .then((res) => {
           this.level_content_info = res.data;
           this.level_text = true;
@@ -1056,7 +1059,7 @@ export default {
     },
     my_task() {
       this.$axios
-        .get("/json/task.json")
+        .get("json/task.json")
         .then((res) => (this.task = res.data))
         .catch(function (error) {
           console.log(error);
@@ -1064,7 +1067,7 @@ export default {
     },
     my_weekly() {
       this.$axios
-        .get("/json/weekly.json")
+        .get("json/weekly.json")
         .then((res) => (this.weekly = res.data))
         .catch(function (error) {
           console.log(error);
@@ -1082,7 +1085,7 @@ export default {
           : "0" + (fullDate.getMonth() + 1);
       let dd =
         fullDate.getDate() < 10 ? "0" + fullDate.getDate() : fullDate.getDate();
-      let today = yyyy + "/" + MM + "/" + dd;
+      let today = yyyy + "" + MM + "" + dd;
       this.to_day = today;
     },
     tw(index) {
@@ -1620,11 +1623,11 @@ export default {
                   .medal {
                     background-color: #e8e6f3;
                   }
-                  &.item:nth-child(2){
-                    .schedule{
-                      .photo{
+                  &.item:nth-child(2) {
+                    .schedule {
+                      .photo {
                         background-color: #e8e6f3;
-                        .strip{
+                        .strip {
                           background-color: #7d308e;
                         }
                       }
