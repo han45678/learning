@@ -10,8 +10,8 @@
             "style_2": false,
             "gray": false,
             "width": 65,
-            "left": 13,
-            "top": 26,
+            "left": 12,
+            "top": 33,
             "s1": false,
             "s2": false,
             "s3": false
@@ -24,8 +24,8 @@
             "style_2": false,
             "gray": true,
             "width": 65,
-            "left": 13,
-            "top": 62.5,
+            "left": 12,
+            "top": 65,
             "s1": false,
             "s2": false,
             "s3": false
@@ -38,8 +38,8 @@
             "style_2": false,
             "gray": true,
             "width": 65,
-            "left": 13,
-            "top": 77.5,
+            "left": 12,
+            "top": 80,
             "s1": false,
             "s2": false,
             "s3": false
@@ -53,7 +53,7 @@
             "gray": true,
             "width": 65,
             "left": 22.5,
-            "top": 77.5,
+            "top": 80,
             "s1": false,
             "s2": false,
             "s3": false
@@ -67,7 +67,7 @@
             "gray": true,
             "width": 65,
             "left": 22.5,
-            "top": 62.5,
+            "top": 65,
             "s1": false,
             "s2": false,
             "s3": false
@@ -81,7 +81,7 @@
             "gray": true,
             "width": 65,
             "left": 31,
-            "top": 62.5,
+            "top": 65,
             "s1": false,
             "s2": false,
             "s3": false
@@ -95,7 +95,7 @@
             "gray": true,
             "width": 65,
             "left": 31,
-            "top": 77.5,
+            "top": 80,
             "s1": false,
             "s2": false,
             "s3": false
@@ -109,7 +109,7 @@
             "gray": true,
             "width": 65,
             "left": 40,
-            "top": 77.5,
+            "top": 80,
             "s1": false,
             "s2": false,
             "s3": false
@@ -122,8 +122,8 @@
             "style_2": false,
             "gray": true,
             "width": 65,
-            "left": 40,
-            "top": 47.5,
+            "left": 39,
+            "top":49,
             "s1": false,
             "s2": false,
             "s3": false
@@ -136,8 +136,8 @@
             "style_2": false,
             "gray": true,
             "width": 65,
-            "left": 32,
-            "top": 37,
+            "left": 31,
+            "top": 42,
             "s1": false,
             "s2": false,
             "s3": false
@@ -151,7 +151,7 @@
             "gray": true,
             "width": 65,
             "left": 60,
-            "top": 37,
+            "top": 42,
             "s1": false,
             "s2": false,
             "s3": false
@@ -166,7 +166,7 @@
             "gray": true,
             "width": 65,
             "left": 60,
-            "top": 77.5,
+            "top": 80,
             "s1": false,
             "s2": false,
             "s3": false
@@ -180,7 +180,7 @@
             "gray": true,
             "width": 65,
             "left": 75,
-            "top": 77.5,
+            "top": 80,
             "s1": false,
             "s2": false,
             "s3": false
@@ -195,7 +195,7 @@
             "gray": true,
             "width": 65,
             "left": 90,
-            "top": 77.5,
+            "top": 80,
             "s1": false,
             "s2": false,
             "s3": false
@@ -240,7 +240,7 @@
             "gray": true,
             "width": 65,
             "left": 71,
-            "top": 30,
+            "top": 34,
             "s1": false,
             "s2": false,
             "s3": false
@@ -255,7 +255,7 @@
             "gray": true,
             "width": 65,
             "left": 90,
-            "top": 30,
+            "top": 34,
             "s1": false,
             "s2": false,
             "s3": false

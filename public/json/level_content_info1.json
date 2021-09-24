@@ -1,6 +1,6 @@
 [
     {
-        "unit": "Test 3-1",
+        "unit": "unit 1",
         "completed": "100",
         "s1": true,
         "s2": true,
@@ -11,7 +11,7 @@
         "certificate":1
     },
     {
-        "unit": "Reader 3-2",
+        "unit": "unit 2",
         "completed": "98",
         "s1": true,
         "s2": true,
@@ -22,7 +22,7 @@
         "certificate":2
     },
     {
-        "unit": "PB3 U05",
+        "unit": "unit 3",
         "completed": "59",
         "s1": false,
         "s2": false,

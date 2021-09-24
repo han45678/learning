@@ -19,7 +19,7 @@
 
           <button @click="sign_in">LOGIN</button>
           <p id="sign">
-            Not a member? <a href="">Sign up</a>
+            Not a member? <a href="">Sign Up</a>
           </p>
           <!-- <button type="submit">LOGIN</button> -->
         </form>
@@ -109,4 +109,8 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+*{
+  text-transform:initial;
+}
+</style>

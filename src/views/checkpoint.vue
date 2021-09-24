@@ -84,6 +84,11 @@
             :src="info.map"
             :alt="info.map"
           >
+          <img
+            src="/images/b.png"
+            alt="images"
+            style="position: absolute; width: 325px; right: 2.5%; top: 3%"
+          >
         </main>
       </transition>
 
@@ -110,7 +115,7 @@
               </button>
             </div>
             <div class="game_menu">
-              <ul>
+              <ul v-if="sel === 0 || sel === 1 || sel === 2 || sel === 3">
                 <li
                   v-for="(item, index) in game_menu_options"
                   @click="optionsStyls(index)"
@@ -217,7 +222,7 @@
                         transform: scale(1.03);
                         position: absolute;
                       "
-                      src="iframe/d1/看圖配對.html"
+                      src="iframe/U1_Story_D1/U1_Story_D1.html"
                       frameborder="0"
                     />
                   </div>
@@ -251,7 +256,7 @@
                       frameborder="0"
                     />
                   </div>
-                  <div v-if="sel === 2 && options === 3">
+                  <div v-if="sel === 3 && options === 3">
                     <iframe
                       style="width: 100%; height: 100%; position: absolute"
                       src="iframe/U1_SP_D5-1/U1_SP_D5-1.html"
@@ -259,9 +264,13 @@
                     />
                   </div>
                   <div v-if="sel === 2 && options === 4">
-                    <d6 />
+                    <iframe
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/d6/index.html"
+                      frameborder="0"
+                    />
                   </div>
-                  <div v-if="sel === 3 && options === 3">
+                  <div v-if="sel === 2 && options === 3">
                     <iframe
                       style="width: 100%; height: 100%; position: absolute"
                       src="iframe/U1_Vocabulary_D5/U1_Vocabulary_D5.html"
@@ -388,13 +397,13 @@
 import VueLoading from "./include/loading";
 import VueHeader from "./include/header";
 import VueFooter from "./include/footer";
-import d6 from "./game_page/d6";
+// import d6 from "./game_page/d6";
 export default {
   components: {
     VueLoading,
     VueHeader,
     VueFooter,
-    d6,
+    // d6,
   },
   data() {
     return {

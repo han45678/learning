@@ -1,0 +1,30 @@
+[
+    {
+        "grayscale": false,
+        "s1": true,
+        "s2": false,
+        "s3": false,
+        "img": "/images/game/video.svg"
+    },
+    {
+        "grayscale": false,
+        "s1": true,
+        "s2": false,
+        "s3": false,
+        "img": "/images/game/mic.svg"
+    },
+    {
+        "grayscale": false,
+        "s1": true,
+        "s2": true,
+        "s3": false,
+        "img": "/images/game/game.svg"
+    },
+    {
+        "grayscale": false,
+        "s1": true,
+        "s2": true,
+        "s3": false,
+        "img": "/images/game/game.svg"
+    }
+]

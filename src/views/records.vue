@@ -20,7 +20,8 @@
           <div id="records">
             <div class="game_options">
               <div class="h_options" v-if="options === 0">
-                <h1 style="color: #107b9e">My Level</h1>
+                <h1 style="color: #107b9e" v-if="!level_text">My Level</h1>
+                <h1 style="color: #107b9e" v-if="level_text">Level 1</h1>
                 <div class="hoc" v-if="level_text">
                   <ul class="hoct">
                     <li
@@ -479,6 +480,46 @@
                             <img src="images/records/go.svg" alt="img" />
                           </td>
                         </tr>
+                        <tr>
+                          <td>SB4 / Unit2 / Letters</td>
+                          <td>9/1</td>
+                          <td>
+                            <img src="images/records/overdue.svg" alt="img" />
+                          </td>
+                          <td>
+                            <img src="images/records/go.svg" alt="img" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>SB4 / Unit3 / Vocabulary</td>
+                          <td>9/1</td>
+                          <td>
+                            <img src="images/records/overdue.svg" alt="img" />
+                          </td>
+                          <td>
+                            <img src="images/records/go.svg" alt="img" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>SB5 / Unit4 / Story</td>
+                          <td>9/27</td>
+                          <td>
+                            <!-- <img src="images/records/overdue.svg" alt="img" /> -->
+                          </td>
+                          <td>
+                            <img src="images/records/go.svg" alt="img" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>SB6 / Unit5 / SentencePattern </td>
+                          <td>9/27</td>
+                          <td>
+                            <!-- <img src="images/records/overdue.svg" alt="img" /> -->
+                          </td>
+                          <td>
+                            <img src="images/records/go.svg" alt="img" />
+                          </td>
+                        </tr>
                       </tbody>
 
                       <!-- 如果已經排課過了今天又沒課 -->
@@ -531,14 +572,21 @@
                       <h3>My Schedule Helper</h3>
                       <h4>How many days per week?</h4>
                       <div class="choice">
-                        <button
+                        <!-- <button
                           v-for="(item, index) in timetable.week"
                           :key="index"
                           @click="tw(index)"
                           :class="{ active: timetable_week === item.item }"
                         >
                           {{ item.item }}
-                        </button>
+                        </button> -->
+                        <button @click="MON=1" :class="{ active: MON === 1 }">MON</button>
+                        <button @click="TUE=1" :class="{ active: TUE === 1 }">TUE</button>
+                        <button @click="WED=1" :class="{ active: WED === 1 }">WED</button>
+                        <button @click="THU=1" :class="{ active: THU === 1 }">THU</button>
+                        <button @click="FRI=1" :class="{ active: FRI === 1 }">FRI</button>
+                        <button @click="SAT=1" :class="{ active: SAT === 1 }">SAT</button>
+                        <button @click="SUN=1" :class="{ active: SUN === 1 }">SUN</button>
                       </div>
                       <h4>How many classes per day?</h4>
                       <div class="choice">
@@ -767,6 +815,13 @@ export default {
           },
         ],
       },
+      MON:0,
+      TUE:0,
+      WED:0,
+      THU:0,
+      FRI:0,
+      SAT:0,
+      SUN:0,
       timetable_week: "MON",
       timetable_classes: "1",
 
@@ -1167,6 +1222,7 @@ export default {
           width: 100%;
           background-color: #17a6af;
           border-radius: 10px;
+          overflow: hidden;
           li {
             color: #fff;
             line-height: 40px;

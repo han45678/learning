@@ -429,6 +429,7 @@ export default {
       }
     },
     go_play() {
+      this.$store.state.helper = true;
       this.instruction = false;
       this.play_game = true;
     },

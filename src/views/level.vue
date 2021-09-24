@@ -14,7 +14,7 @@
           :class="{ active: identity == 2 }"
           @click="parent"
         >
-          Parent
+          Parents
         </div>
       </div>
       <h2 v-if="identity !== 2 && identity !== 0">Level</h2>
@@ -85,7 +85,7 @@ export default {
           "開始學習囉!",
           "success"
         );
-        this.$router.push("");
+        this.$router.push("/");
       } else {
         this.$swal("<b>抱歉</b>!", "家長模式尚未完成", "error");
       }
