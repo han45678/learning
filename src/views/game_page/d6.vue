@@ -1,140 +1,171 @@
 <template>
-  <div
-    id="d6"
-    class="container"
-    style="width: 565px; height: 565px; position: relative"
-  >
-    <h1 class="text-center">遊戲時間：{{ time }}秒</h1>
-    <div class="color_block" :class="{ active: color_block }">
-      <button class="btn btn-success" @click="begin()">遊戲開始</button>
-    </div>
-    <div class="row">
-      <div
-        v-for="(item, index) in anser"
-        :key="index"
-        @click="checkIsSame(item, index)"
-        :class="{ flop: item.open, active: failure, pass: pass }"
-        class="item"
-      >
-        <h1>{{ item.val }}</h1>
+  <div id="d6">
+    <div class="info">
+      <div>
+        <span class="label">Time:</span><span class="value">{{ time }} </span>
+      </div>
+      <div>
+        <span class="label">Turns:</span><span class="value">{{ turns }} </span>
       </div>
     </div>
-    <!-- <button @click="checkIsSame">再次挑戰</button> -->
-    <div id="pass" :class="{ active: pass }">
-      <p>挑戰成功</p>
+    <div class="cards">
+      <div
+        class="card"
+        :key="index"
+        v-for="(card, index) in cards"
+        :class="{ flipped: card.flipped, found: card.found }"
+        @click="flipCard(card)"
+      >
+        <div class="back" />
+        <div
+          class="front"
+          :style="{ backgroundImage: 'url(' + card.image + ')' }"
+        />
+      </div>
     </div>
-    <div id="failure" :class="{ active: failure }">
-      <p>挑戰失敗</p>
+    <div class="splash" v-if="showSplash">
+      <div class="overlay" />
+      <div class="content">
+        <div class="title">You won!</div>
+        <div class="score">Score: {{ score }}</div>
+        <button class="newGame" @click="resetGame()">New game</button>
+      </div>
     </div>
   </div>
 </template>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.12.0/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
 <script>
+let CardTypes = [
+  { name: "dog", image: "./img/dog.png" },
+  { name: "ant", image: "./img/ant.png" },
+  { name: "bed", image: "./img/bed.png" },
+  { name: "cat", image: "./img/cat.png" },
+];
+
+let shuffleCards = () => {
+  let cards = [].concat(_.cloneDeep(CardTypes), _.cloneDeep(CardTypes));
+  return _.shuffle(cards);
+};
+
 export default {
-  components: {},
-  mounted() {
-    this.shuffle();
-  },
   data: () => ({
-    selected: [],
-    anser: [],
-    doneCount: 0,
-    color_block: false,
+    showSplash: false,
+    cards: [],
+    started: false,
+    startTime: 0,
+    turns: 0,
+    flipBackTimer: null,
     timer: null,
-    time: 30,
-    memory: 3,
-    pass: false,
-    failure: false,
+    time: "--:--",
+    score: 0,
   }),
   methods: {
-    checkIsSame(item, index) {
-      // 要是選擇到的號碼是-1就跳出不動作，以及同個牌也不動作
-      if (this.selected[0] === index || this.selected.length === 2) {
-        console.log("drop");
-        return;
-      }
-      item.open = true;
+    resetGame() {
+      this.showSplash = false;
+      let cards = shuffleCards();
+      this.turns = 0;
+      this.score = 0;
+      this.started = false;
+      this.startTime = 0;
 
-      // 將選擇的數字丟到選擇容器中
-      this.selected.push(index);
+      _.each(cards, (card) => {
+        card.flipped = false;
+        card.found = false;
+      });
 
-      // 判斷是否選擇了兩個
-      if (this.selected.length === 2) {
-        // 判斷選擇的是否相同，相同的話就將該卡片上的欄位改為-1
-        setTimeout(() => {
-          if (
-            this.anser[this.selected[0]].val !==
-            this.anser[this.selected[1]].val
-          ) {
-            this.anser[this.selected[0]].open = false;
-            this.anser[this.selected[1]].open = false;
-          } else {
-            this.doneCount++;
-            console.log(this.doneCount);
-          }
+      this.cards = cards;
+    },
 
-          if (this.doneCount === this.anser.length / 2) {
-            this.color_block = true;
-            this.pass = true; //過關
-            this.time = "停止";
-          }
+    flippedCards() {
+      return _.filter(this.cards, (card) => card.flipped);
+    },
 
-          // 選擇兩個後要清空選擇容器
-          this.selected = [];
-          //翻牌後多久才能有下一個動作 //預防使用者連點
-        }, 0.5 * 1000);
+    sameFlippedCard() {
+      let flippedCards = this.flippedCards();
+      if (flippedCards.length == 2) {
+        if (flippedCards[0].name == flippedCards[1].name) return true;
       }
     },
 
-    //一開始會給玩家看牌的位置
-    isFlop() {
-      setTimeout(() => {
-        this.anser.forEach((data, index) => {
-          this.anser[index].open = false;
-        });
-      }, this.memory * 1000);
+    setCardFounds() {
+      _.each(this.cards, (card) => {
+        if (card.flipped) card.found = true;
+      });
     },
 
-    // 洗牌
-    shuffle() {
-      let tmp = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
+    checkAllFound() {
+      let foundCards = _.filter(this.cards, (card) => card.found);
+      if (foundCards.length == this.cards.length) return true;
+    },
 
-      this.anser = tmp.map((data) => ({
-        val: data,
-        open: true,
-      }));
+    startGame() {
+      this.started = true;
+      this.startTime = moment();
 
-      this.doneCount = [];
+      this.timer = setInterval(() => {
+        this.time = moment(moment().diff(this.startTime)).format("mm:ss");
+      }, 1000);
+    },
 
-      let i, j, temp;
-      for (i = this.anser.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = this.anser[i];
-        this.anser[i] = this.anser[j];
-        this.anser[j] = temp;
+    finishGame() {
+      this.started = false;
+      clearInterval(this.timer);
+      let score =
+        1000 -
+        (moment().diff(this.startTime, "seconds") - CardTypes.length * 5) * 3 -
+        (this.turns - CardTypes.length) * 5;
+      this.score = Math.max(score, 0);
+      this.showSplash = true;
+    },
+
+    flipCard(card) {
+      if (card.found || card.flipped) return;
+
+      if (!this.started) {
+        this.startGame();
       }
 
-      console.log(this.anser.map((data) => data.val));
+      let flipCount = this.flippedCards().length;
+      if (flipCount == 0) {
+        card.flipped = !card.flipped;
+      } else if (flipCount == 1) {
+        card.flipped = !card.flipped;
+        this.turns += 1;
 
-      this.isFlop();
-    },
+        if (this.sameFlippedCard()) {
+          // Match!
+          this.flipBackTimer = setTimeout(() => {
+            this.clearFlipBackTimer();
+            this.setCardFounds();
+            this.clearFlips();
 
-    //倒數計時器
-    countdown() {
-      this.time--;
-      if (this.time == 0) {
-        clearInterval(this.timer);
-        // alert('時間到!');
-        this.failure = true;
+            if (this.checkAllFound()) {
+              this.finishGame();
+            }
+          }, 200);
+        } else {
+          // Wrong match
+          this.flipBackTimer = setTimeout(() => {
+            this.clearFlipBackTimer();
+            this.clearFlips();
+          }, 1000);
+        }
       }
     },
 
-    //開始
-    begin() {
-      this.shuffle();
-      this.color_block = true;
-      this.isFlop();
-      this.timer = setInterval(this.countdown, 1000);
+    clearFlips() {
+      _.map(this.cards, (card) => (card.flipped = false));
     },
+
+    clearFlipBackTimer() {
+      clearTimeout(this.flipBackTimer);
+      this.flipBackTimer = null;
+    },
+  },
+  created() {
+    this.resetGame();
   },
 };
 </script>
@@ -325,7 +356,7 @@ export default {
       width: 100%;
     }
   }
-  .text-center{
+  .text-center {
     text-align: center;
   }
 }

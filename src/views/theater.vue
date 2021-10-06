@@ -864,7 +864,7 @@ export default {
 #stories,
 #videos,
 #songs {
-  height: 539px;
+  height: 725px;
   width: 100%;
   background: #75b6d9;
   border-radius: 15px;

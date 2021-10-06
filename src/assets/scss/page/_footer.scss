@@ -5,7 +5,7 @@ footer {
     z-index: 998;
 
     #menu {
-        max-width: 1200px;
+        max-width: 768px;
         position: relative;
         margin-left: auto;
         margin-right: auto;
@@ -21,7 +21,7 @@ footer {
             width: calc(100% - 100px);
             margin-left: 50px;
             margin-right: 50px;
-            height: 80px;
+            height: 50px;
             background-color: #AFAFAF;
 
             @media screen and (max-width: 825px) {
@@ -63,7 +63,7 @@ footer {
             width: calc(100% - 100px);
             justify-content: space-evenly;
             left: 0;
-            bottom: 15px;
+            bottom: 10px;
             margin-left: 50px;
             margin-right: 50px;
 
@@ -90,8 +90,8 @@ footer {
 
                     img,
                     svg {
-                        max-width: 80px;
-                        height: 80px;
+                        max-width: 35px;
+                        height: 35px;
                         margin-bottom: 5px;
                         margin-left: auto;
                         margin-right: auto;
@@ -123,11 +123,11 @@ footer {
                     span {
                         text-align: center;
                         display: block;
-                        font-size: 20px;
+                        font-size: 14px;
                         transform: scaleX(0.8);
 
                         @media screen and (max-width: 570px) {
-                            font-size: 14px;
+                            font-size: 12px;
                         }
                     }
 
@@ -137,7 +137,7 @@ footer {
                         }
 
                         img {
-                            transform: translateY(-30px);
+                            transform: translateY(-15px);
                         }
                     }
                 }
@@ -163,9 +163,13 @@ footer {
         bottom: 80px;
     }
 
+    @media screen and (max-height: 1024px) {
+        bottom: 20px !important;
+    }
+    
     @media screen and (max-width: 1024px) {
         bottom: 15px;
-        right: -85px;
+        right: -50px;
     }
 
     @media screen and (max-width: 825px) {

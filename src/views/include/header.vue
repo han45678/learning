@@ -2,9 +2,15 @@
   <header>
     <nav>
       <ul>
-        <li @click="signOut" style="cursor: pointer;">
+        <li
+          @click="signOut"
+          style="cursor: pointer;"
+        >
           <div class="icon">
-            <img src="/images/icon/user.svg" alt="icon" />
+            <img
+              src="/images/icon/user.svg"
+              alt="icon"
+            >
           </div>
           <div class="content">
             {{ info.name }}
@@ -12,13 +18,21 @@
         </li>
         <li>
           <div class="icon">
-            <img src="/images/icon/star.svg" alt="icon" />
+            <img
+              src="/images/icon/star.svg"
+              alt="icon"
+            >
           </div>
-          <div class="content">{{ info.star }}</div>
+          <div class="content">
+            {{ info.star }}
+          </div>
         </li>
         <li>
           <div class="icon">
-            <img src="/images/icon/currency.svg" alt="icon" />
+            <img
+              src="/images/icon/currency.svg"
+              alt="icon"
+            >
           </div>
           <div class="content">
             {{ info.currency }}
@@ -26,7 +40,10 @@
         </li>
         <li>
           <div class="icon">
-            <img src="/images/icon/time.svg" alt="icon" />
+            <img
+              src="/images/icon/time.svg"
+              alt="icon"
+            >
           </div>
           <div class="content">
             {{ info.time }}
@@ -34,9 +51,14 @@
         </li>
         <li>
           <div class="icon">
-            <img src="/images/icon/level.svg" alt="icon" />
+            <img
+              src="/images/icon/level.svg"
+              alt="icon"
+            >
           </div>
-          <div class="content">Level {{ info.level }}</div>
+          <div class="content">
+            Level {{ info.level }}
+          </div>
         </li>
       </ul>
     </nav>

@@ -597,10 +597,10 @@ h1 {
     border: 3px solid #231815;
     background-color: #7a7a7a;
     border-radius: 15px;
-    max-width: 965px;
+    max-width: 1120px;
     margin-left: auto;
     margin-right: auto;
-    height: 564px;
+    height: 628px;
     position: relative;
     overflow: hidden;
     .helper {
@@ -761,10 +761,10 @@ h1 {
     border: 3px solid #231815;
     background-color: #7a7a7a;
     border-radius: 15px;
-    max-width: 965px;
+    max-width: 1239px;
     margin-left: auto;
     margin-right: auto;
-    height: 564px;
+    height: 692px;
     position: relative;
     overflow: hidden;
     .content {

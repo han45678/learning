@@ -614,7 +614,7 @@
                 <div v-show="options === 3">
                   <!-- <vc-calendar is-expanded /> -->
                   <img
-                    style="padding: 0; max-width: 925px"
+                    style="padding: 0;"
                     src="images/calendar.png"
                     alt="calendar"
                   />
@@ -690,7 +690,6 @@
           </div>
         </main>
       </transition>
-
       <VueFooter />
     </div>
   </transition>
@@ -1157,8 +1156,8 @@ export default {
 <style scoped lang="scss">
 #records {
   width: 100%;
-  height: 900px;
-  max-height: 720px;
+  height: 888px;
+  max-height: 888px;
   display: flex;
   flex-wrap: wrap;
 
@@ -1243,7 +1242,7 @@ export default {
 
   .game_menu {
     width: 115px;
-    margin-right: 50px;
+    margin-right: 15px;
 
     ul {
       li {
@@ -1336,12 +1335,12 @@ export default {
   }
 
   .game_main {
-    width: calc(100% - 185px);
-    min-height: 570px;
+    width: calc(100% - 130px);
+    min-height: 810px;
     box-sizing: border-box;
     position: relative;
-    margin-left: 15px;
-    margin-bottom: 50px;
+    margin-left: 0;
+    margin-bottom: 0;
 
     .content {
       position: absolute;
@@ -1475,7 +1474,7 @@ export default {
         #weekly {
           width: calc(50% - 7.5px);
           overflow-y: auto;
-          max-height: 574px;
+          max-height: 810px;
           .task_head,
           .weekly_head {
             width: 100%;
@@ -1664,7 +1663,7 @@ export default {
           #weekly {
             width: calc(50% - 7.5px);
             overflow-y: auto;
-            max-height: 574px;
+            max-height: 810px;
             .task_head,
             .weekly_head {
               background-color: #7d308e;

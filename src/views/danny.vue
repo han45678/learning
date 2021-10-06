@@ -55,7 +55,7 @@ export default {
 
 <style scoped lang="scss">
 img {
-  max-width: 768px;
+  max-height: 810px;
   padding: 0;
   margin: auto;
   display: block;

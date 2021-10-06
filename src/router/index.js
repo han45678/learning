@@ -15,10 +15,7 @@ import test2 from '../views/test2.vue'
 import d6 from '../views/game_page/d6.vue'
 import store from '../store'
 
-
 Vue.use(VueRouter)
-
-
 const routes = [
   {
     path: '*',
@@ -134,9 +131,5 @@ router.beforeEach((to, form, next) => {
 //       next()
 //   }
 // })
-
-
-
-
 
 export default router

@@ -24,7 +24,10 @@
         enter-active-class="animated swing fade-enter-active"
         leave-active-class="animated bounce fade-leave-active"
       >
-        <main v-if="checkpoint" style="margin-top: -45px;">
+        <main
+          v-if="checkpoint"
+          style="margin-top: -45px"
+        >
           <div class="content">
             <!-- <router-link 
             :to="`game/${index}`" 
@@ -60,9 +63,18 @@
               }"
             >
               <div class="item">
-                <span v-if="item.title" class="title">{{ item.title }}</span>
-                <span v-if="item.number" class="number">{{ item.number }}</span>
-                <span v-if="item.text" class="text">{{ item.text }}</span>
+                <span
+                  v-if="item.title"
+                  class="title"
+                >{{ item.title }}</span>
+                <span
+                  v-if="item.number"
+                  class="number"
+                >{{ item.number }}</span>
+                <span
+                  v-if="item.text"
+                  class="text"
+                >{{ item.text }}</span>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +83,10 @@
               />
             </div>
           </div>
-          <img :src="info.map" :alt="info.map" />
+          <img
+            :src="info.map"
+            :alt="info.map"
+          >
         </main>
       </transition>
 
@@ -90,7 +105,10 @@
       >
         <main v-if="game">
           <div id="game">
-            <div class="game_options" style="justify-content: flex-start">
+            <div
+              class="game_options"
+              style="justify-content: flex-start"
+            >
               <h1 :class="stylsClass.css">
                 {{ unit }}
               </h1>
@@ -122,7 +140,10 @@
                   ]"
                 >
                   <div class="item">
-                    <img :src="item.img" alt="icon" />
+                    <img
+                      :src="item.img"
+                      alt="icon"
+                    >
                     <svg
                       v-html="game_star_svg"
                       xmlns="http://www.w3.org/2000/svg"
@@ -139,33 +160,57 @@
                   src="images/game/background.png"
                   style="width: 100%; height: 100%; object-fit: cover"
                   alt="background"
-                />
+                >
                 <!-- 影片 -->
-                <transition type="transition" name="fade">
-                  <div class="video" v-show="options === 0 && sel === 0">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="video"
+                    v-show="options === 0 && sel === 0"
+                  >
                     <video controls>
-                      <source src="video/Ant.mp4" type="video/mp4" />
+                      <source
+                        src="video/Ant.mp4"
+                        type="video/mp4"
+                      >
                     </video>
                   </div>
                 </transition>
                 <!-- 電影 -->
-                <transition type="transition" name="fade">
-                  <div class="movie" v-if="options === 0 && sel === 1">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="movie"
+                    v-if="options === 0 && sel === 1"
+                  >
                     <video controls>
-                      <source src="video/Apple.mp4" type="video/mp4" />
+                      <source
+                        src="video/Apple.mp4"
+                        type="video/mp4"
+                      >
                     </video>
                   </div>
                 </transition>
                 <!-- 錄音 -->
-                <transition type="transition" name="fade">
-                  <div class="mic" v-if="options === 1">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
+                  <div
+                    class="mic"
+                    v-if="options === 1"
+                  >
                     <iframe
                       style="
                         width: 100%;
                         height: 103%;
                         position: absolute;
-                        transform: scale(0.99) scaleX(1.04);
-                        top: -1%;
+                        transform: scale(1.38) scaleY(0.86);
+                        top: 65px;
                       "
                       src="https://sks.nxidea.link/king/speak/"
                       frameborder="0"
@@ -173,7 +218,10 @@
                   </div>
                 </transition>
                 <!-- 遊戲 -->
-                <transition type="transition" name="fade">
+                <transition
+                  type="transition"
+                  name="fade"
+                >
                   <div v-if="options === 2 && sel === 0">
                     <iframe
                       style="
@@ -230,8 +278,15 @@
       </transition>
 
       <!-- 返回 -->
-      <div v-if="game" id="return" @click="off_game">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
+      <div
+        v-if="game"
+        id="return"
+        @click="off_game"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 73.41 73.41"
+        >
           <g>
             <path
               class="cls-1"
@@ -246,13 +301,33 @@
       </div>
 
       <!-- 遊戲鎖定 -->
-      <div v-if="info.lock" id="lock" :class="{ unlock: info.unlock }">
-        <img class="background" src="images/cloud.png" alt="cloud" />
+      <div
+        v-if="info.lock"
+        id="lock"
+        :class="{ unlock: info.unlock }"
+      >
+        <img
+          class="background"
+          src="images/cloud.png"
+          alt="cloud"
+        >
         <div class="content">
           <div id="lock_main">
-            <img class="ear" src="images/lock/lock_ear.webp" alt="lock" />
-            <img class="left" src="images/lock/lock_l.webp" alt="lock" />
-            <img class="right" src="images/lock/lock_r.webp" alt="lock" />
+            <img
+              class="ear"
+              src="images/lock/lock_ear.webp"
+              alt="lock"
+            >
+            <img
+              class="left"
+              src="images/lock/lock_l.webp"
+              alt="lock"
+            >
+            <img
+              class="right"
+              src="images/lock/lock_r.webp"
+              alt="lock"
+            >
             <div class="key" />
           </div>
           <ul class="condition">
@@ -565,10 +640,9 @@ export default {
   margin: 0;
 }
 #game {
-  // fill
   width: 100%;
-  height: 900px;
-  max-height: 720px;
+  height: 880px;
+  max-height: 880px;
   display: flex;
   flex-wrap: wrap;
 
@@ -605,7 +679,7 @@ export default {
     button {
       height: 72px;
       font-size: 32px;
-      padding: 0 25px;
+      padding: 0 60px;
       height: 72px;
       border: none;
       color: #fff;
@@ -658,7 +732,7 @@ export default {
 
   .game_menu {
     width: 132px;
-    margin-right: 38px;
+    // margin-right: 38px;
     max-height: 585px;
     overflow-y: visible;
 
@@ -797,15 +871,16 @@ export default {
   }
 
   .game_main {
-    width: calc(100% - 185px);
-    min-height: 570px;
+    width: calc(100% - 133px);
+    min-height: 785px;
     border: 5px solid #000;
     background-color: #7a7a7a;
     box-sizing: border-box;
     border-radius: 25px;
     position: relative;
-    margin-left: 15px;
-    margin-bottom: 50px;
+    // margin-left: 15px;
+    margin-top: 15px;
+    /* margin-bottom: 50px; */
 
     .content {
       position: absolute;

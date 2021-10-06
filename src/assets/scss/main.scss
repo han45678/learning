@@ -33,6 +33,10 @@ body {
     // background-repeat: no-repeat;
 }
 
+input {
+    -webkit-user-select: text !important;
+}
+
 h1,
 h2,
 h3,
@@ -46,13 +50,18 @@ h6 {
 @import './page/header';
 @import './page/footer';
 
-*,a,button,table{
-    text-transform:capitalize;
-    user-select: none;
+*,
+a,
+button,
+table {
+    text-transform: capitalize;
+    // // user-select: none;: none;
 }
-input{
+
+input {
     text-transform: unset;
 }
+
 #off {
     cursor: pointer;
     position: fixed;
@@ -112,6 +121,10 @@ input{
         top: 20px;
     }
 
+    @media screen and (max-width: 1024px) {
+        top: 20px;
+    }
+
     svg {
         width: 55px;
         height: 55px;
@@ -145,37 +158,78 @@ input{
 
 main {
     position: absolute;
-    width: 1200px;
+    width: 1530px;
     margin: auto;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 
     @media screen and (max-height: 1080px) {
-        transform: translate(-50%, -50%) scale(0.95);
+        transform: translate(-50%, -50%) scale(0.9);
     }
+
+    @media screen and (max-width: 1366px) {
+        transform: translate(-50%, -50%) scale(0.875) !important;
+    }
+
+    @media screen and (max-width: 1334px) {
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+
+    // @media screen and (max-width: 1024px) {
+    //     transform: translate(-50%, -50%) scale(0.64) !important;
+    // }
+
     @media screen and (max-height: 890px) {
         transform: translate(-50%, -50%) scale(0.8);
     }
+    @media screen and (max-height: 900px) {
+        transform: translate(-50%, -50%) scale(0.77) !important
+    }
 
     @media screen and (max-height: 768px) {
-        transform: translate(-50%, -50%) scale(0.65);
+        transform: translate(-50%, -50%) scale(0.65) !important;
+    }
+
+    @media screen and (max-height: 624px) {
+        transform: translate(-50%, -50%) scale(0.53) !important;
     }
 
     @media screen and (max-height: 600px) {
-        transform: translate(-50%, -50%) scale(0.5);
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+    @media screen and (max-height: 540px) {
+        transform: translate(-50%, -50%) scale(0.45) !important;
+    }
+    
+    @media screen and (max-height: 510px) {
+        transform: translate(-50%, -50%) scale(0.45) !important;
     }
 
     @media screen and (max-width: 1024px) {
-        transform: translate(-50%, -50%) scale(0.6);
+        transform: translate(-50%, -50%) scale(0.65);
     }
 
     @media screen and (max-width: 825px) {
         transform: translate(-50%, -50%) scale(0.35);
     }
+    
 
+    @media screen and (max-height: 595px) {
+        transform: translate(-50%, -50%) scale(0.5)
+    }
+
+    @media screen and (max-height: 415px) {
+        transform: translate(-50%, -50%) scale(0.35) !important
+    }
+    @media screen and (max-height: 375px) {
+        transform: translate(-50%, -50%) scale(0.3) !important
+    }
+    @media screen and (max-height: 360px) {
+        transform: translate(-50%, -50%) scale(0.25) !important;
+    }
     @media screen and (max-height: 320px) {
-        transform: translate(-50%, -50%) scale(0.25);
+        transform: translate(-50%, -50%) scale(0.2) !important;
     }
 
     img {
@@ -791,6 +845,7 @@ main {
             text-align: center;
             text-decoration: none;
             border-radius: 5px;
+
             &.student {
                 background-color: #0080A6;
 
@@ -865,6 +920,8 @@ main {
                 font-size: 24px;
                 border-radius: 5px;
                 border: 3px solid #3A4864;
+                line-height: normal;
+                -webkit-user-select: text !important;
 
                 @media screen and (max-width: 768px) {
                     border: 2px solid #3A4864;
@@ -931,7 +988,6 @@ main {
         }
     }
 }
-
 
 .fade-enter,
 .fade-leave-to {
@@ -1029,10 +1085,19 @@ main {
     }
 }
 
-.game_menu{
+.game_menu {
     svg {
         .star-2 {
             transform: translateY(5px);
         }
     }
 }
+
+
+// body  {
+//     cursor: url('https://sks.nxidea.link/images/menu/settings.svg')
+// }
+
+// html {
+//     cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"), auto;
+// }

@@ -87,7 +87,7 @@
           <img
             src="/images/b.png"
             alt="images"
-            style="position: absolute; width: 325px; right: 2.5%; top: 3%"
+            style="position: absolute;width: 325px;right: 4%;top: 12.5%;"
           >
         </main>
       </transition>
@@ -201,8 +201,8 @@
                         width: 100%;
                         height: 103%;
                         position: absolute;
-                        transform: scale(0.99) scaleX(1.04);
-                        top: -1%;
+                        transform: scale(1.38) scaleY(0.86);
+                        top: 65px;
                       "
                       src="https://sks.nxidea.link/king/kenny/index.html"
                       frameborder="0"
@@ -219,7 +219,7 @@
                       style="
                         width: 100%;
                         height: 100%;
-                        transform: scale(1.03);
+                        transform: scale(1.03) scaleX(1.099);
                         position: absolute;
                       "
                       src="iframe/U1_Story_D1/U1_Story_D1.html"
@@ -264,11 +264,7 @@
                     />
                   </div>
                   <div v-if="sel === 2 && options === 4">
-                    <iframe
-                      style="width: 100%; height: 100%; position: absolute"
-                      src="iframe/d6/index.html"
-                      frameborder="0"
-                    />
+                    <d6 />
                   </div>
                   <div v-if="sel === 2 && options === 3">
                     <iframe
@@ -678,10 +674,9 @@ export default {
   margin: 0;
 }
 #game {
-  // fill
   width: 100%;
-  height: 900px;
-  max-height: 720px;
+  height: 880px;
+  max-height: 880px;
   display: flex;
   flex-wrap: wrap;
 
@@ -718,7 +713,7 @@ export default {
     button {
       height: 72px;
       font-size: 32px;
-      padding: 0 25px;
+      padding: 0 60px;
       height: 72px;
       border: none;
       color: #fff;
@@ -771,10 +766,10 @@ export default {
 
   .game_menu {
     width: 132px;
-    margin-right: 38px;
+    // margin-right: 38px;
     max-height: 585px;
     overflow-y: visible;
-    margin-top: -50px;
+    // margin-top: -50px;
 
     ul {
       li {
@@ -911,15 +906,16 @@ export default {
   }
 
   .game_main {
-    width: calc(100% - 185px);
-    min-height: 570px;
+    width:calc(100% - 133px);
+    min-height: 785px;
     border: 5px solid #000;
     background-color: #7a7a7a;
     box-sizing: border-box;
     border-radius: 25px;
     position: relative;
-    margin-left: 15px;
-    margin-bottom: 50px;
+    // margin-left: 15px;
+    margin-top: 15px;
+    /* margin-bottom: 50px; */
 
     .content {
       position: absolute;

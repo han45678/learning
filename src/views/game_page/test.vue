@@ -357,7 +357,7 @@ export default {
 * {
   border: 0;
   margin: 0;
-  user-select: none;
+  // user-select: none;: none;
 }
 
 html:root {

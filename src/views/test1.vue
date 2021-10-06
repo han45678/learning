@@ -203,7 +203,6 @@ export default {
       },
     });
     vm.pickr = pickr;
-
     vm.canvas = vm.$refs.canvas;
     vm.canvas.addEventListener("mousemove", vm.mouseMove);
     vm.canvas.addEventListener("mousemove", vm.cursorMove);
@@ -445,7 +444,7 @@ body {
   justify-content: center;
   align-items: center;
   color: black;
-  user-select: none;
+  // user-select: none;: none;
   cursor: pointer;
   transition: all 0.3s;
 
@@ -519,7 +518,7 @@ body {
   left: 22px;
   transform: rotate(-90deg);
   transition: all 0.3s ease-in;
-  user-select: none;
+  // user-select: none;: none;
   cursor: pointer;
 }
 
@@ -547,7 +546,7 @@ body {
   font-size: 20px;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease-in-out;
-  user-select: none;
+  // user-select: none;: none;
 
   > .tools-item .brush-icon,
   .tools-item .fa-eraser {
@@ -630,7 +629,7 @@ body {
   left: calc((100% - 56px) / 2);
   line-height: 66px;
   text-align: center;
-  user-select: none;
+  // user-select: none;: none;
   cursor: pointer;
   transition: all 0.2s ease-in;
 
@@ -643,7 +642,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 30px;
-  user-select: none;
+  // user-select: none;: none;
   list-style: none;
 
   .material-icons {
