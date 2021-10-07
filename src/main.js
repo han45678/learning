@@ -9,7 +9,7 @@ import Vuex from 'vuex'
 import store from './store'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
-import _ from 'lodash'
+
 import VCalendar from 'v-calendar';
 
 

@@ -27,25 +27,30 @@
       <div class="overlay" />
       <div class="content">
         <div class="title">You won!</div>
-        <div class="score">Score: {{ score }}</div>
+        <div class="score">Spend time: {{ time }}</div>
         <button class="newGame" @click="resetGame()">New game</button>
       </div>
     </div>
   </div>
 </template>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.12.0/lodash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
 <script>
+import moment from "moment";
+import _ from "lodash";
+
 let CardTypes = [
-  { name: "dog", image: "./img/dog.png" },
-  { name: "ant", image: "./img/ant.png" },
-  { name: "bed", image: "./img/bed.png" },
-  { name: "cat", image: "./img/cat.png" },
+  { name: "dog", image: "../images/dog.png" },
+  { name: "dog", image: "../images/dog_w.png" },
+  { name: "ant", image: "../images/ant.png" },
+  { name: "ant", image: "../images/ant_w.png" },
+  { name: "bed", image: "../images/bed.png" },
+  { name: "bed", image: "../images/bed_w.png" },
+  { name: "cat", image: "../images/cat.png" },
+  { name: "cat", image: "../images/cat_w.png" },
 ];
 
 let shuffleCards = () => {
-  let cards = [].concat(_.cloneDeep(CardTypes), _.cloneDeep(CardTypes));
+  let cards = [].concat(_.cloneDeep(CardTypes));
   return _.shuffle(cards);
 };
 
@@ -60,6 +65,7 @@ export default {
     timer: null,
     time: "--:--",
     score: 0,
+    mask:true,
   }),
   methods: {
     resetGame() {
@@ -71,7 +77,11 @@ export default {
       this.startTime = 0;
 
       _.each(cards, (card) => {
-        card.flipped = false;
+        card.flipped = true;
+        setInterval(function () {
+          card.flipped = false;
+        }, 1000);
+        
         card.found = false;
       });
 
@@ -172,192 +182,188 @@ export default {
 
 <style scoped lang="scss">
 // @import url(https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css);
+// @import "compass";
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900|Dosis:300,400,600,700,800|Droid+Sans:400,700|Lato:300,400,700,900|PT+Sans:400,700|Ubuntu:300,400,500,700|Open+Sans:400,300,600,700|Roboto:400,300,500,700,900|Roboto+Condensed:400,300,700|Open+Sans+Condensed:300,700|Work+Sans:400,300,700|Play:400,700|Maven+Pro:400,500,700,900&subset=latin,latin-ext);
+
+$backgroundColor: #292c33;
+$textColor: White;
+$masterColor: #389bfe;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $backgroundColor;
+  color: $textColor;
+  font-size: 16px;
+  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
 
 #d6 {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 2em;
+}
 
-  &.container {
+.info {
+  text-align: center;
+  border-bottom: 1px solid #555;
+  font-size: 36px;
+  padding-bottom: 30px;
+
+  > div {
+    display: inline-block;
+    width: 200px;
+
+    .label {
+      margin-right: 5px;
+    }
+
+    .value {
+      font-weight: bold;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  .card {
+    cursor: pointer;
+    margin-top: 2em;
     position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    transition: opacity 0.5s;
+
+    .front,
+    .back {
+      box-shadow: 0px 0px 10px #969696;
+      border-radius: 5px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: White;
+
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .back {
+      background-image: url("/images/back.png");
+      background-size: 90%;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      font-size: 12px;
+    }
+
+    .front {
+      transform: rotateY(-180deg);
+      background-size: 90%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &.flipped,
+    &.found {
+      .back {
+        transform: rotateY(180deg);
+      }
+
+      .front {
+        transform: rotateY(0deg);
+      }
+    }
+
+    &.found {
+      opacity: 0.3;
+    }
+  }
+}
+
+.splash {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  .overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-color: rgba(#000, 0.6);
   }
 
-  .color_block {
-    background-color: #fff;
+  .content {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
     left: 0;
-    z-index: 999;
+    right: 0;
+    top: 0;
+    bottom: 0;
 
-    &.active {
-      display: none;
+    width: 400px;
+    height: 200px;
+
+    margin: auto;
+    text-align: center;
+
+    background-color: rgba(#333, 0.9);
+
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(Black, 0.8);
+
+    padding: 1em;
+
+    .title {
+      font-size: 1.8em;
+      padding: 0.5em;
+      color: #fff;
+    }
+
+    .score {
+      padding: 0.5em;
+      color: #fff;
     }
 
     button {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      margin: 0;
-      border: 1px solid;
-      border-radius: 0;
-      width: 180px;
-      height: 60px;
-      font-size: 24px;
+      margin-top: 1em;
 
-      &:hover {
-        background-color: #fff;
-        color: #28a745;
-      }
+      background-color: #444;
+      padding: 5px 20px;
+      border-radius: 4px;
+      border: 1px solid #555;
+      color: White;
+
+      font-size: 1.4em;
     }
-  }
-
-  .row {
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .item {
-    width: 115px;
-    height: 150px;
-    margin: 7.5px;
-    position: relative;
-    background-color: #fff;
-    border: 5px solid #fff;
-    color: #000;
-    font-size: 40px;
-    border-radius: 10px;
-    transition: 0.3s;
-    transform: rotateY(-180deg);
-    box-shadow: 0px 0px 15px #ccc;
-    cursor: pointer;
-
-    &::after {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background-color: rgb(108, 192, 150);
-      background-image: url("https://png.pngtree.com/png-clipart/20190904/original/pngtree-plaid-tile-png-image_4471399.jpg");
-      background-size: cover;
-      left: 0;
-      right: 0;
-    }
-
-    &.pass,
-    &.active,
-    &.flop {
-      transform: rotateY(0);
-      cursor: auto;
-    }
-
-    &.pass::after,
-    &.active::after,
-    &.flop::after {
-      display: none;
-    }
-
-    h1 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-
-  .bg-primary {
-    cursor: pointer;
-  }
-
-  .bg-danger {
-    cursor: auto;
-  }
-
-  button {
-    margin-top: 50px;
-  }
-
-  #pass {
-    position: absolute;
-    z-index: 998;
-    width: 80%;
-    height: 30%;
-    border: 15px solid #f5c000;
-    transform: scale(2);
-    opacity: 0;
-    transition: 0.6s;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    text-align: center;
-
-    /* box-shadow: 0px 0px 12px 0px #000; */
-
-    &.active {
-      pointer-events: auto;
-      transform: scale(1) rotate(5deg);
-      opacity: 1;
-    }
-
-    p {
-      font-size: 80px;
-      font-weight: bolder;
-      color: #f5c000;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-    }
-  }
-
-  #failure {
-    position: absolute;
-    z-index: 998;
-    width: 80%;
-    height: 30%;
-    border: 15px solid red;
-    transform: scale(2);
-    opacity: 0;
-    transition: 0.6s;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    text-align: center;
-
-    /* box-shadow: 0px 0px 12px 0px #000; */
-
-    &.active {
-      pointer-events: auto;
-      transform: rotate(25deg) scale(1);
-      opacity: 1;
-    }
-
-    p {
-      font-size: 80px;
-      font-weight: bolder;
-      color: red;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-    }
-  }
-  .text-center {
-    text-align: center;
   }
 }
 </style>

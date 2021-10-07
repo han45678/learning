@@ -502,7 +502,7 @@
                 src="images/story1.png"
                 alt="story_p"
                 style="
-                  max-height: 555px;
+                  max-height: 800px;
                   width: auto;
                   margin: auto;
                   display: block;
@@ -626,7 +626,7 @@
                 src="images/story_p1.png"
                 alt="story_p"
                 style="
-                  max-height: 555px;
+                  max-height: 800px;
                   width: auto;
                   margin: auto;
                   display: block;
@@ -638,7 +638,7 @@
                 src="images/story_p2.png"
                 alt="story_p"
                 style="
-                  max-height: 555px;
+                  max-height: 800px;
                   width: auto;
                   margin: auto;
                   display: block;
@@ -983,7 +983,7 @@ export default {
 
 #coloring_schedule {
   display: flex;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
   #prev,
   #next {
     width: 120px;
@@ -1067,7 +1067,7 @@ export default {
     cursor: pointer;
     .photo {
       width: 100%;
-      height: 250px;
+      height: 710px;
       img {
         object-fit: cover;
         width: 100%;
@@ -1123,7 +1123,7 @@ export default {
 #coloring_content {
   display: flex;
   align-items: center;
-  margin-top: -85px;
+  margin-top: 0px;
   .coloring_pen {
     width: 100px;
     ul {
@@ -1158,7 +1158,7 @@ export default {
   }
   .coloring_main {
     width: calc(100% - 100px);
-    height: 522px;
+    height: 810px;
     box-sizing: border-box;
     border: 5px solid #000;
     background-color: #fff;
