@@ -393,13 +393,13 @@
 import VueLoading from "./include/loading";
 import VueHeader from "./include/header";
 import VueFooter from "./include/footer";
-// import d6 from "./game_page/d6";
+import d6 from "./game_page/d6";
 export default {
   components: {
     VueLoading,
     VueHeader,
     VueFooter,
-    // d6,
+    d6,
   },
   data() {
     return {

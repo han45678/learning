@@ -4,9 +4,9 @@
       <div>
         <span class="label">Time:</span><span class="value">{{ time }} </span>
       </div>
-      <div>
+      <!-- <div>
         <span class="label">Turns:</span><span class="value">{{ turns }} </span>
-      </div>
+      </div> -->
     </div>
     <div class="cards">
       <div
@@ -45,8 +45,6 @@ let CardTypes = [
   { name: "ant", image: "../images/ant_w.png" },
   { name: "bed", image: "../images/bed.png" },
   { name: "bed", image: "../images/bed_w.png" },
-  { name: "cat", image: "../images/cat.png" },
-  { name: "cat", image: "../images/cat_w.png" },
 ];
 
 let shuffleCards = () => {
@@ -63,12 +61,14 @@ export default {
     turns: 0,
     flipBackTimer: null,
     timer: null,
-    time: "--:--",
+    time: "00:00",
     score: 0,
-    mask:true,
+    mask: true,
+    // gs: true,
   }),
   methods: {
     resetGame() {
+      this.time = "00:00",
       this.showSplash = false;
       let cards = shuffleCards();
       this.turns = 0;
@@ -78,14 +78,15 @@ export default {
 
       _.each(cards, (card) => {
         card.flipped = true;
-        setInterval(function () {
+        setTimeout(() => {
           card.flipped = false;
         }, 1000);
-        
         card.found = false;
       });
 
       this.cards = cards;
+
+      // this.gs = false;
     },
 
     flippedCards() {
@@ -249,8 +250,8 @@ html {
     margin-top: 2em;
     position: relative;
     display: inline-block;
-    width: 200px;
-    height: 200px;
+    width: 265px;
+    height: 265px;
     transition: opacity 0.5s;
 
     .front,
@@ -277,7 +278,6 @@ html {
       background-size: 90%;
       background-position: center;
       background-repeat: no-repeat;
-
       font-size: 12px;
     }
 
@@ -288,6 +288,7 @@ html {
       background-position: center;
     }
 
+    &.start,
     &.flipped,
     &.found {
       .back {
@@ -300,7 +301,7 @@ html {
     }
 
     &.found {
-      opacity: 0.3;
+      opacity: 0;
     }
   }
 }
@@ -318,7 +319,6 @@ html {
     right: 0;
     top: 0;
     bottom: 0;
-
     background-color: rgba(#000, 0.6);
   }
 
@@ -328,18 +328,13 @@ html {
     right: 0;
     top: 0;
     bottom: 0;
-
-    width: 400px;
-    height: 200px;
-
+    width: 400px !important;
+    height: 200px !important;
     margin: auto;
     text-align: center;
-
     background-color: rgba(#333, 0.9);
-
     border-radius: 10px;
     box-shadow: 5px 5px 20px rgba(Black, 0.8);
-
     padding: 1em;
 
     .title {
@@ -355,13 +350,11 @@ html {
 
     button {
       margin-top: 1em;
-
       background-color: #444;
       padding: 5px 20px;
       border-radius: 4px;
       border: 1px solid #555;
       color: White;
-
       font-size: 1.4em;
     }
   }
