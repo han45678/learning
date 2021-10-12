@@ -183,6 +183,7 @@ main {
     @media screen and (max-height: 890px) {
         transform: translate(-50%, -50%) scale(0.8);
     }
+
     @media screen and (max-height: 900px) {
         transform: translate(-50%, -50%) scale(0.77) !important
     }
@@ -198,10 +199,11 @@ main {
     @media screen and (max-height: 600px) {
         transform: translate(-50%, -50%) scale(0.5) !important;
     }
+
     @media screen and (max-height: 540px) {
         transform: translate(-50%, -50%) scale(0.45) !important;
     }
-    
+
     @media screen and (max-height: 510px) {
         transform: translate(-50%, -50%) scale(0.45) !important;
     }
@@ -213,7 +215,7 @@ main {
     @media screen and (max-width: 825px) {
         transform: translate(-50%, -50%) scale(0.35);
     }
-    
+
 
     @media screen and (max-height: 595px) {
         transform: translate(-50%, -50%) scale(0.5)
@@ -222,12 +224,15 @@ main {
     @media screen and (max-height: 415px) {
         transform: translate(-50%, -50%) scale(0.35) !important
     }
+
     @media screen and (max-height: 375px) {
         transform: translate(-50%, -50%) scale(0.3) !important
     }
+
     @media screen and (max-height: 360px) {
         transform: translate(-50%, -50%) scale(0.25) !important;
     }
+
     @media screen and (max-height: 320px) {
         transform: translate(-50%, -50%) scale(0.2) !important;
     }
@@ -1101,3 +1106,4 @@ main {
 // html {
 //     cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"), auto;
 // }
+

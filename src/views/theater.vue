@@ -23,53 +23,20 @@
             <div id="story">
               <h2>DK STORY CORNER</h2>
               <div class="story_content">
-                <div
-                  class="item"
-                  @click="theater_menu = 1"
-                >
-                  <img
-                    src="images/theater/stories.svg"
-                    alt="img"
-                  >
-                  <div class="text">
-                    SB Stories
-                  </div>
-                  <div
-                    class="background"
-                    style="background-color: #18a3b4"
-                  />
+                <div class="item" @click="theater_menu = 1">
+                  <img src="images/theater/stories.svg" alt="img" />
+                  <div class="text">SB Stories</div>
+                  <div class="background" style="background-color: #18a3b4" />
                 </div>
-                <div
-                  class="item"
-                  @click="theater_menu = 2"
-                >
-                  <img
-                    src="images/theater/videos.svg"
-                    alt="img"
-                  >
-                  <div class="text">
-                    Reader Videos
-                  </div>
-                  <div
-                    class="background"
-                    style="background-color: #f4c88e"
-                  />
+                <div class="item" @click="theater_menu = 2">
+                  <img src="images/theater/videos.svg" alt="img" />
+                  <div class="text">Reader Videos</div>
+                  <div class="background" style="background-color: #f4c88e" />
                 </div>
-                <div
-                  class="item"
-                  @click="theater_menu = 3"
-                >
-                  <img
-                    src="images/theater/songs.svg"
-                    alt="img"
-                  >
-                  <div class="text">
-                    DK Songs
-                  </div>
-                  <div
-                    class="background"
-                    style="background-color: #ee9f6c"
-                  />
+                <div class="item" @click="theater_menu = 3">
+                  <img src="images/theater/songs.svg" alt="img" />
+                  <div class="text">DK Songs</div>
+                  <div class="background" style="background-color: #ee9f6c" />
                 </div>
               </div>
             </div>
@@ -84,17 +51,9 @@
                     cs_sigh = 1;
                   "
                 >
-                  <img
-                    src="images/theater/doodle.svg"
-                    alt="img"
-                  >
-                  <div class="text">
-                    Draw & Doodle
-                  </div>
-                  <div
-                    class="background"
-                    style="background-color: #df544b"
-                  />
+                  <img src="images/theater/doodle.svg" alt="img" />
+                  <div class="text">Draw & Doodle</div>
+                  <div class="background" style="background-color: #df544b" />
                 </div>
                 <div
                   class="item"
@@ -104,18 +63,12 @@
                     cs_sigh = 1;
                   "
                 >
-                  <img
-                    src="images/theater/story.svg"
-                    alt="img"
-                  >
+                  <img src="images/theater/story.svg" alt="img" />
                   <div class="text">
                     My Story
                     <span>Level 1-3 only</span>
                   </div>
-                  <div
-                    class="background"
-                    style="background-color: #b15177"
-                  />
+                  <div class="background" style="background-color: #b15177" />
                 </div>
                 <div
                   class="item"
@@ -125,18 +78,12 @@
                     cs_sigh = 1;
                   "
                 >
-                  <img
-                    src="images/theater/story+.svg"
-                    alt="img"
-                  >
+                  <img src="images/theater/story+.svg" alt="img" />
                   <div class="text">
                     My Story +
                     <span>Level 4-7 only</span>
                   </div>
-                  <div
-                    class="background"
-                    style="background-color: #af87ba"
-                  />
+                  <div class="background" style="background-color: #af87ba" />
                 </div>
               </div>
             </div>
@@ -145,10 +92,7 @@
           <!-- 選單內容 -->
           <div v-if="theater_menu === 1">
             <div id="stories">
-              <div
-                id="stories_main"
-                v-html="videoSource"
-              />
+              <div id="stories_main" v-html="videoSource" />
               <div id="stories_side">
                 <div
                   class="item"
@@ -164,7 +108,7 @@
                       <video :poster="item.photo" />
                     </div>
                     <div class="text">
-                      Author : <br>{{ item.content_text }}
+                      Author : <br />{{ item.content_text }}
                     </div>
                   </div>
                 </div>
@@ -173,10 +117,7 @@
           </div>
           <div v-if="theater_menu === 2">
             <div id="videos">
-              <div
-                id="stories_main"
-                v-html="videoSource"
-              />
+              <div id="stories_main" v-html="videoSource" />
               <div id="stories_side">
                 <div
                   class="item"
@@ -192,7 +133,7 @@
                       <video :poster="item.photo" />
                     </div>
                     <div class="text">
-                      Author : <br>{{ item.content_text }}
+                      Author : <br />{{ item.content_text }}
                     </div>
                   </div>
                 </div>
@@ -201,10 +142,7 @@
           </div>
           <div v-if="theater_menu === 3">
             <div id="songs">
-              <div
-                id="stories_main"
-                v-html="videoSource"
-              />
+              <div id="stories_main" v-html="videoSource" />
               <div id="stories_side">
                 <div
                   class="item"
@@ -220,7 +158,7 @@
                       <video :poster="item.photo" />
                     </div>
                     <div class="text">
-                      Author : <br>{{ item.content_text }}
+                      Author : <br />{{ item.content_text }}
                     </div>
                   </div>
                 </div>
@@ -230,78 +168,31 @@
           <!-- v-if="theater_menu === 4" this.video[0].video -->
           <div v-if="theater_menu === 4">
             <div id="coloring_schedule">
-              <button
-                id="prev"
-                @click="cs_sigh_prev"
-              >
-                Prev
-              </button>
+              <button id="prev" @click="cs_sigh_prev">Prev</button>
               <ul>
-                <li :class="{ active: this.cs_sigh === 1 }">
-                  1
-                </li>
-                <li :class="{ active: this.cs_sigh === 2 }">
-                  2
-                </li>
-                <li :class="{ active: this.cs_sigh === 3 }">
-                  3
-                </li>
+                <li :class="{ active: this.cs_sigh === 1 }">1</li>
+                <li :class="{ active: this.cs_sigh === 2 }">2</li>
+                <li :class="{ active: this.cs_sigh === 3 }">3</li>
                 <!-- <li :class="{ active: this.cs_sigh === 4 }">4</li> -->
               </ul>
-              <button
-                id="next"
-                @click="cs_sigh_next"
-              >
-                Next
-              </button>
+              <button id="next" @click="cs_sigh_next">Next</button>
             </div>
-            <div
-              id="coloring_menu"
-              v-if="cs_sigh === 1"
-            >
+            <div id="coloring_menu" v-if="cs_sigh === 1">
               <div
+                v-for="(item, index) in draw_doodle"
+                :key="index"
                 class="item"
-                :class="{ active: coloring_item === 1 }"
-                @click="coloring_item = 1"
+                :class="{ active: coloring_item === item.id }"
+                @click="
+                  coloring_item = item.id;
+                  dd_img = item.img;
+                "
               >
                 <div class="photo">
-                  <img
-                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
-                    alt="img"
-                  >
+                  <img :src="item.img" alt="img" />
                 </div>
                 <div class="text">
-                  The Three Little Pigs
-                </div>
-              </div>
-              <div
-                class="item"
-                :class="{ active: coloring_item === 2 }"
-                @click="coloring_item = 2"
-              >
-                <div class="photo">
-                  <img
-                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
-                    alt="img"
-                  >
-                </div>
-                <div class="text">
-                  The Three Little Pigs
-                </div>
-              </div>
-              <div
-                class="item"
-                :class="{ active: coloring_item === 3 }"
-                @click="coloring_item = 3"
-              >
-                <div class="photo">
-                  <img
-                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
-                    alt="img"
-                  >
-                </div>
-                <div class="text">
-                  The Three Little Pigs
+                  {{ item.text }}
                 </div>
               </div>
             </div>
@@ -311,66 +202,39 @@
                 <div class="coloring_pen">
                   <ul>
                     <li>
-                      <img
-                        src="images/theater/pen1.svg"
-                        alt="pen"
-                      >
+                      <img src="images/theater/pen1.svg" alt="pen" />
                     </li>
                     <li>
-                      <img
-                        src="images/theater/pen2.svg"
-                        alt="pen"
-                      >
+                      <img src="images/theater/pen2.svg" alt="pen" />
                     </li>
                     <li>
-                      <img
-                        src="images/theater/pen3.svg"
-                        alt="pen"
-                      >
+                      <img src="images/theater/pen3.svg" alt="pen" />
                     </li>
                   </ul>
                 </div>
                 <div class="coloring_main">
-                  <img
-                    src="https://d.ecimg.tw/items/DECU1LA900AGYB4/i010003_1579152548.jpg"
-                    alt="img"
-                  >
+                  <img :src="dd_img" alt="img" />
                 </div>
               </div>
               <div />
             </div>
             <div v-if="cs_sigh === 3">
-              <div
-                id="coloring_content"
-                style="position: relative"
-              >
+              <div id="coloring_content" style="position: relative">
                 <div class="coloring_pen">
                   <ul>
                     <li>
-                      <img
-                        src="images/theater/pen1.svg"
-                        alt="pen"
-                      >
+                      <img src="images/theater/pen1.svg" alt="pen" />
                     </li>
                     <li>
-                      <img
-                        src="images/theater/pen2.svg"
-                        alt="pen"
-                      >
+                      <img src="images/theater/pen2.svg" alt="pen" />
                     </li>
                     <li>
-                      <img
-                        src="images/theater/pen3.svg"
-                        alt="pen"
-                      >
+                      <img src="images/theater/pen3.svg" alt="pen" />
                     </li>
                   </ul>
                 </div>
                 <div class="coloring_main">
-                  <img
-                    src="https://d.ecimg.tw/items/DECU1LA900AGYB4/i010003_1579152548.jpg"
-                    alt="img"
-                  >
+                  <img :src="dd_img" alt="img" />
                   <button
                     style="
                       position: absolute;
@@ -411,36 +275,15 @@
             </div>
           </div>
           <div v-if="theater_menu === 5">
-            <div
-              id="coloring_schedule"
-              :class="{ story: theater_menu === 5 }"
-            >
-              <button
-                id="prev"
-                @click="cs_sigh_prev"
-              >
-                Prev
-              </button>
+            <div id="coloring_schedule" :class="{ story: theater_menu === 5 }">
+              <button id="prev" @click="cs_sigh_prev">Prev</button>
               <ul>
-                <li :class="{ active: this.cs_sigh === 1 }">
-                  1
-                </li>
-                <li :class="{ active: this.cs_sigh === 2 }">
-                  2
-                </li>
-                <li :class="{ active: this.cs_sigh === 3 }">
-                  3
-                </li>
-                <li :class="{ active: this.cs_sigh === 4 }">
-                  4
-                </li>
+                <li :class="{ active: this.cs_sigh === 1 }">1</li>
+                <li :class="{ active: this.cs_sigh === 2 }">2</li>
+                <li :class="{ active: this.cs_sigh === 3 }">3</li>
+                <li :class="{ active: this.cs_sigh === 4 }">4</li>
               </ul>
-              <button
-                id="next"
-                @click="cs_sigh_next"
-              >
-                Next
-              </button>
+              <button id="next" @click="cs_sigh_next">Next</button>
             </div>
             <div
               id="coloring_menu"
@@ -452,86 +295,80 @@
             >
               <div
                 class="item"
-                :class="{ active: coloring_item === 1 }"
-                @click="coloring_item = 1"
+                v-for="(item, index) in story"
+                :key="index"
+                :class="{ active: coloring_item === item.id }"
+                @click="
+                  coloring_item = item.id;
+                  s_img = item.img;
+                "
               >
                 <div class="photo">
-                  <img
-                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
-                    alt="img"
-                  >
+                  <img :src="item.img" alt="img" />
                 </div>
-                <div class="text">
-                  The Three Little Pigs
-                </div>
-              </div>
-              <div
-                class="item"
-                :class="{ active: coloring_item === 2 }"
-                @click="coloring_item = 2"
-              >
-                <div class="photo">
-                  <img
-                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
-                    alt="img"
-                  >
-                </div>
-                <div class="text">
-                  The Three Little Pigs
-                </div>
-              </div>
-              <div
-                class="item"
-                :class="{ active: coloring_item === 3 }"
-                @click="coloring_item = 3"
-              >
-                <div class="photo">
-                  <img
-                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
-                    alt="img"
-                  >
-                </div>
-                <div class="text">
-                  The Three Little Pigs
-                </div>
+                <div class="text">{{ item.text }}</div>
               </div>
             </div>
             <!-- 選單下層內容 -->
-            <div v-if="cs_sigh === 2">
-              <img
-                src="images/story1.png"
-                alt="story_p"
-                style="
-                  max-height: 800px;
-                  width: auto;
-                  margin: auto;
-                  display: block;
-                "
-              >
-            </div>
-            <div v-if="cs_sigh === 3">
-              <img
-                src="images/story2.png"
-                alt="story_p"
-                style="
-                  max-height: 555px;
-                  width: auto;
-                  margin: auto;
-                  display: block;
-                "
-              >
+            <div v-if="cs_sigh === 2 || cs_sigh === 3" style="height: 800px">
+              <div class="content">
+                <div class="img">
+                  <img :src="s_img" alt="img" />
+                </div>
+                <div class="audio">
+                  <div class="all" v-show="cs_sigh === 2">
+                    <i class="fas fa-volume-up" />
+                  </div>
+                  <div class="all" v-show="cs_sigh === 3">
+                    <i class="fas fa-microphone" />
+                  </div>
+                  <div class="quantity">
+                    <i class="fas fa-chevron-circle-up" />
+                    <div class="number">5/150</div>
+                    <i class="fas fa-chevron-circle-down" />
+                  </div>
+                  <div class="sentence">
+                    <div class="item">
+                      <i class="far fa-play-circle" />
+                      <div class="text">
+                        <p>
+                          And it might seem Like you were asleep.but you weren't
+                        </p>
+                        <p>你可能覺得睡著了,但不是這樣的。</p>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <i class="far fa-play-circle" />
+                      <div class="text">
+                        <p>
+                          And it might seem Like you were asleep.but you weren't
+                        </p>
+                        <p>你可能覺得睡著了,但不是這樣的。</p>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <i class="far fa-play-circle" />
+                      <div class="text">
+                        <p>
+                          And it might seem Like you were asleep.but you weren't
+                        </p>
+                        <p>你可能覺得睡著了,但不是這樣的。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div v-if="cs_sigh === 4">
-              <img
-                src="images/story3.png"
-                alt="story_p"
-                style="
-                  max-height: 555px;
-                  width: auto;
-                  margin: auto;
-                  display: block;
-                "
-              >
+              <video id="video" controls>
+                <source src="/video/Ant.mp4" type="video/mp4" />
+              </video>
+              <div id="download">
+                <i class="fas fa-download"></i>
+              </div>
+              <div id="share">
+                <i class="fas fa-share-alt"></i>
+              </div>
             </div>
           </div>
           <div v-if="theater_menu === 6">
@@ -539,32 +376,14 @@
               id="coloring_schedule"
               :class="{ story_p: theater_menu === 6 }"
             >
-              <button
-                id="prev"
-                @click="cs_sigh_prev"
-              >
-                Prev
-              </button>
+              <button id="prev" @click="cs_sigh_prev">Prev</button>
               <ul>
-                <li :class="{ active: this.cs_sigh === 1 }">
-                  1
-                </li>
-                <li :class="{ active: this.cs_sigh === 2 }">
-                  2
-                </li>
-                <li :class="{ active: this.cs_sigh === 3 }">
-                  3
-                </li>
-                <li :class="{ active: this.cs_sigh === 4 }">
-                  4
-                </li>
+                <li :class="{ active: this.cs_sigh === 1 }">1</li>
+                <li :class="{ active: this.cs_sigh === 2 }">2</li>
+                <li :class="{ active: this.cs_sigh === 3 }">3</li>
+                <li :class="{ active: this.cs_sigh === 4 }">4</li>
               </ul>
-              <button
-                id="next"
-                @click="cs_sigh_next"
-              >
-                Next
-              </button>
+              <button id="next" @click="cs_sigh_next">Next</button>
             </div>
             <div
               id="coloring_menu"
@@ -583,11 +402,9 @@
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  >
+                  />
                 </div>
-                <div class="text">
-                  The Three Little Pigs
-                </div>
+                <div class="text">The Three Little Pigs</div>
               </div>
               <div
                 class="item"
@@ -598,11 +415,9 @@
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  >
+                  />
                 </div>
-                <div class="text">
-                  The Three Little Pigs
-                </div>
+                <div class="text">The Three Little Pigs</div>
               </div>
               <div
                 class="item"
@@ -613,11 +428,9 @@
                   <img
                     src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
                     alt="img"
-                  >
+                  />
                 </div>
-                <div class="text">
-                  The Three Little Pigs
-                </div>
+                <div class="text">The Three Little Pigs</div>
               </div>
             </div>
             <!-- 選單下層內容 -->
@@ -631,7 +444,7 @@
                   margin: auto;
                   display: block;
                 "
-              >
+              />
             </div>
             <div v-if="cs_sigh === 3">
               <img
@@ -643,7 +456,7 @@
                   margin: auto;
                   display: block;
                 "
-              >
+              />
             </div>
             <div v-if="cs_sigh === 4">
               <img
@@ -655,22 +468,15 @@
                   margin: auto;
                   display: block;
                 "
-              >
+              />
             </div>
           </div>
         </main>
       </transition>
 
       <!-- 返回 -->
-      <div
-        v-if="theater_menu > 0"
-        id="return"
-        @click="prev"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 73.41 73.41"
-        >
+      <div v-if="theater_menu > 0" id="return" @click="prev">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
           <g>
             <path
               class="cls-1"
@@ -709,6 +515,42 @@ export default {
       myVideo: [],
       play_video: "",
       coloring_item: 0,
+      dd_img: "",
+      draw_doodle: [
+        {
+          id: 1,
+          img: "/images/theater/SB1_Draw1.png",
+          text: "Minions",
+        },
+        {
+          id: 2,
+          img: "/images/theater/SB1_Draw2.png",
+          text: "do la a mo",
+        },
+        {
+          id: 3,
+          img: "/images/theater/SB1_Draw3.png",
+          text: "Pokemon",
+        },
+      ],
+      s_img: "",
+      story: [
+        {
+          id: 1,
+          img: "/images/theater/SB1_Draw1.png",
+          text: "Minions",
+        },
+        {
+          id: 2,
+          img: "/images/theater/SB1_Draw2.png",
+          text: "do la a mo",
+        },
+        {
+          id: 3,
+          img: "/images/theater/SB1_Draw3.png",
+          text: "Pokemon",
+        },
+      ],
     };
   },
   async created() {
@@ -1038,14 +880,14 @@ export default {
     margin-bottom: 50px;
     #prev,
     #next {
-      background-color: #B15177;
+      background-color: #b15177;
       color: #fff;
     }
     ul {
-      background-color: #DECBDC;
+      background-color: #decbdc;
       li {
         color: #fff;
-        background-color: #B15177;
+        background-color: #b15177;
         &.active {
           background-color: #17a6af;
         }
@@ -1068,11 +910,17 @@ export default {
     .photo {
       width: 100%;
       height: 710px;
+      background-color: #fff;
+      position: relative;
       img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
+        /* object-fit: cover; */
+        width: 90%;
+        /* height: 100%; */
         padding: 0;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
       }
     }
     .text {
@@ -1113,9 +961,9 @@ export default {
       background-color: #af87ba;
     }
   }
-  &.story{
+  &.story {
     .item {
-      background-color: #B15177;
+      background-color: #b15177;
     }
   }
 }
@@ -1163,10 +1011,13 @@ export default {
     border: 5px solid #000;
     background-color: #fff;
     img {
-      width: 100%;
-      height: 100%;
+      width: 90%;
+      height: 95%;
       object-fit: contain;
       padding: 0;
+      position: relative;
+      top: 5%;
+      left: 5%;
     }
   }
   &.story {
@@ -1364,6 +1215,151 @@ export default {
         }
       }
     }
+  }
+}
+
+.img {
+  height: 645px;
+  background-color: #fff;
+  img {
+    height: 95%;
+    position: relative;
+    top: 5%;
+    width: auto;
+    margin: auto;
+    display: block;
+  }
+}
+
+.audio {
+  background-color: #decbdb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+
+  .all {
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    font-size: 64px;
+    border: 10px solid #fff;
+    box-sizing: border-box;
+    border-radius: 100px;
+    background-color: #b15177;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+    svg {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .quantity {
+    text-align: center;
+    width: 100px;
+
+    svg {
+      color: #b15177;
+      background-color: #fff;
+      border-radius: 99px;
+      font-size: 24px;
+      border: 3px solid #fff;
+      cursor: pointer;
+    }
+
+    .number {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      color: #b15177;
+    }
+  }
+
+  .sentence {
+    width: calc(100% - 100px - 120px);
+    height: 120px;
+    padding-right: 5px;
+    overflow-y: scroll;
+
+    .item {
+      width: 100%;
+      height: 57px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      margin-bottom: 5px;
+      box-sizing: border-box;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 10px;
+      svg {
+        margin-right: 15px;
+        font-size: 32px;
+        color: #b15177;
+        background-color: #decbdc;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      p {
+        color: #b15177;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+#video {
+  width: calc(100% - 200px);
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+#download {
+  position: absolute;
+  right: 0;
+  top: 52.5%;
+  width: 80px;
+  height: 80px;
+  border: 5px solid #b15177;
+  border-radius: 999px;
+  background-color: #fff;
+  cursor: pointer;
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    color: #b15177;
+  }
+}
+
+#share {
+  position: absolute;
+  right: 0;
+  bottom: 52.5%;
+  width: 80px;
+  height: 80px;
+  border: 5px solid #b15177;
+  border-radius: 999px;
+  background-color: #fff;
+  cursor: pointer;
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    color: #b15177;
   }
 }
 </style>
