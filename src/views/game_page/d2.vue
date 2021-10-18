@@ -1,4 +1,5 @@
 <template>
+
   <div class="wrapper">
     <div class="item">
       <img src="/images/A.png" alt="a">

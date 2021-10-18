@@ -49,6 +49,7 @@
                     theater_menu = 4;
                     max_cs_sigh = 3;
                     cs_sigh = 1;
+                    dive = theater_menu;
                   "
                 >
                   <img src="images/theater/doodle.svg" alt="img" />
@@ -61,6 +62,7 @@
                     theater_menu = 5;
                     max_cs_sigh = 4;
                     cs_sigh = 1;
+                    dive = theater_menu;
                   "
                 >
                   <img src="images/theater/story.svg" alt="img" />
@@ -76,6 +78,7 @@
                     theater_menu = 6;
                     max_cs_sigh = 4;
                     cs_sigh = 1;
+                    dive = theater_menu;
                   "
                 >
                   <img src="images/theater/story+.svg" alt="img" />
@@ -212,7 +215,7 @@
                     </li>
                   </ul>
                 </div>
-                <div class="coloring_main">
+                <div class="coloring_main" style="height: 825px">
                   <img :src="dd_img" alt="img" />
                 </div>
               </div>
@@ -389,86 +392,150 @@
               id="coloring_menu"
               v-if="cs_sigh === 1"
               :class="{
+                story3: theater_menu === 6,
                 story2: theater_menu === 6,
-                story_p: theater_menu === 6,
+                story: theater_menu === 6,
               }"
             >
               <div
                 class="item"
-                :class="{ active: coloring_item === 1 }"
-                @click="coloring_item = 1"
+                v-for="(item, index) in story_p"
+                :key="index"
+                :class="{ active: coloring_item === item.id }"
+                @click="
+                  coloring_item = item.id;
+                  sp_img = item.img;
+                "
               >
                 <div class="photo">
-                  <img
-                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
-                    alt="img"
-                  />
+                  <img :src="item.img" alt="img" />
                 </div>
-                <div class="text">The Three Little Pigs</div>
-              </div>
-              <div
-                class="item"
-                :class="{ active: coloring_item === 2 }"
-                @click="coloring_item = 2"
-              >
-                <div class="photo">
-                  <img
-                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
-                    alt="img"
-                  />
-                </div>
-                <div class="text">The Three Little Pigs</div>
-              </div>
-              <div
-                class="item"
-                :class="{ active: coloring_item === 3 }"
-                @click="coloring_item = 3"
-              >
-                <div class="photo">
-                  <img
-                    src="http://tw.maminews.com/img/pictures/2019/04/1555043287e6.jpg"
-                    alt="img"
-                  />
-                </div>
-                <div class="text">The Three Little Pigs</div>
+                <div class="text">{{ item.text }}</div>
               </div>
             </div>
             <!-- 選單下層內容 -->
-            <div v-if="cs_sigh === 2">
-              <img
-                src="images/story_p1.png"
-                alt="story_p"
-                style="
-                  max-height: 800px;
-                  width: auto;
-                  margin: auto;
-                  display: block;
-                "
-              />
-            </div>
-            <div v-if="cs_sigh === 3">
-              <img
-                src="images/story_p2.png"
-                alt="story_p"
-                style="
-                  max-height: 800px;
-                  width: auto;
-                  margin: auto;
-                  display: block;
-                "
-              />
-            </div>
-            <div v-if="cs_sigh === 4">
-              <img
-                src="images/story_p3.png"
-                alt="story_p"
-                style="
-                  max-height: 555px;
-                  width: auto;
-                  margin: auto;
-                  display: block;
-                "
-              />
+            <div v-if="cs_sigh === 2 || cs_sigh === 3">
+              <div id="coloring_content" :class="{cc3:cs_sigh === 3}">
+                <div class="role" v-show="cs_sigh === 2">
+                  <div class="title">
+                    <div id="figure" class="active">
+                      <i class="far fa-user" />
+                    </div>
+                    <div id="view"><i class="far fa-image" /></div>
+                  </div>
+                  <div class="sp_content">
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                    <div class="item">
+                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="coloring_main"
+                  style="height: 650px; width: calc(100% - 300px)"
+                >
+                  <img :src="sp_img" alt="img" />
+                </div>
+                <div class="sp_function">
+                  <div class="delete" v-show="cs_sigh === 2">
+                    <i class="far fa-times-circle" />
+                    <span>Delete</span>
+                  </div>
+                  <div class="scent" v-show="cs_sigh === 2">
+                    <i class="fas fa-plus-circle" />
+                    <span>scent</span>
+                  </div>
+                  <div class="switch" v-show="cs_sigh === 2">
+                    <span>2/1</span>
+                    <i class="fas fa-chevron-circle-left" />
+                    <i class="fas fa-chevron-circle-right" />
+                  </div>
+                </div>
+                <div class="audio sp" v-show="cs_sigh === 2">
+                  <div class="all">
+                    <i class="fas fa-volume-up" />
+                  </div>
+                  <div class="quantity">
+                    <i class="fas fa-chevron-circle-up" />
+                    <div class="number">5/150</div>
+                    <i class="fas fa-chevron-circle-down" />
+                  </div>
+                  <div class="sentence">
+                    <div class="item">
+                      <i class="far fa-play-circle" />
+                      <div class="text">
+                        <p>
+                          And it might seem Like you were asleep.but you weren't
+                        </p>
+                        <p>你可能覺得睡著了,但不是這樣的。</p>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <i class="far fa-play-circle" />
+                      <div class="text">
+                        <p>
+                          And it might seem Like you were asleep.but you weren't
+                        </p>
+                        <p>你可能覺得睡著了,但不是這樣的。</p>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <i class="far fa-play-circle" />
+                      <div class="text">
+                        <p>
+                          And it might seem Like you were asleep.but you weren't
+                        </p>
+                        <p>你可能覺得睡著了,但不是這樣的。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div />
             </div>
           </div>
         </main>
@@ -490,7 +557,8 @@
         </svg>
       </div>
 
-      <VueFooter />
+      <!-- :class="{ active: coloring_item === item.id }" -->
+      <VueFooter :class="{ dive: this.dive }" />
     </div>
   </transition>
 </template>
@@ -551,6 +619,25 @@ export default {
           text: "Pokemon",
         },
       ],
+      sp_img: "",
+      story_p: [
+        {
+          id: 1,
+          img: "/images/theater/SB1_Draw1.png",
+          text: "Minions",
+        },
+        {
+          id: 2,
+          img: "/images/theater/SB1_Draw2.png",
+          text: "do la a mo",
+        },
+        {
+          id: 3,
+          img: "/images/theater/SB1_Draw3.png",
+          text: "Pokemon",
+        },
+      ],
+      dive: false,
     };
   },
   async created() {
@@ -564,6 +651,7 @@ export default {
     },
     prev() {
       this.theater_menu = 0;
+      this.dive = false;
     },
     cs_sigh_prev() {
       if (this.cs_sigh === 1) {
@@ -966,10 +1054,16 @@ export default {
       background-color: #b15177;
     }
   }
+  &.story2 {
+    .item {
+      background-color: #af87ba;
+    }
+  }
 }
 
 #coloring_content {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin-top: 0px;
   .coloring_pen {
@@ -1216,10 +1310,207 @@ export default {
       }
     }
   }
+  &.story3 {
+    flex-wrap: wrap;
+    .coloring_pen {
+      width: 200px;
+      margin-right: 15px;
+      #bookmark {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        #bookmark1,
+        #bookmark2 {
+          width: calc(50% - 2.5px);
+          text-align: center;
+          background-color: #724994;
+          line-height: 45px;
+          font-size: 24px;
+          color: #fff;
+          border-top-left-radius: 15px;
+          border-top-right-radius: 15px;
+          &.active {
+            background-color: #af87ba;
+          }
+        }
+      }
+      #bookmark_content {
+        height: 435px;
+        background-color: #af87ba;
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: auto;
+        padding: 5px;
+        box-sizing: border-box;
+        &::-webkit-scrollbar {
+          display: none; /* Chrome Safari */
+        }
+        .item {
+          width: 50%;
+          padding: 5px;
+          box-sizing: border-box;
+          img {
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+    .coloring_main {
+      height: 480px;
+      width: calc(100% - 215px);
+    }
+    .coloring_bottom {
+      background-color: #cdc7e1;
+      padding: 15px;
+      box-sizing: border-box;
+      margin-top: 15px;
+      width: 100%;
+      border-radius: 999px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      display: flex;
+      .volume {
+        width: 120px;
+        height: 120px;
+        border-radius: 999px;
+        box-sizing: border-box;
+        border: #fff 5px solid;
+        background-color: #7e318e;
+        color: #fff;
+        font-size: 60px;
+      }
+      .text_content {
+        width: calc(100% - 135px);
+        margin-left: 15px;
+        max-height: 120px;
+        overflow-y: auto;
+
+        .item {
+          display: flex;
+          align-items: center;
+          padding: 5px 15px;
+          background-color: #fff;
+          border-radius: 5px;
+          margin-bottom: 5px;
+          &:nth-child(even) {
+            background-color: #ede4ea;
+          }
+          button {
+            width: 45px;
+            height: 45px;
+            border-radius: 999px;
+            color: #7e318e;
+            border: 5px solid #7e318e;
+            background-color: #f2e1e7;
+            margin-right: 15px;
+          }
+          .text {
+            p {
+              line-height: 1.5;
+            }
+          }
+        }
+      }
+    }
+  }
+  .role {
+    width: 185px;
+    margin-right: 15px;
+    height: 650px;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      #figure,
+      #view {
+        width: 49%;
+        text-align: center;
+        background-color: #724993;
+        line-height: 40px;
+        color: #fff;
+        font-size: 24px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        &.active {
+          background-color: #af87b9;
+        }
+      }
+    }
+    .sp_content {
+      background-color: #af87b9;
+      height: calc(650px - 40px);
+      padding: 5px;
+      overflow-y: auto;
+      .item {
+        float: left;
+        width: calc(50% - 2.5px);
+        background-color: #fff;
+        margin-top: 5px;
+        height: 65px;
+        overflow: hidden;
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+          padding: 5px;
+        }
+        &:nth-child(1),
+        &:nth-child(2) {
+          margin-top: 0;
+        }
+        &:nth-child(even) {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  .sp_function {
+    width: 85px;
+    margin-left: 15px;
+    height: 650px;
+    .delete,
+    .scent {
+      text-align: center;
+      color: #e60012;
+      i,
+      svg {
+        font-size: 85px;
+      }
+      span {
+        margin-top: 5px;
+        font-weight: bolder;
+      }
+    }
+    .scent {
+      margin-top: 30vh;
+      color: #af87ba;
+    }
+    .switch {
+      text-align: center;
+      margin-top: 5vh;
+      span {
+        display: inline-block;
+        width: 100%;
+        color: #af87ba;
+        font-size: 35px;
+        font-weight: bolder;
+        margin-bottom: 15px;
+      }
+      svg {
+        color: #af87ba;
+        font-size: 40px;
+      }
+    }
+  }
+  &.cc3{
+    justify-content: center;
+  }
 }
 
 .img {
-  height: 645px;
+  height: 720px;
   background-color: #fff;
   img {
     height: 95%;
@@ -1312,6 +1603,44 @@ export default {
       p {
         color: #b15177;
         line-height: 1.4;
+      }
+    }
+  }
+
+  &.sp {
+    margin-top: 15px;
+    background-color: #cdc7e1;
+
+    .all {
+      border: 10px solid #fff;
+      background-color: #af87ba;
+      color: #fff;
+    }
+
+    .quantity {
+
+      svg {
+        color: #af87ba;
+        background-color: #fff;
+        border: 3px solid #fff;
+      }
+
+      .number {
+        color: #af87ba;
+      }
+    }
+
+    .sentence {
+
+      .item {
+        background-color: #fff;
+        svg {
+          color: #af87ba;
+          background-color: #decbdc;
+        }
+        p {
+          color: #af87ba;
+        }
       }
     }
   }

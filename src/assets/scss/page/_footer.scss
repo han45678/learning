@@ -150,6 +150,11 @@ footer {
         left: 50%;
         transform: translateX(-50%);
     }
+
+    &.dive {
+        bottom: -100%;
+        transition: 0.6s;
+    }
 }
 
 #helper {
@@ -166,7 +171,7 @@ footer {
     @media screen and (max-height: 1024px) {
         bottom: 20px !important;
     }
-    
+
     @media screen and (max-width: 1024px) {
         bottom: 15px;
         right: -50px;
@@ -180,9 +185,10 @@ footer {
     svg {
         width: 120px;
 
-        @media screen and (max-width: 1024px){
+        @media screen and (max-width: 1024px) {
             width: 85px;
         }
+
         @media screen and (max-width: 825px) {
             width: 80px;
         }
