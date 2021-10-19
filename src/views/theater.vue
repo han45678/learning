@@ -603,49 +603,49 @@ export default {
           voice: [
             {
               text_en: "Who am I.",
-              text_cn: "",
+              text_cn: "我是誰?",
               audio: "images/R1-1_Who am I/Audio/Who am I.mp3",
               pic: "images/R1-1_Who am I/Audio/Who-am-I.jpg",
             },
             {
               text_en: "I am Harry.",
-              text_cn: "",
+              text_cn: "我是Harry",
               audio: "images/R1-1_Who am I/Audio/story1_1_p5_4_i_am_harry.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I1.jpg",
             },
             {
               text_en: "I am Anna",
-              text_cn: "",
+              text_cn: "我是Anna",
               audio: "images/R1-1_Who am I/Audio/story1_1_p7_4_i_am_anna.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I2.jpg",
             },
             {
               text_en: "I am Tom.",
-              text_cn: "",
+              text_cn: "我是Tom",
               audio: "images/R1-1_Who am I/Audio/story1_1_p9_4_i_am_tom.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I3.jpg",
             },
             {
               text_en: "I am Helen.",
-              text_cn: "",
+              text_cn: "我是Helen",
               audio: "images/R1-1_Who am I/Audio/story1_1_p11_4_i_am_helen.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I4.jpg",
             },
             {
               text_en: "I am Leo.",
-              text_cn: "",
+              text_cn: "我是Leo",
               audio: "images/R1-1_Who am I/Audio/story1_1_p13_4_i_am_leo.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I5.jpg",
             },
             {
               text_en: "I am Piggy.",
-              text_cn: "",
+              text_cn: "我是Piggy",
               audio: "images/R1-1_Who am I/Audio/story1_1_p15_4_i_am_piggy.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I6.jpg",
             },
             {
               text_en: "I am Snowball.",
-              text_cn: "",
+              text_cn: "我是Snowball",
               audio:
                 "images/R1-1_Who am I/Audio/story1_1_p17_4_i_am_snowball.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I7.jpg",
@@ -1778,7 +1778,7 @@ export default {
         line-height: 1.4;
       }
     }
-    
+
     &::-webkit-scrollbar {
       width: 6px;
       height: 6px;
