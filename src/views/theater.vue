@@ -219,7 +219,6 @@
                   <img :src="dd_img" alt="img" />
                 </div>
               </div>
-              <div />
             </div>
             <div v-if="cs_sigh === 3">
               <div id="coloring_content" style="position: relative">
@@ -304,6 +303,7 @@
                 @click="
                   coloring_item = item.id;
                   s_img = item.img;
+                  s_voice = item.voice;
                 "
               >
                 <div class="photo">
@@ -327,35 +327,26 @@
                   </div>
                   <div class="quantity">
                     <i class="fas fa-chevron-circle-up" />
-                    <div class="number">5/150</div>
+                    <div class="number">1 / {{ s_voice.length }}</div>
                     <i class="fas fa-chevron-circle-down" />
                   </div>
                   <div class="sentence">
-                    <div class="item">
-                      <i class="far fa-play-circle" />
+                    <div
+                      class="item"
+                      v-for="(item, index) in s_voice"
+                      :key="index"
+                    >
+                      <span @click="play(index)"
+                        ><i class="far fa-play-circle"
+                      /></span>
+                      <audio :class="'s_audio' + index" :src="item.audio" />
                       <div class="text">
                         <p>
-                          And it might seem Like you were asleep.but you weren't
+                          {{ item.text_en }}
                         </p>
-                        <p>你可能覺得睡著了,但不是這樣的。</p>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <i class="far fa-play-circle" />
-                      <div class="text">
                         <p>
-                          And it might seem Like you were asleep.but you weren't
+                          {{ item.text_cn }}
                         </p>
-                        <p>你可能覺得睡著了,但不是這樣的。</p>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <i class="far fa-play-circle" />
-                      <div class="text">
-                        <p>
-                          And it might seem Like you were asleep.but you weren't
-                        </p>
-                        <p>你可能覺得睡著了,但不是這樣的。</p>
                       </div>
                     </div>
                   </div>
@@ -415,7 +406,7 @@
             </div>
             <!-- 選單下層內容 -->
             <div v-if="cs_sigh === 2 || cs_sigh === 3">
-              <div id="coloring_content" :class="{cc3:cs_sigh === 3}">
+              <div id="coloring_content" :class="{ cc3: cs_sigh === 3 }">
                 <div class="role" v-show="cs_sigh === 2">
                   <div class="title">
                     <div id="figure" class="active">
@@ -584,6 +575,7 @@ export default {
       play_video: "",
       coloring_item: 0,
       dd_img: "",
+      dd_voice: "",
       draw_doodle: [
         {
           id: 1,
@@ -602,21 +594,200 @@ export default {
         },
       ],
       s_img: "",
+      s_voice: "",
       story: [
         {
           id: 1,
           img: "/images/theater/SB1_Draw1.png",
           text: "Minions",
+          voice: [
+            {
+              text_en: "Who am I.",
+              text_cn: "",
+              audio: "images/R1-1_Who am I/Audio/Who am I.mp3",
+              pic: "images/R1-1_Who am I/Audio/Who-am-I.jpg",
+            },
+            {
+              text_en: "I am Harry.",
+              text_cn: "",
+              audio: "images/R1-1_Who am I/Audio/story1_1_p5_4_i_am_harry.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I1.jpg",
+            },
+            {
+              text_en: "I am Anna",
+              text_cn: "",
+              audio: "images/R1-1_Who am I/Audio/story1_1_p7_4_i_am_anna.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I2.jpg",
+            },
+            {
+              text_en: "I am Tom.",
+              text_cn: "",
+              audio: "images/R1-1_Who am I/Audio/story1_1_p9_4_i_am_tom.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I3.jpg",
+            },
+            {
+              text_en: "I am Helen.",
+              text_cn: "",
+              audio: "images/R1-1_Who am I/Audio/story1_1_p11_4_i_am_helen.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I4.jpg",
+            },
+            {
+              text_en: "I am Leo.",
+              text_cn: "",
+              audio: "images/R1-1_Who am I/Audio/story1_1_p13_4_i_am_leo.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I5.jpg",
+            },
+            {
+              text_en: "I am Piggy.",
+              text_cn: "",
+              audio: "images/R1-1_Who am I/Audio/story1_1_p15_4_i_am_piggy.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I6.jpg",
+            },
+            {
+              text_en: "I am Snowball.",
+              text_cn: "",
+              audio:
+                "images/R1-1_Who am I/Audio/story1_1_p17_4_i_am_snowball.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I7.jpg",
+            },
+          ],
         },
         {
           id: 2,
           img: "/images/theater/SB1_Draw2.png",
           text: "do la a mo",
+          voice: [
+            {
+              text_en: "The three little pigs.",
+              text_cn: "",
+              audio:
+                "images/R1-2_Three little pigs/Audio/The three little pigs.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/Who-am-I.jpg",
+            },
+            {
+              text_en: "Here is a pig. Ben is tall.",
+              text_cn: "",
+              audio: "images/R1-2_Three little pigs/Audio/story1_2_p4_3.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs1.jpg",
+            },
+            {
+              text_en: "Here is a pig. John is fat.",
+              text_cn: "",
+              audio: "images/R1-2_Three little pigs/Audio/story1_2_p5_3.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs1.jpg",
+            },
+            {
+              text_en: "Here is a pig. Mike is thin.",
+              text_cn: "",
+              audio: "images/R1-2_Three little pigs/Audio/story1_2_p6_3.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs2.jpg",
+            },
+            {
+              text_en: ["What is this?", "It s a door."],
+              text_cn: "",
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p7_what is_a door.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs2.jpg",
+            },
+            {
+              text_en: ["Help! ", "Oh no! It's is the Big Bad Wolf."],
+              text_cn: "",
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p9_help_ohno.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs3.jpg",
+            },
+            {
+              text_en: ["What is this? ", "It's a gatel."],
+              text_cn: "",
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p10_what is_a gate.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs4.jpg",
+            },
+            {
+              text_en: ["I'll huff! I'll puff!", "Go away!"],
+              text_cn: "",
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p15_Ill huff_away.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs6.jpg",
+            },
+            {
+              text_en: ["I'm happy.", "I am happy, too."],
+              text_cn: "",
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p18_Iam_Iamtoo.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs8.jpg",
+            },
+          ],
         },
         {
           id: 3,
           img: "/images/theater/SB1_Draw3.png",
           text: "Pokemon",
+          voice: [
+            {
+              text_en: "Jacks dog.",
+              audio: "images/R1-3_Jacks dog/Audio/Jacks_dog.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog.jpg",
+            },
+            {
+              text_en: "Hi! I'm Spot. I am a dog. I am a happy dog!",
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p4_2.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog1.jpg",
+            },
+            {
+              text_en: "That is Jack. He is 15 years old. He is my friend.",
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p5_2.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog1.jpg",
+            },
+            {
+              text_en: "I have five oranges and two eggs.",
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p6_2.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog2.jpg",
+            },
+            {
+              text_en: ["Thank you. You are a good dog.", "Woof! Woof!"],
+              audio:
+                "images/R1-3_Jacks dog/Audio/story1_3_p7_Thank you_woof.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog2.jpg",
+            },
+            {
+              text_en: ["Thank you! You can go now.", "Woof! Woof!"],
+              audio:
+                "images/R1-3_Jacks dog/Audio/story1_3_p8_Thank you_woof.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog3.jpg",
+            },
+            {
+              text_en: ["GO! GO! GO! Let's run.", "Let's walk."],
+              audio:
+                "images/R1-3_Jacks dog/Audio/story1_3_p10_Gogogo_lets walk.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog4.jpg",
+            },
+            {
+              text_en: "I have twenty grapes and three eggs.",
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p11_3.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog4.jpg",
+            },
+            {
+              text_en: ["Two dogs. Two short dogs!", "Two mad dogs."],
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p14_all.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog6.jpg",
+            },
+            {
+              text_en: "I have four eggs and three oranges.",
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p16_3.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog7.jpg",
+            },
+            {
+              text_en: "Spot is not happy. He is mad.",
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p17.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog7.jpg",
+            },
+            {
+              text_en: "Sad Spot! Sad dog!",
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p18_2.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog8.jpg",
+            },
+          ],
         },
       ],
       sp_img: "",
@@ -686,6 +857,10 @@ export default {
     },
     video_play(index) {
       this.play_video = this.myVideo[index].video;
+    },
+    play(index) {
+      document.querySelector(".s_audio" + index).play();
+      console.log("播放" + ".s_audio" + index);
     },
   },
   computed: {
@@ -1001,14 +1176,10 @@ export default {
       background-color: #fff;
       position: relative;
       img {
-        /* object-fit: cover; */
-        width: 90%;
-        /* height: 100%; */
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
         padding: 0;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
       }
     }
     .text {
@@ -1504,7 +1675,7 @@ export default {
       }
     }
   }
-  &.cc3{
+  &.cc3 {
     justify-content: center;
   }
 }
@@ -1513,10 +1684,9 @@ export default {
   height: 720px;
   background-color: #fff;
   img {
-    height: 95%;
-    position: relative;
-    top: 5%;
+    height: 100%;
     width: auto;
+    max-width: 100%;
     margin: auto;
     display: block;
   }
@@ -1592,6 +1762,9 @@ export default {
       padding-left: 15px;
       padding-right: 15px;
       border-radius: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
       svg {
         margin-right: 15px;
         font-size: 32px;
@@ -1604,6 +1777,22 @@ export default {
         color: #b15177;
         line-height: 1.4;
       }
+    }
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 3px;
+      background: rgba(0, 0, 0, 0.06);
+      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
+    }
+    /* 滚动条滑块 */
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background: rgba(0, 0, 0, 0.12);
+      -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -1618,7 +1807,6 @@ export default {
     }
 
     .quantity {
-
       svg {
         color: #af87ba;
         background-color: #fff;
@@ -1631,7 +1819,6 @@ export default {
     }
 
     .sentence {
-
       .item {
         background-color: #fff;
         svg {
