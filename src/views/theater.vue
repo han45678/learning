@@ -302,7 +302,7 @@
                 :class="{ active: coloring_item === item.id }"
                 @click="
                   coloring_item = item.id;
-                  s_img = item.img;
+                  s_img = item.voice[0].pic;
                   s_voice = item.voice;
                 "
               >
@@ -319,7 +319,7 @@
                   <img :src="s_img" alt="img" />
                 </div>
                 <div class="audio">
-                  <div class="all" v-show="cs_sigh === 2">
+                  <div @click="all_play()" class="all" v-show="cs_sigh === 2">
                     <i class="fas fa-volume-up" />
                   </div>
                   <div class="all" v-show="cs_sigh === 3">
@@ -336,9 +336,13 @@
                       v-for="(item, index) in s_voice"
                       :key="index"
                     >
-                      <span @click="play(index)"
-                        ><i class="far fa-play-circle"
-                      /></span>
+                      <span
+                        @click="play(index)"
+                        class="o_paly"
+                        :class="{ active: item.dive }"
+                      >
+                        <i class="far fa-play-circle" />
+                      </span>
                       <audio :class="'s_audio' + index" :src="item.audio" />
                       <div class="text">
                         <p>
@@ -605,43 +609,50 @@ export default {
               text_en: "Who am I.",
               text_cn: "我是誰?",
               audio: "images/R1-1_Who am I/Audio/Who am I.mp3",
-              pic: "images/R1-1_Who am I/Audio/Who-am-I.jpg",
+              pic: "images/R1-1_Who am I/Pic/Who-am-I.jpg",
+              dive: false,
             },
             {
               text_en: "I am Harry.",
               text_cn: "我是Harry",
               audio: "images/R1-1_Who am I/Audio/story1_1_p5_4_i_am_harry.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I1.jpg",
+              dive: false,
             },
             {
               text_en: "I am Anna",
               text_cn: "我是Anna",
               audio: "images/R1-1_Who am I/Audio/story1_1_p7_4_i_am_anna.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I2.jpg",
+              dive: false,
             },
             {
               text_en: "I am Tom.",
               text_cn: "我是Tom",
               audio: "images/R1-1_Who am I/Audio/story1_1_p9_4_i_am_tom.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I3.jpg",
+              dive: false,
             },
             {
               text_en: "I am Helen.",
               text_cn: "我是Helen",
               audio: "images/R1-1_Who am I/Audio/story1_1_p11_4_i_am_helen.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I4.jpg",
+              dive: false,
             },
             {
               text_en: "I am Leo.",
               text_cn: "我是Leo",
               audio: "images/R1-1_Who am I/Audio/story1_1_p13_4_i_am_leo.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I5.jpg",
+              dive: false,
             },
             {
               text_en: "I am Piggy.",
               text_cn: "我是Piggy",
               audio: "images/R1-1_Who am I/Audio/story1_1_p15_4_i_am_piggy.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I6.jpg",
+              dive: false,
             },
             {
               text_en: "I am Snowball.",
@@ -649,6 +660,7 @@ export default {
               audio:
                 "images/R1-1_Who am I/Audio/story1_1_p17_4_i_am_snowball.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I7.jpg",
+              dive: false,
             },
           ],
         },
@@ -660,9 +672,8 @@ export default {
             {
               text_en: "The three little pigs.",
               text_cn: "",
-              audio:
-                "images/R1-2_Three little pigs/Audio/The three little pigs.mp3",
-              pic: "images/R1-2_Three little pigs/Pic/Who-am-I.jpg",
+              audio:"images/R1-2_Three little pigs/Audio/The three little pigs.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/The-Three-Little-Pig.jpg",
             },
             {
               text_en: "Here is a pig. Ben is tall.",
@@ -790,6 +801,7 @@ export default {
           ],
         },
       ],
+
       sp_img: "",
       story_p: [
         {
@@ -808,7 +820,8 @@ export default {
           text: "Pokemon",
         },
       ],
-      dive: false,
+
+      op_state: false,
     };
   },
   async created() {
@@ -861,7 +874,37 @@ export default {
     play(index) {
       document.querySelector(".s_audio" + index).play();
       console.log("播放" + ".s_audio" + index);
+      this.s_img = this.s_voice[index].pic
+      this.s_voice[index].dive = true;
+      document.querySelector(".s_audio" + index).loop = false;
+      document.querySelector(".s_audio" + index).addEventListener(
+        "ended",
+        function (index) {
+          this.s_voice[index].dive = false;
+          console.log('播完囉')
+        },
+        false
+      );
     },
+    // all_play() {
+    //   let audios = document.getElementsByTagName("audio");
+    //   let s = this.s_voice.length;
+    //   for (let i = 0; i < s.length; i++) {
+    //     // console.log("audios " + i + "  SRC:" + audios[i].currentSrc);
+    //     audios[i].addEventListener(
+    //       "ended",
+    //       function () {
+    //         // nextSibling 属性返回指定节点之后紧跟的节点，在相同的树层级中。
+    //         let nextAudio = this.nextSibling.nextSibling;
+    //         // tagName 属性返回元素的标签名。(大写)
+    //         if (nextAudio.tagName == "AUDIO") {
+    //           nextAudio.play();
+    //         }
+    //       },
+    //       false
+    //     );
+    //   }
+    // },
   },
   computed: {
     // 计算属性的 getter
@@ -1750,6 +1793,7 @@ export default {
     height: 120px;
     padding-right: 5px;
     overflow-y: scroll;
+    overflow-x: hidden;
 
     .item {
       width: 100%;
@@ -1762,6 +1806,8 @@ export default {
       padding-left: 15px;
       padding-right: 15px;
       border-radius: 10px;
+      position: relative;
+      overflow: hidden;
       &:last-child {
         margin-bottom: 0;
       }
@@ -1772,10 +1818,28 @@ export default {
         background-color: #decbdc;
         border-radius: 999px;
         cursor: pointer;
+        position: relative;
+        z-index: 1;
       }
       p {
         color: #b15177;
         line-height: 1.4;
+        position: relative;
+        z-index: 1;
+      }
+      .o_paly {
+        &.active {
+          &::before {
+            content: "";
+            display: block;
+            background-color: #e9e9e9;
+            width: 100vw;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+        }
       }
     }
 
