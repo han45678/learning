@@ -240,6 +240,7 @@
                       v-if="game_flow === 3"
                       style="width: 100%; height: 100%; position: absolute"
                       src="iframe/d2/index.html"
+                      ref="d2"
                       frameborder="0"
                     />
                     <div v-if="game_flow === 4">
@@ -457,7 +458,8 @@
       </div>
 
       <!-- 關閉 -->
-      <!-- <router-link id="off" to="">
+      <!-- 
+      <router-link id="off" to="">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
           <g>
             <path
@@ -663,6 +665,8 @@ export default {
       recording_state: 0,
 
       game_flow: 1,
+
+      iframeWin:''
     };
   },
   async created() {
@@ -794,6 +798,8 @@ export default {
     },
   },
   mounted() {
+    console.log(this.$refs.d2.contentWindow)
+    // this.iframeWin = this.$refs.d2.contentWindow
     // this.$store.helper = true;
   },
 };

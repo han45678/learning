@@ -47,10 +47,15 @@
     <img
       src="images/_preloader.gif?1629781476426"
       style="vertical-align: middle; max-height: 100%"
-    />
+    >
   </div>
 </template>
+
+<script src="js/createjs.min.js"></script>
+<script src='js/SSDK.js'></script>
+<script src="js/U1_Story_D1.js"></script>
 <script>
+
 export default {
   data: () => ({
     useMarqueeDebug: true,
