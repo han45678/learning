@@ -13,12 +13,16 @@ export default new Vuex.Store({
     identity:'',
     level:'',
     records_menu:'',
+    h5_game:false
     // theater:{
     //   theater_menu:'',
     //   play_video:''
     // }
   },
   mutations: {
+    SET_H5_GAME_STATUS(state, status) {
+      state.h5_game = status;
+    },
     SET_IS_LOADING(state, status) {
       state.isLoading = status;
     },

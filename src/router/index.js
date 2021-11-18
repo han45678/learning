@@ -5,6 +5,9 @@ import login from '../views/login.vue'
 import level from '../views/level.vue'
 import checkpoint from '../views/checkpoint.vue'
 import checkpoint_pb from '../views/checkpoint_pb.vue'
+import reader1_1 from '../views/reader1_1.vue'
+import reader1_2 from '../views/reader1_2.vue'
+import reader1_3 from '../views/reader1_3.vue'
 import playground from '../views/playground.vue'
 import records from '../views/records.vue'
 import theater from '../views/theater.vue'
@@ -47,6 +50,21 @@ const routes = [
     path: '/checkpoint_pb',
     name: 'checkpoint_pb',
     component: checkpoint_pb
+  },
+  {
+    path: '/reader1_1',
+    name: 'reader1-1',
+    component: reader1_1
+  },
+  {
+    path: '/reader1_2',
+    name: 'reader1-2',
+    component: reader1_2
+  },
+  {
+    path: '/reader1_3',
+    name: 'reader1-3',
+    component: reader1_3
   },
   {
     path: '/playground',

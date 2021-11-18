@@ -72,11 +72,6 @@
             </div>
           </div>
           <img :src="info.map" :alt="info.map" />
-          <img
-            src="/images/b.png"
-            alt="images"
-            style="position: absolute; width: 325px; right: 4%; top: 12.5%"
-          />
         </main>
       </transition>
 
@@ -87,11 +82,14 @@
         enter-active-class="animated swing fade-enter-active"
         leave-active-class="animated bounce fade-leave-active"
       >
-        <main v-if="game">
+        <main v-if="game && checkpoint_item === 0">
           <div id="game">
-            <div class="game_options">
+            <div
+              class="game_options"
+              v-if="game_flow === 1 || game_flow === 2 || game_flow === 4"
+            >
               <h1 :class="stylsClass.css">
-                {{ unit }}
+                {{ unit }}{{ checkpoint_item + 1 }}
               </h1>
               <button
                 v-for="(item, index) in game_options"
@@ -101,6 +99,10 @@
               >
                 {{ item.name }}
               </button>
+            </div>
+            <div class="game_options" v-if="game_flow === 3">
+              <div style="font-size: 62px">目前題數1，總題數1</div>
+              <div style="font-size: 62px">目前已花費時間為{{ time }}秒</div>
             </div>
             <div class="game_menu">
               <ul v-if="sel === 0 || sel === 1 || sel === 2 || sel === 3">
@@ -189,7 +191,10 @@
                     <div v-if="game_flow === 2" style="position: relative">
                       <img src="images/illustrate.jpg" alt="ima" />
                       <button
-                        @click="game_flow = 3"
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
                         style="
                           position: absolute;
                           right: 15px;
@@ -200,6 +205,7 @@
                       />
                     </div>
                     <iframe
+                      id="d1"
                       v-if="game_flow === 3"
                       style="width: 100%; height: 100%; position: absolute"
                       src="iframe/U1_Story_D1/U1_Story_D1.html"
@@ -226,7 +232,10 @@
                     <div v-if="game_flow === 2" style="position: relative">
                       <img src="images/illustrate.jpg" alt="ima" />
                       <button
-                        @click="game_flow = 3"
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
                         style="
                           position: absolute;
                           right: 15px;
@@ -264,7 +273,10 @@
                     <div v-if="game_flow === 2" style="position: relative">
                       <img src="images/illustrate.jpg" alt="ima" />
                       <button
-                        @click="game_flow = 3"
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
                         style="
                           position: absolute;
                           right: 15px;
@@ -301,7 +313,10 @@
                     <div v-if="game_flow === 2" style="position: relative">
                       <img src="images/illustrate.jpg" alt="ima" />
                       <button
-                        @click="game_flow = 3"
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
                         style="
                           position: absolute;
                           right: 15px;
@@ -312,11 +327,63 @@
                       />
                     </div>
                     <iframe
-                      v-if="game_flow === 3"
+                      v-if="game_flow === 3 && next_level === 1"
                       style="width: 100%; height: 100%; position: absolute"
-                      src="iframe/game1/筆順配對.html"
+                      src="iframe/U1_Letters_D4-1/U1_Letters_D4-1.html"
                       frameborder="0"
                     />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-2/U1_Letters_D4-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe//U1_Letters_D4-3/U1_Letters_D4-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-4/U1_Letters_D4-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
                     <div v-if="game_flow === 4">
                       <img src="images/settlement.jpg" alt="ima" />
                     </div>
@@ -338,7 +405,10 @@
                     <div v-if="game_flow === 2" style="position: relative">
                       <img src="images/illustrate.jpg" alt="ima" />
                       <button
-                        @click="game_flow = 3"
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
                         style="
                           position: absolute;
                           right: 15px;
@@ -349,11 +419,63 @@
                       />
                     </div>
                     <iframe
-                      v-if="game_flow === 3"
+                      v-if="game_flow === 3 && next_level === 1"
                       style="width: 100%; height: 100%; position: absolute"
                       src="iframe/U1_SP_D5-1/U1_SP_D5-1.html"
                       frameborder="0"
                     />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-2/U1_SP_D5-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-3/U1_SP_D5-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-4/U1_SP_D5-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
                     <div v-if="game_flow === 4">
                       <img src="images/settlement.jpg" alt="ima" />
                     </div>
@@ -375,7 +497,515 @@
                     <div v-if="game_flow === 2" style="position: relative">
                       <img src="images/illustrate.jpg" alt="ima" />
                       <button
-                        @click="game_flow = 3"
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <d6 v-if="game_flow === 3 && answer === false" />
+                    <div
+                      v-if="game_flow === 3 && answer === true"
+                      style="position: relative; width: 100%; height: 759px"
+                    >
+                      <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/D6_U1_answer/D6_U1_answer.html"
+                      frameborder="0"
+                    />
+                      <button
+                        @click="game_flow = 4"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                          background-color: rgb(255, 255, 255);
+                          border: 1px solid rgb(233, 84, 5);
+                          color: rgb(233, 84, 5);
+                          font-size: 32px;
+                        "
+                      >
+                        Next
+                      </button>
+                    </div>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Vocabulary_D5/U1_Vocabulary_D5.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                </transition>
+              </div>
+            </div>
+          </div>
+        </main>
+        <main v-if="game && checkpoint_item === 1">
+          <div id="game">
+            <div
+              class="game_options"
+              v-if="game_flow === 1 || game_flow === 2 || game_flow === 4"
+            >
+              <h1 :class="stylsClass.css">
+                {{ unit }}{{ checkpoint_item + 1 }}
+              </h1>
+              <button
+                v-for="(item, index) in game_options"
+                :key="index"
+                @click="styls(index)"
+                :class="[`styls${index}`, { active: sel === index }]"
+              >
+                {{ item.name }}
+              </button>
+            </div>
+            <div class="game_options" v-if="game_flow === 3">
+              <div style="font-size: 62px">目前題數1，總題數1</div>
+              <div style="font-size: 62px">目前已花費時間為{{ time }}秒</div>
+            </div>
+            <div class="game_menu">
+              <ul v-if="sel === 0 || sel === 1 || sel === 2 || sel === 3">
+                <li
+                  v-for="(item, index) in game_menu_options"
+                  @click="optionsStyls(index)"
+                  :key="index"
+                  :class="[
+                    stylsClass.css,
+                    {
+                      active: options === index,
+                      grayscale: item.grayscale,
+                      s1: item.s1,
+                      s2: item.s2,
+                      s3: item.s3,
+                    },
+                  ]"
+                >
+                  <div class="item">
+                    <img :src="item.img" alt="icon" />
+                    <svg
+                      v-html="game_star_svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 59.74 20.48"
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="game_main">
+              <div class="content">
+                <img
+                  v-if="sel === '' || options === ''"
+                  src="images/game/background.png"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                  alt="background"
+                />
+                <!-- 影片 -->
+                <transition type="transition" name="fade">
+                  <div class="video" v-show="options === 0">
+                    <video controls>
+                      <source src="video/Ant.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 電影 -->
+                <transition type="transition" name="fade">
+                  <div class="movie" v-if="options === 1">
+                    <video controls>
+                      <source src="video/Apple.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 錄音 -->
+                <transition type="transition" name="fade">
+                  <div class="mic" v-if="options === 2">
+                    <iframe
+                      style="
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        transform-origin: top;
+                        transform: scaleX(1.45) scaleY(1.35);
+                      "
+                      src="https://sks.nxidea.link/king/kenny/index.html"
+                      frameborder="0"
+                    />
+                  </div>
+                </transition>
+                <!-- 遊戲 -->
+                <transition type="transition" name="fade">
+                  <div v-if="sel === 0 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      id="d1"
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Story_D1/U1_Story_D1.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/d2/index.html"
+                      ref="d2"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D3/U1_Letters_D3.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 5">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-1/U1_Letters_D4-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-2/U1_Letters_D4-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe//U1_Letters_D4-3/U1_Letters_D4-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-4/U1_Letters_D4-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 3 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-1/U1_SP_D5-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-2/U1_SP_D5-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-3/U1_SP_D5-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-4/U1_SP_D5-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
                         style="
                           position: absolute;
                           right: 15px;
@@ -407,7 +1037,2400 @@
                     <div v-if="game_flow === 2" style="position: relative">
                       <img src="images/illustrate.jpg" alt="ima" />
                       <button
-                        @click="game_flow = 3"
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Vocabulary_D5/U1_Vocabulary_D5.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                </transition>
+              </div>
+            </div>
+          </div>
+        </main>
+        <main v-if="game && checkpoint_item === 2">
+          <div id="game">
+            <div
+              class="game_options"
+              v-if="game_flow === 1 || game_flow === 2 || game_flow === 4"
+            >
+              <h1 :class="stylsClass.css">
+                {{ unit }}{{ checkpoint_item + 1 }}
+              </h1>
+              <button
+                v-for="(item, index) in game_options"
+                :key="index"
+                @click="styls(index)"
+                :class="[`styls${index}`, { active: sel === index }]"
+              >
+                {{ item.name }}
+              </button>
+            </div>
+            <div class="game_options" v-if="game_flow === 3">
+              <div style="font-size: 62px">目前題數1，總題數1</div>
+              <div style="font-size: 62px">目前已花費時間為{{ time }}秒</div>
+            </div>
+            <div class="game_menu">
+              <ul v-if="sel === 0 || sel === 1 || sel === 2 || sel === 3">
+                <li
+                  v-for="(item, index) in game_menu_options"
+                  @click="optionsStyls(index)"
+                  :key="index"
+                  :class="[
+                    stylsClass.css,
+                    {
+                      active: options === index,
+                      grayscale: item.grayscale,
+                      s1: item.s1,
+                      s2: item.s2,
+                      s3: item.s3,
+                    },
+                  ]"
+                >
+                  <div class="item">
+                    <img :src="item.img" alt="icon" />
+                    <svg
+                      v-html="game_star_svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 59.74 20.48"
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="game_main">
+              <div class="content">
+                <img
+                  v-if="sel === '' || options === ''"
+                  src="images/game/background.png"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                  alt="background"
+                />
+                <!-- 影片 -->
+                <transition type="transition" name="fade">
+                  <div class="video" v-show="options === 0">
+                    <video controls>
+                      <source src="video/Ant.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 電影 -->
+                <transition type="transition" name="fade">
+                  <div class="movie" v-if="options === 1">
+                    <video controls>
+                      <source src="video/Apple.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 錄音 -->
+                <transition type="transition" name="fade">
+                  <div class="mic" v-if="options === 2">
+                    <iframe
+                      style="
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        transform-origin: top;
+                        transform: scaleX(1.45) scaleY(1.35);
+                      "
+                      src="https://sks.nxidea.link/king/kenny/index.html"
+                      frameborder="0"
+                    />
+                  </div>
+                </transition>
+                <!-- 遊戲 -->
+                <transition type="transition" name="fade">
+                  <div v-if="sel === 0 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      id="d1"
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Story_D1/U1_Story_D1.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/d2/index.html"
+                      ref="d2"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D3/U1_Letters_D3.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 5">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-1/U1_Letters_D4-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-2/U1_Letters_D4-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe//U1_Letters_D4-3/U1_Letters_D4-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-4/U1_Letters_D4-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 3 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-1/U1_SP_D5-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-2/U1_SP_D5-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-3/U1_SP_D5-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-4/U1_SP_D5-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <d6 v-if="game_flow === 3" />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Vocabulary_D5/U1_Vocabulary_D5.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                </transition>
+              </div>
+            </div>
+          </div>
+        </main>
+        <main v-if="game && checkpoint_item === 3">
+          <div id="game">
+            <div
+              class="game_options"
+              v-if="game_flow === 1 || game_flow === 2 || game_flow === 4"
+            >
+              <h1 :class="stylsClass.css">
+                {{ unit }}{{ checkpoint_item + 1 }}
+              </h1>
+              <button
+                v-for="(item, index) in game_options"
+                :key="index"
+                @click="styls(index)"
+                :class="[`styls${index}`, { active: sel === index }]"
+              >
+                {{ item.name }}
+              </button>
+            </div>
+            <div class="game_options" v-if="game_flow === 3">
+              <div style="font-size: 62px">目前題數1，總題數1</div>
+              <div style="font-size: 62px">目前已花費時間為{{ time }}秒</div>
+            </div>
+            <div class="game_menu">
+              <ul v-if="sel === 0 || sel === 1 || sel === 2 || sel === 3">
+                <li
+                  v-for="(item, index) in game_menu_options"
+                  @click="optionsStyls(index)"
+                  :key="index"
+                  :class="[
+                    stylsClass.css,
+                    {
+                      active: options === index,
+                      grayscale: item.grayscale,
+                      s1: item.s1,
+                      s2: item.s2,
+                      s3: item.s3,
+                    },
+                  ]"
+                >
+                  <div class="item">
+                    <img :src="item.img" alt="icon" />
+                    <svg
+                      v-html="game_star_svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 59.74 20.48"
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="game_main">
+              <div class="content">
+                <img
+                  v-if="sel === '' || options === ''"
+                  src="images/game/background.png"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                  alt="background"
+                />
+                <!-- 影片 -->
+                <transition type="transition" name="fade">
+                  <div class="video" v-show="options === 0">
+                    <video controls>
+                      <source src="video/Ant.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 電影 -->
+                <transition type="transition" name="fade">
+                  <div class="movie" v-if="options === 1">
+                    <video controls>
+                      <source src="video/Apple.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 錄音 -->
+                <transition type="transition" name="fade">
+                  <div class="mic" v-if="options === 2">
+                    <iframe
+                      style="
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        transform-origin: top;
+                        transform: scaleX(1.45) scaleY(1.35);
+                      "
+                      src="https://sks.nxidea.link/king/kenny/index.html"
+                      frameborder="0"
+                    />
+                  </div>
+                </transition>
+                <!-- 遊戲 -->
+                <transition type="transition" name="fade">
+                  <div v-if="sel === 0 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      id="d1"
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Story_D1/U1_Story_D1.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/d2/index.html"
+                      ref="d2"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D3/U1_Letters_D3.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 5">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-1/U1_Letters_D4-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-2/U1_Letters_D4-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe//U1_Letters_D4-3/U1_Letters_D4-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-4/U1_Letters_D4-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 3 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-1/U1_SP_D5-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-2/U1_SP_D5-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-3/U1_SP_D5-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-4/U1_SP_D5-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <d6 v-if="game_flow === 3" />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Vocabulary_D5/U1_Vocabulary_D5.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                </transition>
+              </div>
+            </div>
+          </div>
+        </main>
+        <main v-if="game && checkpoint_item === 4">
+          <div id="game">
+            <div
+              class="game_options"
+              v-if="game_flow === 1 || game_flow === 2 || game_flow === 4"
+            >
+              <h1 :class="stylsClass.css">
+                {{ unit }}{{ checkpoint_item + 1 }}
+              </h1>
+              <button
+                v-for="(item, index) in game_options"
+                :key="index"
+                @click="styls(index)"
+                :class="[`styls${index}`, { active: sel === index }]"
+              >
+                {{ item.name }}
+              </button>
+            </div>
+            <div class="game_options" v-if="game_flow === 3">
+              <div style="font-size: 62px">目前題數1，總題數1</div>
+              <div style="font-size: 62px">目前已花費時間為{{ time }}秒</div>
+            </div>
+            <div class="game_menu">
+              <ul v-if="sel === 0 || sel === 1 || sel === 2 || sel === 3">
+                <li
+                  v-for="(item, index) in game_menu_options"
+                  @click="optionsStyls(index)"
+                  :key="index"
+                  :class="[
+                    stylsClass.css,
+                    {
+                      active: options === index,
+                      grayscale: item.grayscale,
+                      s1: item.s1,
+                      s2: item.s2,
+                      s3: item.s3,
+                    },
+                  ]"
+                >
+                  <div class="item">
+                    <img :src="item.img" alt="icon" />
+                    <svg
+                      v-html="game_star_svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 59.74 20.48"
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="game_main">
+              <div class="content">
+                <img
+                  v-if="sel === '' || options === ''"
+                  src="images/game/background.png"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                  alt="background"
+                />
+                <!-- 影片 -->
+                <transition type="transition" name="fade">
+                  <div class="video" v-show="options === 0">
+                    <video controls>
+                      <source src="video/Ant.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 電影 -->
+                <transition type="transition" name="fade">
+                  <div class="movie" v-if="options === 1">
+                    <video controls>
+                      <source src="video/Apple.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 錄音 -->
+                <transition type="transition" name="fade">
+                  <div class="mic" v-if="options === 2">
+                    <iframe
+                      style="
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        transform-origin: top;
+                        transform: scaleX(1.45) scaleY(1.35);
+                      "
+                      src="https://sks.nxidea.link/king/kenny/index.html"
+                      frameborder="0"
+                    />
+                  </div>
+                </transition>
+                <!-- 遊戲 -->
+                <transition type="transition" name="fade">
+                  <div v-if="sel === 0 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      id="d1"
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Story_D1/U1_Story_D1.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/d2/index.html"
+                      ref="d2"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D3/U1_Letters_D3.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 5">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-1/U1_Letters_D4-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-2/U1_Letters_D4-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe//U1_Letters_D4-3/U1_Letters_D4-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-4/U1_Letters_D4-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 3 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-1/U1_SP_D5-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-2/U1_SP_D5-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-3/U1_SP_D5-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-4/U1_SP_D5-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <d6 v-if="game_flow === 3" />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Vocabulary_D5/U1_Vocabulary_D5.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                </transition>
+              </div>
+            </div>
+          </div>
+        </main>
+        <main v-if="game && checkpoint_item === 5">
+          <div id="game">
+            <div
+              class="game_options"
+              v-if="game_flow === 1 || game_flow === 2 || game_flow === 4"
+            >
+              <h1 :class="stylsClass.css">
+                {{ info.checkpoint[checkpoint_item].text }}
+              </h1>
+              <button
+                v-for="(item, index) in game_options"
+                :key="index"
+                @click="styls(index)"
+                :class="[`styls${index}`, { active: sel === index }]"
+              >
+                {{ item.name }}
+              </button>
+            </div>
+            <div class="game_options" v-if="game_flow === 3">
+              <div style="font-size: 62px">目前題數1，總題數1</div>
+              <div style="font-size: 62px">目前已花費時間為{{ time }}秒</div>
+            </div>
+            <div class="game_menu">
+              <ul v-if="sel === 0 || sel === 1 || sel === 2 || sel === 3">
+                <li
+                  v-for="(item, index) in game_menu_options"
+                  @click="optionsStyls(index)"
+                  :key="index"
+                  :class="[
+                    stylsClass.css,
+                    {
+                      active: options === index,
+                      grayscale: item.grayscale,
+                      s1: item.s1,
+                      s2: item.s2,
+                      s3: item.s3,
+                    },
+                  ]"
+                >
+                  <div class="item">
+                    <img :src="item.img" alt="icon" />
+                    <svg
+                      v-html="game_star_svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 59.74 20.48"
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="game_main">
+              <div class="content">
+                <img
+                  v-if="sel === '' || options === ''"
+                  src="images/game/background.png"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                  alt="background"
+                />
+                <!-- 影片 -->
+                <transition type="transition" name="fade">
+                  <div class="video" v-show="options === 0">
+                    <video controls>
+                      <source src="video/Ant.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 電影 -->
+                <transition type="transition" name="fade">
+                  <div class="movie" v-if="options === 1">
+                    <video controls>
+                      <source src="video/Apple.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 錄音 -->
+                <transition type="transition" name="fade">
+                  <div class="mic" v-if="options === 2">
+                    <iframe
+                      style="
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        transform-origin: top;
+                        transform: scaleX(1.45) scaleY(1.35);
+                      "
+                      src="https://sks.nxidea.link/king/kenny/index.html"
+                      frameborder="0"
+                    />
+                  </div>
+                </transition>
+                <!-- 遊戲 -->
+                <transition type="transition" name="fade">
+                  <div v-if="sel === 0 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      id="d1"
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Story_D1/U1_Story_D1.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/d2/index.html"
+                      ref="d2"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D3/U1_Letters_D3.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 5">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-1/U1_Letters_D4-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-2/U1_Letters_D4-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe//U1_Letters_D4-3/U1_Letters_D4-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-4/U1_Letters_D4-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 3 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-1/U1_SP_D5-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-2/U1_SP_D5-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-3/U1_SP_D5-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-4/U1_SP_D5-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <d6 v-if="game_flow === 3" />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Vocabulary_D5/U1_Vocabulary_D5.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                </transition>
+              </div>
+            </div>
+          </div>
+        </main>
+        <main v-if="game && checkpoint_item === 6">
+          <div id="game">
+            <div
+              class="game_options"
+              v-if="game_flow === 1 || game_flow === 2 || game_flow === 4"
+            >
+              <h1 :class="stylsClass.css">
+                {{ info.checkpoint[checkpoint_item].text }}
+              </h1>
+              <button
+                v-for="(item, index) in game_options"
+                :key="index"
+                @click="styls(index)"
+                :class="[`styls${index}`, { active: sel === index }]"
+              >
+                {{ item.name }}
+              </button>
+            </div>
+            <div class="game_options" v-if="game_flow === 3">
+              <div style="font-size: 62px">目前題數1，總題數1</div>
+              <div style="font-size: 62px">目前已花費時間為{{ time }}秒</div>
+            </div>
+            <div class="game_menu">
+              <ul v-if="sel === 0 || sel === 1 || sel === 2 || sel === 3">
+                <li
+                  v-for="(item, index) in game_menu_options"
+                  @click="optionsStyls(index)"
+                  :key="index"
+                  :class="[
+                    stylsClass.css,
+                    {
+                      active: options === index,
+                      grayscale: item.grayscale,
+                      s1: item.s1,
+                      s2: item.s2,
+                      s3: item.s3,
+                    },
+                  ]"
+                >
+                  <div class="item">
+                    <img :src="item.img" alt="icon" />
+                    <svg
+                      v-html="game_star_svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 59.74 20.48"
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="game_main">
+              <div class="content">
+                <img
+                  v-if="sel === '' || options === ''"
+                  src="images/game/background.png"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                  alt="background"
+                />
+                <!-- 影片 -->
+                <transition type="transition" name="fade">
+                  <div class="video" v-show="options === 0">
+                    <video controls>
+                      <source src="video/Ant.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 電影 -->
+                <transition type="transition" name="fade">
+                  <div class="movie" v-if="options === 1">
+                    <video controls>
+                      <source src="video/Apple.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </transition>
+                <!-- 錄音 -->
+                <transition type="transition" name="fade">
+                  <div class="mic" v-if="options === 2">
+                    <iframe
+                      style="
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        transform-origin: top;
+                        transform: scaleX(1.45) scaleY(1.35);
+                      "
+                      src="https://sks.nxidea.link/king/kenny/index.html"
+                      frameborder="0"
+                    />
+                  </div>
+                </transition>
+                <!-- 遊戲 -->
+                <transition type="transition" name="fade">
+                  <div v-if="sel === 0 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      id="d1"
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Story_D1/U1_Story_D1.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/d2/index.html"
+                      ref="d2"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D3/U1_Letters_D3.html"
+                      frameborder="0"
+                    />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div class="game" v-if="sel === 1 && options === 5">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-1/U1_Letters_D4-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-2/U1_Letters_D4-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe//U1_Letters_D4-3/U1_Letters_D4-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_Letters_D4-4/U1_Letters_D4-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 3 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 1"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-1/U1_SP_D5-1.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 2"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-2/U1_SP_D5-2.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 3"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-3/U1_SP_D5-3.html"
+                      frameborder="0"
+                    />
+                    <iframe
+                      v-if="game_flow === 3 && next_level === 4"
+                      style="width: 100%; height: 100%; position: absolute"
+                      src="iframe/U1_SP_D5-4/U1_SP_D5-4.html"
+                      frameborder="0"
+                    />
+                    <button
+                      v-if="nlb"
+                      @click="nl()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <button
+                      v-if="game_over"
+                      @click="go()"
+                      style="
+                        position: absolute;
+                        right: 15px;
+                        bottom: 10px;
+                        width: 180px;
+                        height: 90px;
+                        background-color: #fff;
+                        border: 1px solid #e95405;
+                        color: #e95405;
+                        font-size: 32px;
+                      "
+                    >
+                      Next
+                    </button>
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 4">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <d6 v-if="game_flow === 3" />
+                    <div v-if="game_flow === 4">
+                      <img src="images/settlement.jpg" alt="ima" />
+                    </div>
+                  </div>
+                  <div v-if="sel === 2 && options === 3">
+                    <div v-show="game_flow === 1" style="position: relative">
+                      <img src="images/activity.jpg" alt="img" />
+                      <button
+                        @click="game_flow = 2"
+                        style="
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          width: 180px;
+                          height: 90px;
+                        "
+                      />
+                    </div>
+                    <div v-if="game_flow === 2" style="position: relative">
+                      <img src="images/illustrate.jpg" alt="ima" />
+                      <button
+                        @click="
+                          game_flow = 3;
+                          game_time();
+                        "
                         style="
                           position: absolute;
                           right: 15px;
@@ -456,39 +3479,6 @@
           </g>
         </svg>
       </div>
-
-      <!-- 關閉 -->
-      <!-- 
-      <router-link id="off" to="">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
-          <g>
-            <path
-              class="cls-1"
-              d="M36.7,71.41h0A34.71,34.71,0,1,1,71.41,36.7,34.81,34.81,0,0,1,36.7,71.41"
-            />
-            <path
-              class="cls-2"
-              d="M36.7,71.41h0A34.71,34.71,0,1,1,71.41,36.7,34.81,34.81,0,0,1,36.7,71.41Z"
-            />
-            <rect
-              class="cls-3"
-              x="15.36"
-              y="29.28"
-              width="43.96"
-              height="12.51"
-              transform="translate(-14.19 36.81) rotate(-45)"
-            />
-            <rect
-              class="cls-3"
-              x="31.09"
-              y="13.56"
-              width="12.51"
-              height="43.96"
-              transform="translate(-14.19 36.81) rotate(-45)"
-            />
-          </g>
-        </svg>
-      </router-link> -->
 
       <!-- 遊戲鎖定 -->
       <div v-if="info.lock" id="lock" :class="{ unlock: info.unlock }">
@@ -602,7 +3592,7 @@ export default {
       //↓用來宣告index
       checkpoint_item: 0,
 
-      unit: "Unit1",
+      unit: "Unit",
       game_options: [
         {
           name: "Story",
@@ -666,14 +3656,72 @@ export default {
 
       game_flow: 1,
 
-      iframeWin:''
+      iframeWin: "",
+
+      timer: null,
+
+      time: 0,
+
+      game_over: false,
+      next_level: 1,
+      nlb: false,
+      answer: false,
     };
   },
   async created() {
+    if (this.$store.state.h5_game) {
+      this.game_flow = 4;
+    }
+    window.addEventListener("storage", (event) => {
+      if (event.key === "end_game") {
+        if (event.newValue === "done") {
+          console.log("done");
+          // TODO: 這裡要寫遊戲玩後要做的動作
+          this.afterDone();
+          this.game_flow = 4;
+          alert("花費時間為" + this.time + "秒");
+          clearInterval(this.timer);
+          localStorage.clear("end_game");
+        }
+        if (event.newValue === "answer") {
+          console.log("done");
+          // TODO: 這裡要寫遊戲玩後要做的動作
+          this.afterDone();
+          // this.game_flow = 4;
+          alert("花費時間為" + this.time + "秒");
+          clearInterval(this.timer);
+          localStorage.clear("end_game");
+        }
+        if (event.newValue === "answer_end") {
+          this.game_flow = 4;
+        }
+        if (event.newValue === "next") {
+          this.nlb = true;
+        }
+        if (event.newValue === "game_over") {
+          this.game_over = true;
+        }
+      }
+    });
     await this.info_data();
     await this.loading();
   },
   methods: {
+    go() {
+      this.game_over = false;
+      this.afterDone();
+      this.game_flow = 4;
+      alert("花費時間為" + this.time + "秒");
+      clearInterval(this.timer);
+      localStorage.clear("end_game");
+    },
+    nl() {
+      this.next_level++;
+      this.nlb = false;
+    },
+    afterDone() {
+      console.log("afterDone, done");
+    },
     recording_stara() {
       this.recording_state = 1;
     },
@@ -692,6 +3740,7 @@ export default {
       this.game = false;
       this.sel = 0;
       this.options = 0;
+      this.game_flow = 1;
     },
     through(index) {
       this.checkpoint_item = index;
@@ -743,12 +3792,18 @@ export default {
       }
     },
     styls(index) {
+      clearInterval(this.timer);
       this.sel = index;
       this.options = "";
       this.game_data();
       this.game_flow = 1;
+      this.game_over = false;
+      this.next_level = 1;
+      this.nlb = false;
+      this.answer = false;
     },
     optionsStyls(index) {
+      clearInterval(this.timer);
       let g = this.game_menu_options[index].grayscale;
       if (!g) {
         this.options = index;
@@ -757,9 +3812,24 @@ export default {
         this.$swal("<b>錯誤</b>", "此關卡尚未解鎖", "error");
       }
       this.game_flow = 1;
+      this.game_over = false;
+      this.next_level = 1;
+      this.nlb = false;
+      this.answer = false;
     },
     loading() {
       this.$store.state.isLoading = true;
+    },
+    countdown() {
+      this.time++;
+    },
+    game_time() {
+      this.time = 0;
+      console.log("開始計時");
+      this.timer = setInterval(this.countdown, 1000);
+      if (this.game_flow === 4) {
+        clearTimeout(this.timer);
+      }
     },
   },
   computed: {
@@ -797,10 +3867,30 @@ export default {
       };
     },
   },
+  watch: {
+    "$store.state.h5_game": function (newValue) {
+      if (newValue) {
+        console.log("done");
+        // TODO: 這裡要寫遊戲玩後要做的動作
+        this.afterDone();
+        // this.game_flow = 4;
+        this.answer = true;
+        alert("花費時間為" + this.time + "秒");
+        clearInterval(this.timer);
+      }
+    },
+  },
   mounted() {
-    console.log(this.$refs.d2.contentWindow)
+    console.log(this.$refs.d2.contentWindow);
+    window.addEventListener("storage", function (event) {
+      console.log(event);
+    });
+
     // this.iframeWin = this.$refs.d2.contentWindow
     // this.$store.helper = true;
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
 };
 </script>
@@ -819,7 +3909,7 @@ export default {
 
   .game_options {
     width: 100%;
-    padding-left: 185px;
+    padding-left: 130px;
     padding-right: 15px;
     display: flex;
     justify-content: space-between;

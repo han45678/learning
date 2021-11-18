@@ -8,7 +8,7 @@
     <div id="game_levels">
       <VueLoading />
 
-      <VueHeader />
+      <VueHeader :class="{ active: this.dive }" />
 
       <transition
         type="transition"
@@ -16,27 +16,60 @@
         enter-active-class="animated swing fade-enter-active"
         leave-active-class="animated bounce fade-leave-active"
       >
-        <main>
+        <main :class="{ active: this.dive }">
           <!-- <div v-if="0"></div> -->
           <!-- 小劇場選單 -->
           <div v-if="theater_menu === 0">
             <div id="story">
               <h2>DK STORY CORNER</h2>
               <div class="story_content">
-                <div class="item" @click="theater_menu = 1">
-                  <img src="images/theater/stories.svg" alt="img" />
-                  <div class="text">SB Stories</div>
-                  <div class="background" style="background-color: #18a3b4" />
+                <div
+                  class="item"
+                  @click="theater_menu = 1"
+                >
+                  <img
+                    src="images/theater/stories.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    SB Stories
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #18a3b4"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 2">
-                  <img src="images/theater/videos.svg" alt="img" />
-                  <div class="text">Reader Videos</div>
-                  <div class="background" style="background-color: #f4c88e" />
+                <div
+                  class="item"
+                  @click="theater_menu = 2"
+                >
+                  <img
+                    src="images/theater/videos.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    Reader Videos
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #f4c88e"
+                  />
                 </div>
-                <div class="item" @click="theater_menu = 3">
-                  <img src="images/theater/songs.svg" alt="img" />
-                  <div class="text">DK Songs</div>
-                  <div class="background" style="background-color: #ee9f6c" />
+                <div
+                  class="item"
+                  @click="theater_menu = 3"
+                >
+                  <img
+                    src="images/theater/songs.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    DK Songs
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #ee9f6c"
+                  />
                 </div>
               </div>
             </div>
@@ -52,9 +85,17 @@
                     dive = theater_menu;
                   "
                 >
-                  <img src="images/theater/doodle.svg" alt="img" />
-                  <div class="text">Draw & Doodle</div>
-                  <div class="background" style="background-color: #df544b" />
+                  <img
+                    src="images/theater/doodle.svg"
+                    alt="img"
+                  >
+                  <div class="text">
+                    Draw & Doodle
+                  </div>
+                  <div
+                    class="background"
+                    style="background-color: #df544b"
+                  />
                 </div>
                 <div
                   class="item"
@@ -65,12 +106,18 @@
                     dive = theater_menu;
                   "
                 >
-                  <img src="images/theater/story.svg" alt="img" />
+                  <img
+                    src="images/theater/story.svg"
+                    alt="img"
+                  >
                   <div class="text">
                     My Story
                     <span>Level 1-3 only</span>
                   </div>
-                  <div class="background" style="background-color: #b15177" />
+                  <div
+                    class="background"
+                    style="background-color: #b15177"
+                  />
                 </div>
                 <div
                   class="item"
@@ -81,12 +128,18 @@
                     dive = theater_menu;
                   "
                 >
-                  <img src="images/theater/story+.svg" alt="img" />
+                  <img
+                    src="images/theater/story+.svg"
+                    alt="img"
+                  >
                   <div class="text">
                     My Story +
                     <span>Level 4-7 only</span>
                   </div>
-                  <div class="background" style="background-color: #af87ba" />
+                  <div
+                    class="background"
+                    style="background-color: #af87ba"
+                  />
                 </div>
               </div>
             </div>
@@ -95,7 +148,10 @@
           <!-- 選單內容 -->
           <div v-if="theater_menu === 1">
             <div id="stories">
-              <div id="stories_main" v-html="videoSource" />
+              <div
+                id="stories_main"
+                v-html="videoSource"
+              />
               <div id="stories_side">
                 <div
                   class="item"
@@ -111,7 +167,7 @@
                       <video :poster="item.photo" />
                     </div>
                     <div class="text">
-                      Author : <br />{{ item.content_text }}
+                      Author : <br>{{ item.content_text }}
                     </div>
                   </div>
                 </div>
@@ -120,7 +176,10 @@
           </div>
           <div v-if="theater_menu === 2">
             <div id="videos">
-              <div id="stories_main" v-html="videoSource" />
+              <div
+                id="stories_main"
+                v-html="videoSource"
+              />
               <div id="stories_side">
                 <div
                   class="item"
@@ -136,7 +195,7 @@
                       <video :poster="item.photo" />
                     </div>
                     <div class="text">
-                      Author : <br />{{ item.content_text }}
+                      Author : <br>{{ item.content_text }}
                     </div>
                   </div>
                 </div>
@@ -145,7 +204,10 @@
           </div>
           <div v-if="theater_menu === 3">
             <div id="songs">
-              <div id="stories_main" v-html="videoSource" />
+              <div
+                id="stories_main"
+                v-html="videoSource"
+              />
               <div id="stories_side">
                 <div
                   class="item"
@@ -161,26 +223,44 @@
                       <video :poster="item.photo" />
                     </div>
                     <div class="text">
-                      Author : <br />{{ item.content_text }}
+                      Author : <br>{{ item.content_text }}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- v-if="theater_menu === 4" this.video[0].video -->
           <div v-if="theater_menu === 4">
             <div id="coloring_schedule">
-              <button id="prev" @click="cs_sigh_prev">Prev</button>
+              <button
+                id="prev"
+                @click="cs_sigh_prev"
+              >
+                Prev
+              </button>
               <ul>
-                <li :class="{ active: this.cs_sigh === 1 }">1</li>
-                <li :class="{ active: this.cs_sigh === 2 }">2</li>
-                <li :class="{ active: this.cs_sigh === 3 }">3</li>
+                <li :class="{ active: this.cs_sigh === 1 }">
+                  1
+                </li>
+                <li :class="{ active: this.cs_sigh === 2 }">
+                  2
+                </li>
+                <li :class="{ active: this.cs_sigh === 3 }">
+                  3
+                </li>
                 <!-- <li :class="{ active: this.cs_sigh === 4 }">4</li> -->
               </ul>
-              <button id="next" @click="cs_sigh_next">Next</button>
+              <button
+                id="next"
+                @click="cs_sigh_next"
+              >
+                Next
+              </button>
             </div>
-            <div id="coloring_menu" v-if="cs_sigh === 1">
+            <div
+              id="coloring_menu"
+              v-if="cs_sigh === 1"
+            >
               <div
                 v-for="(item, index) in draw_doodle"
                 :key="index"
@@ -192,7 +272,10 @@
                 "
               >
                 <div class="photo">
-                  <img :src="item.img" alt="img" />
+                  <img
+                    :src="item.img"
+                    alt="img"
+                  >
                 </div>
                 <div class="text">
                   {{ item.text }}
@@ -202,7 +285,7 @@
             <!-- 選單下層內容 -->
             <div v-if="cs_sigh === 2">
               <div id="coloring_content">
-                <div class="coloring_pen">
+                <!-- <div class="coloring_pen">
                   <ul>
                     <li>
                       <img src="images/theater/pen1.svg" alt="pen" />
@@ -217,26 +300,46 @@
                 </div>
                 <div class="coloring_main" style="height: 825px">
                   <img :src="dd_img" alt="img" />
-                </div>
+                </div> -->
+                <iframe
+                  style="width: 100%; height: 845px"
+                  src="iframe/畫筆HTML(David加工)/index.html"
+                  frameborder="0"
+                />
               </div>
             </div>
             <div v-if="cs_sigh === 3">
-              <div id="coloring_content" style="position: relative">
+              <div
+                id="coloring_content"
+                style="position: relative"
+              >
                 <div class="coloring_pen">
                   <ul>
                     <li>
-                      <img src="images/theater/pen1.svg" alt="pen" />
+                      <img
+                        src="images/theater/pen1.svg"
+                        alt="pen"
+                      >
                     </li>
                     <li>
-                      <img src="images/theater/pen2.svg" alt="pen" />
+                      <img
+                        src="images/theater/pen2.svg"
+                        alt="pen"
+                      >
                     </li>
                     <li>
-                      <img src="images/theater/pen3.svg" alt="pen" />
+                      <img
+                        src="images/theater/pen3.svg"
+                        alt="pen"
+                      >
                     </li>
                   </ul>
                 </div>
                 <div class="coloring_main">
-                  <img :src="dd_img" alt="img" />
+                  <img
+                    :src="dd_img"
+                    alt="img"
+                  >
                   <button
                     style="
                       position: absolute;
@@ -277,15 +380,36 @@
             </div>
           </div>
           <div v-if="theater_menu === 5">
-            <div id="coloring_schedule" :class="{ story: theater_menu === 5 }">
-              <button id="prev" @click="cs_sigh_prev">Prev</button>
+            <div
+              id="coloring_schedule"
+              :class="{ story: theater_menu === 5 }"
+            >
+              <button
+                id="prev"
+                @click="cs_sigh_prev"
+              >
+                Prev
+              </button>
               <ul>
-                <li :class="{ active: this.cs_sigh === 1 }">1</li>
-                <li :class="{ active: this.cs_sigh === 2 }">2</li>
-                <li :class="{ active: this.cs_sigh === 3 }">3</li>
-                <li :class="{ active: this.cs_sigh === 4 }">4</li>
+                <li :class="{ active: this.cs_sigh === 1 }">
+                  1
+                </li>
+                <li :class="{ active: this.cs_sigh === 2 }">
+                  2
+                </li>
+                <li :class="{ active: this.cs_sigh === 3 }">
+                  3
+                </li>
+                <li :class="{ active: this.cs_sigh === 4 }">
+                  4
+                </li>
               </ul>
-              <button id="next" @click="cs_sigh_next">Next</button>
+              <button
+                id="next"
+                @click="cs_sigh_next"
+              >
+                Next
+              </button>
             </div>
             <div
               id="coloring_menu"
@@ -301,34 +425,59 @@
                 :key="index"
                 :class="{ active: coloring_item === item.id }"
                 @click="
+                  number = 1;
                   coloring_item = item.id;
                   s_img = item.voice[0].pic;
                   s_voice = item.voice;
                 "
               >
                 <div class="photo">
-                  <img :src="item.img" alt="img" />
+                  <img
+                    :src="item.img"
+                    alt="img"
+                  >
                 </div>
-                <div class="text">{{ item.text }}</div>
+                <div class="text">
+                  {{ item.text }}
+                </div>
               </div>
             </div>
-            <!-- 選單下層內容 -->
-            <div v-if="cs_sigh === 2 || cs_sigh === 3" style="height: 800px">
+            <!-- 選單下層內容  -->
+            <div
+              v-if="cs_sigh === 2 || cs_sigh === 3"
+              style="height: 800px"
+            >
               <div class="content">
                 <div class="img">
-                  <img :src="s_img" alt="img" />
+                  <img
+                    :src="s_img"
+                    alt="img"
+                  >
                 </div>
                 <div class="audio">
-                  <div @click="all_play()" class="all" v-show="cs_sigh === 2">
+                  <div
+                    @click="all_play()"
+                    class="all"
+                    v-show="cs_sigh === 2"
+                  >
                     <i class="fas fa-volume-up" />
                   </div>
-                  <div class="all" v-show="cs_sigh === 3">
+                  <div
+                    class="all"
+                    v-show="cs_sigh === 3"
+                  >
                     <i class="fas fa-microphone" />
                   </div>
                   <div class="quantity">
-                    <i class="fas fa-chevron-circle-up" />
-                    <div class="number">1 / {{ s_voice.length }}</div>
-                    <i class="fas fa-chevron-circle-down" />
+                    <span @click="us">
+                      <i class="fas fa-chevron-circle-up" />
+                    </span>
+                    <div class="number">
+                      {{ number }} / {{ s_voice.length }}
+                    </div>
+                    <span @click="bs">
+                      <i class="fas fa-chevron-circle-down" />
+                    </span>
                   </div>
                   <div class="sentence">
                     <div
@@ -337,19 +486,36 @@
                       :key="index"
                     >
                       <span
+                        v-show="cs_sigh === 2"
                         @click="play(index)"
                         class="o_paly"
                         :class="{ active: item.dive }"
                       >
                         <i class="far fa-play-circle" />
                       </span>
-                      <audio :class="'s_audio' + index" :src="item.audio" />
+
+                      <audio
+                        :class="'s_audio' + index"
+                        :src="item.audio"
+                      />
                       <div class="text">
                         <p>
-                          {{ item.text_en }}
+                          <!-- {{ item.text_en }} -->
+                          <span
+                            v-for="(en, index) in item.text_en"
+                            :key="index"
+                          >
+                            {{ en }}
+                          </span>
                         </p>
                         <p>
-                          {{ item.text_cn }}
+                          <!-- {{ item.text_cn }} -->
+                          <span
+                            v-for="(cn, index) in item.text_cn"
+                            :key="index"
+                          >
+                            {{ cn }}
+                          </span>
                         </p>
                       </div>
                     </div>
@@ -358,14 +524,20 @@
               </div>
             </div>
             <div v-if="cs_sigh === 4">
-              <video id="video" controls>
-                <source src="/video/Ant.mp4" type="video/mp4" />
+              <video
+                id="video"
+                controls
+              >
+                <source
+                  src="/video/Ant.mp4"
+                  type="video/mp4"
+                >
               </video>
               <div id="download">
-                <i class="fas fa-download"></i>
+                <i class="fas fa-download" />
               </div>
               <div id="share">
-                <i class="fas fa-share-alt"></i>
+                <i class="fas fa-share-alt" />
               </div>
             </div>
           </div>
@@ -374,14 +546,32 @@
               id="coloring_schedule"
               :class="{ story_p: theater_menu === 6 }"
             >
-              <button id="prev" @click="cs_sigh_prev">Prev</button>
+              <button
+                id="prev"
+                @click="cs_sigh_prev"
+              >
+                Prev
+              </button>
               <ul>
-                <li :class="{ active: this.cs_sigh === 1 }">1</li>
-                <li :class="{ active: this.cs_sigh === 2 }">2</li>
-                <li :class="{ active: this.cs_sigh === 3 }">3</li>
-                <li :class="{ active: this.cs_sigh === 4 }">4</li>
+                <li :class="{ active: this.cs_sigh === 1 }">
+                  1
+                </li>
+                <li :class="{ active: this.cs_sigh === 2 }">
+                  2
+                </li>
+                <li :class="{ active: this.cs_sigh === 3 }">
+                  3
+                </li>
+                <li :class="{ active: this.cs_sigh === 4 }">
+                  4
+                </li>
               </ul>
-              <button id="next" @click="cs_sigh_next">Next</button>
+              <button
+                id="next"
+                @click="cs_sigh_next"
+              >
+                Next
+              </button>
             </div>
             <div
               id="coloring_menu"
@@ -398,147 +588,265 @@
                 :key="index"
                 :class="{ active: coloring_item === item.id }"
                 @click="
+                  number = 1;
                   coloring_item = item.id;
-                  sp_img = item.img;
+                  sp_img = item.voice[0].pic;
+                  sp_voice = item.voice;
                 "
               >
                 <div class="photo">
-                  <img :src="item.img" alt="img" />
+                  <img
+                    :src="item.img"
+                    alt="img"
+                  >
                 </div>
-                <div class="text">{{ item.text }}</div>
+                <div class="text">
+                  {{ item.text }}
+                </div>
               </div>
             </div>
             <!-- 選單下層內容 -->
-            <div v-if="cs_sigh === 2 || cs_sigh === 3">
-              <div id="coloring_content" :class="{ cc3: cs_sigh === 3 }">
-                <div class="role" v-show="cs_sigh === 2">
+            <div v-show="cs_sigh === 2 || cs_sigh === 3">
+              <div
+                id="coloring_content"
+                :class="{ cc3: cs_sigh === 3 }"
+              >
+                <div
+                  class="role"
+                  v-show="cs_sigh === 2"
+                >
                   <div class="title">
-                    <div id="figure" class="active">
+                    <div
+                      id="figure"
+                      class="active"
+                    >
                       <i class="far fa-user" />
                     </div>
-                    <div id="view"><i class="far fa-image" /></div>
+                    <div id="view">
+                      <i class="far fa-image" />
+                    </div>
                   </div>
                   <div class="sp_content">
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                     <div class="item">
-                      <img src="/images/theater/SB1_Draw2.png" alt="img" />
+                      <img
+                        src="/images/theater/SB1_Draw2.png"
+                        alt="img"
+                      >
                     </div>
                   </div>
                 </div>
                 <div
-                  class="coloring_main"
-                  style="height: 650px; width: calc(100% - 300px)"
+                  class="coloring_main sp"
+                  :class="{ sp_style: cs_sigh === 3 }"
                 >
-                  <img :src="sp_img" alt="img" />
+                  <img
+                    :src="sp_img"
+                    alt="img"
+                  >
                 </div>
-                <div class="sp_function">
-                  <div class="delete" v-show="cs_sigh === 2">
+                <div
+                  class="sp_function"
+                  v-show="cs_sigh === 2"
+                >
+                  <div class="delete">
                     <i class="far fa-times-circle" />
                     <span>Delete</span>
                   </div>
-                  <div class="scent" v-show="cs_sigh === 2">
+                  <div class="scent">
                     <i class="fas fa-plus-circle" />
                     <span>scent</span>
                   </div>
-                  <div class="switch" v-show="cs_sigh === 2">
+                  <div class="switch">
                     <span>2/1</span>
                     <i class="fas fa-chevron-circle-left" />
                     <i class="fas fa-chevron-circle-right" />
                   </div>
                 </div>
-                <div class="audio sp" v-show="cs_sigh === 2">
-                  <div class="all">
+                <div
+                  class="audio sp"
+                  v-show="cs_sigh === 2"
+                >
+                  <div
+                    @click="sp_all_play()"
+                    class="all"
+                    v-show="cs_sigh === 2"
+                  >
                     <i class="fas fa-volume-up" />
                   </div>
                   <div class="quantity">
-                    <i class="fas fa-chevron-circle-up" />
-                    <div class="number">5/150</div>
-                    <i class="fas fa-chevron-circle-down" />
+                    <span @click="us">
+                      <i class="fas fa-chevron-circle-up" />
+                    </span>
+                    <div class="number">
+                      {{ number }} / {{ sp_voice.length }}
+                    </div>
+                    <span @click="bs">
+                      <i class="fas fa-chevron-circle-down" />
+                    </span>
                   </div>
                   <div class="sentence">
-                    <div class="item">
-                      <i class="far fa-play-circle" />
+                    <div
+                      class="item"
+                      v-for="(item, index) in sp_voice"
+                      :key="index"
+                    >
+                      <span
+                        v-show="cs_sigh === 2"
+                        @click="sp_play(index)"
+                        class="o_paly"
+                        :class="{ active: item.dive }"
+                      >
+                        <i class="far fa-play-circle" />
+                      </span>
+
+                      <audio
+                        :class="'s_audio' + index"
+                        :src="item.audio"
+                      />
                       <div class="text">
                         <p>
-                          And it might seem Like you were asleep.but you weren't
+                          <span
+                            v-for="(en, index) in item.text_en"
+                            :key="index"
+                          >
+                            {{ en }}
+                          </span>
                         </p>
-                        <p>你可能覺得睡著了,但不是這樣的。</p>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <i class="far fa-play-circle" />
-                      <div class="text">
                         <p>
-                          And it might seem Like you were asleep.but you weren't
+                          <span
+                            v-for="(cn, index) in item.text_cn"
+                            :key="index"
+                          >
+                            {{ cn }}
+                          </span>
                         </p>
-                        <p>你可能覺得睡著了,但不是這樣的。</p>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <i class="far fa-play-circle" />
-                      <div class="text">
-                        <p>
-                          And it might seem Like you were asleep.but you weren't
-                        </p>
-                        <p>你可能覺得睡著了,但不是這樣的。</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div />
+            </div>
+            <div v-if="cs_sigh === 4">
+              <video
+                id="video"
+                controls
+              >
+                <source
+                  src="/video/Ant.mp4"
+                  type="video/mp4"
+                >
+              </video>
+              <div id="download">
+                <i class="fas fa-download" />
+              </div>
+              <div id="share">
+                <i class="fas fa-share-alt" />
+              </div>
             </div>
           </div>
         </main>
       </transition>
 
       <!-- 返回 -->
-      <div v-if="theater_menu > 0" id="return" @click="prev">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.41 73.41">
+      <div
+        v-if="theater_menu > 0"
+        id="return"
+        @click="prev"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 73.41 73.41"
+        >
           <g>
             <path
               class="cls-1"
@@ -606,57 +914,57 @@ export default {
           text: "Minions",
           voice: [
             {
-              text_en: "Who am I.",
-              text_cn: "我是誰?",
+              text_en: ["Who am I."],
+              text_cn: ["我是誰?"],
               audio: "images/R1-1_Who am I/Audio/Who am I.mp3",
               pic: "images/R1-1_Who am I/Pic/Who-am-I.jpg",
               dive: false,
             },
             {
-              text_en: "I am Harry.",
-              text_cn: "我是Harry",
+              text_en: ["I am Harry."],
+              text_cn: ["我是Harry"],
               audio: "images/R1-1_Who am I/Audio/story1_1_p5_4_i_am_harry.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I1.jpg",
               dive: false,
             },
             {
-              text_en: "I am Anna",
-              text_cn: "我是Anna",
+              text_en: ["I am Anna"],
+              text_cn: ["我是Anna"],
               audio: "images/R1-1_Who am I/Audio/story1_1_p7_4_i_am_anna.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I2.jpg",
               dive: false,
             },
             {
-              text_en: "I am Tom.",
-              text_cn: "我是Tom",
+              text_en: ["I am Tom."],
+              text_cn: ["我是Tom"],
               audio: "images/R1-1_Who am I/Audio/story1_1_p9_4_i_am_tom.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I3.jpg",
               dive: false,
             },
             {
-              text_en: "I am Helen.",
-              text_cn: "我是Helen",
+              text_en: ["I am Helen."],
+              text_cn: ["我是Helen"],
               audio: "images/R1-1_Who am I/Audio/story1_1_p11_4_i_am_helen.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I4.jpg",
               dive: false,
             },
             {
-              text_en: "I am Leo.",
-              text_cn: "我是Leo",
+              text_en: ["I am Leo."],
+              text_cn: ["我是Leo"],
               audio: "images/R1-1_Who am I/Audio/story1_1_p13_4_i_am_leo.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I5.jpg",
               dive: false,
             },
             {
-              text_en: "I am Piggy.",
-              text_cn: "我是Piggy",
+              text_en: ["I am Piggy."],
+              text_cn: ["我是Piggy"],
               audio: "images/R1-1_Who am I/Audio/story1_1_p15_4_i_am_piggy.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I6.jpg",
               dive: false,
             },
             {
-              text_en: "I am Snowball.",
-              text_cn: "我是Snowball",
+              text_en: ["I am Snowball."],
+              text_cn: ["我是Snowball"],
               audio:
                 "images/R1-1_Who am I/Audio/story1_1_p17_4_i_am_snowball.mp3",
               pic: "images/R1-1_Who am I/Pic/Who am I7.jpg",
@@ -670,60 +978,61 @@ export default {
           text: "do la a mo",
           voice: [
             {
-              text_en: "The three little pigs.",
-              text_cn: "",
-              audio:"images/R1-2_Three little pigs/Audio/The three little pigs.mp3",
+              text_en: ["The three little pigs."],
+              text_cn: [""],
+              audio:
+                "images/R1-2_Three little pigs/Audio/The three little pigs.mp3",
               pic: "images/R1-2_Three little pigs/Pic/The-Three-Little-Pig.jpg",
             },
             {
-              text_en: "Here is a pig. Ben is tall.",
-              text_cn: "",
+              text_en: ["Here is a pig. Ben is tall."],
+              text_cn: [""],
               audio: "images/R1-2_Three little pigs/Audio/story1_2_p4_3.mp3",
               pic: "images/R1-2_Three little pigs/Pic/the three little pigs1.jpg",
             },
             {
-              text_en: "Here is a pig. John is fat.",
-              text_cn: "",
+              text_en: ["Here is a pig. John is fat."],
+              text_cn: [""],
               audio: "images/R1-2_Three little pigs/Audio/story1_2_p5_3.mp3",
               pic: "images/R1-2_Three little pigs/Pic/the three little pigs1.jpg",
             },
             {
-              text_en: "Here is a pig. Mike is thin.",
-              text_cn: "",
+              text_en: ["Here is a pig. Mike is thin."],
+              text_cn: [""],
               audio: "images/R1-2_Three little pigs/Audio/story1_2_p6_3.mp3",
               pic: "images/R1-2_Three little pigs/Pic/the three little pigs2.jpg",
             },
             {
               text_en: ["What is this?", "It s a door."],
-              text_cn: "",
+              text_cn: [""],
               audio:
                 "images/R1-2_Three little pigs/Audio/story1_2_p7_what is_a door.mp3",
               pic: "images/R1-2_Three little pigs/Pic/the three little pigs2.jpg",
             },
             {
               text_en: ["Help! ", "Oh no! It's is the Big Bad Wolf."],
-              text_cn: "",
+              text_cn: [""],
               audio:
                 "images/R1-2_Three little pigs/Audio/story1_2_p9_help_ohno.mp3",
               pic: "images/R1-2_Three little pigs/Pic/the three little pigs3.jpg",
             },
             {
               text_en: ["What is this? ", "It's a gatel."],
-              text_cn: "",
+              text_cn: [""],
               audio:
                 "images/R1-2_Three little pigs/Audio/story1_2_p10_what is_a gate.mp3",
               pic: "images/R1-2_Three little pigs/Pic/the three little pigs4.jpg",
             },
             {
               text_en: ["I'll huff! I'll puff!", "Go away!"],
-              text_cn: "",
+              text_cn: [""],
               audio:
                 "images/R1-2_Three little pigs/Audio/story1_2_p15_Ill huff_away.mp3",
               pic: "images/R1-2_Three little pigs/Pic/the three little pigs6.jpg",
             },
             {
               text_en: ["I'm happy.", "I am happy, too."],
-              text_cn: "",
+              text_cn: [""],
               audio:
                 "images/R1-2_Three little pigs/Audio/story1_2_p18_Iam_Iamtoo.mp3",
               pic: "images/R1-2_Three little pigs/Pic/the three little pigs8.jpg",
@@ -736,22 +1045,22 @@ export default {
           text: "Pokemon",
           voice: [
             {
-              text_en: "Jacks dog.",
+              text_en: ["Jacks dog."],
               audio: "images/R1-3_Jacks dog/Audio/Jacks_dog.mp3",
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog.jpg",
             },
             {
-              text_en: "Hi! I'm Spot. I am a dog. I am a happy dog!",
+              text_en: ["Hi! I'm Spot. I am a dog. I am a happy dog!"],
               audio: "images/R1-3_Jacks dog/Audio/story1_3_p4_2.mp3",
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog1.jpg",
             },
             {
-              text_en: "That is Jack. He is 15 years old. He is my friend.",
+              text_en: ["That is Jack. He is 15 years old. He is my friend."],
               audio: "images/R1-3_Jacks dog/Audio/story1_3_p5_2.mp3",
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog1.jpg",
             },
             {
-              text_en: "I have five oranges and two eggs.",
+              text_en: ["I have five oranges and two eggs."],
               audio: "images/R1-3_Jacks dog/Audio/story1_3_p6_2.mp3",
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog2.jpg",
             },
@@ -774,7 +1083,7 @@ export default {
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog4.jpg",
             },
             {
-              text_en: "I have twenty grapes and three eggs.",
+              text_en: ["I have twenty grapes and three eggs."],
               audio: "images/R1-3_Jacks dog/Audio/story1_3_p11_3.mp3",
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog4.jpg",
             },
@@ -784,17 +1093,17 @@ export default {
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog6.jpg",
             },
             {
-              text_en: "I have four eggs and three oranges.",
+              text_en: ["I have four eggs and three oranges."],
               audio: "images/R1-3_Jacks dog/Audio/story1_3_p16_3.mp3",
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog7.jpg",
             },
             {
-              text_en: "Spot is not happy. He is mad.",
+              text_en: ["Spot is not happy. He is mad."],
               audio: "images/R1-3_Jacks dog/Audio/story1_3_p17.mp3",
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog7.jpg",
             },
             {
-              text_en: "Sad Spot! Sad dog!",
+              text_en: ["Sad Spot! Sad dog!"],
               audio: "images/R1-3_Jacks dog/Audio/story1_3_p18_2.mp3",
               pic: "images/R1-3_Jacks dog/Pic/Jack_s dog8.jpg",
             },
@@ -803,25 +1112,216 @@ export default {
       ],
 
       sp_img: "",
+      sp_voice: "",
       story_p: [
         {
           id: 1,
           img: "/images/theater/SB1_Draw1.png",
           text: "Minions",
+          voice: [
+            {
+              text_en: ["Who am I."],
+              text_cn: ["我是誰?"],
+              audio: "images/R1-1_Who am I/Audio/Who am I.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who-am-I.jpg",
+              dive: false,
+            },
+            {
+              text_en: ["I am Harry."],
+              text_cn: ["我是Harry"],
+              audio: "images/R1-1_Who am I/Audio/story1_1_p5_4_i_am_harry.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I1.jpg",
+              dive: false,
+            },
+            {
+              text_en: ["I am Anna"],
+              text_cn: ["我是Anna"],
+              audio: "images/R1-1_Who am I/Audio/story1_1_p7_4_i_am_anna.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I2.jpg",
+              dive: false,
+            },
+            {
+              text_en: ["I am Tom."],
+              text_cn: ["我是Tom"],
+              audio: "images/R1-1_Who am I/Audio/story1_1_p9_4_i_am_tom.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I3.jpg",
+              dive: false,
+            },
+            {
+              text_en: ["I am Helen."],
+              text_cn: ["我是Helen"],
+              audio: "images/R1-1_Who am I/Audio/story1_1_p11_4_i_am_helen.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I4.jpg",
+              dive: false,
+            },
+            {
+              text_en: ["I am Leo."],
+              text_cn: ["我是Leo"],
+              audio: "images/R1-1_Who am I/Audio/story1_1_p13_4_i_am_leo.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I5.jpg",
+              dive: false,
+            },
+            {
+              text_en: ["I am Piggy."],
+              text_cn: ["我是Piggy"],
+              audio: "images/R1-1_Who am I/Audio/story1_1_p15_4_i_am_piggy.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I6.jpg",
+              dive: false,
+            },
+            {
+              text_en: ["I am Snowball."],
+              text_cn: ["我是Snowball"],
+              audio:
+                "images/R1-1_Who am I/Audio/story1_1_p17_4_i_am_snowball.mp3",
+              pic: "images/R1-1_Who am I/Pic/Who am I7.jpg",
+              dive: false,
+            },
+          ],
         },
         {
           id: 2,
           img: "/images/theater/SB1_Draw2.png",
           text: "do la a mo",
+          voice: [
+            {
+              text_en: ["The three little pigs."],
+              text_cn: [""],
+              audio:
+                "images/R1-2_Three little pigs/Audio/The three little pigs.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/The-Three-Little-Pig.jpg",
+            },
+            {
+              text_en: ["Here is a pig. Ben is tall."],
+              text_cn: [""],
+              audio: "images/R1-2_Three little pigs/Audio/story1_2_p4_3.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs1.jpg",
+            },
+            {
+              text_en: ["Here is a pig. John is fat."],
+              text_cn: [""],
+              audio: "images/R1-2_Three little pigs/Audio/story1_2_p5_3.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs1.jpg",
+            },
+            {
+              text_en: ["Here is a pig. Mike is thin."],
+              text_cn: [""],
+              audio: "images/R1-2_Three little pigs/Audio/story1_2_p6_3.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs2.jpg",
+            },
+            {
+              text_en: ["What is this?", "It s a door."],
+              text_cn: [""],
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p7_what is_a door.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs2.jpg",
+            },
+            {
+              text_en: ["Help! ", "Oh no! It's is the Big Bad Wolf."],
+              text_cn: [""],
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p9_help_ohno.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs3.jpg",
+            },
+            {
+              text_en: ["What is this? ", "It's a gatel."],
+              text_cn: [""],
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p10_what is_a gate.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs4.jpg",
+            },
+            {
+              text_en: ["I'll huff! I'll puff!", "Go away!"],
+              text_cn: [""],
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p15_Ill huff_away.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs6.jpg",
+            },
+            {
+              text_en: ["I'm happy.", "I am happy, too."],
+              text_cn: [""],
+              audio:
+                "images/R1-2_Three little pigs/Audio/story1_2_p18_Iam_Iamtoo.mp3",
+              pic: "images/R1-2_Three little pigs/Pic/the three little pigs8.jpg",
+            },
+          ],
         },
         {
           id: 3,
           img: "/images/theater/SB1_Draw3.png",
           text: "Pokemon",
+          voice: [
+            {
+              text_en: ["Jacks dog."],
+              audio: "images/R1-3_Jacks dog/Audio/Jacks_dog.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog.jpg",
+            },
+            {
+              text_en: ["Hi! I'm Spot. I am a dog. I am a happy dog!"],
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p4_2.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog1.jpg",
+            },
+            {
+              text_en: ["That is Jack. He is 15 years old. He is my friend."],
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p5_2.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog1.jpg",
+            },
+            {
+              text_en: ["I have five oranges and two eggs."],
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p6_2.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog2.jpg",
+            },
+            {
+              text_en: ["Thank you. You are a good dog.", "Woof! Woof!"],
+              audio:
+                "images/R1-3_Jacks dog/Audio/story1_3_p7_Thank you_woof.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog2.jpg",
+            },
+            {
+              text_en: ["Thank you! You can go now.", "Woof! Woof!"],
+              audio:
+                "images/R1-3_Jacks dog/Audio/story1_3_p8_Thank you_woof.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog3.jpg",
+            },
+            {
+              text_en: ["GO! GO! GO! Let's run.", "Let's walk."],
+              audio:
+                "images/R1-3_Jacks dog/Audio/story1_3_p10_Gogogo_lets walk.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog4.jpg",
+            },
+            {
+              text_en: ["I have twenty grapes and three eggs."],
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p11_3.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog4.jpg",
+            },
+            {
+              text_en: ["Two dogs. Two short dogs!", "Two mad dogs."],
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p14_all.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog6.jpg",
+            },
+            {
+              text_en: ["I have four eggs and three oranges."],
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p16_3.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog7.jpg",
+            },
+            {
+              text_en: ["Spot is not happy. He is mad."],
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p17.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog7.jpg",
+            },
+            {
+              text_en: ["Sad Spot! Sad dog!"],
+              audio: "images/R1-3_Jacks dog/Audio/story1_3_p18_2.mp3",
+              pic: "images/R1-3_Jacks dog/Pic/Jack_s dog8.jpg",
+            },
+          ],
         },
       ],
 
       op_state: false,
+
+      sentence: 0,
+
+      number: 1,
     };
   },
   async created() {
@@ -838,6 +1338,7 @@ export default {
       this.dive = false;
     },
     cs_sigh_prev() {
+      this.number = 1;
       if (this.cs_sigh === 1) {
         this.cs_sigh = 1;
       } else {
@@ -845,6 +1346,7 @@ export default {
       }
     },
     cs_sigh_next() {
+      this.number = 1;
       if (this.cs_sigh === this.max_cs_sigh) {
         this.cs_sigh = this.max_cs_sigh;
       } else {
@@ -869,42 +1371,100 @@ export default {
         });
     },
     video_play(index) {
+      console.log(this.myVideo);
       this.play_video = this.myVideo[index].video;
     },
     play(index) {
+      // console.log(this.myVideo);
       document.querySelector(".s_audio" + index).play();
-      console.log("播放" + ".s_audio" + index);
-      this.s_img = this.s_voice[index].pic
+      // console.log("播放" + ".s_audio" + index);
+
+      this.s_img = this.s_voice[index].pic;
       this.s_voice[index].dive = true;
+      // this.number = index + 1;
       document.querySelector(".s_audio" + index).loop = false;
       document.querySelector(".s_audio" + index).addEventListener(
         "ended",
-        function (index) {
+        () => {
           this.s_voice[index].dive = false;
-          console.log('播完囉')
+          console.log("播完囉");
         },
         false
       );
     },
-    // all_play() {
-    //   let audios = document.getElementsByTagName("audio");
-    //   let s = this.s_voice.length;
-    //   for (let i = 0; i < s.length; i++) {
-    //     // console.log("audios " + i + "  SRC:" + audios[i].currentSrc);
-    //     audios[i].addEventListener(
-    //       "ended",
-    //       function () {
-    //         // nextSibling 属性返回指定节点之后紧跟的节点，在相同的树层级中。
-    //         let nextAudio = this.nextSibling.nextSibling;
-    //         // tagName 属性返回元素的标签名。(大写)
-    //         if (nextAudio.tagName == "AUDIO") {
-    //           nextAudio.play();
-    //         }
-    //       },
-    //       false
-    //     );
-    //   }
-    // },
+    all_play(index = 0) {
+      document.querySelector(".s_audio" + index).play();
+      console.log("播放" + ".s_audio" + index);
+      this.s_img = this.s_voice[index].pic;
+      this.s_voice[index].dive = true;
+      document.querySelector(".sentence").scrollTop = 125 * index;
+      document.querySelector(".s_audio" + index).loop = false;
+      document.querySelector(".s_audio" + index).addEventListener(
+        "ended",
+        () => {
+          this.number = index + 1;
+          console.log(index, this.s_voice.length);
+          this.s_voice[index].dive = false;
+          console.log("播完囉");
+          if (index + 1 < this.s_voice.length) {
+            this.all_play(index + 1);
+          }
+        },
+        false
+      );
+    },
+    sp_play(index) {
+      console.log("123");
+      // console.log(this.myVideo);
+      document.querySelector(".s_audio" + index).play();
+      // console.log("播放" + ".s_audio" + index);
+      this.sp_img = this.sp_voice[index].pic;
+      this.sp_voice[index].dive = true;
+      this.number = index + 1;
+      document.querySelector(".s_audio" + index).loop = false;
+      document.querySelector(".s_audio" + index).addEventListener(
+        "ended",
+        () => {
+          this.sp_voice[index].dive = false;
+          console.log("播完囉");
+        },
+        false
+      );
+    },
+    sp_all_play(index = 0) {
+      document.querySelector(".s_audio" + index).play();
+      // console.log("播放" + ".s_audio" + index);
+      this.sp_img = this.sp_voice[index].pic;
+      this.sp_voice[index].dive = true;
+      document.querySelector(".sentence").scrollTop = 125 * index;
+      document.querySelector(".s_audio" + index).loop = false;
+      document.querySelector(".s_audio" + index).addEventListener(
+        "ended",
+        () => {
+          this.number = index + 1;
+          console.log(index, this.sp_voice.length);
+          this.sp_voice[index].dive = false;
+          console.log("播完囉");
+          if (index + 1 < this.sp_voice.length) {
+            this.sp_all_play(index + 1);
+          }
+        },
+        false
+      );
+    },
+
+    us() {
+      if (this.number > 1) {
+        this.number--;
+        document.querySelector(".sentence").scrollTop = 125 * this.number;
+      }
+    },
+    bs() {
+      if (this.number < this.s_voice.length) {
+        this.number++;
+        document.querySelector(".sentence").scrollTop = 125 * this.number;
+      }
+    },
   },
   computed: {
     // 计算属性的 getter
@@ -918,6 +1478,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 #story,
 #portfolio {
   border: 10px solid #18a3b4;
@@ -1319,13 +1885,21 @@ export default {
     border: 5px solid #000;
     background-color: #fff;
     img {
-      width: 90%;
-      height: 95%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       padding: 0;
       position: relative;
-      top: 5%;
-      left: 5%;
+      top: 0%;
+      left: 0%;
+    }
+    &.sp {
+      height: 650px;
+      width: calc(100% - 300px);
+      &.sp_style {
+        height: 815px;
+        width: 100%;
+      }
     }
   }
   &.story {
@@ -1724,7 +2298,7 @@ export default {
 }
 
 .img {
-  height: 720px;
+  height: 665px;
   background-color: #fff;
   img {
     height: 100%;
@@ -1792,12 +2366,13 @@ export default {
     width: calc(100% - 100px - 120px);
     height: 120px;
     padding-right: 5px;
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
-
+    -ms-overflow-style: none; /* IE 10+ */
+    scrollbar-width: none; /* Firefox */
     .item {
       width: 100%;
-      height: 57px;
+      height: 120px;
       display: flex;
       align-items: center;
       background-color: #fff;
@@ -1820,19 +2395,24 @@ export default {
         cursor: pointer;
         position: relative;
         z-index: 1;
+        font-size: 42px;
       }
       p {
         color: #b15177;
         line-height: 1.4;
         position: relative;
         z-index: 1;
+        font-size: 32px;
       }
       .o_paly {
         &.active {
+          svg {
+            filter: grayscale(1);
+          }
           &::before {
             content: "";
             display: block;
-            background-color: #e9e9e9;
+            background-color: #bbbbbb;
             width: 100vw;
             height: 200px;
             position: absolute;
@@ -1844,20 +2424,24 @@ export default {
     }
 
     &::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+      display: none; /* Chrome Safari */
     }
-    &::-webkit-scrollbar-track {
-      border-radius: 3px;
-      background: rgba(0, 0, 0, 0.06);
-      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
-    }
-    /* 滚动条滑块 */
-    &::-webkit-scrollbar-thumb {
-      border-radius: 3px;
-      background: rgba(0, 0, 0, 0.12);
-      -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-    }
+
+    // &::-webkit-scrollbar {
+    //   width: 6px;
+    //   height: 6px;
+    // }
+    // &::-webkit-scrollbar-track {
+    //   border-radius: 3px;
+    //   background: rgba(0, 0, 0, 0.06);
+    //   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
+    // }
+    // /* 滚动条滑块 */
+    // &::-webkit-scrollbar-thumb {
+    //   border-radius: 3px;
+    //   background: rgba(0, 0, 0, 0.12);
+    //   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    // }
   }
 
   &.sp {
@@ -1901,6 +2485,7 @@ export default {
   width: calc(100% - 200px);
   margin-left: 100px;
   margin-right: 100px;
+  height: 800px;
 }
 
 #download {
@@ -1940,6 +2525,49 @@ export default {
     transform: translate(-50%, -50%);
     font-size: 32px;
     color: #b15177;
+  }
+}
+
+#return {
+  right: 5px;
+  top: 5px;
+  @media screen and (max-width: 1024px) and (max-height: 768px) {
+    right: 15px;
+    top: 15px;
+  }
+  @media screen and (max-width: 1366px) and (max-height: 768px) {
+    right: 5px;
+    top: 5px;
+  }
+}
+
+main {
+  // top: 45%;
+  @media screen and (max-height: 1080px) {
+    transform: translate(-50%, -50%);
+  }
+  @media screen and (max-width: 1366px) and (max-height: 768px) {
+    transform: translate(-50%, -50%) scale(0.8) !important;
+  }
+  @media screen and (max-width: 1280px) and (max-height: 768px) {
+    transform: translate(-50%, -50%) scale(0.75) !important;
+  }
+  @media screen and (max-width: 1024px) and (max-height: 768px) {
+    transform: translate(-50%, -50%) scale(0.65) !important;
+  }
+
+  &.active {
+    // height: 100%;
+    #coloring_schedule,
+    #coloring_schedule.story,
+    #coloring_schedule.story_p {
+      margin-top: 20px;
+      margin-bottom: 25px;
+    }
+  }
+  #coloring_menu {
+    justify-content: space-between;
+    padding-top: 0;
   }
 }
 </style>

@@ -1,29 +1,32 @@
 <template>
-
   <div class="wrapper">
     <div class="item">
-      <img src="/images/A.png" alt="a">
+      <img src="/images/A.png" alt="a" />
     </div>
     <div class="item">
-      <img src="/images/B.png" alt="B">
+      <img src="/images/B.png" alt="B" />
     </div>
     <div class="item">
-      <img src="/images/C.png" alt="C">
+      <img src="/images/C.png" alt="C" />
     </div>
     <div class="item">
-      <img src="/images/D.png" alt="D">
+      <img src="/images/D.png" alt="D" />
     </div>
   </div>
 </template>
-<script>
 
+<script>
+</script>
+
+<script>
 export default {
   created() {
     // this.collision();
+    // this.draggable()
   },
   methods: {
     
-  }
+  },
 };
 </script>
 

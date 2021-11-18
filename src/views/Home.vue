@@ -28,7 +28,7 @@
           alt="img"
         >
       </router-link>
-      <router-link to="javascript: void(0)">
+      <router-link to="reader1_1">
         <img
           class="card"
           src="images/menu/r111.png"
@@ -40,7 +40,7 @@
           alt="img"
         >
       </router-link>
-      <router-link to="javascript: void(0)">
+      <router-link to="reader1_2">
         <img
           class="card"
           src="images/menu/r121.png"
@@ -52,7 +52,7 @@
           alt="img"
         >
       </router-link>
-      <router-link to="javascript: void(0)">
+      <router-link to="reader1_3">
         <img
           class="card"
           src="images/menu/r131.png"

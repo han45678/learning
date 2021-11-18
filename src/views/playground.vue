@@ -531,8 +531,8 @@ h1 {
         position: absolute;
         content: "";
         border: #fff 10px solid;
-        width: calc(100% - 20px);
-        height: calc(100% - 20px);
+        width: calc(100% - 0px);
+        height: calc(100% - 0px);
         z-index: 1;
       }
       &:hover img {

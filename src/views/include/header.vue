@@ -2,15 +2,9 @@
   <header>
     <nav>
       <ul>
-        <li
-          @click="signOut"
-          style="cursor: pointer;"
-        >
+        <li @click="signOut" style="cursor: pointer">
           <div class="icon">
-            <img
-              src="/images/icon/user.svg"
-              alt="icon"
-            >
+            <img src="/images/icon/user.svg" alt="icon" />
           </div>
           <div class="content">
             {{ info.name }}
@@ -18,10 +12,7 @@
         </li>
         <li>
           <div class="icon">
-            <img
-              src="/images/icon/star.svg"
-              alt="icon"
-            >
+            <img src="/images/icon/star.svg" alt="icon" />
           </div>
           <div class="content">
             {{ info.star }}
@@ -29,10 +20,7 @@
         </li>
         <li>
           <div class="icon">
-            <img
-              src="/images/icon/currency.svg"
-              alt="icon"
-            >
+            <img src="/images/icon/currency.svg" alt="icon" />
           </div>
           <div class="content">
             {{ info.currency }}
@@ -40,10 +28,7 @@
         </li>
         <li>
           <div class="icon">
-            <img
-              src="/images/icon/time.svg"
-              alt="icon"
-            >
+            <img src="/images/icon/time.svg" alt="icon" />
           </div>
           <div class="content">
             {{ info.time }}
@@ -51,14 +36,9 @@
         </li>
         <li>
           <div class="icon">
-            <img
-              src="/images/icon/level.svg"
-              alt="icon"
-            >
+            <img src="/images/icon/level.svg" alt="icon" />
           </div>
-          <div class="content">
-            Level {{ info.level }}
-          </div>
+          <div class="content">Level {{ info.level }}</div>
         </li>
       </ul>
     </nav>
@@ -81,13 +61,13 @@ export default {
       });
   },
   methods: {
-  signOut() {
+    signOut() {
       this.$store.commit("SET_IS_LOADING", false);
       this.$store.commit("SET_USER_INFO", {
-        username: '',
-        password: '',
-        identity: '',
-        level: '',
+        username: "",
+        password: "",
+        identity: "",
+        level: "",
       });
 
       localStorage.setItem(
@@ -95,10 +75,10 @@ export default {
         JSON.stringify({
           isLoading: false,
           // helper: true,
-          username: '',
-          password: '',
-          identity: '',
-          level: '',
+          username: "",
+          password: "",
+          identity: "",
+          level: "",
         })
       );
       this.$router.push("/login");
@@ -120,6 +100,23 @@ export default {
   cursor: pointer;
   &:hover {
     opacity: 0.8;
+  }
+}
+
+header {
+  transition: 0.6s;
+  transform-origin: left;
+  @media screen and (min-width: 1280px) and (min-height: 768px) {
+    &.active {
+      position: fixed;
+      left: 30px;
+      top: -100px;
+      
+      nav ul li .icon {
+        width: 30px;
+        height: 30px;
+      }
+    }
   }
 }
 </style>

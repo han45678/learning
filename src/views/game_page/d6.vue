@@ -1,14 +1,14 @@
 <template>
   <div id="d6">
-    <div class="info">
+    <!-- <div class="info">
       <div>
         <span class="label">Time:</span><span class="value">{{ time }} </span>
       </div>
-      <!-- <div>
+      <div>
         <span class="label">Turns:</span><span class="value">{{ turns }} </span>
-      </div> -->
-    </div>
-    <div class="cards">
+      </div>
+    </div> -->
+    <div class="cards" style="margin-top: 60px;">
       <div
         class="card"
         :key="index"
@@ -23,7 +23,8 @@
         />
       </div>
     </div>
-    <div class="splash" v-if="showSplash">
+    <div class="splash" v-if="0">
+      <!-- v-if="showSplash" -->
       <div class="overlay" />
       <div class="content">
         <div class="title">You won!</div>
@@ -129,6 +130,7 @@ export default {
         (this.turns - CardTypes.length) * 5;
       this.score = Math.max(score, 0);
       this.showSplash = true;
+      this.$store.helper = true;
     },
 
     flipCard(card) {
@@ -154,6 +156,10 @@ export default {
 
             if (this.checkAllFound()) {
               this.finishGame();
+              console.log("完成")
+              this.$store.commit('SET_H5_GAME_STATUS', true);
+              this.$store.state.h5_game = true
+              console.log(this.$store.state.h5_game)
             }
           }, 200);
         } else {
